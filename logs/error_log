@@ -1,0 +1,31 @@
+[Fri Aug 11 18:14:27.240596 2017] [mime_magic:error] [pid 9780] (2)No such file or directory: AH01515: mod_mime_magic: can't read magic file /home/web/conf/magic
+[Fri Aug 11 18:14:27.242260 2017] [suexec:notice] [pid 9780] AH01232: suEXEC mechanism enabled (wrapper: /usr/sbin/suexec)
+[Fri Aug 11 18:14:27.313486 2017] [mime_magic:error] [pid 9780] (2)No such file or directory: AH01515: mod_mime_magic: can't read magic file /home/web/conf/magic
+[Fri Aug 11 18:14:27.313509 2017] [auth_digest:notice] [pid 9780] AH01757: generating secret for digest authentication ...
+[Fri Aug 11 18:14:27.314563 2017] [lbmethod_heartbeat:notice] [pid 9780] AH02282: No slotmem from mod_heartmonitor
+[Fri Aug 11 18:14:27.478630 2017] [mpm_prefork:notice] [pid 9780] AH00163: Apache/2.4.6 (CentOS) OpenSSL/1.0.1e-fips mod_fcgid/2.3.9 PHP/5.4.16 configured -- resuming normal operations
+[Fri Aug 11 18:14:27.478692 2017] [core:notice] [pid 9780] AH00094: Command line: '/usr/sbin/httpd -D FOREGROUND'
+[Fri Aug 11 18:19:42.522492 2017] [mpm_prefork:notice] [pid 9780] AH00170: caught SIGWINCH, shutting down gracefully
+[Fri Aug 11 18:19:43.705149 2017] [suexec:notice] [pid 9835] AH01232: suEXEC mechanism enabled (wrapper: /usr/sbin/suexec)
+[Fri Aug 11 18:19:43.753209 2017] [so:warn] [pid 9835] AH01574: module php5_module is already loaded, skipping
+[Fri Aug 11 18:19:43.759459 2017] [auth_digest:notice] [pid 9835] AH01757: generating secret for digest authentication ...
+[Fri Aug 11 18:19:43.760323 2017] [lbmethod_heartbeat:notice] [pid 9835] AH02282: No slotmem from mod_heartmonitor
+[Fri Aug 11 18:19:43.804276 2017] [mpm_prefork:notice] [pid 9835] AH00163: Apache/2.4.6 (CentOS) OpenSSL/1.0.1e-fips mod_fcgid/2.3.9 PHP/5.4.16 configured -- resuming normal operations
+[Fri Aug 11 18:19:43.804319 2017] [core:notice] [pid 9835] AH00094: Command line: '/usr/sbin/httpd -D FOREGROUND'
+[Fri Aug 11 18:21:07.201224 2017] [mpm_prefork:notice] [pid 9835] AH00170: caught SIGWINCH, shutting down gracefully
+[Fri Aug 11 18:21:08.402520 2017] [suexec:notice] [pid 9886] AH01232: suEXEC mechanism enabled (wrapper: /usr/sbin/suexec)
+[Fri Aug 11 18:21:08.451335 2017] [so:warn] [pid 9886] AH01574: module php5_module is already loaded, skipping
+[Fri Aug 11 18:21:08.457638 2017] [auth_digest:notice] [pid 9886] AH01757: generating secret for digest authentication ...
+[Fri Aug 11 18:21:08.458501 2017] [lbmethod_heartbeat:notice] [pid 9886] AH02282: No slotmem from mod_heartmonitor
+[Fri Aug 11 18:21:08.502574 2017] [mpm_prefork:notice] [pid 9886] AH00163: Apache/2.4.6 (CentOS) OpenSSL/1.0.1e-fips mod_fcgid/2.3.9 PHP/5.4.16 configured -- resuming normal operations
+[Fri Aug 11 18:21:08.502615 2017] [core:notice] [pid 9886] AH00094: Command line: '/usr/sbin/httpd -D FOREGROUND'
+[Fri Aug 11 18:25:09.343898 2017] [:error] [pid 9889] [client 192.168.0.24:53181] PHP Warning:  phpinfo(): It is not safe to rely on the system's timezone settings. You are *required* to use the date.timezone setting or the date_default_timezone_set() function. In case you used any of those methods and you are still getting this warning, you most likely misspelled the timezone identifier. We selected the timezone 'UTC' for now, but please set date.timezone to select your timezone. in /home/web/test.php on line 2
+[Fri Aug 11 18:27:01.875877 2017] [mpm_prefork:notice] [pid 9886] AH00171: Graceful restart requested, doing restart
+[Fri Aug 11 18:27:01.980718 2017] [so:warn] [pid 9886] AH01574: module php5_module is already loaded, skipping
+[Fri Aug 11 18:27:01.987016 2017] [auth_digest:notice] [pid 9886] AH01757: generating secret for digest authentication ...
+[Fri Aug 11 18:27:01.987617 2017] [lbmethod_heartbeat:notice] [pid 9886] AH02282: No slotmem from mod_heartmonitor
+[Fri Aug 11 18:27:02.013247 2017] [mpm_prefork:notice] [pid 9886] AH00163: Apache/2.4.6 (CentOS) OpenSSL/1.0.1e-fips mod_fcgid/2.3.9 PHP/5.4.16 configured -- resuming normal operations
+[Fri Aug 11 18:27:02.013272 2017] [core:notice] [pid 9886] AH00094: Command line: '/usr/sbin/httpd -D FOREGROUND'
+[Fri Aug 11 18:57:32.171105 2017] [:error] [pid 10005] [client 192.168.0.24:53394] PHP Notice:  date_default_timezone_set(): Timezone ID 'UM5' is invalid in /home/web/index.php on line 308
+[Fri Aug 11 19:03:27.534842 2017] [:error] [pid 10005] [client 192.168.0.24:53526] PHP Fatal error:  Call to undefined function base_url() in /home/web/application/views/welcome_message.php on line 8
+[Fri Aug 11 19:03:39.996976 2017] [:error] [pid 12607] [client 192.168.0.24:53528] PHP Fatal error:  Call to undefined function base_url() in /home/web/application/views/welcome_message.php on line 8
