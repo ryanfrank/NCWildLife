@@ -17,7 +17,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 </head>
 <div class="container-fluid">
     In a container now...
-    <div class="row">
+    <div class="row" style="z-index: 999">
         <div class="dropdown">
             <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Dropdown button
