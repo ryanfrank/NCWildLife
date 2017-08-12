@@ -16,8 +16,18 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 </head>
 <div class="container-fluid">
-    In a container now... 
+    In a container now...
     <div class="row">
+        <button type="button" class="btn btn-primary">Primary</button>
+        <button type="button" class="btn btn-secondary">Secondary</button>
+        <button type="button" class="btn btn-success">Success</button>
+        <button type="button" class="btn btn-danger">Danger</button>
+        <button type="button" class="btn btn-warning">Warning</button>
+        <button type="button" class="btn btn-info">Info</button>
+        <button type="button" class="btn btn-light">Light</button>
+        <button type="button" class="btn btn-dark">Dark</button>
+
+        <button type="button" class="btn btn-link">Link</button>
         <div class="col-lg-9">
             In the main DIV
             <div class="col-8 col-sm-8">
