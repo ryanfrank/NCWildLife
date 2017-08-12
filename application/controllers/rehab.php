@@ -7,7 +7,7 @@
  */
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class rehab extends CI_Controller {
+class Rehab extends CI_Controller {
 
     /**
      * Index Page for this controller.
