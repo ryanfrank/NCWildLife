@@ -15,24 +15,47 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <link rel="stylesheet" type="text/css" href="<?php echo base_url('application/bootstrap/css/bootstrap.min.css');?>">
 
 </head>
-<body>
-
-<div id="container">
-    <h1>This is our shit</h1>
-
-    <div id="body">
-        <p>The page you are looking at is being generated dynamically by CodeIgniter.</p>
-
-        <p>If you would like to edit this page you'll find it located at:</p>
-        <code>application/views/welcome_message.php</code>
-
-        <p>The corresponding controller for this page is found at:</p>
-        <code>application/controllers/Welcome.php</code>
-
-        <p>If you are exploring CodeIgniter for the very first time, you should start by reading the <a href="user_guide/">User Guide</a>.</p>
+<div class="container">
+    <div class="row justify-content-start">
+        <div class="col-4">
+            One of two columns
+        </div>
+        <div class="col-4">
+            One of two columns
+        </div>
     </div>
-
-    <p class="footer">Page rendered in <strong>{elapsed_time}</strong> seconds. <?php echo  (ENVIRONMENT === 'development') ?  'CodeIgniter Version <strong>' . CI_VERSION . '</strong>' : '' ?></p>
+    <div class="row justify-content-center">
+        <div class="col-4">
+            One of two columns
+        </div>
+        <div class="col-4">
+            One of two columns
+        </div>
+    </div>
+    <div class="row justify-content-end">
+        <div class="col-4">
+            One of two columns
+        </div>
+        <div class="col-4">
+            One of two columns
+        </div>
+    </div>
+    <div class="row justify-content-around">
+        <div class="col-4">
+            One of two columns
+        </div>
+        <div class="col-4">
+            One of two columns
+        </div>
+    </div>
+    <div class="row justify-content-between">
+        <div class="col-4">
+            One of two columns
+        </div>
+        <div class="col-4">
+            One of two columns
+        </div>
+    </div>
 </div>
 
 </body>
