@@ -307,7 +307,6 @@ switch (ENVIRONMENT)
 	{
 		date_default_timezone_set('EST');
 	}
-
 	define('VIEWPATH', $view_folder.DIRECTORY_SEPARATOR);
 
 /*
