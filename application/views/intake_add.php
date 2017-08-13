@@ -14,10 +14,9 @@
             event.preventDefault();
             var firstName = $("input#firstName").val();
             var lastName = $("input#lastName").val();
-            alert("First Name" + firstName);
             jQuery.ajax({
                 type: "POST",
-                url: "<?php echo base_url(); ?>" + "/Intake/addSamaritan",
+                url: "<?php echo base_url(); ?>" + "Intake/addSamaritan",
                 dataType: 'json',
                 data: {first: firstName, last: lastName},
                 success: function(res) {
