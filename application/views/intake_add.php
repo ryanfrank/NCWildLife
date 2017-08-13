@@ -10,7 +10,7 @@
 <script type="application/javascript">
     $(document).ready(function() {
         //$("mySubmit").click(function(event) {
-        $('#goodSamaritanForm').submit(function(event) {
+        $("#submitButton").click(function(event) {
             event.preventDefault();
             //var firstName = $("input#firstName").val();
             //var lastName = $("input#lastName").val();
@@ -106,6 +106,6 @@
         </div>
     </div>
     <div class="row">
-        <input type="submit">
+        <input type="submit" id="submitButton">
     </div>
 </form>
