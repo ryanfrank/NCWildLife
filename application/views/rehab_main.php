@@ -16,6 +16,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 </head>
 <body>
+<div class="container">
+    
+</div>
 <div class="container w-100">
     <div class="row align-items-center w-100">
         <div class="col-lg-auto w-100">
