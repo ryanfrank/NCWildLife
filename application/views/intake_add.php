@@ -7,7 +7,7 @@
  */
 foreach ($species->result() as $row)
 {
-    echo $row->sepcies_name;
+    echo $row->species_name;
 }
 
 ?>
