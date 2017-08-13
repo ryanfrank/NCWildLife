@@ -37,6 +37,7 @@ class Intake extends CI_Controller {
     }
     public function addSamaritan()
     {
-        print "You did it...";
+        $this->data['first'] = "Success";
+        echo json_encode($this->data);
     }
 }

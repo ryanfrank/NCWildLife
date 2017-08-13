@@ -21,9 +21,7 @@
                 dataType: 'json',
                 data: {first: firstName, last: lastName},
                 success: function(res) {
-                    if (res)
-                    {
-// Show Entered Value
+                    if (!res) {
                         jQuery("div#content").show();
                         jQuery("div#content").html(res.first);
                         jQuery("div#value_pwd").html(res.last);
