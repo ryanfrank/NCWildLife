@@ -9,7 +9,8 @@
 ?>
 <script type="application/javascript">
     $(document).ready(function() {
-        $(".mySubmit").click(function(event) {
+        //$("mySubmit").click(function(event) {
+        document.forms["goodSamaritanForm"].submit();{
             alert("intake submit");
             event.preventDefault();
             var firstName = $("input#firstName").val();
@@ -30,7 +31,7 @@
                 }
             });
         });
-    });
+    })
 </script>
 <form class="mt-3" id="goodSamaritanForm" action="" method="post">
     <div class="row">
