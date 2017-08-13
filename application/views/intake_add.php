@@ -5,9 +5,21 @@
  * Date: 8/13/17
  * Time: 12:45 PM
  */
-foreach ($species->result() as $row)
-{
-    echo $row->species_name;
-}
 
 ?>
+
+<form>
+    <div class="form-group">
+        <label for="speciesSelection">Species</label>
+        <select class="form-control" id="speciesSelection">
+            <?php
+                foreach ($species->result() as $row)
+                {
+                    print "<option>" . $row->species_name . "</option>";
+                }
+            ?>
+        </select>
+    </div>
+
+
+</form>
