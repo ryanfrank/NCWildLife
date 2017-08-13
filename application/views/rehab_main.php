@@ -24,7 +24,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 </head>
 <body>
-<div class="container w-100 h-100 mt-1 border border-primary" id="header">
+<div class="container w-100 h-100 mt-1" id="header">
     <div class="row align-items-center w-100">
         <div class="col-lg-auto w-100">
             <div class="jumbotron jumbo-fluid rounded">
