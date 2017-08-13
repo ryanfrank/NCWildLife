@@ -17,6 +17,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <script type="text/javascript" src="<?php echo base_url('application/bootstrap/js/jquery-3.2.1.min.js');?>"></script>
     <script type="text/javascript" src="<?php echo base_url('application/js/popper.js');?>"></script>
     <script type="text/javascript" src="<?php echo base_url('application/bootstrap/js/bootstrap.min.js');?>"></script>
+    <script type="text/javascript" src="<?php echo base_url('application/js/rehab.js');?>"></script>
 </head>
 <body>
 <div class="container-fluid mt-2 mb-3" style="width: 98%;" id="header">
