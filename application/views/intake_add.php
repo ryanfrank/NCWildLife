@@ -11,7 +11,7 @@
 <form>
     <div class="form-group">
         <label for="speciesSelection">Species</label>
-        <select class="form-control" id="speciesSelection">
+        <select class="form-control w-25" id="speciesSelection">
             <?php
                 foreach ($species->result() as $row)
                 {
