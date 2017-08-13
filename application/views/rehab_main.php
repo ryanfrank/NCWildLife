@@ -41,6 +41,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <a class="dropdown-item" href="#">Update Information</a>
                         <a class="dropdown-item" href="#">Inventory Update</a>
                     </div>
+                </div>
+                <div class="dropdown">
                     <button class="btn btn-secondary dropdown-toggle" type="button" id="reportMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Reports
                     </button>
@@ -49,6 +51,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <a class="dropdown-item" href="#">Year to date</a>
                         <a class="dropdown-item" href="#">Inventory</a>
                     </div>
+                </div>
+                <div class="dropdown">
                     <button class="btn btn-secondary dropdown-toggle" type="button" id="inventoryMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Inventory
                     </button>
