@@ -10,10 +10,10 @@
 <script type="application/javascript">
     $(document).ready(function() {
         //$("mySubmit").click(function(event) {
-        $('#goodSamaritanForm').submit(function(event) {
+        $('#goodSamaritanForm').click(function(event) {
             event.preventDefault();
-            var firstName = $("input#firstName").val();
-            var lastName = $("input#lastName").val();
+            //var firstName = $("input#firstName").val();
+            //var lastName = $("input#lastName").val();
             alert("<?php echo base_url(); ?>");
             jQuery.ajax({
                 type: "POST",
