@@ -16,7 +16,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 </head>
 <div class="container w-100">
-    <div class="row align-items-center">
+    <div class="row align-items-center w-100">
         <div class="col-lg-auto">
             <div class="jumbotron jumbo-fluid rounded">
                 <h1 class="display-3">NC WildLife</h1>
