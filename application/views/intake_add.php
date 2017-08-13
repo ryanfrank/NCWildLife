@@ -9,6 +9,7 @@
 ?>
 <script type="application/javascript">
     $(document).ready(function() {
+        alert("Document Ready!");
         //$("mySubmit").click(function(event) {
         $("goodSamaritanForm").submit(function(event) {
             alert("intake submit");
