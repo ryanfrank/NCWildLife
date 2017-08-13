@@ -34,6 +34,16 @@
         </div>
 
     </div>
+    <div class="row">
+        <div class="form-group col-6">
+            <label for="firstName" class="align-content-center">Good Samaritan First Name</label>
+            <input type="text" class="form-control" id="firstName" placeholder="First Name">
+        </div>
+        <div class="form-group col-6">
+            <label for="lastName" class="align-content-center">Good Samaritan Last Name</label>
+            <input type="text" class="form-control" id="lastName" placeholder="Last Name">
+        </div>
+    </div>
 
 
 </form>
