@@ -19,7 +19,7 @@
                 type: "POST",
                 url: "<?php echo base_url(); ?>" + "Intake/addSamaritan",
                 dataType: 'json',
-                data: {first: firstName, last: lastName},
+                data: $("#goodSamaritanForm").serialize(),
                 success: function(res) {
                     if (res) {
                         jQuery("div#content").show();
