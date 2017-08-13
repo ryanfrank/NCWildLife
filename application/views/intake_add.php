@@ -10,16 +10,16 @@
 <script type="application/javascript">
     $(document).ready(function() {
         //$("mySubmit").click(function(event) {
-        $("#submitButton").click(function(event) {
+        $("#goodSamaritanForm").submit(function(event) {
             event.preventDefault();
-            //var firstName = $("input#firstName").val();
-            //var lastName = $("input#lastName").val();
+            var firstName = $("input#firstName").val();
+            var lastName = $("input#lastName").val();
             alert("<?php echo base_url(); ?>");
             jQuery.ajax({
                 type: "POST",
                 url: "<?php echo base_url(); ?>" + "Intake/addSamaritan",
                 dataType: 'json',
-                data: $("#goodSamaritanForm").serialize(),
+                data: { first: firstName, last: lastName },
                 success: function(res) {
                     if (res) {
                         alert("We did something...");
