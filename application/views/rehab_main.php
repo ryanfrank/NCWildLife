@@ -35,10 +35,5 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         </div>
     </div>
 </div>
-<div class="container mt-1" id="main">
-    <div class="row w-100">
-
-    </div>
-</div>
 </body>
 </html>
