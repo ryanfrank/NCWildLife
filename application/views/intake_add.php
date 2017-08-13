@@ -7,7 +7,7 @@
  */
 
 ?>
-<form class="mt-3" id="goodSamaritanForm" action="/Intake/addSamaritan" method="post">
+<form class="mt-3" id="goodSamaritanForm" action="" method="post">
     <div class="row">
         <div class="form-group col-3">
             <label for="speciesSelection" class="align-content-center">Species Released</label>
@@ -79,6 +79,6 @@
         </div>
     </div>
     <div class="row">
-        <input type="submit" name="submit_samaritan" value="Submit Samaritan Information" onclick="this.parentNode.submit();"  id="samaritan_submit">
+        <input type="submit" name="mySubmit" value="Submit Samaritan Information" class="btn">
     </div>
 </form>
