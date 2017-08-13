@@ -27,7 +27,7 @@
                 <?php
                 foreach ($ages->result() as $row)
                 {
-                    print "<option>" . $row->age_description . "</option>";
+                    print "<option>" . $row->ages_description . "</option>";
                 }
                 ?>
             </select>
