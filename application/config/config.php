@@ -24,6 +24,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |
 */
 $config['base_url'] = 'http://rehab.mycoolmac.net/';
+$config['base_path'] = '/home/web');
 
 /*
 |--------------------------------------------------------------------------
