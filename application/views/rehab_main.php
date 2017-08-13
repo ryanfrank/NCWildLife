@@ -7,7 +7,8 @@
  */
 
 defined('BASEPATH') OR exit('No direct script access allowed');
-?><!DOCTYPE html>
+?>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8">
@@ -16,11 +17,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <script type="text/javascript" src="<?php echo base_url('application/js/jquery-3.2.1.min.js');?>"></script>
     <script type="text/javascript" src="<?php echo base_url('application/js/popper.js');?>"></script>
     <script type="text/javascript" src="<?php echo base_url('application/bootstrap/js/bootstrap.min.js');?>"></script>
-    <script>
+    <!-- <script>
         $(document).ready(function(){
             $('.dropdown-toggle').dropdown()
         });
-    </script>
+    </script> -->
 
 </head>
 <body>
