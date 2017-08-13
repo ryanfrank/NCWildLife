@@ -66,6 +66,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         </div>
     </div>
 </div>
-<div class="container h-100 w-100 mt-3 border border-dark rounded" id="content" style="height: 250px;"></div>
+<div class="container mt-3 border border-dark rounded" id="content" style="height: 90%;"></div>
 </body>
 </html>
