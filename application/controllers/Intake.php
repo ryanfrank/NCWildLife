@@ -28,4 +28,8 @@ class Intake extends CI_Controller {
     {
         $this->load->view('intake_main');
     }
+    public function add()
+    {
+        $this->load->view('intake_add');
+    }
 }
