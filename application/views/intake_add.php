@@ -8,7 +8,7 @@
 
 ?>
 
-<form class="mt-3">
+<form class="mt-3" id="goodSamaritanForm" action="/Intake/addSamaritan" method="post">
     <div class="row">
         <div class="form-group col-3">
             <label for="speciesSelection" class="align-content-center">Species Released</label>
@@ -78,5 +78,8 @@
             <label for="phoneNumber" class="align-content-center">Good Samaritan Phone</label>
             <input type="text" class="form-control" id="phoneNumber" placeholder="XXX-XXX-XXXX">
         </div>
+    </div>
+    <div class="row">
+        <input type="submit" name="submit_samaritan" value="Submit Samaritan Information" id="samaritan_submit">
     </div>
 </form>

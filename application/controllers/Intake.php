@@ -35,4 +35,8 @@ class Intake extends CI_Controller {
         $data['states']       = $this->db->query("SELECT * from states");
         $this->load->view('intake_add', $data);
     }
+    public function addSamaritan()
+    {
+        print "You did it...";
+    }
 }
