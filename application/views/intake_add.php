@@ -21,6 +21,18 @@
                 ?>
             </select>
         </div>
+        <div class="form-group col-3">
+            <label for="ageSelection" class="align-content-center">Age</label>
+            <select class="form-control" id="ageSelection">
+                <?php
+                foreach ($ages->result() as $row)
+                {
+                    print "<option>" . $row->age_description . "</option>";
+                }
+                ?>
+            </select>
+        </div>
+
     </div>
 
 

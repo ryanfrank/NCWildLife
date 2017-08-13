@@ -30,7 +30,9 @@ class Intake extends CI_Controller {
     }
     public function add()
     {
-        $data['species'] = $this->db->query("SELECT * from species ");
+        $data['species']    = $this->db->query("SELECT * from species ");
+        $data['ages']       = $this->db->query("SELECT * from ages");
+        $data['states']       = $this->db->query("SELECT * from states");
         $this->load->view('intake_add', $data);
     }
 }
