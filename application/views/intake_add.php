@@ -28,6 +28,9 @@
                         jQuery("div#content").html(res.first);
                         jQuery("div#value_pwd").html(res.last);
                     }
+                },
+                error: function(res) {
+                    alert('ERROR: ' + res.first);
                 }
             });
         });
