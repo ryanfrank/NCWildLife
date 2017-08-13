@@ -10,7 +10,7 @@
 <script type="application/javascript">
     $(document).ready(function() {
         //$("mySubmit").click(function(event) {
-        document.forms["goodSamaritanForm"].submit();{
+        $(document).forms["goodSamaritanForm"].submit(function() {
             alert("intake submit");
             event.preventDefault();
             var firstName = $("input#firstName").val();
