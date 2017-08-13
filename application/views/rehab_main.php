@@ -16,10 +16,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 </head>
 <body>
-<div class="container">
-    
-</div>
-<div class="container w-100">
+<div class="container w-100 mt-1">
     <div class="row align-items-center w-100">
         <div class="col-lg-auto w-100">
             <div class="jumbotron jumbo-fluid rounded">
@@ -28,6 +25,5 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         </div>
     </div>
 </div>
-
 </body>
 </html>
