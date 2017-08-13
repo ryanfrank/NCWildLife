@@ -25,7 +25,7 @@
                         alert("We did something...");
                         jQuery("div#content").show();
                         jQuery("div#content").html(res.first);
-                        jQuery("div#value_pwd").html(res.last);
+                        jQuery("div#vcontent").html(res.last);
                     }
                 },
                 error: function(res) {

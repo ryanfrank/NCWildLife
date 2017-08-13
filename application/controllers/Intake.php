@@ -41,7 +41,7 @@ class Intake extends CI_Controller {
             'firstName' => $this->input->post('first'),
             'lastName'  => $this->input->post('last')
         );
-
+        echo $data;
         echo json_encode($data);
     }
 }
