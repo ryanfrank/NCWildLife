@@ -16,23 +16,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 </head>
 <div class="container-fluid">
-    In a container now...
-    <div class="row" style="z-index: 999">
-        <div class="dropdown">
-            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Dropdown button
-            </button>
-            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                <a class="dropdown-item" href="#">Action</a>
-                <a class="dropdown-item" href="#">Another action</a>
-                <a class="dropdown-item" href="#">Something else here</a>
-            </div>
-        </div>
-        <div class="col-lg-9">
-            In the main DIV
-            <div class="col-8 col-sm-8">
-                Inside small DIV
-            </div>
+    <div class="row">
+        <div class="jumbotron jumbo-fluid rounded">
+            <h1 class="display-3">NC WildLife</h1>
         </div>
     </div>
 </div>
