@@ -19,7 +19,7 @@
                 type: "POST",
                 url: "<?php echo base_url(); ?>" + "Intake/addSamaritan",
                 dataType: 'json',
-                data: { first: firstName, last: lastName },
+                data: { "first": firstName, "last": lastName },
                 success: function(res) {
                     if (res) {
                         alert("We did something...");
