@@ -15,7 +15,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <link rel="stylesheet" type="text/css" href="<?php echo base_url('application/bootstrap/css/bootstrap.min.css');?>">
 
 </head>
-<div class="containe w-100">
+<div class="container w-100">
     <div class="row align-items-center">
         <div class="col-lg-auto">
             <div class="jumbotron jumbo-fluid rounded">
