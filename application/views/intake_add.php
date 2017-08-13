@@ -11,7 +11,7 @@
     $(document).ready(function() {
         alert("Document Ready!");
         //$("mySubmit").click(function(event) {
-        $("goodSamaritanForm").submit(function(event) {
+        $('#goodSamaritanForm').submit(function(event) {
             alert("intake submit");
             event.preventDefault();
             var firstName = $("input#firstName").val();
@@ -34,7 +34,7 @@
         });
     });
 </script>
-<form class="mt-3" name="goodSamaritanForm" id="goodSamaritanForm">
+<form class="mt-3" id="goodSamaritanForm" name="goodSamaritanForm">
     <div class="row">
         <div class="form-group col-3">
             <label for="speciesSelection" class="align-content-center">Species Released</label>
