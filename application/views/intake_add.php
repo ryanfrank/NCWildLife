@@ -33,7 +33,7 @@
         });
     })
 </script>
-<form class="mt-3" name="goodSamaritanForm">
+<form class="mt-3" name="goodSamaritanForm" id="goodSamaritanForm">
     <div class="row">
         <div class="form-group col-3">
             <label for="speciesSelection" class="align-content-center">Species Released</label>
@@ -105,6 +105,6 @@
         </div>
     </div>
     <div class="row">
-        <input type="submit" id="mySubmit" name="mySubmit" value="Submit Samaritan Information" class="btn">
+        <input type="submit">
     </div>
 </form>
