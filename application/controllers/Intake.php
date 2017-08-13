@@ -37,10 +37,7 @@ class Intake extends CI_Controller {
     }
     public function addSamaritan()
     {
-        $data = array(
-            'firstName' => $this->input->post('firstName'),
-            'lastName'  => $this->input->post('lastName')
-        );
-        echo json_encode($data);
+        $first = $this->input->post('firstName');
+        echo json_encode($first);
     }
 }
