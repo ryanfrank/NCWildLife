@@ -9,16 +9,18 @@
 ?>
 
 <form class="mt-3">
-    <div class="form-group row">
-        <label for="speciesSelection" class="col-2 align-content-center">Species</label>
-        <select class="form-control col-sm-3" id="speciesSelection">
-            <?php
-                foreach ($species->result() as $row)
-                {
-                    print "<option>" . $row->species_name . "</option>";
-                }
-            ?>
-        </select>
+    <div class="row">
+        <div class="form-group">
+            <label for="speciesSelection" class="col-2 align-content-center">Species</label>
+            <select class="form-control col-sm-3" id="speciesSelection">
+                <?php
+                    foreach ($species->result() as $row)
+                    {
+                        print "<option>" . $row->species_name . "</option>";
+                    }
+                ?>
+            </select>
+        </div>
     </div>
 
 
