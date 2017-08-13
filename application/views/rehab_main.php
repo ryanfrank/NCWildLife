@@ -13,7 +13,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <head>
     <meta charset="utf-8">
     <title>Welcome to NC WildLife Rehab</title>
-    <link rel="stylesheet" type="text/css" href="<?php echo site_url('application/bootstrap/css/bootstrap.min.css');?>">
+    <!-- <link rel="stylesheet" type="text/css" href="<?php echo site_url('application/bootstrap/css/bootstrap.min.css');?>"> -->
+    <link rel="stylesheet" type="text/css" href="application/bootstrap/css/bootstrap.min.css">
     <script type="text/javascript" src="<?php echo base_url('application/js/jquery-3.2.1.min.js');?>"></script>
     <script type="text/javascript" src="<?php echo base_url('application/js/popper.js');?>"></script>
     <script type="text/javascript" src="<?php echo base_url('application/bootstrap/js/bootstrap.min.js');?>"></script>
