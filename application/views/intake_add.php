@@ -5,7 +5,7 @@
  * Date: 8/13/17
  * Time: 12:45 PM
  */
-
+?>
 <form>
   <div class="form-group">
     <label for="exampleInputEmail1">Email address</label>
