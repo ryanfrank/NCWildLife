@@ -22,6 +22,7 @@
                 data: $("#goodSamaritanForm").serialize(),
                 success: function(res) {
                     if (res) {
+                        alert("We did something...");
                         jQuery("div#content").show();
                         jQuery("div#content").html(res.first);
                         jQuery("div#value_pwd").html(res.last);
