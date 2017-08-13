@@ -9,13 +9,12 @@
 ?>
 <script type="application/javascript">
     $(document).ready(function() {
-        alert("Document Ready!");
         //$("mySubmit").click(function(event) {
         $('#goodSamaritanForm').submit(function(event) {
-            alert("intake submit");
             event.preventDefault();
             var firstName = $("input#firstName").val();
             var lastName = $("input#lastName").val();
+            alert("First Name" + firstName);
             jQuery.ajax({
                 type: "POST",
                 url: "<?php echo base_url(); ?>" + "/Intake/addSamaritan",
