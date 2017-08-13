@@ -33,7 +33,7 @@
         });
     })
 </script>
-<form class="mt-3" id="goodSamaritanForm" action="" method="post">
+<form class="mt-3" name="goodSamaritanForm">
     <div class="row">
         <div class="form-group col-3">
             <label for="speciesSelection" class="align-content-center">Species Released</label>
