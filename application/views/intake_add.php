@@ -45,16 +45,16 @@
         </div>
     </div>
     <div class="row">
-        <div class="form-group col-12">
+        <div class="form-group col-6">
             <label for="streetAddress" class="align-content-center">Good Samaritan Street Address</label>
             <input type="text" class="form-control" id="streetAddress" placeholder="Street Address">
         </div>
-    </div>
-    <div class="row">
         <div class="form-group col-6">
             <label for="cityName" class="align-content-center">Good Samaritan City</label>
             <input type="text" class="form-control" id="cityName" placeholder="City">
         </div>
+    </div>
+    <div class="row">
         <div class="form-group col-3">
             <label for="stateName" class="align-content-center">Good Samaritan State</label>
             <select class="form-control" id="stateName">
@@ -69,6 +69,14 @@
         <div class="form-group col-3">
             <label for="zipCode" class="align-content-center">Good Samaritan Zip</label>
             <input type="text" class="form-control" id="zipCode" placeholder="Zip Code">
+        </div>
+        <div class="form-group col-3">
+            <label for="emailAddress" class="align-content-center">Good Samaritan Email</label>
+            <input type="email" class="form-control" id="emailAddress" placeholder="email@domain.com">
+        </div>
+        <div class="form-group col-3">
+            <label for="phoneNumber" class="align-content-center">Good Samaritan Phone Number</label>
+            <input type="text" class="form-control" id="phoneNumber" placeholder="XXX-XXX-XXXX">
         </div>
     </div>
     <div class="row">
