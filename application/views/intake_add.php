@@ -9,7 +9,6 @@
 ?>
 <script type="application/javascript">
     $(document).ready(function() {
-        alert("intake add");
         $(".mySubmit").click(function(event) {
             alert("intake submit");
             event.preventDefault();
@@ -105,6 +104,6 @@
         </div>
     </div>
     <div class="row">
-        <input type="submit" name="mySubmit" value="Submit Samaritan Information" class="btn">
+        <input type="submit" id="mySubmit" name="mySubmit" value="Submit Samaritan Information" class="btn">
     </div>
 </form>
