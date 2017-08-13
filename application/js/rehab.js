@@ -1,4 +1,5 @@
 $(document).ready(function() {
+    alert("doc ready");
     $(".mySubmit").click(function(event) {
         alert("Here");
         event.preventDefault();
