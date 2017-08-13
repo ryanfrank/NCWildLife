@@ -1,13 +1,14 @@
-$(document).ready(function(){
-    $("#samaritan_submit").click(function(){
-        var firstName = $("#firstName").val();
-        var base_url= 'http://rehab.mycoolmac.net/';
-        var url = base_url + '/Intake/addSamaritan';
+$(function(){
+    $("#goodSamaritanForm").submit(function(){
+        dataString = $("#goodSamaritanForm").serialize();
         $.ajax({
-            type : 'POST',
-            dataType: 'json',
-            url : url,
-            data :'firstName=' + firstName
+            type: "POST",
+            url: "<?php echo base_url(); ?>/Intake/addSamaritan",
+            data: dataString,
+            success: function(data){
+                alert('Successful!');
+            }
         });
+        return false;  //stop the actual form post !important!
     });
 });
