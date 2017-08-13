@@ -44,6 +44,29 @@
             <input type="text" class="form-control" id="lastName" placeholder="Last Name">
         </div>
     </div>
+    <div class="row">
+        <div class="form-group col-12">
+            <label for="streetAddress" class="align-content-center">Good Samaritan Street Address</label>
+            <input type="text" class="form-control" id="streetAddress" placeholder="Street Address">
+        </div>
+    </div>
+    <div class="row">
+        <div class="form-group col-6">
+            <label for="cityName" class="align-content-center">Good Samaritan City</label>
+            <input type="text" class="form-control" id="cityName" placeholder="City">
+        </div>
+        <div class="form-group col-6">
+            <label for="stateName" class="align-content-center">Good Samaritan State</label>
+            <select class="form-control" id="stateName">
+                <?php
+                foreach ($states->result() as $row)
+                {
+                    print "<option>" . $row->state_name . "</option>";
+                }
+                ?>
+            </select>
+        </div>
+    </div>
 
 
 </form>
