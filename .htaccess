@@ -1,7 +1,5 @@
-<IfModule mod_rewrite.c>
 RewriteEngine on
-RewriteCond $1 !^([a-zA-z0-9/])
-RewriteRule ^(.*)$ index.php [L]
-RewriteCond $1 !^(index.php|images|robots.txt|system|user_guide|bootstrap|js)
-RewriteRule ^(.*)$ index.php/$1 [L]
-</IfModule>
+RewriteCond $1 !^(index\.php|public|\.txt)
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ index.php?$1
