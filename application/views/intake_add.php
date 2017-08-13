@@ -11,7 +11,7 @@
 <form class="mt-3">
     <div class="row">
         <div class="form-group col-3">
-            <label for="speciesSelection" class="align-content-center">Species</label>
+            <label for="speciesSelection" class="align-content-center">Species Released</label>
             <select class="form-control" id="speciesSelection">
                 <?php
                     foreach ($species->result() as $row)
@@ -75,13 +75,8 @@
             <input type="email" class="form-control" id="emailAddress" placeholder="email@domain.com">
         </div>
         <div class="form-group col-3">
-            <label for="phoneNumber" class="align-content-center">Good Samaritan Phone Number</label>
+            <label for="phoneNumber" class="align-content-center">Good Samaritan Phone</label>
             <input type="text" class="form-control" id="phoneNumber" placeholder="XXX-XXX-XXXX">
         </div>
     </div>
-    <div class="row">
-
-    </div>
-
-
 </form>
