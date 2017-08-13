@@ -24,7 +24,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |
 */
 $config['base_url'] = 'http://rehab.mycoolmac.net/';
-$config['base_path'] = '/home/web';
 
 /*
 |--------------------------------------------------------------------------
@@ -36,7 +35,7 @@ $config['base_path'] = '/home/web';
 | variable so that it is blank.
 |
 */
-$config['index_page'] = '';
+$config['index_page'] = 'index.php';
 
 /*
 |--------------------------------------------------------------------------
