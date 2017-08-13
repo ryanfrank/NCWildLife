@@ -31,7 +31,7 @@
                 }
             });
         });
-    })
+    });
 </script>
 <form class="mt-3" name="goodSamaritanForm" id="goodSamaritanForm">
     <div class="row">
