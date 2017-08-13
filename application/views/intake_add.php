@@ -21,7 +21,7 @@
                 dataType: 'json',
                 data: {first: firstName, last: lastName},
                 success: function(res) {
-                    if (!res) {
+                    if (res) {
                         alert("RES still not defined");
                         jQuery("div#content").show();
                         jQuery("div#content").html(res.first);
