@@ -10,7 +10,7 @@
 
 <form class="mt-3">
     <div class="row">
-        <div class="form-group col-6">
+        <div class="form-group col-3">
             <label for="speciesSelection" class="align-content-center">Species</label>
             <select class="form-control" id="speciesSelection">
                 <?php
