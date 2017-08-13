@@ -33,7 +33,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             </div>
             <div class="btn-group">
                 <div class="dropdown">
-                    <button class="btn btn-secondary dropdown-toggle" type="button" id="intakeMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <button class="btn btn-secondary dropdown-toggle ml-4" type="button" id="intakeMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Intake
                     </button>
                     <div class="dropdown-menu" aria-labelledby="intakeMenuButton">
@@ -43,7 +43,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     </div>
                 </div>
                 <div class="dropdown">
-                    <button class="btn btn-secondary dropdown-toggle" type="button" id="reportMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <button class="btn btn-secondary dropdown-toggle ml-4" type="button" id="reportMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Reports
                     </button>
                     <div class="dropdown-menu" aria-labelledby="reportMenuButton">
@@ -53,7 +53,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     </div>
                 </div>
                 <div class="dropdown">
-                    <button class="btn btn-secondary dropdown-toggle" type="button" id="inventoryMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <button class="btn btn-secondary dropdown-toggle ml-4" type="button" id="inventoryMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Inventory
                     </button>
                     <div class="dropdown-menu" aria-labelledby="inventoryMenuButton">
