@@ -28,28 +28,39 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <div class="row align-items-center w-100">
         <div class="col-lg-auto w-100">
             <div class="jumbotron jumbo-fluid rounded">
-                <h1 class="display-3">NC WildLife</h1>
+                <h1 class="display-3 align-center">NC WildLife</h1>
             </div>
             <div class="dropdown">
                 <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Intake
                 </button>
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                    <a class="dropdown-item" href="#">Action</a>
-                    <a class="dropdown-item" href="#">Another action</a>
-                    <a class="dropdown-item" href="#">Something else here</a>
+                    <a class="dropdown-item" href="#">Intake</a>
+                    <a class="dropdown-item" href="#">Update Information</a>
+                    <a class="dropdown-item" href="#">inventory Update</a>
                 </div>
                 <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Reports
                 </button>
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                    <a class="dropdown-item" href="#">Action</a>
-                    <a class="dropdown-item" href="#">Another action</a>
-                    <a class="dropdown-item" href="#">Something else here</a>
+                    <a class="dropdown-item" href="#">Current Activity</a>
+                    <a class="dropdown-item" href="#">Year to date</a>
+                    <a class="dropdown-item" href="#">Inventory</a>
+                </div>
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Inventory
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <a class="dropdown-item" href="#">Inventory Search</a>
+                    <a class="dropdown-item" href="#">Update Inventory</a>
+                    <a class="dropdown-item" href="#">Add New Inventory</a>
                 </div>
             </div>
         </div>
     </div>
+</div>
+<div class="container container-fluid h-100 w-100 mt-1 border border-warning" id="content">
+
 </div>
 </body>
 </html>
