@@ -37,7 +37,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         Intake
                     </button>
                     <div class="dropdown-menu" aria-labelledby="intakeMenuButton">
-                        <a class="dropdown-item" href="javascript:void(0)" onclick="$(content).load('Intake/add')">Intake</a>
+                        <a class="dropdown-item" href="javascript:void(0)" onclick="$(content).load('Intake/add')">Add Information</a>
                         <a class="dropdown-item" href="#">Update Information</a>
                         <a class="dropdown-item" href="#">Inventory Update</a>
                     </div>
@@ -66,8 +66,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         </div>
     </div>
 </div>
-<div class="container container-fluid h-100 w-100 mt-1 border border-warning" id="content">
-
-</div>
+<div class="container container-fluid h-100 w-100 mt-2" id="content"></div>
 </body>
 </html>
