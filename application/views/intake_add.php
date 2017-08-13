@@ -55,7 +55,7 @@
             <label for="cityName" class="align-content-center">Good Samaritan City</label>
             <input type="text" class="form-control" id="cityName" placeholder="City">
         </div>
-        <div class="form-group col-6">
+        <div class="form-group col-3">
             <label for="stateName" class="align-content-center">Good Samaritan State</label>
             <select class="form-control" id="stateName">
                 <?php
@@ -65,6 +65,10 @@
                 }
                 ?>
             </select>
+        </div>
+        <div class="form-group col-3">
+            <label for="zipCode" class="align-content-center">Good Samaritan Zip</label>
+            <input type="text" class="form-control" id="zipCode" placeholder="Zip Code">
         </div>
     </div>
 
