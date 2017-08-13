@@ -14,5 +14,6 @@
     #request to index.php
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond $1 !^(index.php|images|robots.txt|system|user_guide|bootstrap|js)
     RewriteRule ^(.*)$ index.php?/$1 [L]
 </IfModule>
