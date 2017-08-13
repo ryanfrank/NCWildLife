@@ -30,30 +30,32 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <div class="jumbotron jumbo-fluid rounded">
                 <h1 class="display-3 align-center">NC WildLife</h1>
             </div>
-            <div class="dropdown">
-                <button class="btn btn-secondary dropdown-toggle" type="button" id="intakeMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Intake
-                </button>
-                <div class="dropdown-menu" aria-labelledby="intakeMenuButton">
-                    <a class="dropdown-item" href="#">Intake</a>
-                    <a class="dropdown-item" href="#">Update Information</a>
-                    <a class="dropdown-item" href="#">Inventory Update</a>
-                </div>
-                <button class="btn btn-secondary dropdown-toggle" type="button" id="reportMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Reports
-                </button>
-                <div class="dropdown-menu" aria-labelledby="reportMenuButton">
-                    <a class="dropdown-item" href="#">Current Activity</a>
-                    <a class="dropdown-item" href="#">Year to date</a>
-                    <a class="dropdown-item" href="#">Inventory</a>
-                </div>
-                <button class="btn btn-secondary dropdown-toggle" type="button" id="inventoryMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Inventory
-                </button>
-                <div class="dropdown-menu" aria-labelledby="inventoryMenuButton">
-                    <a class="dropdown-item" href="#">Inventory Search</a>
-                    <a class="dropdown-item" href="#">Update Inventory</a>
-                    <a class="dropdown-item" href="#">Add New Inventory</a>
+            <div class="btn-group">
+                <div class="dropdown">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" id="intakeMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Intake
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="intakeMenuButton">
+                        <a class="dropdown-item" href="#">Intake</a>
+                        <a class="dropdown-item" href="#">Update Information</a>
+                        <a class="dropdown-item" href="#">Inventory Update</a>
+                    </div>
+                    <button class="btn btn-secondary dropdown-toggle" type="button" id="reportMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Reports
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="reportMenuButton">
+                        <a class="dropdown-item" href="#">Current Activity</a>
+                        <a class="dropdown-item" href="#">Year to date</a>
+                        <a class="dropdown-item" href="#">Inventory</a>
+                    </div>
+                    <button class="btn btn-secondary dropdown-toggle" type="button" id="inventoryMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Inventory
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="inventoryMenuButton">
+                        <a class="dropdown-item" href="#">Inventory Search</a>
+                        <a class="dropdown-item" href="#">Update Inventory</a>
+                        <a class="dropdown-item" href="#">Add New Inventory</a>
+                    </div>
                 </div>
             </div>
         </div>
