@@ -14,10 +14,6 @@
             event.preventDefault();
             //var firstName = $("input#firstName").val();
             //var lastName = $("input#lastName").val();
-            e = document.getElementById('goodSamaritanForm').getElementsByTagName('emailList');
-            if ( e.checked = true  ) { var mail = "1"; }
-            else { var mail = "0"; }
-            alert("CHECK: " + mail);
             jQuery.ajax({
                 type: "POST",
                 url: "<?php echo base_url(); ?>" + "Intake/addSamaritan",
@@ -113,7 +109,8 @@
         </div>
         <div class="form-check col-3">
             <label class="form-check-label">
-                <input class="form-check-input" id="emailList" type="checkbox" value="Yes" checked>
+                <input class="form-check-input" id="emailList" type="hidden" value="0" />
+                <input class="form-check-input" id="emailList" type="checkbox" value="Yes" checked />
                 Would you like to be on our mailing list?
             </label>
         </div>
