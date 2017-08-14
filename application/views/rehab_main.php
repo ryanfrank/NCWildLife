@@ -64,21 +64,21 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <div class="container-fluid mt-md-2 ml-2 border border-dark rounded" id="content" style="min-height: 500px; width: 98%">
     <div class="card-deck mt-3 mb-3">
         <div class="card col-4" style="width: 20rem;">
-            <img class="card-img-top" src="<?php echo base_url();?>/application/images/squirrel_1.jpg" alt="Card image cap" height="450" width="175">
+            <img class="card-img-top rounded" src="<?php echo base_url();?>/application/images/squirrel_1.jpg" alt="Card image cap" height="450" width="175">
             <div class="card-body">
                 <h4 class="card-title">Rehabilitation</h4>
                 <p class="card-text">Taking every opportunity to return wild life to their natural habitats.</p>
             </div>
         </div>
         <div class="card col-4" style="width: 20rem;">
-            <img class="card-img-top" src="<?php echo base_url();?>/application/images/possum.jpg" alt="Card image cap" height="450" width="175">
+            <img class="card-img-top rounded" src="<?php echo base_url();?>/application/images/possum.jpg" alt="Card image cap" height="450" width="175">
             <div class="card-body">
                 <h4 class="card-title">Education</h4>
                 <p class="card-text">Educating the public on the benefits of wild life and the role they play in our ecosystem.</p>
             </div>
         </div>
         <div class="card col-4" style="width: 20rem;">
-            <img class="card-img-top" src="<?php echo base_url();?>/application/images/goat.jpg" alt="Card image cap" height="450" width="175">
+            <img class="card-img-top rounded" src="<?php echo base_url();?>/application/images/goat.jpg" alt="Card image cap" height="450" width="175">
             <div class="card-body">
                 <h4 class="card-title">Partnership</h4>
                 <p class="card-text">Working with our peer partners to facilitate support systems and enhance capabilities by sharing knowledge and experience.</p>
