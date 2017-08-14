@@ -52,20 +52,16 @@ class Intake extends CI_Controller {
             'reference'         =>  $this->input->post('referral'),
             'emailList'         =>  $this->input->post('emailList')
         );
-        //$phone = $data['phoneNumber'];
-        //$data['phoneNumber'] = preg_replace('/\D+/','', $phone);
-
         $where = array('good_samaritan_first_name' => $data['firstName'], 'good_samaritan_last_name' => $data['lastName']);
         $query = $this->db->get_where('good_samaritan', $where);
         if ( $query->num_rows() == 0 ) {
-            //$this->db->insert('good_samaritan', $data);
-            $newQuery = $data['firstName'] . "," . $data['lastName'] . "," . $data['streetAddress'] . "," . $data['cityName'] . ","
-                . $data['stateName'] . "," . $data['zipCode'] . "," . $data['phoneNumber'] . "," . $data['emailAddress'] . "," .
-                $data['donationReceived'] . "," . $data['donationAmount'] . "," . $data['reference'] . "," . $data['emailList'];
-            // $num_inserts = $this->db->affected_rows();
-            //if ($num_inserts > 0 ) { $result = "success"; }
-            //else { $result = "failure"; }
-            $result = $newQuery;
+            $this->db->insert('good_samaritan', $data);
+            //$newQuery = $data['firstName'] . "," . $data['lastName'] . "," . $data['streetAddress'] . "," . $data['cityName'] . ","
+            //    . $data['stateName'] . "," . $data['zipCode'] . "," . $data['phoneNumber'] . "," . $data['emailAddress'] . "," .
+            //    $data['donationReceived'] . "," . $data['donationAmount'] . "," . $data['reference'] . "," . $data['emailList'];
+            $num_inserts = $this->db->affected_rows();
+            if ($num_inserts > 0 ) { $result = "success"; }
+            else { $result = "failure"; }
         }
         else {
             $result = "failure";

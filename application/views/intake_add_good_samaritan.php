@@ -38,7 +38,6 @@
                     "emailList": mail
                 },
                 success: function(res) {
-                    alert("SQL: " + res);
                     if (res === "success") {
                         jQuery("div#content").html('<div class="alert alert-success mt-lg-4 col-3" role="alert">Successfully added ' + $("input#firstName").val() + ' ' + $("input#lastName").val() + '</div>');
                     }
