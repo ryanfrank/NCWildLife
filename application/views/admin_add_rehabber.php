@@ -32,7 +32,7 @@
                     "isLicensed":   licensed
                 },
                 success: function(res) {
-                    jQuery("div#myStatus").show();
+                    document.getElementById("myStatus").show();
                     if (res === "success") {
                         jQuery("div#myStatus").html('<div class="alert alert-success mt-lg-4 col-3" role="alert">Successfully added ' + $("input#firstName").val() + ' ' + $("input#lastName").val() + '</div>');
                         document.getElementById("addRehabber").reset();
@@ -50,7 +50,7 @@
         });
     });
 </script>
-<div class="row ml-5" id="myStatus"></div>
+<div class="row ml-5 col-6" id="myStatus" hidden></div>
 <div id="info">
     <form class="mt-3" id="addRehabber" name="addRehabber">
         <div class="row">
