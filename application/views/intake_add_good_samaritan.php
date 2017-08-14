@@ -52,8 +52,8 @@
         });
     });
 </script>
+<div class="row"><?php echo date("Y-m-d H:i:s");?> </div>
 <form class="mt-3" id="goodSamaritanForm" name="goodSamaritanForm">
-    <div class="row"><?php echo date("Y-m-d H:i:s");?> </div>
     <div class="row">
         <div class="form-group col-6">
             <label for="firstName" class="align-content-center">Good Samaritan First Name</label>
