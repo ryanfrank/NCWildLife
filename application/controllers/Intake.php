@@ -68,13 +68,16 @@ class Intake extends CI_Controller {
                 'good_samaritan_donation_amount'    => $data['donationAmount'],
                 'good_samaritan_list'               => $data['emailList']
             );
-            $this->db->insert('good_samaritan', $myData);
+            $sql = $this->db->set($myData)->get_compiled_insert('good_samaritan');
+
+            //$this->db->insert('good_samaritan', $myData);
             //$newQuery = $data['firstName'] . "," . $data['lastName'] . "," . $data['streetAddress'] . "," . $data['cityName'] . ","
             //    . $data['stateName'] . "," . $data['zipCode'] . "," . $data['phoneNumber'] . "," . $data['emailAddress'] . "," .
             //    $data['donationReceived'] . "," . $data['donationAmount'] . "," . $data['reference'] . "," . $data['emailList'];
-            $num_inserts = $this->db->affected_rows();
-            if ($num_inserts > 0 ) { $result = "success"; }
-            else { $result = "failure"; }
+            //$num_inserts = $this->db->affected_rows();
+            //if ($num_inserts > 0 ) { $result = "success"; }
+            //else { $result = "failure"; }
+            $result = $sql;
         }
         else {
             $result = "failure";
