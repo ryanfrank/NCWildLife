@@ -6,7 +6,6 @@
  * Time: 9:02 PM
  */
 ?>
-
 <script type="application/javascript">
     $(document).ready(function() {
         $("#goodSamaritanForm").submit(function(event) {
@@ -28,7 +27,7 @@
                     "last":         $("input#lastName").val(),
                     "street":       $("input#streetAddress").val(),
                     "city":         $("input#cityName").val(),
-                    "state":        "38",
+                    "state":        stateName,
                     "zip":          $("input#zipCode").val(),
                     "email":        $("input#emailAddress").val(),
                     "phone":        $("input#phoneNumber").val(),
