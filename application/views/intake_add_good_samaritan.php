@@ -121,6 +121,6 @@
     </div>
     <br>
     <div class="row ml-1 mt-4">
-        <input class="rounded" type="submit" id="submitButton">
+        <input type="submit" id="submitButton">
     </div>
 </form>
