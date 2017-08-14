@@ -35,17 +35,33 @@
         });
     });
 </script>
-<form class="mt-3" id="goodSamaritanForm" name="goodSamaritanForm">
+<script>
+    // Example starter JavaScript for disabling form submissions if there are invalid fields
+    (function() {
+        "use strict";
+        window.addEventListener("load", function() {
+            var form = document.getElementById("goodSamaritanForm");
+            form.addEventListener("submit", function(event) {
+                if (form.checkValidity() == false) {
+                    event.preventDefault();
+                    event.stopPropagation();
+                }
+                form.classList.add("was-validated");
+            }, false);
+        }, false);
+    }());
+</script>
+<form class="mt-3" id="goodSamaritanForm" name="goodSamaritanForm" novalidate>
     <div class="row">
         <div class="form-group col-6">
             <label for="firstName" class="align-content-center">Good Samaritan First Name</label>
             <input type="text" class="form-control" id="firstName" placeholder="First Name" required>
-            <!--<div class="invalid-feedback">Please provide a first name</div> -->
+            <div class="invalid-feedback">Please provide a first name</div>
         </div>
         <div class="form-group col-6">
             <label for="lastName" class="align-content-center">Good Samaritan Last Name</label>
             <input type="text" class="form-control" id="lastName" placeholder="Last Name" required>
-            <!-- <div class="invalid-feedback">Please provide a last name</div> -->
+            <div class="invalid-feedback">Please provide a last name</div>
         </div>
     </div>
     <div class="row">
