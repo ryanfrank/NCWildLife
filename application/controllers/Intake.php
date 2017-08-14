@@ -35,6 +35,7 @@ class Intake extends CI_Controller {
     }
     public function addSamaritan()
     {
+        $date = date("Y-m-d H:i:s");
         $formData = array(
             'good_samaritan_first_name'         => $this->input->post('first'),
             'good_samaritan_last_name'          => $this->input->post('last'),
@@ -48,7 +49,7 @@ class Intake extends CI_Controller {
             'good_samaritan_donation'           => $this->input->post('donation'),
             'good_samaritan_donation_amount'    => $this->input->post('amount'),
             'good_samaritan_list'               => $this->input->post('emailList'),
-            'created_date'                      => date("Y-m-d H:i:s")
+            'created_date'                      => $date
         );
         $where = array('good_samaritan_first_name' => $formData['good_samaritan_first_name'], 'good_samaritan_last_name' => $formData['good_samaritan_last_name']);
         $query = $this->db->get_where('good_samaritan', $where);
