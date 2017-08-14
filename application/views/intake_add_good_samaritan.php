@@ -14,6 +14,7 @@
             event.preventDefault();
             //var firstName = $("input#firstName").val();
             //var lastName = $("input#lastName").val();
+            alert("CHECK: " + $("input#donationReceived").checked());
             if ( $("input#donationReceived").checked()) { var rdonation = "1"; }
             else { var rdonation = "0"; }
             if ( $("input#emailList").checked()) { var remail = "1"; }
