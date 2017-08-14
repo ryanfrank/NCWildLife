@@ -54,7 +54,7 @@
         });
     });
 </script>
-<div hidden id="status"></div>
+<div id="status">HELLO</div>
 <div id="info">
     <form class="mt-3" id="addRehabber" name="addRehabber">
         <div class="row">
