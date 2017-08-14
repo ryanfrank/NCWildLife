@@ -47,9 +47,9 @@ class Intake extends CI_Controller {
             'zipCode'           =>  $this->input->post('zip'),
             'phoneNumber'       =>  preg_replace('/\D+/','',$this->input->post('phone')),
             'emailAddress'      =>  $this->input->post('email'),
+            'reference'         =>  $this->input->post('referral'),
             'donationReceived'  =>  $this->input->post('donation'),
             'donationAmount'    =>  $this->input->post('amount'),
-            'reference'         =>  $this->input->post('referral'),
             'emailList'         =>  $this->input->post('emailList')
         );
         $where = array('good_samaritan_first_name' => $data['firstName'], 'good_samaritan_last_name' => $data['lastName']);
