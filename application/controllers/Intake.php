@@ -79,12 +79,12 @@ class Intake extends CI_Controller {
             //$num_inserts = $this->db->affected_rows();
             //if ($num_inserts > 0 ) { $result = "success"; }
             //else { $result = "failure"; }
-            $result = $sql;
+
         }
         else {
             $result = "failure";
         }
-
+        $result = $sql;
         echo json_encode($result);
     }
 }
