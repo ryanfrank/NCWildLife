@@ -16,7 +16,6 @@
             //var lastName = $("input#lastName").val();
             if( $("#emailList").is(':checked') ) { var mail = "1"; }
             else { var mail = "0"; }
-            alert("Mail: " + mail);
             jQuery.ajax({
                 type: "POST",
                 url: "<?php echo base_url(); ?>" + "Intake/addSamaritan",
@@ -32,7 +31,7 @@
                     "phone": $("input#phoneNumber").val(),
                     "donation": $("input#donationReceived").val(),
                     "amount": $("input#donationAmount").val(),
-                    "emailList": $("input#emailList").checked()
+                    "emailList": mail
                 },
                 success: function(res) {
                     alert("Elements: " + res);
