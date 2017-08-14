@@ -35,15 +35,15 @@
                     //$("myStatus").show();
                     $("#myStatus").show();
                     if (res === "success") {
-                        jQuery("div#myStatus").html('<div class="alert alert-success mt-lg-4 col-3 alert-dismissible fade show" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close">Successfully added ' + $("input#firstName").val() + ' ' + $("input#lastName").val() + '</button></div>');
+                        jQuery("div#myStatus").html('<div class="row"><div class="alert alert-success mt-lg-4 col-8 alert-dismissible fade show" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close">Successfully added ' + $("input#firstName").val() + ' ' + $("input#lastName").val() + '</button></div></div>');
                         document.getElementById("addRehabber").reset();
                     }
                     else if (res === "duplicate") {
-                        jQuery("div#myStatus").html('<div class="alert alert-warning mt-lg-4 col-3 alert-dismissible fade show" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close">Duplicate entry for ' + $("input#firstName").val() + ' ' + $("input#lastName").val() + '</button></div>');
+                        jQuery("div#myStatus").html('<div class="row"><div class="alert alert-warning mt-lg-4 col-8 alert-dismissible fade show" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close">Duplicate entry for ' + $("input#firstName").val() + ' ' + $("input#lastName").val() + '</button></div></div>');
                         document.getElementById("addRehabber").reset();
                     }
                     else {
-                        jQuery("div#myStatus").html('<div class="alert alert-danger mt-lg-4 col-3 alert-dismissible fade show" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close">Failed to add ' + $("input#firstName").val() + ' ' + $("input#lastName").val() + '</button></div>');
+                        jQuery("div#myStatus").html('<div class="row"><div class="alert alert-danger mt-lg-4 col-8 alert-dismissible fade show" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close">Failed to add ' + $("input#firstName").val() + ' ' + $("input#lastName").val() + '</button></div></div>');
                         document.getElementById("addRehabber").reset();
                     }
                 }
@@ -108,6 +108,6 @@
             <input type="submit" id="submitButton">
         </div>
     </form>
-    <div id="myStatus" class="col-12 ml-5"> </div>
+    <div id="myStatus" class="ml-5"> </div>
 </div>
 </div>
