@@ -108,6 +108,6 @@
             <input type="submit" id="submitButton">
         </div>
     </form>
-    <div id="myStatus" > </div>
+    <div id="myStatus" hidden> </div>
 </div>
 </div>
