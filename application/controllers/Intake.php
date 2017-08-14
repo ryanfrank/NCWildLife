@@ -37,7 +37,7 @@ class Intake extends CI_Controller {
     }
     public function addSamaritan()
     {
-        $data = array(
+        $formData = array(
             'good_samaritan_first_name'         => $this->input->post('first'),,
             'good_samaritan_last_name'          => $this->input->post('last'),
             'good_samaritan_street'             => $this->input->post('street'),
@@ -65,7 +65,7 @@ class Intake extends CI_Controller {
             'donationAmount'    =>  $this->input->post('amount'),
             'emailList'         =>  $this->input->post('emailList')
         );*/
-        $where = array('good_samaritan_first_name' => $data['good_samaritan_first_name'], 'good_samaritan_last_name' => $data['good_samaritan_last_name']);
+        $where = array('good_samaritan_first_name' => $formData['good_samaritan_first_name'], 'good_samaritan_last_name' => $formData['good_samaritan_last_name']);
         $query = $this->db->get_where('good_samaritan', $where);
         if ( $query->num_rows() == 0 ) {
             /*$myData = array(
