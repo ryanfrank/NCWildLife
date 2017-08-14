@@ -24,18 +24,18 @@
                 url: "<?php echo base_url(); ?>" + "Intake/addSamaritan",
                 dataType: 'json',
                 data: {
-                    "first": $("input#firstName").val(),
-                    "last": $("input#lastName").val(),
-                    "street": $("input#streetAddress").val(),
-                    "city": $("input#cityName").val(),
-                    "state": stateName,
-                    "zip": $("input#zipCode").val(),
-                    "email": $("input#emailAddress").val(),
-                    "phone": $("input#phoneNumber").val(),
-                    "donation": rdonation,
-                    "amount": $("input#donationAmount").val(),
-                    "referral": $("input#referral").val(),
-                    "emailList": mail
+                    "first":        $("input#firstName").val(),
+                    "last":         $("input#lastName").val(),
+                    "street":       $("input#streetAddress").val(),
+                    "city":         $("input#cityName").val(),
+                    "state":        stateName,
+                    "zip":          $("input#zipCode").val(),
+                    "email":        $("input#emailAddress").val(),
+                    "phone":        $("input#phoneNumber").val(),
+                    "donation":     rdonation,
+                    "amount":       $("input#donationAmount").val(),
+                    "referral":     $("input#referral").val(),
+                    "emailList":    mail
                 },
                 success: function(res) {
                     if (res === "success") {
