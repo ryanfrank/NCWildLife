@@ -19,6 +19,7 @@
             else { rdonation = "0"; }
             var e = document.getElementById("stateName");
             var stateValue = e.options[e.selectedIndex].value;
+            alert("StateName: " + stateValue);
             jQuery.ajax({
                 type: "POST",
                 url: "<?php echo base_url(); ?>" + "Intake/addSamaritan",
