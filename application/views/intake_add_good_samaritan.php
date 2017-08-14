@@ -10,7 +10,6 @@
     $(document).ready(function() {
         $("#goodSamaritanForm").submit(function(event) {
             event.preventDefault();
-            alert("I am here!");
             var rdonation;
             var mail;
             if( $("#emailList").is(':checked') ) { mail = "1"; }
@@ -47,7 +46,7 @@
                         jQuery("div#content").html('<div class="alert alert-warning mt-lg-4 col-3" role="alert">Duplicate entry for ' + $("input#firstName").val() + ' ' + $("input#lastName").val() + '</div>');
                     }
                     else {
-                        jQuery("div#content").html('<div class="alert alert-danger mt-lg-4 col-3" role="alert">Failed to add ' + $("input#firstName").val() + ' ' + $("input#lastName").val() + '</div>'
+                        jQuery("div#content").html('<div class="alert alert-danger mt-lg-4 col-3" role="alert">Failed to add ' + $("input#firstName").val() + ' ' + $("input#lastName").val() + '</div>');
                     }
                 }
             });

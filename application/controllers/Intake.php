@@ -35,8 +35,8 @@ class Intake extends CI_Controller {
     }
     public function addSamaritan()
     {
-        //$date = date("Y-m-d H:i:s");
-        /*$formData = array(
+        $date = date("Y-m-d H:i:s");
+        $formData = array(
             'good_samaritan_first_name'         => $this->input->post('first'),
             'good_samaritan_last_name'          => $this->input->post('last'),
             'good_samaritan_street'             => $this->input->post('street'),
@@ -48,18 +48,17 @@ class Intake extends CI_Controller {
             'good_samaritan_reference'          => $this->input->post('referral'),
             'good_samaritan_donation'           => $this->input->post('donation'),
             'good_samaritan_donation_amount'    => $this->input->post('amount'),
-            'good_samaritan_list'               => $this->input->post('emailList')
-            //'created_date'                      => $date
-        );*/
+            'good_samaritan_list'               => $this->input->post('emailList'),
+            'created_date'                      => $date
+        );
         $where = array('good_samaritan_first_name' => $formData['good_samaritan_first_name'], 'good_samaritan_last_name' => $formData['good_samaritan_last_name']);
         $query = $this->db->get_where('good_samaritan', $where);
         if ( $query->num_rows() == 0 ) {
             //$sql = $this->db->set($formData)->get_compiled_insert('good_samaritan');
-            //$this->db->insert('good_samaritan', $formData);
-            //$num_inserts = $this->db->affected_rows();
-            //if ($num_inserts > 0 ) { $result = "success"; }
-            //else { $result = "failure"; }
-            $result = "success";
+            $this->db->insert('good_samaritan', $formData);
+            $num_inserts = $this->db->affected_rows();
+            if ($num_inserts > 0 ) { $result = "success"; }
+            else { $result = "duplicate"; }
         }
         else {
             $result = "failure";
