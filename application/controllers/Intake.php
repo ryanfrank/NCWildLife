@@ -52,32 +52,18 @@ class Intake extends CI_Controller {
         $where = array('good_samaritan_first_name' => $formData['good_samaritan_first_name'], 'good_samaritan_last_name' => $formData['good_samaritan_last_name']);
         $query = $this->db->get_where('good_samaritan', $where);
         if ( $query->num_rows() == 0 ) {
-            /*$myData = array(
-                'good_samaritan_first_name'         => $data['firstName'],
-                'good_samaritan_last_name'          => $data['lastName'],
-                'good_samaritan_street'             => $data['streetName'],
-                'good_samaritan_city'               => $data['cityName'],
-                'good_samaritan_state'              => $data['stateName'],
-                'good_samaritan_zip'                => $data['zipCode'],
-                'good_samaritan_phone'              => $data['phoneNumber'],
-                'good_samaritan_email'              => $data['emailAddress'],
-                'good_samaritan_reference'          => $data['reference'],
-                'good_samaritan_donation'           => $data['donationReceived'],
-                'good_samaritan_donation_amount'    => $data['donationAmount'],
-                'good_samaritan_list'               => $data['emailList']
-            );*/
-            //$value = $data['firstName'];
-            //$sql = "INSERT INTO good_samaritan ('good_samaritan_first_name','good_samaritan_last_name') values ('crap','morecrap')";
-            //$sql = $this->db->set($formData)->get_compiled_insert('good_samaritan');
 
-            $this->db->insert('good_samaritan', $formData);
+            $sql = $this->db->set($formData)->get_compiled_insert('good_samaritan');
+
+            //$this->db->insert('good_samaritan', $formData);
             //$newQuery = $data['firstName'] . "," . $data['lastName'] . "," . $data['streetAddress'] . "," . $data['cityName'] . ","
             //    . $data['stateName'] . "," . $data['zipCode'] . "," . $data['phoneNumber'] . "," . $data['emailAddress'] . "," .
             //    $data['donationReceived'] . "," . $data['donationAmount'] . "," . $data['reference'] . "," . $data['emailList'];
             //$num_inserts = $this->db->affected_rows();
             //if ($num_inserts > 0 ) { $result = "success"; }
             //else { $result = "failure"; }
-            $result = "success";
+            //$result = "success";
+            $result = $sql;
         }
         else {
             $result = "failure";
