@@ -39,6 +39,7 @@
                     }
                     else if (res === "duplicate") {
                         jQuery("div#status").show();
+                        jQuery("div#info").show();
                         jQuery("div#content").html('<div class="alert alert-warning mt-lg-4 col-3" role="alert">Duplicate entry for ' + $("input#firstName").val() + ' ' + $("input#lastName").val() + '</div>');
                         document.getElementById("addRehabber").reset();
                     }
