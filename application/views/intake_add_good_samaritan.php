@@ -14,7 +14,7 @@
             event.preventDefault();
             //var firstName = $("input#firstName").val();
             //var lastName = $("input#lastName").val();
-            var c=document.getElementById('emailList');
+            var c=document.forms["goodSamaritanForm"]["emailList"].value;
             if (c.checked) { var mail = "1"; }
             else { var mail = "0"; }
             alert("MAIL: " + mail);
@@ -113,7 +113,6 @@
         </div>
         <div class="form-check col-3">
             <label class="form-check-label">
-                <input class="form-check-input" id="emailList" type="hidden" value="0" />
                 <input class="form-check-input" id="emailList" type="checkbox" value="1" />
                 Would you like to be on our mailing list?
             </label>
