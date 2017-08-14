@@ -103,13 +103,16 @@
             <label class="form-check-label">
                 <input class="form-check-input" id="donationReceived" type="checkbox" value="Yes">
                     Donation received?
+                <span class="input-group-addon">$</span>
+                <input type="text" class="form-control" id="donationAmount" placeholder="Amount Received">
+                <span class="input-group-addon">.00</span>
             </label>
         </div>
-        <div class="input-group col-3">
+        <!-- <div class="input-group col-3">
             <span class="input-group-addon">$</span>
             <input type="text" class="form-control" id="donationAmount" placeholder="Amount Received">
             <span class="input-group-addon">.00</span>
-        </div>
+        </div> -->
         <div class="form-group col-3">
             <label for="referral" class="align-content-center">Who referred you to us?</label>
             <input type="text" class="form-control" id="referral" placeholder="Google, FaceBook, etc..." required>
