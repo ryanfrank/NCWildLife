@@ -17,8 +17,8 @@
             else { mail = "0"; }
             if( $("#donationReceived").is(':checked') ) { rdonation = "1"; }
             else { rdonation = "0"; }
-            //var e = document.getElementById("stateName");
-            //var stateName = e.options[e.selectedIndex].value;
+            var e = document.getElementById("stateName");
+            var stateName = e.options[e.selectedIndex].value;
             jQuery.ajax({
                 type: "POST",
                 url: "<?php echo base_url(); ?>" + "Intake/addSamaritan",
@@ -28,7 +28,7 @@
                     "last":         $("input#lastName").val(),
                     "street":       $("input#streetAddress").val(),
                     "city":         $("input#cityName").val(),
-                    "state":        "33",
+                    "state":        "38",
                     "zip":          $("input#zipCode").val(),
                     "email":        $("input#emailAddress").val(),
                     "phone":        $("input#phoneNumber").val(),
@@ -41,9 +41,9 @@
                     if (res === "success") {
                         jQuery("div#content").html('<div class="alert alert-success mt-lg-4 col-3" role="alert">Successfully added ' + $("input#firstName").val() + ' ' + $("input#lastName").val() + '</div>');
                     }
-                    else if (res === "duplicate") {
+                    /*else if (res === "duplicate") {
                         jQuery("div#content").html('<div class="alert alert-warning mt-lg-4 col-3" role="alert">Duplicate entry for ' + $("input#firstName").val() + ' ' + $("input#lastName").val() + '</div>');
-                    }
+                    }*/
                     else {
                         jQuery("div#content").html('<div class="alert alert-danger mt-lg-4 col-3" role="alert">Failed to add ' + $("input#firstName").val() + ' ' + $("input#lastName").val() + '</div>'
                     }
@@ -52,7 +52,6 @@
         });
     });
 </script>
-<div class="row"><?php echo date("Y-m-d H:i:s");?> </div>
 <form class="mt-3" id="goodSamaritanForm" name="goodSamaritanForm">
     <div class="row">
         <div class="form-group col-6">
