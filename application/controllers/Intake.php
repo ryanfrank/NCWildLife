@@ -67,7 +67,7 @@ class Intake extends CI_Controller {
             'emailList'         =>  $this->input->post('emailList')
         );
 
-        $count = count($data);
+        $count = $data['emailList'];
         echo json_encode($count);
     }
 }
