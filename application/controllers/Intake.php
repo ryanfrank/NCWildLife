@@ -58,10 +58,10 @@ class Intake extends CI_Controller {
             $this->db->insert('good_samaritan', $formData);
             $num_inserts = $this->db->affected_rows();
             if ($num_inserts > 0 ) { $result = "success"; }
-            else { $result = "duplicate"; }
+            else { $result = "failure"; }
         }
         else {
-            $result = "failure";
+            $result = "duplicate";
         }
         echo json_encode($result);
     }
