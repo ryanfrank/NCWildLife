@@ -33,8 +33,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     </button>
                     <div class="dropdown-menu" aria-labelledby="intakeMenuButton">
                         <a class="dropdown-item" href="javascript:void(0)" onclick="$(content).load('Intake/add_good_samaritan')">Add Good Samaritan</a>
-                        <a class="dropdown-item" href="#">Add Animal</a>
-                        <a class="dropdown-item" href="#">Update Good Samaritan</a>
+                        <a class="dropdown-item" href="javascript:void(0)" onclick="$(content).load('Intake/intake_animal')">Intake Animal</a>
                     </div>
                 </div>
                 <div class="dropdown">

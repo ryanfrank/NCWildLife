@@ -61,5 +61,44 @@ class Intake extends CI_Controller {
         }
         echo json_encode($result);
     }
+    public function intake_animal()
+    {
+        $data['date']       =   date("Y-m-d H:i:s");
+        $data['ages']       =   $this->db->get('ages');
+        $data['rehabber']   =   $this->db->get('rehabber');
+        $this->load->view('intake_animal', $data);
+    }
+    public function intakeAnimal()
+    {
+        $date = date("Y-m-d H:i:s");
+        $formData = array(
+            'good_samaritan_first_name'         => $this->input->post('first'),
+            'good_samaritan_last_name'          => $this->input->post('last'),
+            'good_samaritan_street'             => $this->input->post('street'),
+            'good_samaritan_city'               => $this->input->post('city'),
+            'good_samaritan_state'              => $this->input->post('state'),
+            'good_samaritan_zip'                => $this->input->post('zip'),
+            'good_samaritan_phone'              => preg_replace('/\D+/','',$this->input->post('phone')),
+            'good_samaritan_email'              => $this->input->post('email'),
+            'good_samaritan_reference'          => $this->input->post('referral'),
+            'good_samaritan_donation'           => $this->input->post('donation'),
+            'good_samaritan_donation_amount'    => $this->input->post('amount'),
+            'good_samaritan_list'               => $this->input->post('emailList'),
+            'created_date'                      => $date
+        );
+        $where = array('good_samaritan_first_name' => $formData['good_samaritan_first_name'], 'good_samaritan_last_name' => $formData['good_samaritan_last_name']);
+        $query = $this->db->get_where('good_samaritan', $where);
+        if ( $query->num_rows() == 0 ) {
+            //$sql = $this->db->set($formData)->get_compiled_insert('good_samaritan');
+            $this->db->insert('good_samaritan', $formData);
+            $num_inserts = $this->db->affected_rows();
+            if ($num_inserts > 0 ) { $result = "success"; }
+            else { $result = "failure"; }
+        }
+        else {
+            $result = "duplicate";
+        }
+        echo json_encode($result);
+    }
 }
 ?>
