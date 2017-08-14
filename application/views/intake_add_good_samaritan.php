@@ -14,6 +14,10 @@
             event.preventDefault();
             //var firstName = $("input#firstName").val();
             //var lastName = $("input#lastName").val();
+            var c=document.getElementById('emailList');
+            if (c.checked) { var mail = "1"; }
+            else { var mail = "0"; }
+            alert("MAIL: " + mail);
             jQuery.ajax({
                 type: "POST",
                 url: "<?php echo base_url(); ?>" + "Intake/addSamaritan",
