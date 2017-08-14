@@ -10,7 +10,6 @@
 <script type="application/javascript">
     $(document).ready(function() {
         $("#addRehabber").submit(function(event) {
-            alert("Here");
             event.preventDefault();
             var licensed;
             if( $("#rehabberLicensed").is(':checked') ) { licensed = "1"; }
@@ -33,7 +32,6 @@
                     "isLicensed":   licensed
                 },
                 success: function(res) {
-                    alert("Why?");
                     if (res === "success") {
                         jQuery("div#status").show();
                         jQuery("div#status").html('<div class="alert alert-success mt-lg-4 col-3" role="alert">Successfully added ' + $("input#firstName").val() + ' ' + $("input#lastName").val() + '</div>');
@@ -54,7 +52,7 @@
         });
     });
 </script>
-<div id="status">HELLO</div>
+<div class="row" hidden id="status"></div>
 <div id="info">
     <form class="mt-3" id="addRehabber" name="addRehabber">
         <div class="row">
