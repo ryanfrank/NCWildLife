@@ -44,7 +44,7 @@ class Intake extends CI_Controller {
             'streetAddress'     =>  $this->input->post('street'),
             'cityName'          =>  $this->input->post('city'),
             'stateName'         =>  $this->input->post('state'),
-            'zipCode'           =>  $this->input->post('zipCode'),
+            'zipCode'           =>  $this->input->post('zip'),
             'phoneNumber'       =>  $this->input->post('phone'),
             'emailAddress'      =>  $this->input->post('email'),
             'donationReceived'  =>  $this->input->post('donation'),
