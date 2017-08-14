@@ -44,7 +44,7 @@
                     }
                     else if (res === "duplicate") {
                         jQuery("div#content").html('<div class="alert alert-warning mt-lg-4 col-3" role="alert">Duplicate entry for ' + $("input#firstName").val() + ' ' + $("input#lastName").val() + '</div>');
-                    /
+                    }
                     else {
                         jQuery("div#content").html('<div class="alert alert-danger mt-lg-4 col-3" role="alert">Failed to add ' + $("input#firstName").val() + ' ' + $("input#lastName").val() + '</div>'
                     }
@@ -79,7 +79,7 @@
     <div class="row">
         <div class="form-group col-3">
             <label for="stateName" class="align-content-center">Good Samaritan State</label>
-            <select class="form-control" name="stateName" id="stateName" required>
+            <select class="form-control" id="stateName" required>
                 <?php foreach ($states->result() as $row):?>
                     <option value="<?php echo $row->state_id?>"><?php echo $row->state_name?></option>
                 <?php endforeach;?>
@@ -97,7 +97,7 @@
             <label for="phoneNumber" class="align-content-center">Good Samaritan Phone</label>
             <input type="text" class="form-control" id="phoneNumber" placeholder="XXX-XXX-XXXX" required>
         </div>
-        </div>
+    </div>
     <div class="row">
         <div class="form-check col-3">
             <label class="form-check-label">
