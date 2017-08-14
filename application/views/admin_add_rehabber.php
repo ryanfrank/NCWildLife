@@ -32,20 +32,17 @@
                     "isLicensed":   licensed
                 },
                 success: function(res) {
+                    jQuery("div#myStatus").show();
                     if (res === "success") {
-                        jQuery("div#status").show();
-                        jQuery("div#status").html('<div class="alert alert-success mt-lg-4 col-3" role="alert">Successfully added ' + $("input#firstName").val() + ' ' + $("input#lastName").val() + '</div>');
+                        jQuery("div#myStatus").html('<div class="alert alert-success mt-lg-4 col-3" role="alert">Successfully added ' + $("input#firstName").val() + ' ' + $("input#lastName").val() + '</div>');
                         document.getElementById("addRehabber").reset();
                     }
                     else if (res === "duplicate") {
-                        jQuery("div#status").show();
-                        jQuery("div#info").show();
-                        jQuery("div#content").html('<div class="alert alert-warning mt-lg-4 col-3" role="alert">Duplicate entry for ' + $("input#firstName").val() + ' ' + $("input#lastName").val() + '</div>');
+                        jQuery("div#myStatus").html('<div class="alert alert-warning mt-lg-4 col-3" role="alert">Duplicate entry for ' + $("input#firstName").val() + ' ' + $("input#lastName").val() + '</div>');
                         document.getElementById("addRehabber").reset();
                     }
                     else {
-                        jQuery("div#status").show();
-                        jQuery("div#content").html('<div class="alert alert-danger mt-lg-4 col-3" role="alert">Failed to add ' + $("input#firstName").val() + ' ' + $("input#lastName").val() + '</div>');
+                        jQuery("div#myStatus").html('<div class="alert alert-danger mt-lg-4 col-3" role="alert">Failed to add ' + $("input#firstName").val() + ' ' + $("input#lastName").val() + '</div>');
                         document.getElementById("addRehabber").reset();
                     }
                 }
@@ -53,7 +50,6 @@
         });
     });
 </script>
-<div class="row" hidden id="status"></div>
 <div id="info">
     <form class="mt-3" id="addRehabber" name="addRehabber">
         <div class="row">
