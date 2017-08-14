@@ -21,9 +21,10 @@
                 dataType: 'json',
                 data: { "first": firstName, "last": lastName },
                 success: function(res) {
-                    alert("RES: " + res);
                     if (res) {
                         //jQuery("div#content").show();
+                        var viewURL = "<?php base_url(); ?>/application/views/intake_results.php";
+                        alert("URL: " + viewURL);
                         jQuery("div#content").html(res);
                         //jQuery("div#content").html(res.last);
 
