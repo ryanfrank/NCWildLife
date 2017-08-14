@@ -23,7 +23,7 @@
                 success: function(res) {
                     if (res) {
                         //jQuery("div#content").show();
-                        var viewURL = <?php base_url(); ?> + "/application/views/intake_results.php";
+                        var viewURL = "<?php base_url(); ?>" + "/application/views/intake_results.php";
                         alert("URL: " + viewURL);
                         jQuery("div#content").html(res);
                         //jQuery("div#content").html(res.last);
