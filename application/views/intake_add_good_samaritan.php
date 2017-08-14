@@ -14,7 +14,7 @@
             event.preventDefault();
             //var firstName = $("input#firstName").val();
             //var lastName = $("input#lastName").val();
-            alert("CHECK: " + $("input#donationReceived").checked());
+            //alert("CHECK: " + $("input#donationReceived").checked());
             jQuery.ajax({
                 type: "POST",
                 url: "<?php echo base_url(); ?>" + "Intake/addSamaritan",
