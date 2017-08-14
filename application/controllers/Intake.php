@@ -58,7 +58,7 @@ class Intake extends CI_Controller {
         if ( $query->num_rows() == 0 ) {
 
 
-            $result = $data;
+            $result = $data['stateName'];
         }
         else {
             $result = "failure";
