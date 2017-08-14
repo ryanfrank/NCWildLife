@@ -102,7 +102,8 @@
             </label>
         </div>
     </div>
-    <div class="row ml-2">
+    <br>
+    <div class="row ml-1 mt-4">
         <input type="submit" id="submitButton">
     </div>
 </form>
