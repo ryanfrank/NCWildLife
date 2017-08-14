@@ -68,8 +68,8 @@ class Intake extends CI_Controller {
                 'good_samaritan_donation_amount'    => $data['donationAmount'],
                 'good_samaritan_list'               => $data['emailList']
             );
-
-            $sql = $this->db->set($data['firstName'], 'good_samaritan_first_name')->get_compiled_insert();
+            $value = $data['firstName'];
+            $sql = $this->db->set('value', 'good_samaritan_first_name')->get_compiled_insert();
             //$sql = $this->db->set($myData)->get_compiled_insert('good_samaritan');
 
             //$this->db->insert('good_samaritan', $myData);
