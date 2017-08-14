@@ -14,8 +14,9 @@
             event.preventDefault();
             //var firstName = $("input#firstName").val();
             //var lastName = $("input#lastName").val();
-            var c=document.forms["goodSamaritanForm"]["emailList"].checked(value);
-            alert("MAIL: " + c );
+            if( $("#emailList").is(':checked') ) { var mail = "1"; }
+            else { var mail = "0"; }
+            alert("Mail: " + mail);
             jQuery.ajax({
                 type: "POST",
                 url: "<?php echo base_url(); ?>" + "Intake/addSamaritan",
@@ -31,7 +32,7 @@
                     "phone": $("input#phoneNumber").val(),
                     "donation": $("input#donationReceived").val(),
                     "amount": $("input#donationAmount").val(),
-                    "emailList": $("input#emailList").val()
+                    "emailList": $("input#emailList").checked()
                 },
                 success: function(res) {
                     alert("Elements: " + res);
