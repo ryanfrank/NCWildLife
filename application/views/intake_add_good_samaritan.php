@@ -76,7 +76,7 @@
     <div class="row">
         <div class="form-group col-3">
             <label for="stateName" class="align-content-center">Good Samaritan State</label>
-            <select class="form-control" id="stateName" required>
+            <select class="form-control" name="stateName" id="stateName" required>
                 <?php foreach ($states->result() as $row):?>
                     <option value="<?php echo $row->state_id?>"><?php echo $row->state_name?></option>
                 <?php endforeach;?>
