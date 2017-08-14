@@ -52,6 +52,8 @@ class Intake extends CI_Controller {
         );
 
         $query = $this->db->get_where('good_samaritan', array('good_samaritan_firstName' => $data['firstName'], 'good_samaritan_lastName' => $data['lastName'] ));
+
+        $result = "success";
         if ($query->num_rows() == 0) {
             $result = "success";
         }
