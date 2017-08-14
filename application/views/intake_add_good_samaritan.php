@@ -18,7 +18,6 @@
             else { rdonation = "0"; }
             var e = document.getElementById("stateName");
             var stateValue = e.options[e.selectedIndex].value;
-            alert("StateName: " + stateValue);
             jQuery.ajax({
                 type: "POST",
                 url: "<?php echo base_url(); ?>" + "Intake/addSamaritan",
@@ -38,7 +37,6 @@
                     "emailList":    mail
                 },
                 success: function(res) {
-                    alert("In function");
                     if (res === "success") {
                         jQuery("div#content").html('<div class="alert alert-success mt-lg-4 col-3" role="alert">Successfully added ' + $("input#firstName").val() + ' ' + $("input#lastName").val() + '</div>');
                     }
