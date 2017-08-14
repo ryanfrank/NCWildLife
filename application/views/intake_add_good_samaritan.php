@@ -99,7 +99,7 @@
         </div>
         </div>
     <div class="row">
-        <div class="form-check col-5">
+        <div class="form-check col-2">
             <label class="form-check-label">
                 <input class="form-check-input" id="donationReceived" type="checkbox" value="Yes">
                 Donation received?
