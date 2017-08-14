@@ -11,10 +11,12 @@
     $(document).ready(function() {
         $("#goodSamaritanForm").submit(function(event) {
             event.preventDefault();
-            if( $("#emailList").is(':checked') ) { var mail = "1"; }
-            else { var mail = "0"; }
-            if( $("#donationReceived").is(':checked') ) { var rdonation = "1"; }
-            else { var rdonation = "0"; }
+            var rdonation;
+            var mail;
+            if( $("#emailList").is(':checked') ) { mail = "1"; }
+            else { mail = "0"; }
+            if( $("#donationReceived").is(':checked') ) { rdonation = "1"; }
+            else { rdonation = "0"; }
             var e = document.getElementById("stateName");
             var stateName = e.options[e.selectedIndex].value;
             jQuery.ajax({
@@ -36,6 +38,7 @@
                     "emailList": mail
                 },
                 success: function(res) {
+                    alert("SQL: " + res);
                     if (res === "success") {
                         jQuery("div#content").html('<div class="alert alert-success mt-lg-4 col-3" role="alert">Successfully added ' + $("input#firstName").val() + ' ' + $("input#lastName").val() + '</div>');
                     }
