@@ -9,7 +9,6 @@
 
 <script type="application/javascript">
     $(document).ready(function() {
-        //$("mySubmit").click(function(event) {
         $("#goodSamaritanForm").submit(function(event) {
             event.preventDefault();
             if( $("#emailList").is(':checked') ) { var mail = "1"; }
@@ -37,17 +36,13 @@
                     "emailList": mail
                 },
                 success: function(res) {
-                    alert("Elements: " + res);
-                if (res === "success") {
-                    jQuery("div#content").html('<div class="alert alert-success mt-lg-4 col-3" role="alert">Successfully added ' + $("input#firstName").val() + ' ' + $("input#lastName").val() + '</div>');
-                }
-                else{
-                    jQuery("div#content").html('<div class="alert alert-danger mt-lg-4 col-3" role="alert">Failed to add ' + $("input#firstName").val() + ' ' + $("input#lastName").val() + '</div>');
-                }
-            },
-                error: function(res) {
-                alert('ERROR: ' + res.first);
-            }
+                    if (res === "success") {
+                        jQuery("div#content").html('<div class="alert alert-success mt-lg-4 col-3" role="alert">Successfully added ' + $("input#firstName").val() + ' ' + $("input#lastName").val() + '</div>');
+                    }
+                    else{
+                        jQuery("div#content").html('<div class="alert alert-danger mt-lg-4 col-3" role="alert">Failed to add ' + $("input#firstName").val() + ' ' + $("input#lastName").val() + '</div>');
+                    }
+                },
             });
         });
     });

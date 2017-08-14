@@ -56,9 +56,10 @@ class Intake extends CI_Controller {
         $where = array('good_samaritan_first_name' => $data['firstName'], 'good_samaritan_last_name' => $data['lastName']);
         $query = $this->db->get_where('good_samaritan', $where);
         if ( $query->num_rows() == 0 ) {
-
-
-            $result = $data['stateName'];
+            $this->db->insert('good_samaritan', $data);
+            $num_inserts = $this->db->affected_rows();
+            if ($num_inserts > 0 ) { $result = "success"; }
+            else { $result = "failure"; }
         }
         else {
             $result = "failure";
