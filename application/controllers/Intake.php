@@ -52,8 +52,14 @@ class Intake extends CI_Controller {
         );
 
         //$query = $this->db->get_where('good_samaritan', array('good_samaritan_firstName' => $data['firstName'], 'good_samaritan_lastName' => $data['lastName'] ));
-
-        $result = $data['firstName'];
+        $where = array('good_samaritan_first_name' => $data['firstName'], 'good_samaritan_last_name' => $data['lastName']);
+        $query = $this->db->get_where('good_samaritan', $where);
+        if ( $query->num_rows() == 0 ) {
+            $result = "success";
+        }
+        else {
+            $result = "failure";
+        }
 
         echo json_encode($result);
     }
