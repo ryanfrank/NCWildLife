@@ -35,15 +35,15 @@
                     //$("myStatus").show();
                     $("#myStatus").show();
                     if (res === "success") {
-                        jQuery("div#myStatus").html('<div class="alert alert-success mt-lg-4 col-3" role="alert">Successfully added ' + $("input#firstName").val() + ' ' + $("input#lastName").val() + '</div>');
+                        jQuery("div#myStatus").html('<div class="alert alert-success mt-lg-4 col-3 alert-dismissible fade show" role="alert">Successfully added ' + $("input#firstName").val() + ' ' + $("input#lastName").val() + '</div>');
                         document.getElementById("addRehabber").reset();
                     }
                     else if (res === "duplicate") {
-                        jQuery("div#myStatus").html('<div class="alert alert-warning mt-lg-4 col-3" role="alert">Duplicate entry for ' + $("input#firstName").val() + ' ' + $("input#lastName").val() + '</div>');
+                        jQuery("div#myStatus").html('<div class="alert alert-warning mt-lg-4 col-3 alert-dismissible fade show" role="alert">Duplicate entry for ' + $("input#firstName").val() + ' ' + $("input#lastName").val() + '</div>');
                         document.getElementById("addRehabber").reset();
                     }
                     else {
-                        jQuery("div#myStatus").html('<div class="alert alert-danger mt-lg-4 col-3" role="alert">Failed to add ' + $("input#firstName").val() + ' ' + $("input#lastName").val() + '</div>');
+                        jQuery("div#myStatus").html('<div class="alert alert-danger mt-lg-4 col-3 alert-dismissible fade show" role="alert">Failed to add ' + $("input#firstName").val() + ' ' + $("input#lastName").val() + '</div>');
                         document.getElementById("addRehabber").reset();
                     }
                 }
@@ -108,6 +108,6 @@
             <input type="submit" id="submitButton">
         </div>
     </form>
-    <div id="myStatus" hidden> </div>
+    <div id="myStatus"> </div>
 </div>
 </div>
