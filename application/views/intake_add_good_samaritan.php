@@ -92,8 +92,14 @@
         </div>
         <div class="input-group col-3">
             <span class="input-group-addon">$</span>
-            <input type="text" class="form-control" id="donationAmount" placeholder="Amount (to the nearest dollar)">
+            <input type="text" class="form-control" id="donationAmount" placeholder="Amount Received">
             <span class="input-group-addon">.00</span>
+        </div>
+        <div class="form-check col-3">
+            <label class="form-check-label">
+                <input class="form-check-input" id="emailList" type="checkbox" value="" required>
+                Would you like to be on our mailing list?
+            </label>
         </div>
     </div>
     <div class="row ml-2">
