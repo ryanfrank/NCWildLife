@@ -35,7 +35,7 @@
                     "emailList": mail
                 },
                 success: function(res) {
-                    alert("Elements: " + res + "Real: " + $("input#stateName").val());
+                    alert("Elements: " + res + "Real: " + $("#emailList").value);
                 if (res === "success") {
                     jQuery("div#content").html('<div class="alert alert-success mt-lg-4 col-3" role="alert">Successfully added ' + $("input#firstName").val() + ' ' + $("input#lastName").val() + '</div>');
                 }
@@ -109,7 +109,7 @@
         </div>
         <div class="form-group col-3">
             <label for="referral" class="align-content-center">Who referred you to us?</label>
-            <input type="text" class="form-control" id="referral" placeholder="Google, FaceBook, etc..." required>
+            <input type="text" class="form-control" id="referral" placeholder="Google, FaceBook, etc...">
         </div>
         <div class="form-check col-3">
             <label class="form-check-label">
