@@ -69,7 +69,7 @@ class Intake extends CI_Controller {
                 'good_samaritan_list'               => $data['emailList']
             );
             //$value = $data['firstName'];
-            $sql = "INSERT INTO good_samaritan ('good_samaritan_first_name','good_samaritan_last_name') values ('crap','morecrap')";
+            //$sql = "INSERT INTO good_samaritan ('good_samaritan_first_name','good_samaritan_last_name') values ('crap','morecrap')";
             //$sql = $this->db->set($myData)->get_compiled_insert('good_samaritan');
 
             //$this->db->insert('good_samaritan', $myData);
@@ -79,12 +79,11 @@ class Intake extends CI_Controller {
             //$num_inserts = $this->db->affected_rows();
             //if ($num_inserts > 0 ) { $result = "success"; }
             //else { $result = "failure"; }
-
+            $result = "stuff";
         }
         else {
             $result = "failure";
         }
-        $result = $sql;
         echo json_encode($result);
     }
 }
