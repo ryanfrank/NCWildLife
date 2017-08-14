@@ -17,8 +17,8 @@
             else { mail = "0"; }
             if( $("#donationReceived").is(':checked') ) { rdonation = "1"; }
             else { rdonation = "0"; }
-            var e = document.getElementById("stateName");
-            var stateName = e.options[e.selectedIndex].value;
+            //var e = document.getElementById("stateName");
+            //var stateName = e.options[e.selectedIndex].value;
             jQuery.ajax({
                 type: "POST",
                 url: "<?php echo base_url(); ?>" + "Intake/addSamaritan",
@@ -28,7 +28,7 @@
                     "last":         $("input#lastName").val(),
                     "street":       $("input#streetAddress").val(),
                     "city":         $("input#cityName").val(),
-                    "state":        stateName,
+                    "state":        "33",
                     "zip":          $("input#zipCode").val(),
                     "email":        $("input#emailAddress").val(),
                     "phone":        $("input#phoneNumber").val(),
