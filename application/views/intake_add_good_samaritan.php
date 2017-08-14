@@ -22,10 +22,10 @@
                 success: function(res) {
                 if (res == "success" ) {
                     //jQuery("div#content").html('<h2 class="display-1">Successfully added ' + firstName + ' ' + lastName + '</h2>');
-                    jQuery("div#content").html('<div class="alert alert-success" role="alert">Successfully added ' + firstName + ' ' + lastName + '</div>');
+                    jQuery("div#content").html('<div class="alert alert-success mt-6" role="alert">Successfully added ' + firstName + ' ' + lastName + '</div>');
                 }
                 else{
-                    jQuery("div#content").html('<div class="alert alert-danger" role="alert">Failed to add ' + firstName + ' ' + lastName + '</div>');
+                    jQuery("div#content").html('<div class="alert alert-danger mt-6" role="alert">Failed to add ' + firstName + ' ' + lastName + '</div>');
                 }
             },
                 error: function(res) {
