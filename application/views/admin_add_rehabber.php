@@ -50,7 +50,7 @@
 </script>
 <div hidden id="status"></div>
 <div id="info">
-    <div class="row">
+    <div class="row ml-4">
         <form class="mt-3" id="addRehabber" name="addRehabber">
             <div class="row">
                 <div class="form-group col-6">
