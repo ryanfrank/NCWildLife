@@ -108,6 +108,6 @@
             <input type="submit" id="submitButton">
         </div>
     </form>
-    <div id="myStatus"> </div>
+    <div id="myStatus" class="col-12 ml-5"> </div>
 </div>
 </div>
