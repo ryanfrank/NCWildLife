@@ -99,7 +99,7 @@
         </div>
         </div>
     <div class="row">
-        <div class="form-check col-3">
+        <div class="form-check col-5">
             <label class="form-check-label">
                 <input class="form-check-input" id="donationReceived" type="checkbox" value="Yes">
                     Donation received?
@@ -113,7 +113,7 @@
             <input type="text" class="form-control" id="donationAmount" placeholder="Amount Received">
             <span class="input-group-addon">.00</span>
         </div> -->
-        <div class="form-group col-3">
+        <div class="form-group col-4">
             <label for="referral" class="align-content-center">Who referred you to us?</label>
             <input type="text" class="form-control" id="referral" placeholder="Google, FaceBook, etc..." required>
         </div>
