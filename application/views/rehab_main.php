@@ -62,8 +62,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     </div>
 </div>
 <div class="container-fluid mt-md-2 ml-2 border border-dark rounded" id="content" style="min-height: 500px; width: 98%">
-    <div class="row">
-        <div class="card col-4" style="width: 10rem; height: 10rem;">
+    <div class="row mt-3">
+        <div class="card col-4" style="width: 20rem;">
             <img class="card-img-top" src="<?php echo base_url();?>/application/images/squirrel_1.jpg" alt="Card image cap">
             <div class="card-body">
                 <h4 class="card-title">Rehabilitation</h4>
