@@ -14,7 +14,6 @@
             event.preventDefault();
             var firstName = $("input#firstName").val();
             var lastName = $("input#lastName").val();
-            alert("<?php echo base_url(); ?>");
             jQuery.ajax({
                 type: "POST",
                 url: "<?php echo base_url(); ?>" + "Intake/addSamaritan",
@@ -22,8 +21,11 @@
                 data: { "first": firstName, "last": lastName },
                 success: function(res) {
                 if (res == "success" ) {
-                    //jQuery("div#content").show();
-                    jQuery("div#content").html('<h2 class="display-1">Successfully added ' + firstName + ' ' + lastName + '</h2>');
+                    //jQuery("div#content").html('<h2 class="display-1">Successfully added ' + firstName + ' ' + lastName + '</h2>');
+                    jQuery("div#content").html('<div class="alert alert-success" role="alert">Successfully added ' + firstName + ' ' + lastName + '</div>');
+                }
+                else{
+                    jQuery("div#content").html('<div class="alert alert-danger" role="alert">Failed to add ' + firstName + ' ' + lastName + '</div>');
                 }
             },
                 error: function(res) {
@@ -38,12 +40,12 @@
         <div class="form-group col-6">
             <label for="firstName" class="align-content-center">Good Samaritan First Name</label>
             <input type="text" class="form-control" id="firstName" placeholder="First Name" required>
-            <div class="invalid-feedback">Please provide a first name</div>
+            <!--<div class="invalid-feedback">Please provide a first name</div> -->
         </div>
         <div class="form-group col-6">
             <label for="lastName" class="align-content-center">Good Samaritan Last Name</label>
             <input type="text" class="form-control" id="lastName" placeholder="Last Name" required>
-            <div class="invalid-feedback">Please provide a last name</div>
+            <!-- <div class="invalid-feedback">Please provide a last name</div> -->
         </div>
     </div>
     <div class="row">
