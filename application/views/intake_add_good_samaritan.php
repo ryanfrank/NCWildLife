@@ -39,15 +39,15 @@
                 success: function(res) {
                     if (res === "success") {
                         jQuery("div#myStatus").html('<div class="alert alert-success mt-lg-4 col-8 alert-dismissible fade show" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>Successfully added ' + $("input#firstName").val() + ' ' + $("input#lastName").val() + '</div>');
-                        document.getElementById("addRehabber").reset();
+                        document.getElementById("goodSamaritanForm").reset();
                     }
                     else if (res === "duplicate") {
                         jQuery("div#myStatus").html('<div class="alert alert-warning mt-lg-4 col-8 alert-dismissible fade show" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>Duplicate entry for ' + $("input#firstName").val() + ' ' + $("input#lastName").val() + '</div>');
-                        document.getElementById("addRehabber").reset();
+                        document.getElementById("goodSamaritanForm").reset();
                     }
                     else {
                         jQuery("div#myStatus").html('<div class="alert alert-danger mt-lg-4 col-8 alert-dismissible fade show" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>Failed to add ' + $("input#firstName").val() + ' ' + $("input#lastName").val() + '</div>');
-                        document.getElementById("addRehabber").reset();
+                        document.getElementById("goodSamaritanForm").reset();
                     }
                 }
             });
