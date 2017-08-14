@@ -51,15 +51,10 @@ class Intake extends CI_Controller {
             'emailList'         =>  $this->input->post('emailList')
         );
 
-        $query = $this->db->get_where('good_samaritan', array('good_samaritan_firstName' => $data['firstName'], 'good_samaritan_lastName' => $data['lastName'] ));
+        //$query = $this->db->get_where('good_samaritan', array('good_samaritan_firstName' => $data['firstName'], 'good_samaritan_lastName' => $data['lastName'] ));
 
-        $result = "success";
-        if ($query->num_rows() == 0) {
-            $result = "success";
-        }
-        else {
-            $result = "failure";
-        }
+        $result = $data['firstName'];
+
         echo json_encode($result);
     }
 }
