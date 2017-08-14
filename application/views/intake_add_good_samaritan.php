@@ -12,20 +12,20 @@
         //$("mySubmit").click(function(event) {
         $("#goodSamaritanForm").submit(function(event) {
             event.preventDefault();
-            var firstName = $("input#firstName").val();
-            var lastName = $("input#lastName").val();
+            //var firstName = $("input#firstName").val();
+            //var lastName = $("input#lastName").val();
             jQuery.ajax({
                 type: "POST",
                 url: "<?php echo base_url(); ?>" + "Intake/addSamaritan",
                 dataType: 'json',
-                data: { "first": firstName, "last": lastName },
+                data: { "first": $("input#firstName").val(), "last": $("input#lastName").val() },
                 success: function(res) {
                 if (res == "success" ) {
                     //jQuery("div#content").html('<h2 class="display-1">Successfully added ' + firstName + ' ' + lastName + '</h2>');
-                    jQuery("div#content").html('<div class="alert alert-success mt-lg-4 col-3" role="alert">Successfully added ' + firstName + ' ' + lastName + '</div>');
+                    jQuery("div#content").html('<div class="alert alert-success mt-lg-4 col-3" role="alert">Successfully added ' + $("input#firstName").val() + ' ' + $("input#lastName").val() + '</div>');
                 }
                 else{
-                    jQuery("div#content").html('<div class="alert alert-danger mt-lg-4 col-3" role="alert">Failed to add ' + firstName + ' ' + lastName + '</div>');
+                    jQuery("div#content").html('<div class="alert alert-danger mt-lg-4 col-3" role="alert">Failed to add ' + $("input#firstName").val() + ' ' + $("input#lastName").val() + '</div>');
                 }
             },
                 error: function(res) {
