@@ -43,6 +43,6 @@ class Intake extends CI_Controller {
         //);
 
         $first = $this->input->post('first');
-        return $first;
+        return json_encode($first);
     }
 }
