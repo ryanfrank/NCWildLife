@@ -71,7 +71,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         </div>
     </div>
 </div>
-<div class="row" hidden id="myStatus"></div>
+<div class="row" id="myStatus"></div>
 <div class="container-fluid mt-md-2 ml-2 border border-dark rounded" id="content" style="min-height: 500px; width: 98%">
     <div class="card-deck mt-3 mb-3">
         <div class="card col-4" style="width: 20rem;">
