@@ -23,7 +23,6 @@
                 success: function(res) {
                     alert("RES: " + res);
                     if (res) {
-                        alert("We did something...");
                         //jQuery("div#content").show();
                         jQuery("div#content").html(res);
                         //jQuery("div#content").html(res.last);
