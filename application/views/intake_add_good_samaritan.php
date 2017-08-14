@@ -92,7 +92,7 @@
         </div>
         <div class="input-group col-3">
             <span class="input-group-addon">$</span>
-            <input type="text" class="form-control" id="donationAmount" aria-label="Amount (to the nearest dollar)">
+            <input type="text" class="form-control" id="donationAmount" placeholder="Amount (to the nearest dollar)">
             <span class="input-group-addon">.00</span>
         </div>
     </div>
