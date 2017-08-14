@@ -104,9 +104,7 @@
                 <input class="form-check-input" id="donationReceived" type="checkbox" value="Yes">
                 Donation received?
             </label>
-            <span class="input-group-addon col-1">$</span>
-                <input type="text" class="form-control" id="donationAmount" placeholder="Amount Received">
-            <span class="input-group-addon col-1">.00</span>
+            <span class="input-group-addon col-1">$</span><input type="text" class="form-control col-2" id="donationAmount" placeholder="Amount Received"><span class="input-group-addon col-1">.00</span>
         </div>
         <!-- <div class="input-group col-3">
             <span class="input-group-addon">$</span>
