@@ -10,37 +10,43 @@
     $(document).ready(function() {
         $("#intakeAnimal").submit(function(event) {
             event.preventDefault();
-            var licensed;
-            if( $("#rehabberLicensed").is(':checked') ) { licensed = "1"; }
-            else { licensed = "0"; }
-            var e = document.getElementById("stateName");
-            var stateValue = e.options[e.selectedIndex].value;
+            var injured;
+            if( $("#injured").is(':checked') ) { injured = "1"; }
+            else { injured = "0"; }
+            var fed;
+            if( $("#fed").is(':checked') ) { fed = "1"; }
+            else { fed = "0"; }
+            var e = document.getElementById("intakeSpecies");
+            var speciesValue = e.options[e.selectedIndex].value;
+            var e = document.getElementById("intakeAge");
+            var ageValue = e.options[e.selectedIndex].value;
+            var e = document.getElementById("intakeRehabber");
+            var rehabberValue = e.options[e.selectedIndex].value;
             jQuery.ajax({
                 type: "POST",
-                url: "<?php echo base_url(); ?>" + "Admin/addRehabber",
+                url: "<?php echo base_url(); ?>" + "Intake/intakeAnimal",
                 dataType: 'json',
                 data: {
-                    "first":        $("input#firstName").val(),
-                    "last":         $("input#lastName").val(),
-                    "street":       $("input#streetAddress").val(),
-                    "city":         $("input#cityName").val(),
-                    "state":        stateValue,
-                    "zip":          $("input#zipCode").val(),
-                    "email":        $("input#emailAddress").val(),
-                    "phone":        $("input#phoneNumber").val(),
-                    "isLicensed":   licensed
+                    "intakeDate":       $("input#intakeDate").val(),
+                    "intakeWeight":     $("input#intakeWeight").val(),
+                    "intakeSpecies":    speciesValue,
+                    "intakeAge":        ageValue,
+                    "possetionDate":    $("input#intakePossetion").val(),
+                    "intakeRehabber":   rehabberValue,
+                    "intakeInjured":    injured,
+                    "injuryInfo":        $("input#injuryInfo").val(),
+                    "isFed":            fed,
+                    "foodInfo":         $("input#foodInfo").val(),
+                    "foodDelivery":     $("input#foodDelivery").val(),
+                    "intakeCondition":  $("input#intakeCondition").val()
                 },
                 success: function(res) {
                     if (res === "success") {
-                        jQuery("div#myStatus").html('<div class="alert alert-success mt-lg-4 col-8 alert-dismissible fade show" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>Successfully added ' + $("input#firstName").val() + ' ' + $("input#lastName").val() + '</div>');
-                        document.getElementById("intakeAnimal").reset();
-                    }
-                    else if (res === "duplicate") {
-                        jQuery("div#myStatus").html('<div class="alert alert-warning mt-lg-4 col-8 alert-dismissible fade show" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>Duplicate entry for ' + $("input#firstName").val() + ' ' + $("input#lastName").val() + '</div>');
+                        jQuery("div#myStatus").html('<div class="alert alert-success mt-lg-4 col-8 alert-dismissible fade show" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>Successfully added animal</div>');
                         document.getElementById("intakeAnimal").reset();
                     }
                     else {
-                        jQuery("div#myStatus").html('<div class="alert alert-danger mt-lg-4 col-8 alert-dismissible fade show" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>Failed to add ' + $("input#firstName").val() + ' ' + $("input#lastName").val() + '</div>');
+                        jQuery("div#myStatus").html('<div class="alert alert-danger mt-lg-4 col-8 alert-dismissible fade show" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>Failed to add animal</div>');
                         document.getElementById("intakeAnimal").reset();
                     }
                 }
@@ -79,7 +85,7 @@
             </div>
             <div class="form-group col-3">
                 <label for="intakePossetion" class="align-content-center">Intake Possetion Date</label>
-                <input type="text" class="form-control" id="intakeDate" placeholder="<?php echo $date;?>" value="<?php echo $date;?>" required>
+                <input type="text" class="form-control" id="intakePossetion" placeholder="<?php echo $date;?>" value="<?php echo $date;?>" required>
                 <div class="invalid-feedback">Please provide a valid date</div>
             </div>
         </div>
@@ -117,6 +123,12 @@
             <div class="form-group col-3">
                 <label for="foodDelivery" class="align-content-center">How was it fed?</label>
                 <input type="text" class="form-control" id="foodDelivery" placeholder="Syringe, Bottle, Bowl, etc...">
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-12">
+                <label for="intakeCondition" class="align-content-center">Condition of intake?</label>
+                <input type="text" class="form-control" id="intakeCondition" placeholder="specific information on intake condition (e.g. dehydration, etc)" required>
             </div>
         </div>
         <br>
