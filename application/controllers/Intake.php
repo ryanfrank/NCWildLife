@@ -54,7 +54,7 @@ class Intake extends CI_Controller {
         $where = array('good_samaritan_first_name' => $data['firstName'], 'good_samaritan_last_name' => $data['lastName']);
         $query = $this->db->get_where('good_samaritan', $where);
         if ( $query->num_rows() == 0 ) {
-            /*$myData = array(
+            $myData = array(
                 'good_samaritan_first_name'         => $data['firstName'],
                 'good_samaritan_last_name'          => $data['lastName'],
                 'good_samaritan_street'             => $data['streetName'],
@@ -67,7 +67,7 @@ class Intake extends CI_Controller {
                 'good_samaritan_donation'           => $data['donationReceived'],
                 'good_samaritan_donation_amount'    => $data['donationAmount'],
                 'good_samaritan_list'               => $data['emailList']
-            );*/
+            );
             //$value = $data['firstName'];
             //$sql = "INSERT INTO good_samaritan ('good_samaritan_first_name','good_samaritan_last_name') values ('crap','morecrap')";
             //$sql = $this->db->set($myData)->get_compiled_insert('good_samaritan');
