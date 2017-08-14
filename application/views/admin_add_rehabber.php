@@ -50,6 +50,7 @@
         });
     });
 </script>
+<div class="row ml-5" id="myStatus"></div>
 <div id="info">
     <form class="mt-3" id="addRehabber" name="addRehabber">
         <div class="row">
