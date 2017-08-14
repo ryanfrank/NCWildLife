@@ -51,7 +51,7 @@
         });
     });
 </script>
-<div class="row ml-5 col-6" id="myStatus" ></div>
+<div id="myStatus"> </div>
 <div id="info">
     <form class="mt-3" id="addRehabber" name="addRehabber">
         <div class="row">
