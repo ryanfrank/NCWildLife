@@ -51,17 +51,17 @@
     <div class="row">
         <div class="form-group col-6">
             <label for="streetAddress" class="align-content-center">Good Samaritan Street Address</label>
-            <input type="text" class="form-control" id="streetAddress" placeholder="Street Address">
+            <input type="text" class="form-control" id="streetAddress" placeholder="Street Address" required>
         </div>
         <div class="form-group col-6">
             <label for="cityName" class="align-content-center">Good Samaritan City</label>
-            <input type="text" class="form-control" id="cityName" placeholder="City">
+            <input type="text" class="form-control" id="cityName" placeholder="City" required>
         </div>
     </div>
     <div class="row">
         <div class="form-group col-3">
             <label for="stateName" class="align-content-center">Good Samaritan State</label>
-            <select class="form-control" id="stateName">
+            <select class="form-control" id="stateName" required>
                 <?php
                 foreach ($states->result() as $row)
                 {
@@ -72,19 +72,29 @@
         </div>
         <div class="form-group col-3">
             <label for="zipCode" class="align-content-center">Good Samaritan Zip</label>
-            <input type="text" class="form-control" id="zipCode" placeholder="Zip Code">
+            <input type="text" class="form-control" id="zipCode" placeholder="Zip Code" required>
         </div>
         <div class="form-group col-3">
             <label for="emailAddress" class="align-content-center">Good Samaritan Email</label>
-            <input type="email" class="form-control" id="emailAddress" placeholder="email@domain.com">
+            <input type="email" class="form-control" id="emailAddress" placeholder="email@domain.com" required>
         </div>
         <div class="form-group col-3">
             <label for="phoneNumber" class="align-content-center">Good Samaritan Phone</label>
-            <input type="text" class="form-control" id="phoneNumber" placeholder="XXX-XXX-XXXX">
+            <input type="text" class="form-control" id="phoneNumber" placeholder="XXX-XXX-XXXX" required>
         </div>
         </div>
     <div class="row">
-
+        <div class="form-check col-3">
+            <label class="form-check-label">
+                <input class="form-check-input" id="donationReceived" type="checkbox" value="" required>
+                    Donation received?
+            </label>
+        </div>
+        <div class="input-group col-3">
+            <span class="input-group-addon">$</span>
+            <input type="text" class="form-control" id="donationAmount" aria-label="Amount (to the nearest dollar)">
+            <span class="input-group-addon">.00</span>
+        </div>
     </div>
     <div class="row ml-2">
         <input type="submit" id="submitButton">
