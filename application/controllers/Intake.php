@@ -53,7 +53,7 @@ class Intake extends CI_Controller {
             'emailList'         =>  $this->input->post('emailList')
         );
         $phone = $data['phoneNumber'];
-        //$data['phoneNumber'] = preg_replace('/\D+/', $phone);
+        $data['phoneNumber'] = preg_replace("/[^0-9]/", $phone);
 
         $where = array('good_samaritan_first_name' => $data['firstName'], 'good_samaritan_last_name' => $data['lastName']);
         $query = $this->db->get_where('good_samaritan', $where);
