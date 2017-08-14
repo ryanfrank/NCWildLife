@@ -53,7 +53,7 @@
         <div class="row">
             <div class="form-group col-3">
                 <label for="intakeDate" class="align-content-center">Intake Date</label>
-                <input type="text" class="form-control" id="intakeDate" placeholder="<?php echo $date;?>" required>
+                <input type="text" class="form-control" id="intakeDate" placeholder="<?php echo $date;?>" value="<?php echo $date;?>" required>
                 <div class="invalid-feedback">Please provide a valid date</div>
             </div>
             <div class="form-group col-3">
@@ -71,7 +71,7 @@
             </div>
             <div class="form-group col-3">
                 <label for="intakePossetion" class="align-content-center">Intake Possetion Date</label>
-                <input type="text" class="form-control" id="intakeDate" placeholder="<?php echo $date;?>" required>
+                <input type="text" class="form-control" id="intakeDate" placeholder="<?php echo $date;?>" value="<?php echo $date;?>" required>
                 <div class="invalid-feedback">Please provide a valid date</div>
             </div>
         </div>
