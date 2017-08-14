@@ -38,6 +38,20 @@ class Intake extends CI_Controller {
     public function addSamaritan()
     {
         $data = array(
+            'good_samaritan_first_name'         => $this->input->post('first'),,
+            'good_samaritan_last_name'          => $this->input->post('last'),
+            'good_samaritan_street'             => $this->input->post('street'),
+            'good_samaritan_city'               => $this->input->post('city'),
+            'good_samaritan_state'              => $this->input->post('state'),
+            'good_samaritan_zip'                => $this->input->post('zip'),
+            'good_samaritan_phone'              => preg_replace('/\D+/','',$this->input->post('phone')),
+            'good_samaritan_email'              => $this->input->post('email'),
+            'good_samaritan_reference'          => $this->input->post('referral'),
+            'good_samaritan_donation'           => $this->input->post('donation'),
+            'good_samaritan_donation_amount'    => $this->input->post('amount'),
+            'good_samaritan_list'               => $this->input->post('emailList')
+        );
+        /*$data = array(
             'firstName'         =>  $this->input->post('first'),
             'lastName'          =>  $this->input->post('last'),
             'streetAddress'     =>  $this->input->post('street'),
@@ -50,11 +64,11 @@ class Intake extends CI_Controller {
             'donationReceived'  =>  $this->input->post('donation'),
             'donationAmount'    =>  $this->input->post('amount'),
             'emailList'         =>  $this->input->post('emailList')
-        );
-        $where = array('good_samaritan_first_name' => $data['firstName'], 'good_samaritan_last_name' => $data['lastName']);
+        );*/
+        $where = array('good_samaritan_first_name' => $data['good_samaritan_first_name'], 'good_samaritan_last_name' => $data['good_samaritan_last_name']);
         $query = $this->db->get_where('good_samaritan', $where);
         if ( $query->num_rows() == 0 ) {
-            $myData = array(
+            /*$myData = array(
                 'good_samaritan_first_name'         => $data['firstName'],
                 'good_samaritan_last_name'          => $data['lastName'],
                 'good_samaritan_street'             => $data['streetName'],
@@ -67,7 +81,7 @@ class Intake extends CI_Controller {
                 'good_samaritan_donation'           => $data['donationReceived'],
                 'good_samaritan_donation_amount'    => $data['donationAmount'],
                 'good_samaritan_list'               => $data['emailList']
-            );
+            );*/
             //$value = $data['firstName'];
             //$sql = "INSERT INTO good_samaritan ('good_samaritan_first_name','good_samaritan_last_name') values ('crap','morecrap')";
             //$sql = $this->db->set($myData)->get_compiled_insert('good_samaritan');
