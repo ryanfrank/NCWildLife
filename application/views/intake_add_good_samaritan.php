@@ -15,9 +15,7 @@
             //var firstName = $("input#firstName").val();
             //var lastName = $("input#lastName").val();
             var c=document.forms["goodSamaritanForm"]["emailList"].value;
-            if (c.checked) { var mail = "1"; }
-            else { var mail = "0"; }
-            alert("MAIL: " + mail);
+            alert("MAIL: " + c );
             jQuery.ajax({
                 type: "POST",
                 url: "<?php echo base_url(); ?>" + "Intake/addSamaritan",
