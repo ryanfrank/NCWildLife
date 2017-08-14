@@ -33,7 +33,7 @@
                 },
                 success: function(res) {
                     //$("myStatus").show();
-                    $("#myStatus").slideToggle(1500);
+                    $("#myStatus").show();
                     if (res === "success") {
                         jQuery("div#myStatus").html('<div class="alert alert-success mt-lg-4 col-3" role="alert">Successfully added ' + $("input#firstName").val() + ' ' + $("input#lastName").val() + '</div>');
                         document.getElementById("addRehabber").reset();
