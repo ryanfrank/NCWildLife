@@ -105,7 +105,7 @@
         </div>
         <div class="input-group col-3">
             <span class="input-group-addon">$</span>
-            <input type="text" class="form-control" id="donationAmount" placeholder="Amount Received" value="0.00">
+            <input type="text" class="form-control" id="donationAmount" placeholder="Amount Received" value="0">
             <span class="input-group-addon">.00</span>
         </div>
         <div class="form-group col-3">
