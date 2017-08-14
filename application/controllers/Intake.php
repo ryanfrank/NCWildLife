@@ -47,7 +47,8 @@ class Intake extends CI_Controller {
             'good_samaritan_reference'          => $this->input->post('referral'),
             'good_samaritan_donation'           => $this->input->post('donation'),
             'good_samaritan_donation_amount'    => $this->input->post('amount'),
-            'good_samaritan_list'               => $this->input->post('emailList')
+            'good_samaritan_list'               => $this->input->post('emailList'),
+            'created_date'                      => date("Y-m-d H:i:s")
         );
         $where = array('good_samaritan_first_name' => $formData['good_samaritan_first_name'], 'good_samaritan_last_name' => $formData['good_samaritan_last_name']);
         $query = $this->db->get_where('good_samaritan', $where);
