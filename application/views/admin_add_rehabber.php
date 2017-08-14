@@ -51,7 +51,6 @@
         });
     });
 </script>
-<div id="myStatus"> </div>
 <div id="info">
     <form class="mt-3" id="addRehabber" name="addRehabber">
         <div class="row">
@@ -109,5 +108,6 @@
             <input type="submit" id="submitButton">
         </div>
     </form>
+    <div id="myStatus" > </div>
 </div>
 </div>
