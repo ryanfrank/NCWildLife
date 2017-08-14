@@ -18,10 +18,22 @@
                 type: "POST",
                 url: "<?php echo base_url(); ?>" + "Intake/addSamaritan",
                 dataType: 'json',
-                data: { "first": $("input#firstName").val(), "last": $("input#lastName").val() },
+                data: {
+                    "first": $("input#firstName").val(),
+                    "last": $("input#lastName").val(),
+                    "street": $("input#streetAddress").val(),
+                    "city": $("input#cityName").val(),
+                    "state": $("input#stateName").val(),
+                    "zip": $("input#zipCode").val(),
+                    "email": $("input#emailAddress").val(),
+                    "phone": $("input#phoneNumber").val(),
+                    "donation": $("input#donationReceived").val(),
+                    "amount": $("input#donationAmount").val(),
+                    "emailList": $("input#emailList").val()
+                },
                 success: function(res) {
-                if (res == "success" ) {
-                    //jQuery("div#content").html('<h2 class="display-1">Successfully added ' + firstName + ' ' + lastName + '</h2>');
+                    alert("Elements: " + res);
+                if (res === "success") {
                     jQuery("div#content").html('<div class="alert alert-success mt-lg-4 col-3" role="alert">Successfully added ' + $("input#firstName").val() + ' ' + $("input#lastName").val() + '</div>');
                 }
                 else{
@@ -65,7 +77,7 @@
                 <?php
                 foreach ($states->result() as $row)
                 {
-                    print "<option>" . $row->state_name . "</option>";
+                    print "<option value=" . $row->state_id .">" . $row->state_name . "</option>";
                 }
                 ?>
             </select>
