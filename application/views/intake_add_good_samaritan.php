@@ -38,12 +38,13 @@
                     "emailList":    mail
                 },
                 success: function(res) {
+                    alert("In function");
                     if (res === "success") {
                         jQuery("div#content").html('<div class="alert alert-success mt-lg-4 col-3" role="alert">Successfully added ' + $("input#firstName").val() + ' ' + $("input#lastName").val() + '</div>');
                     }
-                    /*else if (res === "duplicate") {
+                    else if (res === "duplicate") {
                         jQuery("div#content").html('<div class="alert alert-warning mt-lg-4 col-3" role="alert">Duplicate entry for ' + $("input#firstName").val() + ' ' + $("input#lastName").val() + '</div>');
-                    }*/
+                    /
                     else {
                         jQuery("div#content").html('<div class="alert alert-danger mt-lg-4 col-3" role="alert">Failed to add ' + $("input#firstName").val() + ' ' + $("input#lastName").val() + '</div>'
                     }
