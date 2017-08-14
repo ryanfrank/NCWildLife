@@ -37,38 +37,28 @@ class Intake extends CI_Controller {
     }
     public function addSamaritan()
     {
-        //$data = array(
-        //    'firstName' => $this->input->post('first'),
-        //    'lastName'  => $this->input->post('last')
-        //);
-        //"first": $("input#firstName").val(),
-        //"last": $("input#lastName").val(),
-        //"street": $("input#streetAddress").val(),
-        //"city": $("input#cityName").val(),
-        //"state": $("input#stateName").val(),
-        //"zip": $("input#zipCode").val(),
-        //"email": $("input#emailAddress").val(),
-        //"phone": $("input#phoneNumber").val(),
-        //"donation": $("input#donationReceived").val(),
-        //"amount": $("input#donationAmount").val(),
-        //"emailList": $("input#emailList").val()
-
         $data = array(
-            'firstName' => $this->input->post('first'),
-            'lastName'  => $this->input->post('last'),
-            'streetAddress' => $this->input->post('street'),
-            'cityName'      => $this->input->post('city'),
-            'stateName'     => $this->input->post('state'),
-            'zipCode'       =>  $this->input->post('zipCode'),
-            'emailAddress'  =>  $this->input->post('email'),
-            'phoneNumber'   =>  $this->input->post('phone'),
+            'firstName'         =>  $this->input->post('first'),
+            'lastName'          =>  $this->input->post('last'),
+            'streetAddress'     =>  $this->input->post('street'),
+            'cityName'          =>  $this->input->post('city'),
+            'stateName'         =>  $this->input->post('state'),
+            'zipCode'           =>  $this->input->post('zipCode'),
+            'emailAddress'      =>  $this->input->post('email'),
+            'phoneNumber'       =>  $this->input->post('phone'),
             'donationReceived'  =>  $this->input->post('donation'),
             'donationAmount'    =>  $this->input->post('amount'),
             'emailList'         =>  $this->input->post('emailList')
         );
 
-        $count = $data['emailList'];
-        echo json_encode($count);
+        $query = $this->db->get_where('good_samaritan', array('good_samaritan_firstName' => $data['firstName'], 'good_samaritan_lastName' => $data['lastName'] ));
+        if ($query->num_rows() == 0) {
+            $result = "success";
+        }
+        else {
+            $result = "failure";
+        }
+        echo json_encode($result);
     }
 }
 ?>
