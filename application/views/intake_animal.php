@@ -56,12 +56,20 @@
                 <input type="text" class="form-control" id="intakeDate" placeholder="<?php echo $date;?>" value="<?php echo $date;?>" required>
                 <div class="invalid-feedback">Please provide a valid date</div>
             </div>
-            <div class="form-group col-3">
+            <div class="form-group col-2">
                 <label for="intakeWeight" class="align-content-center">Intake Weight (g)</label>
                 <input type="text" class="form-control" id="intakeWeight" placeholder="175" required>
                 <div class="invalid-feedback">Please provide a valid weight</div>
             </div>
-            <div class="form-group col-3">
+            <div class="form-group col-2">
+                <label for="intakeSpecies" class="align-content-center">Intake Species</label>
+                <select class="form-control" id="intakeSpecies" required>
+                    <?php foreach ($species->result() as $row):?>
+                        <option value="<?php echo $row->species_id?>"><?php echo $row->species_name?></option>
+                    <?php endforeach;?>
+                </select>
+            </div>
+            <div class="form-group col-2">
                 <label for="intakeAge" class="align-content-center">Intake Age</label>
                 <select class="form-control" id="intakeAge" required>
                     <?php foreach ($ages->result() as $row):?>
