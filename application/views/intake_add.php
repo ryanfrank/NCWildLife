@@ -23,7 +23,7 @@
                 success: function(res) {
                     if (res == "success" ) {
                         //jQuery("div#content").show();
-                        jQuery("div#content").html('<h1 class="display-1">SUCCESS</h1>');
+                        jQuery("div#content").html('<h2 class="display-1">Successfully added ' + firstName + ' ' + lastName + '</h2>');
                     }
                 },
                 error: function(res) {
