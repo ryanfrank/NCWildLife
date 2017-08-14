@@ -30,3 +30,4 @@ class Rehab extends CI_Controller {
         $this->load->view('rehab_main');
     }
 }
+?>

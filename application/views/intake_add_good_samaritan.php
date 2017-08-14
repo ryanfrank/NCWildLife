@@ -3,10 +3,10 @@
  * Created by PhpStorm.
  * User: ryan_w_frank
  * Date: 8/13/17
- * Time: 12:45 PM
+ * Time: 9:02 PM
  */
-
 ?>
+
 <script type="application/javascript">
     $(document).ready(function() {
         //$("mySubmit").click(function(event) {
@@ -21,14 +21,14 @@
                 dataType: 'json',
                 data: { "first": firstName, "last": lastName },
                 success: function(res) {
-                    if (res == "success" ) {
-                        //jQuery("div#content").show();
-                        jQuery("div#content").html('<h2 class="display-1">Successfully added ' + firstName + ' ' + lastName + '</h2>');
-                    }
-                },
-                error: function(res) {
-                    alert('ERROR: ' + res.first);
+                if (res == "success" ) {
+                    //jQuery("div#content").show();
+                    jQuery("div#content").html('<h2 class="display-1">Successfully added ' + firstName + ' ' + lastName + '</h2>');
                 }
+            },
+                error: function(res) {
+                alert('ERROR: ' + res.first);
+            }
             });
         });
     });
@@ -66,25 +66,25 @@
                     print "<option>" . $row->state_name . "</option>";
                 }
                 ?>
-            </select>
-        </div>
-        <div class="form-group col-3">
-            <label for="zipCode" class="align-content-center">Good Samaritan Zip</label>
-            <input type="text" class="form-control" id="zipCode" placeholder="Zip Code">
-        </div>
-        <div class="form-group col-3">
-            <label for="emailAddress" class="align-content-center">Good Samaritan Email</label>
-            <input type="email" class="form-control" id="emailAddress" placeholder="email@domain.com">
-        </div>
-        <div class="form-group col-3">
-            <label for="phoneNumber" class="align-content-center">Good Samaritan Phone</label>
-            <input type="text" class="form-control" id="phoneNumber" placeholder="XXX-XXX-XXXX">
-        </div>
-    </div>
-    <div class="row">
+</select>
+</div>
+<div class="form-group col-3">
+    <label for="zipCode" class="align-content-center">Good Samaritan Zip</label>
+    <input type="text" class="form-control" id="zipCode" placeholder="Zip Code">
+</div>
+<div class="form-group col-3">
+    <label for="emailAddress" class="align-content-center">Good Samaritan Email</label>
+    <input type="email" class="form-control" id="emailAddress" placeholder="email@domain.com">
+</div>
+<div class="form-group col-3">
+    <label for="phoneNumber" class="align-content-center">Good Samaritan Phone</label>
+    <input type="text" class="form-control" id="phoneNumber" placeholder="XXX-XXX-XXXX">
+</div>
+</div>
+<div class="row">
 
-    </div>
-    <div class="row ml-4">
-        <input type="submit" id="submitButton">
-    </div>
+</div>
+<div class="row ml-4">
+    <input type="submit" id="submitButton">
+</div>
 </form>
