@@ -14,7 +14,7 @@
             event.preventDefault();
             //var firstName = $("input#firstName").val();
             //var lastName = $("input#lastName").val();
-            var mail = $("input#emailList").checked();
+            var mail = $("input#emailList").val();
             alert("CHECK: " + mail);
             jQuery.ajax({
                 type: "POST",
