@@ -45,13 +45,14 @@ class Intake extends CI_Controller {
             'cityName'          =>  $this->input->post('city'),
             'stateName'         =>  $this->input->post('state'),
             'zipCode'           =>  $this->input->post('zip'),
-            'phoneNumber'       =>  preg_replace('/\D+/',$this->input->post('phone')),
+            'phoneNumber'       =>  $this->input->post('phone'),
             'emailAddress'      =>  $this->input->post('email'),
             'donationReceived'  =>  $this->input->post('donation'),
             'donationAmount'    =>  $this->input->post('amount'),
             'reference'         =>  $this->input->post('referral'),
             'emailList'         =>  $this->input->post('emailList')
         );
+        $data['phoneNumber'] = preg_replace('\'/\D+/\',', $data['phoneNumber']);
 
         $where = array('good_samaritan_first_name' => $data['firstName'], 'good_samaritan_last_name' => $data['lastName']);
         $query = $this->db->get_where('good_samaritan', $where);
