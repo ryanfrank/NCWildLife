@@ -31,6 +31,7 @@
                     "phone": $("input#phoneNumber").val(),
                     "donation": rdonation,
                     "amount": $("input#donationAmount").val(),
+                    "referral": $("input#referral").val(),
                     "emailList": mail
                 },
                 success: function(res) {
@@ -108,6 +109,10 @@
             <span class="input-group-addon">$</span>
             <input type="text" class="form-control" id="donationAmount" placeholder="Amount Received">
             <span class="input-group-addon">.00</span>
+        </div>
+        <div class="form-group col-3">
+            <label for="referral" class="align-content-center">Who referred you to us?</label>
+            <input type="text" class="form-control" id="referral" placeholder="Google, FaceBook, etc..." required>
         </div>
         <div class="form-check col-3">
             <label class="form-check-label">

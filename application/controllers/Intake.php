@@ -44,18 +44,20 @@ class Intake extends CI_Controller {
             'cityName'          =>  $this->input->post('city'),
             'stateName'         =>  $this->input->post('state'),
             'zipCode'           =>  $this->input->post('zipCode'),
-            'emailAddress'      =>  $this->input->post('email'),
             'phoneNumber'       =>  $this->input->post('phone'),
+            'emailAddress'      =>  $this->input->post('email'),
             'donationReceived'  =>  $this->input->post('donation'),
             'donationAmount'    =>  $this->input->post('amount'),
+            'reference'         =>  $this->input->post('referral'),
             'emailList'         =>  $this->input->post('emailList')
         );
 
-        //$query = $this->db->get_where('good_samaritan', array('good_samaritan_firstName' => $data['firstName'], 'good_samaritan_lastName' => $data['lastName'] ));
         $where = array('good_samaritan_first_name' => $data['firstName'], 'good_samaritan_last_name' => $data['lastName']);
         $query = $this->db->get_where('good_samaritan', $where);
         if ( $query->num_rows() == 0 ) {
-            $result = "success";
+
+
+            $result = $data['stateName'];
         }
         else {
             $result = "failure";
