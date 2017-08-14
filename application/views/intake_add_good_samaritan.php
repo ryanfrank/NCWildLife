@@ -14,7 +14,7 @@
             event.preventDefault();
             //var firstName = $("input#firstName").val();
             //var lastName = $("input#lastName").val();
-            var c=document.forms["goodSamaritanForm"]["emailList"].checked();
+            var c=document.forms["goodSamaritanForm"]["emailList"].checked(value);
             alert("MAIL: " + c );
             jQuery.ajax({
                 type: "POST",
