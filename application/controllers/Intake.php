@@ -32,7 +32,8 @@ class Intake extends CI_Controller {
     {
         $data['species']    = $this->db->query("SELECT * from species ");
         $data['ages']       = $this->db->query("SELECT * from ages");
-        $data['states']     = $this->db->query("SELECT * from states");
+        //$data['states']     = $this->db->query("SELECT * from states");
+        $data['states']     =   $this->db->get('states');
         $this->load->view('intake_add_good_samaritan', $data);
     }
     public function addSamaritan()
