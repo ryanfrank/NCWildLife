@@ -98,7 +98,7 @@
     <div class="row">
         <div class="form-check col-3">
             <label class="form-check-label">
-                <input class="form-check-input" id="donationReceived" type="checkbox">
+                <input class="form-check-input" id="donationReceived" type="checkbox" value="Yes">
                     Donation received?
             </label>
         </div>
@@ -109,7 +109,7 @@
         </div>
         <div class="form-check col-3">
             <label class="form-check-label">
-                <input class="form-check-input" id="emailList" type="checkbox">
+                <input class="form-check-input" id="emailList" type="checkbox" value="Yes" checked>
                 Would you like to be on our mailing list?
             </label>
         </div>
