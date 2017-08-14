@@ -33,7 +33,32 @@ class Admin extends CI_Controller
     }
     public function addRehabber()
     {
-
+        $date = date("Y-m-d H:i:s");
+        $formData = array(
+            'rehabber_first_name'   => $this->input->post('first'),
+            'rehabber_last_name'    => $this->input->post('last'),
+            'rehabber_street'       => $this->input->post('street'),
+            'rehabber_city'         => $this->input->post('city'),
+            'rehabber_state'        => $this->input->post('state'),
+            'rehabber_zip'          => $this->input->post('zip'),
+            'rehabber_phone'        => preg_replace('/\D+/','',$this->input->post('phone')),
+            'rehabber_email'        => $this->input->post('email'),
+            'rehabber_license'      => $this->input->post('isLicensed'),
+            'created_date'          => $date
+        );
+        $where = array('rehabber_first_name' => $formData['rehabber_first_name'], 'rehabber_last_name' => $formData['rehabber_last_name']);
+        $query = $this->db->get_where('rehabber', $where);
+        if ( $query->num_rows() == 0 ) {
+            //$sql = $this->db->set($formData)->get_compiled_insert('rehabber');
+            $this->db->insert('rehabber', $formData);
+            $num_inserts = $this->db->affected_rows();
+            if ($num_inserts > 0 ) { $result = "success"; }
+            else { $result = "failure"; }
+        }
+        else {
+            $result = "duplicate";
+        }
+        echo json_encode($result);
     }
 }
 ?>
