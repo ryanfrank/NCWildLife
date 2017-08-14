@@ -35,23 +35,7 @@
         });
     });
 </script>
-<script>
-    // Example starter JavaScript for disabling form submissions if there are invalid fields
-    (function() {
-        "use strict";
-        window.addEventListener("load", function() {
-            var form = document.getElementById("goodSamaritanForm");
-            form.addEventListener("submit", function(event) {
-                if (form.checkValidity() == false) {
-                    event.preventDefault();
-                    event.stopPropagation();
-                }
-                form.classList.add("was-validated");
-            }, false);
-        }, false);
-    }());
-</script>
-<form class="mt-3" id="goodSamaritanForm" name="goodSamaritanForm" novalidate>
+<form class="mt-3" id="goodSamaritanForm" name="goodSamaritanForm">
     <div class="row">
         <div class="form-group col-6">
             <label for="firstName" class="align-content-center">Good Samaritan First Name</label>
@@ -84,25 +68,25 @@
                     print "<option>" . $row->state_name . "</option>";
                 }
                 ?>
-</select>
-</div>
-<div class="form-group col-3">
-    <label for="zipCode" class="align-content-center">Good Samaritan Zip</label>
-    <input type="text" class="form-control" id="zipCode" placeholder="Zip Code">
-</div>
-<div class="form-group col-3">
-    <label for="emailAddress" class="align-content-center">Good Samaritan Email</label>
-    <input type="email" class="form-control" id="emailAddress" placeholder="email@domain.com">
-</div>
-<div class="form-group col-3">
-    <label for="phoneNumber" class="align-content-center">Good Samaritan Phone</label>
-    <input type="text" class="form-control" id="phoneNumber" placeholder="XXX-XXX-XXXX">
-</div>
-</div>
-<div class="row">
+            </select>
+        </div>
+        <div class="form-group col-3">
+            <label for="zipCode" class="align-content-center">Good Samaritan Zip</label>
+            <input type="text" class="form-control" id="zipCode" placeholder="Zip Code">
+        </div>
+        <div class="form-group col-3">
+            <label for="emailAddress" class="align-content-center">Good Samaritan Email</label>
+            <input type="email" class="form-control" id="emailAddress" placeholder="email@domain.com">
+        </div>
+        <div class="form-group col-3">
+            <label for="phoneNumber" class="align-content-center">Good Samaritan Phone</label>
+            <input type="text" class="form-control" id="phoneNumber" placeholder="XXX-XXX-XXXX">
+        </div>
+        </div>
+    <div class="row">
 
-</div>
-<div class="row ml-4">
-    <input type="submit" id="submitButton">
-</div>
+    </div>
+    <div class="row ml-4">
+        <input type="submit" id="submitButton">
+    </div>
 </form>
