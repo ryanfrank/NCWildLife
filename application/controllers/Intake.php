@@ -30,15 +30,13 @@ class Intake extends CI_Controller {
     }
     public function add_good_samaritan()
     {
-        //$data['species']    = $this->db->query("SELECT * from species ");
-        //$data['ages']       = $this->db->query("SELECT * from ages");
         $data['states']     =   $this->db->get('states');
         $this->load->view('intake_add_good_samaritan', $data);
     }
     public function addSamaritan()
     {
         $formData = array(
-            'good_samaritan_first_name'         => $this->input->post('first'),,
+            'good_samaritan_first_name'         => $this->input->post('first'),
             'good_samaritan_last_name'          => $this->input->post('last'),
             'good_samaritan_street'             => $this->input->post('street'),
             'good_samaritan_city'               => $this->input->post('city'),
