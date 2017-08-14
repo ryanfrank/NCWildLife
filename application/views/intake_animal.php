@@ -95,7 +95,22 @@
                 <input type="text" class="form-control" id="injuryInfo" placeholder="Cat attack, dog attack, HBV, etc...">
             </div>
         </div>
-
+        <div class="row">
+            <div class="form-check col-3">
+                <label class="form-check-label">
+                    <input class="form-check-input" id="fed" type="checkbox" value="No">
+                    Has animal been fed?
+                </label>
+            </div>
+            <div class="form-group col-6">
+                <label for="foodInfo" class="align-content-center">What has it been fed?</label>
+                <input type="text" class="form-control" id="foodInfo" placeholder="Milk (specify type), Formula (specify type), etc...">
+            </div>
+            <div class="form-group col-3">
+                <label for="foodDelivery" class="align-content-center">How was it fed?</label>
+                <input type="text" class="form-control" id="foodDelivery" placeholder="Syringe, Bottle, Bowl, etc...">
+            </div>
+        </div>
         <br>
         <div class="row ml-2 mt-4">
             <input type="submit" id="submitButton">
