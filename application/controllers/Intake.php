@@ -85,13 +85,26 @@ class Intake extends CI_Controller {
             'intake_species'        => $this->input->post('intakeSpecies'),
             'created_date'          => $date
         );
-        $where = array('good_samaritan_first_name' => $formData['good_samaritan_first_name'], 'good_samaritan_last_name' => $formData['good_samaritan_last_name']);
-        $query = $this->db->get_where('good_samaritan', $where);
+        $animalData = array('animal_name' => $this->input->post('animalName'));
+        $where = array('animal_name' => $animalData['animal_name']);
+        $query = $this->db->get_where('animal', $where);
         if ( $query->num_rows() == 0 ) {
             //$sql = $this->db->set($formData)->get_compiled_insert('good_samaritan');
-            $this->db->insert('good_samaritan', $formData);
+            $this->db->insert('animal', $animalData);
             $num_inserts = $this->db->affected_rows();
-            if ($num_inserts > 0 ) { $result = "success"; }
+            if ($num_inserts > 0 ) {
+                $aID = $this->db->get_where('animal', $where);
+                $ddd = $aID->row();
+                $formData['animal_id'] = $ddd->animal_id;
+                if ( $formData['animal_id'] )
+                {
+                    $this->db->insert('intake', $formData);
+                    $num_inserts = $this->db->affected_rows();
+                    if ($num_inserts > 0 ) {
+                        $result = "success";
+                    }
+                }
+            }
             else { $result = "failure"; }
         }
         else {

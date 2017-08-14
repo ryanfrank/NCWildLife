@@ -38,7 +38,8 @@
                     "isFed":            fed,
                     "foodInfo":         $("input#foodInfo").val(),
                     "foodDelivery":     $("input#foodDelivery").val(),
-                    "intakeCondition":  $("input#intakeCondition").val()
+                    "intakeCondition":  $("input#intakeCondition").val(),
+                    "animalName":       $("input#animalName").val()
                 },
                 success: function(res) {
                     if (res === "success") {
@@ -56,6 +57,13 @@
 </script>
 <div id="info">
     <form class="mt-3" id="intakeAnimal" name="intakeAnimal">
+        <div class="row">
+            <div class="form-group col-4">
+                <label for="animalName" class="align-content-center">Animal Name</label>
+                <input type="text" class="form-control" id="animalName" placeholder="Some name or identifying descripton" required>
+                <div class="invalid-feedback">Please provide a valid name</div>
+            </div>
+        </div>
         <div class="row">
             <div class="form-group col-3">
                 <label for="intakeDate" class="align-content-center">Intake Date</label>
