@@ -80,7 +80,7 @@
                 <?php
                 foreach ($states->result() as $row)
                 {
-                    print "<option value=" . $row->state_id .">" . $row->state_name . "</option>";
+                    print "<option value=" . $row->state_name .">" . $row->state_id . "</option>";
                 }
                 ?>
             </select>
