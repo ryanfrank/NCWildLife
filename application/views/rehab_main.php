@@ -95,6 +95,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             </div>
         </div>
     </div>
+    <div id="myStatus" class="ml-5"> </div>
 </div>
 </body>
 </html>

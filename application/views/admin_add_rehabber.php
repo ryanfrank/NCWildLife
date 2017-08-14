@@ -32,8 +32,6 @@
                     "isLicensed":   licensed
                 },
                 success: function(res) {
-                    //$("myStatus").show();
-                   //$("#myStatus").show();
                     if (res === "success") {
                         jQuery("div#myStatus").html('<div class="alert alert-success mt-lg-4 col-8 alert-dismissible fade show" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>Successfully added ' + $("input#firstName").val() + ' ' + $("input#lastName").val() + '</div>');
                         document.getElementById("addRehabber").reset();
@@ -108,6 +106,4 @@
             <input type="submit" id="submitButton">
         </div>
     </form>
-    <div id="myStatus" class="ml-5"> </div>
-</div>
 </div>
