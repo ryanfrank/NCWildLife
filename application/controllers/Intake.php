@@ -42,7 +42,7 @@ class Intake extends CI_Controller {
         //    'lastName'  => $this->input->post('last')
         //);
 
-        $first = $this->input->post('first');
+        $first = "success";
         echo json_encode($first);
     }
 }

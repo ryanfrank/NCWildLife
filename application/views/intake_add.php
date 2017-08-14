@@ -21,13 +21,9 @@
                 dataType: 'json',
                 data: { "first": firstName, "last": lastName },
                 success: function(res) {
-                    if (res) {
+                    if (res == "success" ) {
                         //jQuery("div#content").show();
-                        var viewURL = "<?php echo base_url(); ?>/application/views/intake_results.php";
-                        alert("URL: " + viewURL);
-                        jQuery("div#content").html(res);
-                        //jQuery("div#content").html(res.last);
-
+                        jQuery("div#content").html('<h1 class="display-1">SUCCESS</h1>');
                     }
                 },
                 error: function(res) {
