@@ -49,20 +49,6 @@ class Intake extends CI_Controller {
             'good_samaritan_donation_amount'    => $this->input->post('amount'),
             'good_samaritan_list'               => $this->input->post('emailList')
         );
-        /*$data = array(
-            'firstName'         =>  $this->input->post('first'),
-            'lastName'          =>  $this->input->post('last'),
-            'streetAddress'     =>  $this->input->post('street'),
-            'cityName'          =>  $this->input->post('city'),
-            'stateName'         =>  $this->input->post('state'),
-            'zipCode'           =>  $this->input->post('zip'),
-            'phoneNumber'       =>  preg_replace('/\D+/','',$this->input->post('phone')),
-            'emailAddress'      =>  $this->input->post('email'),
-            'reference'         =>  $this->input->post('referral'),
-            'donationReceived'  =>  $this->input->post('donation'),
-            'donationAmount'    =>  $this->input->post('amount'),
-            'emailList'         =>  $this->input->post('emailList')
-        );*/
         $where = array('good_samaritan_first_name' => $formData['good_samaritan_first_name'], 'good_samaritan_last_name' => $formData['good_samaritan_last_name']);
         $query = $this->db->get_where('good_samaritan', $where);
         if ( $query->num_rows() == 0 ) {
@@ -82,7 +68,7 @@ class Intake extends CI_Controller {
             );*/
             //$value = $data['firstName'];
             //$sql = "INSERT INTO good_samaritan ('good_samaritan_first_name','good_samaritan_last_name') values ('crap','morecrap')";
-            //$sql = $this->db->set($myData)->get_compiled_insert('good_samaritan');
+            $sql = $this->db->set($formData)->get_compiled_insert('good_samaritan');
 
             //$this->db->insert('good_samaritan', $myData);
             //$newQuery = $data['firstName'] . "," . $data['lastName'] . "," . $data['streetAddress'] . "," . $data['cityName'] . ","
@@ -91,7 +77,7 @@ class Intake extends CI_Controller {
             //$num_inserts = $this->db->affected_rows();
             //if ($num_inserts > 0 ) { $result = "success"; }
             //else { $result = "failure"; }
-            $result = "success";
+            $result = $sql;
         }
         else {
             $result = "failure";
