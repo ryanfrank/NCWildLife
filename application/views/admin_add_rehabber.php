@@ -35,15 +35,15 @@
                     //$("myStatus").show();
                     $("#myStatus").show();
                     if (res === "success") {
-                        jQuery("div#myStatus").html('<div class="alert alert-success mt-lg-4 col-3 alert-dismissible fade show" role="alert">Successfully added ' + $("input#firstName").val() + ' ' + $("input#lastName").val() + '</div>');
+                        jQuery("div#myStatus").html('<div class="alert alert-success mt-lg-4 col-3 alert-dismissible fade show" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close">Successfully added ' + $("input#firstName").val() + ' ' + $("input#lastName").val() + '</button></div>');
                         document.getElementById("addRehabber").reset();
                     }
                     else if (res === "duplicate") {
-                        jQuery("div#myStatus").html('<div class="alert alert-warning mt-lg-4 col-3 alert-dismissible fade show" role="alert">Duplicate entry for ' + $("input#firstName").val() + ' ' + $("input#lastName").val() + '</div>');
+                        jQuery("div#myStatus").html('<div class="alert alert-warning mt-lg-4 col-3 alert-dismissible fade show" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close">Duplicate entry for ' + $("input#firstName").val() + ' ' + $("input#lastName").val() + '</button></div>');
                         document.getElementById("addRehabber").reset();
                     }
                     else {
-                        jQuery("div#myStatus").html('<div class="alert alert-danger mt-lg-4 col-3 alert-dismissible fade show" role="alert">Failed to add ' + $("input#firstName").val() + ' ' + $("input#lastName").val() + '</div>');
+                        jQuery("div#myStatus").html('<div class="alert alert-danger mt-lg-4 col-3 alert-dismissible fade show" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close">Failed to add ' + $("input#firstName").val() + ' ' + $("input#lastName").val() + '</button></div>');
                         document.getElementById("addRehabber").reset();
                     }
                 }
