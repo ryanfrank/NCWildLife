@@ -58,7 +58,7 @@
     <div class="row">
         <div class="form-group col-6">
             <label for="firstName" class="align-content-center">Good Samaritan First Name</label>
-            <input type="text" class="form-control" id="firstName" placeholder="First Name" required>
+            <input type="text" class="form-control" id="firstName" placeholder="First Name" onmouseover="this.focus();" required>
             <div class="invalid-feedback">Please provide a first name</div>
         </div>
         <div class="form-group col-6">
