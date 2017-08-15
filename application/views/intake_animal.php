@@ -54,6 +54,7 @@
                     }
                 }
             });
+            alert("Dropped from Ajax");
         });
     });
 </script>
