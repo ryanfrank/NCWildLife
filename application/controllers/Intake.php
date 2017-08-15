@@ -89,10 +89,11 @@ class Intake extends CI_Controller {
         );
         $animalData = array('animal_name' => $this->input->post('animalName'));
 
-       /* $where = array('animal_name' => $animalData['animal_name']);
+        $where = array('animal_name' => $animalData['animal_name']);
         $query = $this->db->get_where('animal', $where);
         if ( $query->num_rows() == 0 ){
-            $this->db->insert('animal', $animalData);
+            $results = "I did not find an animal match";
+            /*$this->db->insert('animal', $animalData);
             $aData = $this->db->get_where('animal', $where);
             $aID = $aData->row_array();
             if ( isset($aID) ){
@@ -109,7 +110,6 @@ class Intake extends CI_Controller {
             $results = "success";
         }
         else { $results = "duplicate"; }*/
-        $results = $animalData;
 
         echo json_encode($results);
     }
