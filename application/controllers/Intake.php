@@ -98,7 +98,6 @@ class Intake extends CI_Controller {
             if ( isset($aID) ){
                 $formData['animal_id'] = $aID['animal_id'];
                 $this->db->insert('intake', $formData);
-                //$results = $this->db->set($formData)->get_compiled_insert('intake');
                 $num_inserts = $this->db->affected_rows();
                 if ( $num_inserts > 0 ){
                     $results = "success";
