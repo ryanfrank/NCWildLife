@@ -91,7 +91,7 @@ class Intake extends CI_Controller {
 
         $where = array('animal_name' => $animalData['animal_name']);
         $query = $this->db->get_where('animal', $where);
-        if ( $query->num_rows() == 0 ){
+        if ( $query->num_rows() == 0 ) {
             $results = "I did not find an animal match";
             /*$this->db->insert('animal', $animalData);
             $aData = $this->db->get_where('animal', $where);
@@ -110,7 +110,7 @@ class Intake extends CI_Controller {
             $results = "success";
         }
         else { $results = "duplicate"; }*/
-
+        }
         echo json_encode($results);
     }
 }
