@@ -92,7 +92,7 @@ class Intake extends CI_Controller {
         $query = $this->db->get_where('animal', $where);
         if ( $query->num_rows() == 0 ){
             $this->db->insert('animal', $animalData);
-            $aData = $this->db->get_where('animal', $where);
+            /*$aData = $this->db->get_where('animal', $where);
             $aID = $aData->row_array();
             if ( isset($aID) ){
                 $formData['animal_id'] = $aID['animal_id'];
@@ -103,7 +103,8 @@ class Intake extends CI_Controller {
                 }
                 else { $results = "failure"; }
             }
-            else { $results = "failure"; }
+            else { $results = "failure"; }*/
+            $results = "success";
         }
         else { $results = "duplicate"; }
 
