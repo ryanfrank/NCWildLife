@@ -22,7 +22,6 @@
             var ageValue = e.options[e.selectedIndex].value;
             var e = document.getElementById("intakeRehabber");
             var rehabberValue = e.options[e.selectedIndex].value;
-            alert("Setup variables");
             jQuery.ajax({
                 type: "POST",
                 url: "<?php echo base_url(); ?>" + "Intake/intakeAnimal",
@@ -53,8 +52,11 @@
                         document.getElementById("intakeAnimal").reset();
                     }
                 }
+                error: function(res,thrownError) {
+                    alert("Error" + res);
+                    alert(thrownError);
+                }
             });
-            alert("Dropped from Ajax");
         });
     });
 </script>
