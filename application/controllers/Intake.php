@@ -65,7 +65,10 @@ class Intake extends CI_Controller {
     {
         $data['date']       =   date("Y-m-d");
         $data['ages']       =   $this->db->get('ages');
-        $data['species']    =   $this->db->get('species');
+        //$data['species']    =   $this->db->get('species');
+        $this->db->from('species');
+        $this->db->order_by("species_order", "asc");
+        $data['species'] = $this->db->get();
         $data['rehabber']   =   $this->db->get('rehabber');
         $this->load->view('intake_animal', $data);
     }
