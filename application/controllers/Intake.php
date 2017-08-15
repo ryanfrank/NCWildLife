@@ -86,31 +86,27 @@ class Intake extends CI_Controller {
             'created_date'          => $date
         );
         $animalData = array('animal_name' => $this->input->post('animalName'));
+
         $where = array('animal_name' => $animalData['animal_name']);
         $query = $this->db->get_where('animal', $where);
-        if ( $query->num_rows() == 0 ) {
-            //$sql = $this->db->set($formData)->get_compiled_insert('good_samaritan');
+        if ( $query->num_rows() == 0 ){
             $this->db->insert('animal', $animalData);
-            $num_inserts = $this->db->affected_rows();
-            if ($num_inserts > 0 ) {
-                $aID = $this->db->get_where('animal', $where);
-                $ddd = $aID->row();
-                $formData['animal_id'] = $ddd->animal_id;
-                if ( $formData['animal_id'] )
-                {
-                    $this->db->insert('intake', $formData);
-                    $num_inserts = $this->db->affected_rows();
-                    if ($num_inserts > 0 ) {
-                        $result = "success";
-                    }
+            $aData = $this->db->get_where('animal', $where);
+            $aID = $aData->row_array();
+            if ( isset($aID) ){
+                $formData['animal_id'] = $aID['animal_id'];
+                $this->db->insert('intake', $formData);
+                $num_inserts = $this->db->affected_rows();
+                if ( $num_inserts > 0 ){
+                    $results = "success";
                 }
+                else { $results = "failure"; }
             }
-            else { $result = "failure"; }
+            else { $results = "failure"; }
         }
-        else {
-            $result = "duplicate";
-        }
-        echo json_encode($result);
+        else { $results = "duplicate"; }
+
+        echo $results;
     }
 }
 ?>
