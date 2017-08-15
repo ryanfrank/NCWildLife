@@ -14,6 +14,9 @@
             var licensed;
             if( $("#rehabberLicensed").is(':checked') ) { licensed = "1"; }
             else { licensed = "0"; }
+            var isVolunteer;
+            if( $("#volunteer").is(':checked') ) { isVolunteer = "1"; }
+            else { isVolunteer = "0"; }
             var e = document.getElementById("stateName");
             var stateValue = e.options[e.selectedIndex].value;
             jQuery.ajax({
@@ -29,7 +32,8 @@
                     "zip":          $("input#zipCode").val(),
                     "email":        $("input#emailAddress").val(),
                     "phone":        $("input#phoneNumber").val(),
-                    "isLicensed":   licensed
+                    "isLicensed":   licensed,
+                    "isVolunteer":  isVolunteer
                 },
                 success: function(res) {
                     if (res === "success") {
@@ -54,23 +58,23 @@
         <div class="row">
             <div class="form-group col-6">
                 <label for="firstName" class="align-content-center">Rehabber First Name</label>
-                <input type="text" class="form-control" id="firstName" placeholder="First Name" required>
+                <input type="text" class="form-control" id="firstName" placeholder="First Name" onmouseover="this.focus();"  required>
                 <div class="invalid-feedback">Please provide a first name</div>
             </div>
             <div class="form-group col-6">
                 <label for="lastName" class="align-content-center">Rehabber Last Name</label>
-                <input type="text" class="form-control" id="lastName" placeholder="Last Name" required>
+                <input type="text" class="form-control" id="lastName" placeholder="Last Name" onmouseover="this.focus();"  required>
                 <div class="invalid-feedback">Please provide a last name</div>
             </div>
         </div>
         <div class="row">
             <div class="form-group col-6">
                 <label for="streetAddress" class="align-content-center">Rehabber Street Address</label>
-                <input type="text" class="form-control" id="streetAddress" placeholder="Street Address" required>
+                <input type="text" class="form-control" id="streetAddress" placeholder="Street Address" onmouseover="this.focus();"  required>
             </div>
             <div class="form-group col-6">
                 <label for="cityName" class="align-content-center">Rehabber City</label>
-                <input type="text" class="form-control" id="cityName" placeholder="City" required>
+                <input type="text" class="form-control" id="cityName" placeholder="City" onmouseover="this.focus();"  required>
             </div>
         </div>
         <div class="row">
@@ -84,21 +88,29 @@
             </div>
             <div class="form-group col-3">
                 <label for="zipCode" class="align-content-center">Rehabber Zip</label>
-                <input type="text" class="form-control" id="zipCode" placeholder="Zip Code" required>
+                <input type="text" class="form-control" id="zipCode" placeholder="Zip Code" onmouseover="this.focus();"  required>
             </div>
             <div class="form-group col-3">
                 <label for="emailAddress" class="align-content-center">Rehabber Email</label>
-                <input type="email" class="form-control" id="emailAddress" placeholder="email@domain.com" required>
+                <input type="email" class="form-control" id="emailAddress" placeholder="email@domain.com" onmouseover="this.focus();"  required>
             </div>
             <div class="form-group col-3">
                 <label for="phoneNumber" class="align-content-center">Rehabber Phone</label>
-                <input type="text" class="form-control" id="phoneNumber" placeholder="XXX-XXX-XXXX" required>
+                <input type="text" class="form-control" id="phoneNumber" placeholder="XXX-XXX-XXXX" onmouseover="this.focus();" required>
             </div>
-            <div class="form-check col-3">
-                <label class="form-check-label">
-                    <input class="form-check-input" id="rehabberLicensed" type="checkbox" value="No">
-                    Licensed Rehabber?
-                </label>
+            <div class="row">
+                <div class="form-check col-3">
+                    <label class="form-check-label">
+                        <input class="form-check-input" id="rehabberLicensed" type="checkbox" value="No" onmouseover="this.focus();" >
+                        Licensed Rehabber?
+                    </label>
+                </div>
+                <div class="form-check col-3">
+                    <label class="form-check-label">
+                        <input class="form-check-input" id="volunteer" type="checkbox" value="No" onmouseover="this.focus();" >
+                        Volunteer?
+                    </label>
+                </div>
             </div>
         </div>
         <br>

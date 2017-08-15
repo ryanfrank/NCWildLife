@@ -44,6 +44,7 @@ class Admin extends CI_Controller
             'rehabber_phone'        => preg_replace('/\D+/','',$this->input->post('phone')),
             'rehabber_email'        => $this->input->post('email'),
             'rehabber_license'      => $this->input->post('isLicensed'),
+            'rehabber_volunteer'    => $this->input->post('isVolunteer'),
             'created_date'          => $date
         );
         $where = array('rehabber_first_name' => $formData['rehabber_first_name'], 'rehabber_last_name' => $formData['rehabber_last_name']);
