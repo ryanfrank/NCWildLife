@@ -52,9 +52,8 @@
                         document.getElementById("intakeAnimal").reset();
                     }
                 }
-                error: function(res,thrownError) {
+                error: function(res) {
                     alert("Error" + res);
-                    alert(thrownError);
                 }
             });
         });
