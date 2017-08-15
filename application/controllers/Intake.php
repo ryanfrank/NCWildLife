@@ -71,7 +71,7 @@ class Intake extends CI_Controller {
     }
     public function intakeAnimal()
     {
-        $date = date("Y-m-d H:i:s");
+        /*$date = date("Y-m-d H:i:s");
         $formData = array(
             'intake_date'           => $this->input->post('intakeDate'),
             'intake_weight'         => $this->input->post('intakeWeight'),
@@ -90,9 +90,9 @@ class Intake extends CI_Controller {
 
         //$where = array('animal_name' => $animalData['animal_name']);
         //$query = $this->db->get_where('animal', $where);
-        /*if ( $query->num_rows() == 0 ){
+        if ( $query->num_rows() == 0 ){
             $this->db->insert('animal', $animalData);
-            /*$aData = $this->db->get_where('animal', $where);
+            $aData = $this->db->get_where('animal', $where);
             $aID = $aData->row_array();
             if ( isset($aID) ){
                 $formData['animal_id'] = $aID['animal_id'];
@@ -109,7 +109,7 @@ class Intake extends CI_Controller {
         else { $results = "duplicate"; }*/
         $results = "success";
 
-        echo $results;
+        echo json_encode($results);
     }
 }
 ?>
