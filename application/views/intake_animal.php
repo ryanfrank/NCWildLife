@@ -10,7 +10,6 @@
     $(document).ready(function() {
         $("#intakeAnimal").submit(function(event) {
             event.preventDefault();
-            alert("Caught submit");
             var injured;
             if( $("#injured").is(':checked') ) { injured = "1"; }
             else { injured = "0"; }
@@ -138,7 +137,7 @@
         <div class="row">
             <div class="form-group col-12">
                 <label for="intakeCondition" class="align-content-center">Condition of intake?</label>
-                <input type="text" class="form-control" id="intakeCondition" placeholder="specific information on intake condition (e.g. dehydration, etc)" required>
+                <input type="text" class="form-control" id="intakeCondition" placeholder="specific information on intake condition (e.g. dehydration, etc)">
             </div>
         </div>
         <br>

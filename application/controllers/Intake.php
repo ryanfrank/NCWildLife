@@ -76,6 +76,7 @@ class Intake extends CI_Controller {
             'intake_date'           => $this->input->post('intakeDate'),
             'intake_weight'         => $this->input->post('intakeWeight'),
             'intake_condition'      => $this->input->post('intakeCondition'),
+            'intake_age'            => $this->input->post('intakeAge'),
             'intake_rehabber'       => $this->input->post('intakeRehabber'),
             'intake_injury'         => $this->input->post('intakeInjured'),
             'intake_injury_type'    => $this->input->post('injuryInfo'),
