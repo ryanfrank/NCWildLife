@@ -42,7 +42,7 @@
                     "animalName":       $("input#animalName").val()
                 },
                 success: function(res) {
-                    alert("sent data");
+                    alert("sent data: " + res);
                     if (res === "success") {
                         jQuery("div#myStatus").html('<div class="alert alert-success mt-lg-4 col-8 alert-dismissible fade show" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>Successfully added animal</div>');
                         document.getElementById("intakeAnimal").reset();

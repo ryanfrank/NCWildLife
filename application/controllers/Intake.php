@@ -71,6 +71,7 @@ class Intake extends CI_Controller {
     }
     public function intakeAnimal()
     {
+        $results = "";
         $date = date("Y-m-d H:i:s");
         $formData = array(
             'intake_date'           => $this->input->post('intakeDate'),
@@ -97,17 +98,18 @@ class Intake extends CI_Controller {
             if ( isset($aID) ){
                 $formData['animal_id'] = $aID['animal_id'];
                 $this->db->insert('intake', $formData);
-                $num_inserts = $this->db->affected_rows();
+                $sql = $this->db->set($formData)->get_compiled_insert('intake');
+                /*$num_inserts = $this->db->affected_rows();
                 if ( $num_inserts > 0 ){
                     $results = "success";
                 }
-                else { $results = "failure"; }
+                else { $results = "failure"; }*/
             }
             else { $results = "failure"; }
             $results = "success";
         }
         else { $results = "duplicate"; }
-        $results = "success";
+        $results = $sql;
 
         echo json_encode($results);
     }
