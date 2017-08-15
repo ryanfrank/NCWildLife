@@ -58,12 +58,12 @@
     <div class="row">
         <div class="form-group col-6">
             <label for="firstName" class="align-content-center">Good Samaritan First Name</label>
-            <input type="text" class="form-control" id="firstName" placeholder="First Name" onmouseover="this.focus();" required>
+            <input type="text" class="form-control" id="firstName" placeholder="First Name" onmouseover="this.focus();" onmouseleave="this.blur();" required>
             <div class="invalid-feedback">Please provide a first name</div>
         </div>
         <div class="form-group col-6">
             <label for="lastName" class="align-content-center">Good Samaritan Last Name</label>
-            <input type="text" class="form-control" id="lastName" placeholder="Last Name" required>
+            <input type="text" class="form-control" id="lastName" placeholder="Last Name" onmouseover="this.focus();" onmouseleave="this.blur();" required>
             <div class="invalid-feedback">Please provide a last name</div>
         </div>
     </div>
