@@ -107,10 +107,10 @@ class Intake extends CI_Controller {
                 else { $results = "failure"; }
             }
             else { $results = "failure"; }
-            $results = "success";
+            $results = "success";*/
         }
-        else { $results = "duplicate"; }*/
-        }
+        else { $results = "success"; }
+
         echo json_encode($results);
     }
 }
