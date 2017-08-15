@@ -18,10 +18,10 @@
             else { fed = "0"; }
             var e = document.getElementById("intakeSpecies");
             var speciesValue = e.options[e.selectedIndex].value;
-            var e = document.getElementById("intakeAge");
-            var ageValue = e.options[e.selectedIndex].value;
-            var e = document.getElementById("intakeRehabber");
-            var rehabberValue = e.options[e.selectedIndex].value;
+            var f = document.getElementById("intakeAge");
+            var ageValue = f.options[f.selectedIndex].value;
+            var g = document.getElementById("intakeRehabber");
+            var rehabberValue = g.options[g.selectedIndex].value;
             jQuery.ajax({
                 type: "POST",
                 url: "<?php echo base_url(); ?>" + "Intake/intakeAnimal",
@@ -51,9 +51,6 @@
                         jQuery("div#myStatus").html('<div class="alert alert-danger mt-lg-4 col-8 alert-dismissible fade show" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>Failed to add animal</div>');
                         document.getElementById("intakeAnimal").reset();
                     }
-                }
-                error: function(res) {
-                    alert("Error" + res);
                 }
             });
         });
