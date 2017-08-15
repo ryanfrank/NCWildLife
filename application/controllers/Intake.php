@@ -89,7 +89,7 @@ class Intake extends CI_Controller {
         );
         $animalData = array('animal_name' => $this->input->post('animalName'));
 
-        $where = array('animal_name' => $animalData['animal_name']);
+       /* $where = array('animal_name' => $animalData['animal_name']);
         $query = $this->db->get_where('animal', $where);
         if ( $query->num_rows() == 0 ){
             $this->db->insert('animal', $animalData);
@@ -99,17 +99,17 @@ class Intake extends CI_Controller {
                 $formData['animal_id'] = $aID['animal_id'];
                 $this->db->insert('intake', $formData);
                 $sql = $this->db->set($formData)->get_compiled_insert('intake');
-                /*$num_inserts = $this->db->affected_rows();
+                $num_inserts = $this->db->affected_rows();
                 if ( $num_inserts > 0 ){
                     $results = "success";
                 }
-                else { $results = "failure"; }*/
+                else { $results = "failure"; }
             }
             else { $results = "failure"; }
             $results = "success";
         }
-        else { $results = "duplicate"; }
-        $results = $sql;
+        else { $results = "duplicate"; }*/
+        $results = $animalData;
 
         echo json_encode($results);
     }
