@@ -75,11 +75,11 @@ $query_builder = TRUE;
 
 $db['default'] = array(
 #	'dsn'	=> '',
-	'hostname' => '192.168.0.70',
-	'username' => 'webuser',
+	'hostname' => 'localhost',
+	'username' => 'root',
 	'password' => 'Play14Me!',
 	'database' => 'NCWildLife',
-	'dbdriver' => 'mysql',
+	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
 	'pconnect' => FALSE,
 	'db_debug' => (ENVIRONMENT !== 'production'),
