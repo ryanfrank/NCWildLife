@@ -14,13 +14,17 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <meta charset="utf-8">
     <title>Welcome to NC WildLife Rehab</title>
     <link rel="stylesheet" type="text/css" href="<?php echo site_url('application/bootstrap/css/bootstrap.min.css');?>">
+    <link rel="stylesheet" type="text/css" href="<?php echo site_url('application/css/ncwl.css');?>">
     <script type="text/javascript" src="<?php echo base_url('application/js/jquery-3.2.1.min.js');?>"></script>
     <script type="text/javascript" src="<?php echo base_url('application/js/popper.js');?>"></script>
     <script type="text/javascript" src="<?php echo base_url('application/bootstrap/js/bootstrap.min.js');?>"></script>
     <script type="text/javascript" src="<?php echo base_url('application/js/rehab.js');?>"></script>
 </head>
 <body>
-<div class="container-fluid mt-2 mb-3" style="width: 98%;" id="header">
+<div class="container-fluid" id="header">
+    <?php $this->load->view('rehab_header'); ?>
+</div>
+<div class="container-fluid mt-2 mb-3" style="width: 98%;" id="logo">
     <div class="row align-items-center w-100">
         <div class="col-lg-auto w-100">
             <div class="jumbotron jumbo-fluid rounded">
@@ -56,22 +60,25 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <a class="dropdown-item" href="#">Add New Inventory</a>
                     </div>
                 </div>
-                <div class="dropdown">
-                    <button class="btn btn-secondary dropdown-toggle ml-2" type="button" id="inventoryMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Administration
-                    </button>
-                    <div class="dropdown-menu" aria-labelledby="inventoryMenuButton">
-                        <a class="dropdown-item" href="javascript:void(0)" onclick="$(content).load('Admin/add_rehabber')">Add Rehabber</a>
-                        <a class="dropdown-item" href="#">Add Locations</a>
-                        <a class="dropdown-item" href="#">Add Cages</a>
-                    </div>
-                </div>
+                <?php
+                    if ($this->ion_auth->is_admin()){ ?>
+                        <div class="dropdown">
+                            <button class="btn btn-secondary dropdown-toggle ml-2" type="button" id="inventoryMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Administration
+                            </button>
+                            <div class="dropdown-menu" aria-labelledby="inventoryMenuButton">
+                                <a class="dropdown-item" href="javascript:void(0)" onclick="$(content).load('Admin/add_rehabber')">Add Rehabber</a>
+                                <a class="dropdown-item" href="#">Add Locations</a>
+                                <a class="dropdown-item" href="#">Add Cages</a>
+                            </div>
+                        </div>
+                <?php } ?>
             </div>
         </div>
     </div>
 </div>
 <div id="myStatus" class="ml-5"> </div>
-<div class="container-fluid mt-md-2 ml-2 border border-dark rounded" id="content" style="min-height: 500px; width: 98%">
+<div class="container-fluid mt-md-2 ml-2 border border-light rounded" id="content" style="min-height: 500px; width: 98%">
     <div class="card-deck mt-3 mb-3">
         <div class="card col-4" style="width: 20rem;">
             <img class="card-img-top rounded" src="<?php echo base_url();?>/application/images/squirrel_1.jpg" alt="Card image cap" height="450" width="175">
