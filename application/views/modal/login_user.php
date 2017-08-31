@@ -24,7 +24,6 @@
                         document.getElementById("loginUser").reset();
                     }
                     else if (res === "success") {
-                        alert('we have success');
                         window.location.reload(false);
                     }
                 }

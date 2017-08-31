@@ -44,7 +44,7 @@
                 Hello! <?php echo $user->first_name; ?> <?php echo $user->last_name; ?> (
                 <?php
                     $num_groups = count($user_groups);
-                    if ( $num_groups > 1 ) {
+                    if ( $num_groups >= 1 ) {
                         $itteration = 1;
                         foreach ($user_groups as $group) {
                             echo $group->name;
