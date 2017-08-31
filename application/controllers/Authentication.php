@@ -14,8 +14,6 @@ class Authentication extends CI_Controller {
         parent::__construct();
     }
     public function register_user(){
-        //$this->load->library('form_validation');
-        // password field with confirmation field matching
         $this->load->view('modal/register_user');
     }
     public function login_user(){
@@ -23,7 +21,6 @@ class Authentication extends CI_Controller {
         $this->load->view('modal/login_user');
     }
     public function createUser(){
-
         if ( $this->input->post('email') ) {
             $formData = array(
                 'first_name' => $this->input->post('first'),
@@ -51,7 +48,6 @@ class Authentication extends CI_Controller {
         }
     }
     public function loginUser(){
-
         if ( $this->input->post('login') ){
             $formData = array(
                 'login'    => $this->input->post('login'),
@@ -75,6 +71,5 @@ class Authentication extends CI_Controller {
         $this->ion_auth->logout();
         redirect(base_url(), 'refresh');
     }
-
 }
 ?>
