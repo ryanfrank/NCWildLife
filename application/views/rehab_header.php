@@ -15,7 +15,6 @@
             success : function(data){
                 if(data){
                     $('#modal_target').html(data);
-
                     //This shows the modal
                     $('#' + type + 'Modal').modal();
                 }
@@ -23,37 +22,6 @@
         });
     }
 </script>
-<script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/bootstrap-validator/0.4.5/js/bootstrapvalidator.min.js"></script>
-<script>
-    $(document).ready(function() {
-        $('#registerNewuser').bootstrapValidator({
-            feedbackIcons: {
-                valid: 'glyphicon glyphicon-ok',
-                invalid: 'glyphicon glyphicon-remove',
-                validating: 'glyphicon glyphicon-refresh'
-            },
-            fields: {
-                password: {
-                    validators: {
-                        identical: {
-                            field: 'inputPassword',
-                            message: 'The password and its confirm are not the same'
-                        }
-                    }
-                },
-                confirmPassword: {
-                    validators: {
-                        identical: {
-                            field: 'inputPasswordConfirm',
-                            message: 'The password and its confirm are not the same'
-                        }
-                    }
-                }
-            }
-        });
-    });
-</script>
-
 <div class="row border rounded ml-1 mr-1 mt-1" style="width: 100%; background-color: #686868 ">
     <div class="col align-self-start text-left font-italic text-white">
         <?php echo date('l jS \of F Y'); ?>
@@ -68,6 +36,29 @@
                 or
                     <a class="text-success" data-toggle="modal" data-target="#loginModal" onclick="get_modal('login');">login</a>.
         <?php
+            }
+            else {
+                $user = $this->ion_auth->user()->row();
+                $user_groups = $this->ion_auth->get_users_groups($user->id)->result();
+            ?>
+                Hello! <?php echo $user->first_name; ?> <?php echo $user->last_name; ?> (
+                <?php
+                    $num_groups = count($user_groups);
+                    if ( $num_groups > 1 ) {
+                        $itteration = 1;
+                        foreach ($user_groups as $group) {
+                            echo $group->name;
+                            if ( $itteration != $num_groups )
+                            {
+                                echo ",";
+                            }
+                            $itteration++;
+                        }
+                    }
+                ?>
+                )
+                <a href="Authentication/logoutUser">Logout</a>
+            <?php
             }
         ?>
     </div>

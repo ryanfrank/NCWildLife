@@ -60,7 +60,7 @@
     });
 </script>
 <div id="info">
-    <form class="mt-3" id="intakeAnimal" name="intakeAnimal">
+    <form class="mt-3" id="intakeAnimal" name="intakeAnimal" role="form">
         <div class="row">
             <div class="form-group col-4">
                 <label for="animalName" class="align-content-center">Animal Name</label>
