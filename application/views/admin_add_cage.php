@@ -17,13 +17,8 @@
             var isVolunteer;
             if( $("#volunteer").is(':checked') ) { isVolunteer = "1"; }
             else { isVolunteer = "0"; }
-            var isActive;
-            if( $("#active").is(':checked') ) { isActive = "1"; }
-            else { isActive = "0"; }
             var e = document.getElementById("stateName");
             var stateValue = e.options[e.selectedIndex].value;
-            var f = document.getElementById("countyName");
-            var countyValue = f.options[f.selectedIndex].value;
             jQuery.ajax({
                 type: "POST",
                 url: "<?php echo base_url(); ?>" + "Admin/addRehabber",
@@ -34,12 +29,10 @@
                     "street":       $("input#streetAddress").val(),
                     "city":         $("input#cityName").val(),
                     "state":        stateValue,
-                    "county":       countyValue,
                     "zip":          $("input#zipCode").val(),
                     "email":        $("input#emailAddress").val(),
                     "phone":        $("input#phoneNumber").val(),
                     "isLicensed":   licensed,
-                    "isActive":     isActive,
                     "isVolunteer":  isVolunteer
                 },
                 success: function(res) {
@@ -60,29 +53,8 @@
         });
     });
 </script>
-<script type="application/javascript">
-    $('#stateName').change(function(){
-        var e = document.getElementById("stateName");
-        var stateValue = e.options[e.selectedIndex].value;
-        jQuery.ajax({
-            type: "POST",
-            url: "<?php echo base_url(); ?>" + "Admin/getCounty",
-            dataType: 'json',
-            data: {
-                "stateID": stateValue
-            },
-            success: function(result){
-                $('#countyName').empty();
-                $.each(result.result, function(){
-                    $('#countyName').append('<option value="' + this['county_id'] + '" >'+this['county_name']+'</option>');
-                    document.getElementById("countyName").disabled = false;
-                });
-            }
-        });
-    });
-</script>
 <div id="info">
-    <form class="mt-3" id="addRehabber" name="addRehabber">
+    <form class="mt-3" id="addCage" name="addCage">
         <div class="row">
             <div class="form-group col-6">
                 <label for="firstName" class="align-content-center">Rehabber First Name</label>
@@ -109,16 +81,9 @@
             <div class="form-group col-3">
                 <label for="stateName" class="align-content-center">Rehabber State</label>
                 <select class="form-control" id="stateName" required>
-                    <option></option>
                     <?php foreach ($states->result() as $row):?>
                         <option value="<?php echo $row->state_id?>"><?php echo $row->state_name?></option>
                     <?php endforeach;?>
-                </select>
-            </div>
-            <div class="form-group col-3">
-                <label for="countyName" class="align-content-center">Rehabber County</label>
-                <select class="form-control" id="countyName" disabled>
-                    <option>Select State First</option>
                 </select>
             </div>
             <div class="form-group col-3">
@@ -129,31 +94,26 @@
                 <label for="emailAddress" class="align-content-center">Rehabber Email</label>
                 <input type="email" class="form-control" id="emailAddress" placeholder="email@domain.com" onmouseover="this.focus();"  required>
             </div>
-        </div>
-        <div class="row">
             <div class="form-group col-3">
                 <label for="phoneNumber" class="align-content-center">Rehabber Phone</label>
                 <input type="text" class="form-control" id="phoneNumber" placeholder="XXX-XXX-XXXX" onmouseover="this.focus();" required>
             </div>
-            <div class="form-check col-3">
-                <label class="form-check-label">
-                    <input class="form-check-input" id="rehabberLicensed" type="checkbox" value="No" onmouseover="this.focus();" >
-                    Licensed Rehabber?
-                </label>
-            </div>
-            <div class="form-check col-3">
-                <label class="form-check-label">
-                    <input class="form-check-input" id="volunteer" type="checkbox" value="No" onmouseover="this.focus();" >
-                    NCWL Volunteer?
-                </label>
-            </div>
-            <div class="form-check col-3">
-                <label class="form-check-label">
-                    <input class="form-check-input" id="active" type="checkbox" value="No" onmouseover="this.focus();" >
-                    Active?
-                </label>
+            <div class="row">
+                <div class="form-check col-3">
+                    <label class="form-check-label">
+                        <input class="form-check-input" id="rehabberLicensed" type="checkbox" value="No" onmouseover="this.focus();" >
+                        Licensed Rehabber?
+                    </label>
+                </div>
+                <div class="form-check col-3">
+                    <label class="form-check-label">
+                        <input class="form-check-input" id="volunteer" type="checkbox" value="No" onmouseover="this.focus();" >
+                        Volunteer?
+                    </label>
+                </div>
             </div>
         </div>
+        <br>
         <div class="row ml-2 mt-4">
             <input type="submit" id="submitButton">
         </div>

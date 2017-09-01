@@ -45,12 +45,13 @@ class Admin extends CI_Controller
             'rehabber_email'        => $this->input->post('email'),
             'rehabber_license'      => $this->input->post('isLicensed'),
             'rehabber_volunteer'    => $this->input->post('isVolunteer'),
+            'rehabber_active'       => $this->input->post('isActive'),
+            'rehabber_county'       => $this->input->post('county'),
             'created_date'          => $date
         );
         $where = array('rehabber_first_name' => $formData['rehabber_first_name'], 'rehabber_last_name' => $formData['rehabber_last_name']);
         $query = $this->db->get_where('rehabber', $where);
         if ( $query->num_rows() == 0 ) {
-            //$sql = $this->db->set($formData)->get_compiled_insert('rehabber');
             $this->db->insert('rehabber', $formData);
             $num_inserts = $this->db->affected_rows();
             if ($num_inserts > 0 ) { $result = "success"; }
@@ -60,6 +61,15 @@ class Admin extends CI_Controller
             $result = "duplicate";
         }
         echo json_encode($result);
+    }
+    public function getCounty(){
+        $state = $this->input->post('stateID');
+        $stateQuery = $this->db->get_where('states', array('state_id' => $state));
+        $stateResult = $stateQuery->row();
+
+        $query = $this->db->get_where('county_view',array('state_name' => $stateResult->state_name));
+        $result = $query->result_array();
+        echo json_encode(array('result'=>$result));
     }
 }
 ?>

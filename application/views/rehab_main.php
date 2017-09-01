@@ -61,6 +61,19 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     </div>
                 </div>
                 <?php
+                    if ( $this->ion_auth->logged_in() ){ ?>
+                        <div class="dropdown">
+                            <button class="btn btn-secondary dropdown-toggle ml-2" type="button" id="reportMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Charts
+                            </button>
+                            <div class="dropdown-menu" aria-labelledby="reportMenuButton">
+                                <a class="dropdown-item" href="javascript:void(0)" onclick="$(content).load('Charts/squirrelChart')">Squirrel Feeding</a>
+                                <a class="dropdown-item" href="javascript:void(0)" onclick="$(content).load('Charts/opossumChart')">Opossum Feeding</a>
+                                <a class="dropdown-item" href="javascript:void(0)" onclick="$(content).load('Charts/bunnyChart')">Bunny Feeding</a>
+                            </div>
+                        </div>
+                    <?php } ?>
+                <?php
                     if ($this->ion_auth->is_admin()){ ?>
                         <div class="dropdown">
                             <button class="btn btn-secondary dropdown-toggle ml-2" type="button" id="inventoryMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
