@@ -22,12 +22,11 @@
         });
     }
 </script>
-<div class="row border rounded ml-1 mr-1 mt-1" style="width: 100%; background-color: #686868 ">
-    <div class="col align-self-start text-left font-italic text-white">
+<div class="row border ml-1 mt-1 w-100">
+    <div class="col align-self-start text-left font-italic">
         <?php echo date('l jS \of F Y'); ?>
     </div>
-
-    <div class="col align-self-end text-right text-white">
+    <div class="col align-self-end text-right font-italic">
         <?php
             if (!$this->ion_auth->logged_in()){
         ?>

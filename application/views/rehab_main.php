@@ -12,109 +12,98 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <html lang="en">
 <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Welcome to NC WildLife Rehab</title>
     <link rel="stylesheet" type="text/css" href="<?php echo site_url('application/bootstrap-4.0.0-beta-dist/css/bootstrap.min.css');?>">
     <script type="text/javascript" src="<?php echo base_url('application/js/jquery-3.2.1.min.js');?>"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
     <script type="text/javascript" src="<?php echo base_url('application/bootstrap-4.0.0-beta-dist/js/bootstrap.js');?>"></script>
+    <link rel="stylesheet" type="text/css" href="<?php echo site_url('application/css/css/font-awesome.css');?>">
     <link rel="stylesheet" type="text/css" href="<?php echo site_url('application/css/ncwl.css');?>">
 
 </head>
-<body>
-<div class="container-fluid" id="header">
-    <?php $this->load->view('rehab_header'); ?>
-</div>
-<div class="container-fluid mt-2 mb-3" style="width: 98%;" id="logo">
-    <div class="row align-items-center w-100">
-        <div class="col-lg-auto w-100">
-            <div class="jumbotron jumbo-fluid rounded">
-                <h1 class="display-3 align-center">NC WildLife</h1>
+    <body>
+        <div class="container-fluid" id="header">
+            <?php $this->load->view('rehab_header'); ?>
+        </div>
+       <!-- <div class="container-fluid ml-1" id="logo">
+            <div class="row">
+                <div class="col-12 w-100">
+                    <div class="jumbotron jumbo-fluid ">
+                        <h1 class="display-5 align-center">NC WildLife</h1>
+                    </div>
+                </div>
             </div>
-            <div class="btn-group">
-                <div class="dropdown">
-                    <button class="btn btn-secondary dropdown-toggle" type="button" id="intakeMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Intake
-                    </button>
-                    <div class="dropdown-menu" aria-labelledby="intakeMenuButton">
-                        <a class="dropdown-item" href="javascript:void(0)" onclick="$(content).load('Intake/add_good_samaritan')">Add Good Samaritan</a>
-                        <a class="dropdown-item" href="javascript:void(0)" onclick="$(content).load('Intake/intake_animal')">Intake Animal</a>
-                    </div>
-                </div>
-                <div class="dropdown">
-                    <button class="btn btn-secondary dropdown-toggle ml-2" type="button" id="reportMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Reports
-                    </button>
-                    <div class="dropdown-menu" aria-labelledby="reportMenuButton">
-                        <a class="dropdown-item" href="#">Current Activity</a>
-                        <a class="dropdown-item" href="#">Year to date</a>
-                        <a class="dropdown-item" href="#">Inventory</a>
-                    </div>
-                </div>
-                <div class="dropdown">
-                    <button class="btn btn-secondary dropdown-toggle ml-2" type="button" id="inventoryMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Inventory
-                    </button>
-                    <div class="dropdown-menu" aria-labelledby="inventoryMenuButton">
-                        <a class="dropdown-item" href="#">Inventory Search</a>
-                        <a class="dropdown-item" href="#">Update Inventory</a>
-                        <a class="dropdown-item" href="#">Add New Inventory</a>
-                    </div>
-                </div>
-                <?php
-                    if ( $this->ion_auth->logged_in() ){ ?>
-                        <div class="dropdown">
-                            <button class="btn btn-secondary dropdown-toggle ml-2" type="button" id="reportMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Charts
-                            </button>
-                            <div class="dropdown-menu" aria-labelledby="reportMenuButton">
-                                <a class="dropdown-item" href="javascript:void(0)" onclick="$(content).load('Charts/squirrelChart')">Squirrel Feeding</a>
-                                <a class="dropdown-item" href="javascript:void(0)" onclick="$(content).load('Charts/opossumChart')">Opossum Feeding</a>
-                                <a class="dropdown-item" href="javascript:void(0)" onclick="$(content).load('Charts/bunnyChart')">Bunny Feeding</a>
+        </div> -->
+        <div class="container-fluid ml-0" id="menuBar">
+            <?php $this->load->view('rehab_menu'); ?>
+        </div>
+        <div id="myStatus" class="container-fluid ml-2"></div>
+        <div class="container-fluid ml-1 mt-2" id="content" style="min-height: 500px; width: 98%">
+            <div class="row">
+                <div id="carouselMain" class="carousel slide col-6" data-ride="carousel">
+                    <ol class="carousel-indicators">
+                        <li data-target="carouselMain" data-slide-to="0" class="active"></li>
+                        <li data-target="carouselMain" data-slide-to="1"></li>
+                        <li data-target="carouselMain" data-slide-to="2"></li>
+                    </ol>
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <img class="d-block w-100 rounded" style="height: 500px;" src="<?php echo base_url();?>/application/images/squirrel_1.jpg" alt="First Slide">
+                            <div class="carousel-caption d-none d-md-block">
+                                <h3>Rehabilitation</h3>
+                                <p>Taking every opportunity to return wild life to their natural habitats.</p>
                             </div>
                         </div>
-                    <?php } ?>
-                <?php
-                    if ($this->ion_auth->is_admin()){ ?>
-                        <div class="dropdown">
-                            <button class="btn btn-secondary dropdown-toggle ml-2" type="button" id="inventoryMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Administration
-                            </button>
-                            <div class="dropdown-menu" aria-labelledby="inventoryMenuButton">
-                                <a class="dropdown-item" href="javascript:void(0)" onclick="$(content).load('Admin/add_rehabber')">Add Rehabber</a>
-                                <a class="dropdown-item" href="#">Add Locations</a>
-                                <a class="dropdown-item" href="#">Add Cages</a>
+                        <div class="carousel-item">
+                            <img class="d-block w-100 rounded" style="height: 500px;" src="<?php echo base_url();?>/application/images/possum.jpg" alt="First Slide">
+                            <div class="carousel-caption d-none d-md-block">
+                                <h3>Education</h3>
+                                <p>Educating the public on the benefits of wild life and the role they play in our ecosystem.</p>
                             </div>
                         </div>
-                <?php } ?>
+                        <div class="carousel-item">
+                            <img class="d-block w-100 rounded" style="height: 500px;" src="<?php echo base_url();?>/application/images/goat.jpg" alt="First Slide">
+                            <div class="carousel-caption d-none d-md-block">
+                                <h3>Partnership</h3>
+                                <p>Working with our peer partners to facilitate support systems and enhance capabilities by sharing knowledge and experience.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <a class="carousel-control-prev" href="#carouselMain" role="button" data-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="carousel-control-next" href="#carouselMain" role="button" data-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
+                <div class="col-6">
+                    <strong>Welcome to NC Wild Life Rehab</strong><br>
+                    Here at NCWR, we have two main focuses. First, is to save the animal/s. Secondly, is to educate. By
+                    educating, we can spread the word of what to do if an injured or orphaned animal is found. Our
+                    educational goals and activities include inhouse classes on different topics (what to do if you
+                    find a wild baby, squirrel pox, how to become a wildlife rehabilitator, etc,), through volunteering
+                    programs here at NCWR, teaching classes to boy and girl scouts and at animal shelters and at nature
+                    centers. NCWR also educates by posting in closed wildlife groups that contain only licensed wildlife
+                    rehabilitators and on NCWR’s personal Facebook page. We always encourage questions and appreciate
+                    suggestions from outsiders on topics such as cage building ideas and other random topics. The more
+                    we teach and the more we learn, the more we can assist wildlife here and in a broad spectrum.
+                    <p><br>
+                    <strong>Current activities planned Second half of 2017:</strong>    <br>
+                    Iredell Human Society hosted a Wildlife Education Day – July 2017<br>
+                    What to do if you find a wildlife baby – inhouse class – August 2017<br>
+                    Love your Possums – inhouse class- August 2017<br>
+                    How to outsmart wildlife in your home and garden – inhouse class – August 2017<br>
+                    From intake to release at NCWR – inhouse class – September 2017<br>
+                    Nature Day in Charlotte, NC - October 2017<br>
+                    South Mountain’s Nature Day – October 2017<br>
+                    </p>
+
+
+                </div>
             </div>
         </div>
-    </div>
-</div>
-<div id="myStatus" class="ml-5"> </div>
-<div class="container-fluid mt-md-2 ml-2 border border-light rounded" id="content" style="min-height: 500px; width: 98%">
-    <div class="card-deck mt-3 mb-3">
-        <div class="card col-4" style="width: 20rem;">
-            <img class="card-img-top rounded" src="<?php echo base_url();?>/application/images/squirrel_1.jpg" alt="Card image cap" height="450" width="175">
-            <div class="card-body">
-                <h4 class="card-title">Rehabilitation</h4>
-                <p class="card-text">Taking every opportunity to return wild life to their natural habitats.</p>
-            </div>
-        </div>
-        <div class="card col-4" style="width: 20rem;">
-            <img class="card-img-top rounded" src="<?php echo base_url();?>/application/images/possum.jpg" alt="Card image cap" height="450" width="175">
-            <div class="card-body">
-                <h4 class="card-title">Education</h4>
-                <p class="card-text">Educating the public on the benefits of wild life and the role they play in our ecosystem.</p>
-            </div>
-        </div>
-        <div class="card col-4" style="width: 20rem;">
-            <img class="card-img-top rounded" src="<?php echo base_url();?>/application/images/goat.jpg" alt="Card image cap" height="450" width="175">
-            <div class="card-body">
-                <h4 class="card-title">Partnership</h4>
-                <p class="card-text">Working with our peer partners to facilitate support systems and enhance capabilities by sharing knowledge and experience.</p>
-            </div>
-        </div>
-    </div>
-</div>
-</body>
+    </body>
 </html>
