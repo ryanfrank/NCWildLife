@@ -16,27 +16,31 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `ages`
+-- Table structure for table `location`
 --
 
-DROP TABLE IF EXISTS `ages`;
+DROP TABLE IF EXISTS `location`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `ages` (
-  `ages_id` int(5) NOT NULL AUTO_INCREMENT,
-  `ages_description` varchar(45) NOT NULL,
-  PRIMARY KEY (`ages_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+CREATE TABLE `location` (
+  `location_id` int(5) NOT NULL AUTO_INCREMENT,
+  `location_name` varchar(45) DEFAULT NULL,
+  `location_street` varchar(45) NOT NULL,
+  `location_city` varchar(45) NOT NULL,
+  `location_state` int(2) NOT NULL,
+  PRIMARY KEY (`location_id`),
+  KEY `state_idx` (`location_state`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `ages`
+-- Dumping data for table `location`
 --
 
-LOCK TABLES `ages` WRITE;
-/*!40000 ALTER TABLE `ages` DISABLE KEYS */;
-INSERT INTO `ages` VALUES (1,'Pinky'),(2,'Baby'),(3,'Juvenile'),(4,'Teen'),(5,'Adult'),(6,'Senior');
-/*!40000 ALTER TABLE `ages` ENABLE KEYS */;
+LOCK TABLES `location` WRITE;
+/*!40000 ALTER TABLE `location` DISABLE KEYS */;
+INSERT INTO `location` VALUES (1,'NC WildLife Main','429 Aderholdt Road','Lincolnton',33),(2,'NC WildLife Remote','877 Ram Lane','Lincolnton',0);
+/*!40000 ALTER TABLE `location` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -48,4 +52,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-08-30 20:35:57
+-- Dump completed on 2017-09-05 18:33:24

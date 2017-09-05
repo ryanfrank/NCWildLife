@@ -21,10 +21,13 @@
             }
         });
     }
+    function update() {
+        $('#clock').html(moment().format('dddd MMM. D, YYYY [at] h:mm A z'));
+    }
+    setInterval(update,250);
 </script>
 <div class="row border ml-1 mt-1 w-100">
-    <div class="col align-self-start text-left font-italic">
-        <?php echo date('l jS \of F Y'); ?>
+    <div class="col align-self-start text-left font-italic" id="clock">
     </div>
     <div class="col align-self-end text-right font-italic">
         <?php

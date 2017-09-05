@@ -1,8 +1,8 @@
 -- MySQL dump 10.13  Distrib 5.7.17, for macos10.12 (x86_64)
 --
--- Host: nc28208-master    Database: NCWildLife
+-- Host: localhost    Database: NCWildLife
 -- ------------------------------------------------------
--- Server version	5.5.52-MariaDB
+-- Server version	5.6.35
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -41,7 +41,7 @@ CREATE TABLE `good_samaritan` (
   PRIMARY KEY (`good_samaritan_id`),
   KEY `states_idx` (`good_samaritan_state`),
   CONSTRAINT `states` FOREIGN KEY (`good_samaritan_state`) REFERENCES `states` (`state_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -50,7 +50,7 @@ CREATE TABLE `good_samaritan` (
 
 LOCK TABLES `good_samaritan` WRITE;
 /*!40000 ALTER TABLE `good_samaritan` DISABLE KEYS */;
-INSERT INTO `good_samaritan` VALUES (1,'Ryan','Frank','429 Aderholdt Road','Lincolnton',33,28092,'7048404309','ryan_w_frank@mac.com','Friends',1,'1000',1,'2017-08-14 14:03:02','2017-08-14 19:03:02'),(2,'Joe','Blow','429 Aderholdt Road','Lincolnton',44,28092,'7048404309','ryan_w_frank@mac.com','People',1,'100',1,'2017-08-15 08:58:48','2017-08-15 13:58:48');
+INSERT INTO `good_samaritan` VALUES (1,'Ryan','Frank','429 Aderholdt Road','Lincolnton',33,28092,'7048404309','ryan_w_frank@mac.com','Friends',1,'1000',1,'2017-08-14 14:03:02','2017-08-14 19:03:02'),(2,'Joe','Blow','429 Aderholdt Road','Lincolnton',44,28092,'7048404309','ryan_w_frank@mac.com','People',1,'100',1,'2017-08-15 08:58:48','2017-08-15 13:58:48'),(3,'','','','',1,0,'','yy@jjj.com','',0,'0',0,'2017-08-30 22:57:27','2017-08-30 20:57:27');
 /*!40000 ALTER TABLE `good_samaritan` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -63,4 +63,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-08-29 10:39:11
+-- Dump completed on 2017-09-05 18:33:24

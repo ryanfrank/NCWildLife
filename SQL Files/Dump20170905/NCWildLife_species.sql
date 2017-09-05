@@ -1,8 +1,8 @@
 -- MySQL dump 10.13  Distrib 5.7.17, for macos10.12 (x86_64)
 --
--- Host: nc28208-master    Database: NCWildLife
+-- Host: localhost    Database: NCWildLife
 -- ------------------------------------------------------
--- Server version	5.5.52-MariaDB
+-- Server version	5.6.35
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -16,29 +16,30 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `animal`
+-- Table structure for table `species`
 --
 
-DROP TABLE IF EXISTS `animal`;
+DROP TABLE IF EXISTS `species`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `animal` (
-  `animal_id` int(5) NOT NULL AUTO_INCREMENT,
-  `animal_name` varchar(45) NOT NULL,
-  `animal_release` date DEFAULT NULL,
-  PRIMARY KEY (`animal_id`,`animal_name`),
-  UNIQUE KEY `animal_name_UNIQUE` (`animal_name`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
+CREATE TABLE `species` (
+  `species_id` int(5) NOT NULL AUTO_INCREMENT,
+  `species_name` varchar(45) NOT NULL,
+  `species_type` varchar(45) NOT NULL,
+  `species_RVS` varchar(3) DEFAULT NULL,
+  `species_order` int(5) NOT NULL,
+  PRIMARY KEY (`species_id`,`species_type`,`species_name`)
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `animal`
+-- Dumping data for table `species`
 --
 
-LOCK TABLES `animal` WRITE;
-/*!40000 ALTER TABLE `animal` DISABLE KEYS */;
-INSERT INTO `animal` VALUES (1,'MyName',NULL),(2,'Name',NULL),(3,'ThisAnimal',NULL),(4,'rrrr',NULL),(5,'efwef',NULL),(6,'ouyeo',NULL),(7,'jbviubrv',NULL),(8,'MyAnimal',NULL),(9,'Another Animal',NULL),(10,'AnotherOneFrom Ryan',NULL);
-/*!40000 ALTER TABLE `animal` ENABLE KEYS */;
+LOCK TABLES `species` WRITE;
+/*!40000 ALTER TABLE `species` DISABLE KEYS */;
+INSERT INTO `species` VALUES (1,'Fawn','Cervidae','No',4),(2,'Skunk','Conepatus','Yes',5),(3,'Opossum','Marcupial','No',2),(4,'Otter','Mustelidae','No',6),(5,'Racoon','Procyonidae','Yes',7),(6,'Squirrel','Rodent','Yes',1),(7,'Bunny','','No',3),(8,'Beaver','Rodent','No',8),(9,'Mouse','Rodent','No',5);
+/*!40000 ALTER TABLE `species` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -50,4 +51,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-08-29 10:39:12
+-- Dump completed on 2017-09-05 18:33:24

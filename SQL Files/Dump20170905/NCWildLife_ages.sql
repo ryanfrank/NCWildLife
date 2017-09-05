@@ -1,8 +1,8 @@
 -- MySQL dump 10.13  Distrib 5.7.17, for macos10.12 (x86_64)
 --
--- Host: nc28208-master    Database: NCWildLife
+-- Host: localhost    Database: NCWildLife
 -- ------------------------------------------------------
--- Server version	5.5.52-MariaDB
+-- Server version	5.6.35
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -16,33 +16,27 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `cages`
+-- Table structure for table `ages`
 --
 
-DROP TABLE IF EXISTS `cages`;
+DROP TABLE IF EXISTS `ages`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `cages` (
-  `cage_id` int(5) NOT NULL AUTO_INCREMENT,
-  `cage_name` varchar(45) DEFAULT NULL,
-  `cage_size` varchar(15) NOT NULL,
-  `cage_location` int(5) NOT NULL,
-  `cage_condition` varchar(45) NOT NULL,
-  `cage_type` varchar(45) NOT NULL,
-  `cage_capacity` int(5) NOT NULL,
-  PRIMARY KEY (`cage_id`),
-  KEY `cage_location_idx` (`cage_location`),
-  CONSTRAINT `cage_location` FOREIGN KEY (`cage_location`) REFERENCES `location` (`location_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+CREATE TABLE `ages` (
+  `ages_id` int(5) NOT NULL AUTO_INCREMENT,
+  `ages_description` varchar(45) NOT NULL,
+  PRIMARY KEY (`ages_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `cages`
+-- Dumping data for table `ages`
 --
 
-LOCK TABLES `cages` WRITE;
-/*!40000 ALTER TABLE `cages` DISABLE KEYS */;
-/*!40000 ALTER TABLE `cages` ENABLE KEYS */;
+LOCK TABLES `ages` WRITE;
+/*!40000 ALTER TABLE `ages` DISABLE KEYS */;
+INSERT INTO `ages` VALUES (1,'Pinky'),(2,'Baby'),(3,'Juvenile'),(4,'Teen'),(5,'Adult'),(6,'Senior');
+/*!40000 ALTER TABLE `ages` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -54,4 +48,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-08-29 10:39:12
+-- Dump completed on 2017-09-05 18:33:23

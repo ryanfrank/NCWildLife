@@ -16,33 +16,33 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `users_groups`
+-- Table structure for table `cages`
 --
 
-DROP TABLE IF EXISTS `users_groups`;
+DROP TABLE IF EXISTS `cages`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `users_groups` (
-  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
-  `user_id` int(11) unsigned NOT NULL,
-  `group_id` mediumint(8) unsigned NOT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `uc_users_groups` (`user_id`,`group_id`),
-  KEY `fk_users_groups_users1_idx` (`user_id`),
-  KEY `fk_users_groups_groups1_idx` (`group_id`),
-  CONSTRAINT `fk_users_groups_groups1` FOREIGN KEY (`group_id`) REFERENCES `groups` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION,
-  CONSTRAINT `fk_users_groups_users1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8;
+CREATE TABLE `cages` (
+  `cage_id` int(5) NOT NULL AUTO_INCREMENT,
+  `cage_name` varchar(45) DEFAULT NULL,
+  `cage_size` varchar(15) NOT NULL,
+  `cage_location` int(5) NOT NULL,
+  `cage_condition` varchar(45) NOT NULL,
+  `cage_type` varchar(45) NOT NULL,
+  `cage_capacity` int(5) NOT NULL,
+  PRIMARY KEY (`cage_id`),
+  KEY `cage_location_idx` (`cage_location`),
+  CONSTRAINT `cage_location` FOREIGN KEY (`cage_location`) REFERENCES `location` (`location_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `users_groups`
+-- Dumping data for table `cages`
 --
 
-LOCK TABLES `users_groups` WRITE;
-/*!40000 ALTER TABLE `users_groups` DISABLE KEYS */;
-INSERT INTO `users_groups` VALUES (17,15,1),(16,15,2);
-/*!40000 ALTER TABLE `users_groups` ENABLE KEYS */;
+LOCK TABLES `cages` WRITE;
+/*!40000 ALTER TABLE `cages` DISABLE KEYS */;
+/*!40000 ALTER TABLE `cages` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -54,4 +54,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-08-30 20:35:57
+-- Dump completed on 2017-09-05 18:33:25

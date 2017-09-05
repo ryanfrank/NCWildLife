@@ -41,7 +41,7 @@ CREATE TABLE `users` (
   `company` varchar(100) DEFAULT NULL,
   `phone` varchar(20) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -50,7 +50,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1,'127.0.0.1','administrator','$2a$07$SeBknntpZror9uyftVopmu61qg0ms8Qv1yV6FG.kQOSM.9QhmTo36','','admin@admin.com','',NULL,NULL,NULL,1268889823,1268889823,1,'Admin','istrator','ADMIN','0'),(15,'::1','rfrank','$2y$08$ukYByyRKO7ALNKV07iTECunbGRA3WLZbHjFcF4IE3vcfei1avJPXq',NULL,'ryan_w_frank@mac.com',NULL,NULL,NULL,'Jku69wxQ6V1S4tkMmtoXJ.',1504137614,1504139651,1,'Ryan','Frank',NULL,NULL);
+INSERT INTO `users` VALUES (1,'127.0.0.1','administrator','$2a$07$SeBknntpZror9uyftVopmu61qg0ms8Qv1yV6FG.kQOSM.9QhmTo36','','admin@admin.com','',NULL,NULL,NULL,1268889823,1268889823,1,'Admin','istrator','ADMIN','0'),(15,'::1','rfrank','$2y$08$ukYByyRKO7ALNKV07iTECunbGRA3WLZbHjFcF4IE3vcfei1avJPXq',NULL,'ryan_w_frank@mac.com',NULL,NULL,NULL,'cYslbDUvmi2mhTkpoLQWEe',1504137614,1504646477,1,'Ryan','Frank',NULL,NULL),(16,'::1','enelson','$2y$08$l6uPMTAkgxhQC7wvAwXpC.3Qd81ptcjhRCj5tSHOXhV52MbpQBsqS',NULL,'emilie.nelson@gmail.com',NULL,NULL,NULL,'7WBxNnc0Bf0yg1vdbxn4kO',1504148043,1504148279,1,'Emilie','Nelson',NULL,NULL);
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -63,4 +63,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-08-30 20:35:58
+-- Dump completed on 2017-09-05 18:33:23

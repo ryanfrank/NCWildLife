@@ -16,29 +16,29 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `login_attempts`
+-- Table structure for table `supplies`
 --
 
-DROP TABLE IF EXISTS `login_attempts`;
+DROP TABLE IF EXISTS `supplies`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `login_attempts` (
-  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
-  `ip_address` varchar(15) NOT NULL,
-  `login` varchar(100) NOT NULL,
-  `time` int(11) unsigned DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+CREATE TABLE `supplies` (
+  `supplies_id` int(11) NOT NULL AUTO_INCREMENT,
+  `supply_name` varchar(45) NOT NULL,
+  `supply_purpose` varchar(45) NOT NULL,
+  `supply_quantity` int(10) NOT NULL,
+  `supply_reorder_level` int(10) DEFAULT NULL,
+  PRIMARY KEY (`supplies_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `login_attempts`
+-- Dumping data for table `supplies`
 --
 
-LOCK TABLES `login_attempts` WRITE;
-/*!40000 ALTER TABLE `login_attempts` DISABLE KEYS */;
-INSERT INTO `login_attempts` VALUES (1,'::1','rfrank',1504137272),(2,'::1','rfrank',1504137298),(3,'::1','rfrank',1504137627);
-/*!40000 ALTER TABLE `login_attempts` ENABLE KEYS */;
+LOCK TABLES `supplies` WRITE;
+/*!40000 ALTER TABLE `supplies` DISABLE KEYS */;
+/*!40000 ALTER TABLE `supplies` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -50,4 +50,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-08-30 20:35:57
+-- Dump completed on 2017-09-05 18:33:25

@@ -1,8 +1,8 @@
 -- MySQL dump 10.13  Distrib 5.7.17, for macos10.12 (x86_64)
 --
--- Host: nc28208-master    Database: NCWildLife
+-- Host: localhost    Database: NCWildLife
 -- ------------------------------------------------------
--- Server version	5.5.52-MariaDB
+-- Server version	5.6.35
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -36,10 +36,14 @@ CREATE TABLE `rehabber` (
   `created_date` datetime NOT NULL,
   `updated_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `rehabber_volunteer` int(1) NOT NULL,
+  `rehabber_county` int(11) NOT NULL,
+  `rehabber_active` int(1) NOT NULL,
   PRIMARY KEY (`rehabber_id`),
   KEY `state_idx` (`rehabber_state`),
+  KEY `county_key_idx` (`rehabber_county`),
+  CONSTRAINT `county_key` FOREIGN KEY (`rehabber_county`) REFERENCES `counties` (`county_id`),
   CONSTRAINT `state` FOREIGN KEY (`rehabber_state`) REFERENCES `states` (`state_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -48,7 +52,7 @@ CREATE TABLE `rehabber` (
 
 LOCK TABLES `rehabber` WRITE;
 /*!40000 ALTER TABLE `rehabber` DISABLE KEYS */;
-INSERT INTO `rehabber` VALUES (1,'Ryan','Frank','429 Aderholdt Road','Lincolnton',33,28092,'ryan_w_frank@mac.com','7048404309',0,'2017-08-14 16:14:56','2017-08-14 21:14:56',0),(2,'Emilie','Nelson','429 Aderholdt Road','Lincolnton',33,28092,'emilie.nelson@gmail.com','7048584372',1,'2017-08-14 16:59:42','2017-08-14 21:59:42',0);
+INSERT INTO `rehabber` VALUES (1,'Ryan','Frank','429 Aderholdt Road','Lincolnton',33,28092,'ryan_w_frank@mac.com','7048404309',0,'2017-08-14 16:14:56','2017-09-01 20:24:51',0,1921,1),(2,'Emilie','Nelson','429 Aderholdt Road','Lincolnton',33,28092,'emilie.nelson@gmail.com','7048584372',1,'2017-08-14 16:59:42','2017-09-01 20:24:17',0,1921,0),(12,'Michelle','Ray','877 Ram Lane','Lincolnton',33,28092,'mrinbfe@gmail.com','7049053551',1,'2017-09-02 00:30:20','2017-09-01 22:30:20',1,1940,1);
 /*!40000 ALTER TABLE `rehabber` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -61,4 +65,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-08-29 10:39:10
+-- Dump completed on 2017-09-05 18:33:24

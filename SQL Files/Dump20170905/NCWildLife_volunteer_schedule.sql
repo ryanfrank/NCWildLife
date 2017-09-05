@@ -16,31 +16,31 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `location`
+-- Table structure for table `volunteer_schedule`
 --
 
-DROP TABLE IF EXISTS `location`;
+DROP TABLE IF EXISTS `volunteer_schedule`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `location` (
-  `location_id` int(5) NOT NULL AUTO_INCREMENT,
-  `location_name` varchar(45) DEFAULT NULL,
-  `location_street` varchar(45) NOT NULL,
-  `location_city` varchar(45) NOT NULL,
-  `location_state` int(2) NOT NULL,
-  PRIMARY KEY (`location_id`),
-  KEY `state_idx` (`location_state`)
+CREATE TABLE `volunteer_schedule` (
+  `id` int(255) NOT NULL AUTO_INCREMENT,
+  `title` varchar(85) DEFAULT NULL,
+  `allDay` tinyint(5) DEFAULT '0',
+  `start` datetime DEFAULT NULL,
+  `end` datetime DEFAULT NULL,
+  `backgroundColor` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `location`
+-- Dumping data for table `volunteer_schedule`
 --
 
-LOCK TABLES `location` WRITE;
-/*!40000 ALTER TABLE `location` DISABLE KEYS */;
-INSERT INTO `location` VALUES (1,'NC WildLife Main','429 Aderholdt Road','Lincolnton',33),(2,'NC WildLife Remote','877 Ram Lane','Lincolnton',0);
-/*!40000 ALTER TABLE `location` ENABLE KEYS */;
+LOCK TABLES `volunteer_schedule` WRITE;
+/*!40000 ALTER TABLE `volunteer_schedule` DISABLE KEYS */;
+INSERT INTO `volunteer_schedule` VALUES (1,'Test Event',0,'2017-09-05 12:30:00','2017-09-05 20:00:00','green'),(2,'Another Test',1,'2017-09-04 00:00:00','0000-00-00 00:00:00','red');
+/*!40000 ALTER TABLE `volunteer_schedule` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -52,4 +52,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-08-30 20:35:57
+-- Dump completed on 2017-09-05 18:33:24
