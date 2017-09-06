@@ -16,33 +16,31 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `users_groups`
+-- Table structure for table `volunteer_schedule`
 --
 
-DROP TABLE IF EXISTS `users_groups`;
+DROP TABLE IF EXISTS `volunteer_schedule`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `users_groups` (
-  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
-  `user_id` int(11) unsigned NOT NULL,
-  `group_id` mediumint(8) unsigned NOT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `uc_users_groups` (`user_id`,`group_id`),
-  KEY `fk_users_groups_users1_idx` (`user_id`),
-  KEY `fk_users_groups_groups1_idx` (`group_id`),
-  CONSTRAINT `fk_users_groups_groups1` FOREIGN KEY (`group_id`) REFERENCES `groups` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION,
-  CONSTRAINT `fk_users_groups_users1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=utf8;
+CREATE TABLE `volunteer_schedule` (
+  `id` int(255) NOT NULL AUTO_INCREMENT,
+  `title` varchar(85) DEFAULT NULL,
+  `allDay` tinyint(5) DEFAULT '0',
+  `start` datetime DEFAULT NULL,
+  `end` datetime DEFAULT NULL,
+  `backgroundColor` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `users_groups`
+-- Dumping data for table `volunteer_schedule`
 --
 
-LOCK TABLES `users_groups` WRITE;
-/*!40000 ALTER TABLE `users_groups` DISABLE KEYS */;
-INSERT INTO `users_groups` VALUES (17,15,1),(16,15,2),(23,15,3),(18,16,2);
-/*!40000 ALTER TABLE `users_groups` ENABLE KEYS */;
+LOCK TABLES `volunteer_schedule` WRITE;
+/*!40000 ALTER TABLE `volunteer_schedule` DISABLE KEYS */;
+INSERT INTO `volunteer_schedule` VALUES (1,'Test Event',0,'2017-09-05 12:30:00','2017-09-05 20:00:00','grey'),(2,'Another Test',1,'2017-09-04 00:00:00','0000-00-00 00:00:00','red');
+/*!40000 ALTER TABLE `volunteer_schedule` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -54,4 +52,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-09-05 18:33:23
+-- Dump completed on 2017-09-06  9:11:10

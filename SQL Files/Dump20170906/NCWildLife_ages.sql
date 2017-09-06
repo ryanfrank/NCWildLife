@@ -16,29 +16,27 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `freequency_definition`
+-- Table structure for table `ages`
 --
 
-DROP TABLE IF EXISTS `freequency_definition`;
+DROP TABLE IF EXISTS `ages`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `freequency_definition` (
-  `freequency_definition_id` int(11) NOT NULL AUTO_INCREMENT,
-  `freequency` varchar(3) NOT NULL,
-  `freequency_count` int(1) NOT NULL,
-  `freequency_description` varchar(45) NOT NULL,
-  PRIMARY KEY (`freequency_definition_id`,`freequency`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+CREATE TABLE `ages` (
+  `ages_id` int(5) NOT NULL AUTO_INCREMENT,
+  `ages_description` varchar(45) NOT NULL,
+  PRIMARY KEY (`ages_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `freequency_definition`
+-- Dumping data for table `ages`
 --
 
-LOCK TABLES `freequency_definition` WRITE;
-/*!40000 ALTER TABLE `freequency_definition` DISABLE KEYS */;
-INSERT INTO `freequency_definition` VALUES (1,'BID',2,'Two times daily'),(2,'Q3H',5,'Five times daily'),(3,'QID',4,'Four times daily'),(4,'SID',1,'One time daily'),(5,'TID',3,'Three times daily');
-/*!40000 ALTER TABLE `freequency_definition` ENABLE KEYS */;
+LOCK TABLES `ages` WRITE;
+/*!40000 ALTER TABLE `ages` DISABLE KEYS */;
+INSERT INTO `ages` VALUES (1,'Pinky'),(2,'Baby'),(3,'Juvenile'),(4,'Teen'),(5,'Adult'),(6,'Senior');
+/*!40000 ALTER TABLE `ages` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -50,4 +48,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-09-05 18:33:25
+-- Dump completed on 2017-09-06  9:11:09

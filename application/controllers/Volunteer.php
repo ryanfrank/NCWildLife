@@ -17,9 +17,16 @@ class Volunteer extends CI_Controller
         $this->load->view('volunteer/volunteer_calendar');
     }
     public function getCalendar() {
-        $query = $this->db->get('volunteer_schedule');
-        $result = $query->result_array();
-        $json = json_encode($result);
+        $myArray = array();
+        $query = $this->db->get('schedule_assignment')->result_array();
+        foreach ( $query as $row ){
+            if ( is_null($row['description']) ){
+                $row['backgroundColor'] = "green";
+                $row['description'] = "Available";
+            }
+            array_push($myArray, $row);
+        }
+        $json = json_encode($myArray);
         $json = str_replace('"allDay":"0"', '"allDay":false', $json);
         $json = str_replace('"allDay":"1"', '"allDay":true', $json);
         echo $json;

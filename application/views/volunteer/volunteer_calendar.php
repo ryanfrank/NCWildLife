@@ -9,14 +9,25 @@
 <script>
     $(document).ready(function(){
         $('#calendar').fullCalendar({
+            theme: true,
+            themeSystem: 'standard',
+            themeName: 'Lumen',
             header: {
                 left: 'prev,next today',
                 center: 'title',
-                right: 'month,agendaWeek,agendaDay'
+                right: 'month,agendaWeek,agendaDay,list'
             },
             defaultView: 'agendaWeek',
-            editable: true,
-            events: "<?php echo base_url(); ?>" + "Volunteer/getCalendar"
+            editable: false,
+            eventLimit: true,
+            events: "<?php echo base_url(); ?>" + "Volunteer/getCalendar",
+            eventRender: function(event, element) {
+                element.popover({
+                    title: "Attendees",
+                    trigger: 'hover click',
+                    content: event.description
+                });
+            }
         });
     });
 </script>

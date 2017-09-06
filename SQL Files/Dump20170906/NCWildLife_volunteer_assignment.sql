@@ -16,30 +16,28 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `species`
+-- Table structure for table `volunteer_assignment`
 --
 
-DROP TABLE IF EXISTS `species`;
+DROP TABLE IF EXISTS `volunteer_assignment`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `species` (
-  `species_id` int(5) NOT NULL AUTO_INCREMENT,
-  `species_name` varchar(45) NOT NULL,
-  `species_type` varchar(45) NOT NULL,
-  `species_RVS` varchar(3) DEFAULT NULL,
-  `species_order` int(5) NOT NULL,
-  PRIMARY KEY (`species_id`,`species_type`,`species_name`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
+CREATE TABLE `volunteer_assignment` (
+  `id` int(5) NOT NULL AUTO_INCREMENT,
+  `volunteer_schedule` int(255) NOT NULL,
+  `volunteer` int(5) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `species`
+-- Dumping data for table `volunteer_assignment`
 --
 
-LOCK TABLES `species` WRITE;
-/*!40000 ALTER TABLE `species` DISABLE KEYS */;
-INSERT INTO `species` VALUES (1,'Fawn','Cervidae','No',4),(2,'Skunk','Conepatus','Yes',5),(3,'Opossum','Marcupial','No',2),(4,'Otter','Mustelidae','No',6),(5,'Racoon','Procyonidae','Yes',7),(6,'Squirrel','Rodent','Yes',1),(7,'Bunny','','No',3),(8,'Beaver','Rodent','No',8),(9,'Mouse','Rodent','No',5);
-/*!40000 ALTER TABLE `species` ENABLE KEYS */;
+LOCK TABLES `volunteer_assignment` WRITE;
+/*!40000 ALTER TABLE `volunteer_assignment` DISABLE KEYS */;
+INSERT INTO `volunteer_assignment` VALUES (1,1,1),(2,1,2);
+/*!40000 ALTER TABLE `volunteer_assignment` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -51,4 +49,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-09-05 18:33:24
+-- Dump completed on 2017-09-06  9:11:09

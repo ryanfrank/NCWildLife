@@ -16,29 +16,33 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `supplies`
+-- Table structure for table `cages`
 --
 
-DROP TABLE IF EXISTS `supplies`;
+DROP TABLE IF EXISTS `cages`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `supplies` (
-  `supplies_id` int(11) NOT NULL AUTO_INCREMENT,
-  `supply_name` varchar(45) NOT NULL,
-  `supply_purpose` varchar(45) NOT NULL,
-  `supply_quantity` int(10) NOT NULL,
-  `supply_reorder_level` int(10) DEFAULT NULL,
-  PRIMARY KEY (`supplies_id`)
+CREATE TABLE `cages` (
+  `cage_id` int(5) NOT NULL AUTO_INCREMENT,
+  `cage_name` varchar(45) DEFAULT NULL,
+  `cage_size` varchar(15) NOT NULL,
+  `cage_location` int(5) NOT NULL,
+  `cage_condition` varchar(45) NOT NULL,
+  `cage_type` varchar(45) NOT NULL,
+  `cage_capacity` int(5) NOT NULL,
+  PRIMARY KEY (`cage_id`),
+  KEY `cage_location_idx` (`cage_location`),
+  CONSTRAINT `cage_location` FOREIGN KEY (`cage_location`) REFERENCES `location` (`location_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `supplies`
+-- Dumping data for table `cages`
 --
 
-LOCK TABLES `supplies` WRITE;
-/*!40000 ALTER TABLE `supplies` DISABLE KEYS */;
-/*!40000 ALTER TABLE `supplies` ENABLE KEYS */;
+LOCK TABLES `cages` WRITE;
+/*!40000 ALTER TABLE `cages` DISABLE KEYS */;
+/*!40000 ALTER TABLE `cages` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -50,4 +54,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-09-05 18:33:25
+-- Dump completed on 2017-09-06  9:11:10

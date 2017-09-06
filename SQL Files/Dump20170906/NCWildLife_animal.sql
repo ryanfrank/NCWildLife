@@ -16,27 +16,29 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `ages`
+-- Table structure for table `animal`
 --
 
-DROP TABLE IF EXISTS `ages`;
+DROP TABLE IF EXISTS `animal`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `ages` (
-  `ages_id` int(5) NOT NULL AUTO_INCREMENT,
-  `ages_description` varchar(45) NOT NULL,
-  PRIMARY KEY (`ages_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+CREATE TABLE `animal` (
+  `animal_id` int(5) NOT NULL AUTO_INCREMENT,
+  `animal_name` varchar(45) NOT NULL,
+  `animal_release` date DEFAULT NULL,
+  PRIMARY KEY (`animal_id`,`animal_name`),
+  UNIQUE KEY `animal_name_UNIQUE` (`animal_name`)
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `ages`
+-- Dumping data for table `animal`
 --
 
-LOCK TABLES `ages` WRITE;
-/*!40000 ALTER TABLE `ages` DISABLE KEYS */;
-INSERT INTO `ages` VALUES (1,'Pinky'),(2,'Baby'),(3,'Juvenile'),(4,'Teen'),(5,'Adult'),(6,'Senior');
-/*!40000 ALTER TABLE `ages` ENABLE KEYS */;
+LOCK TABLES `animal` WRITE;
+/*!40000 ALTER TABLE `animal` DISABLE KEYS */;
+INSERT INTO `animal` VALUES (1,'MyName',NULL),(2,'Name',NULL),(3,'ThisAnimal',NULL),(4,'rrrr',NULL),(5,'efwef',NULL),(6,'ouyeo',NULL),(7,'jbviubrv',NULL),(8,'MyAnimal',NULL),(9,'Another Animal',NULL),(10,'AnotherOneFrom Ryan',NULL);
+/*!40000 ALTER TABLE `animal` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -48,4 +50,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-09-01 18:36:18
+-- Dump completed on 2017-09-06  9:11:10

@@ -16,31 +16,29 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `location`
+-- Table structure for table `freequency_definition`
 --
 
-DROP TABLE IF EXISTS `location`;
+DROP TABLE IF EXISTS `freequency_definition`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `location` (
-  `location_id` int(5) NOT NULL AUTO_INCREMENT,
-  `location_name` varchar(45) DEFAULT NULL,
-  `location_street` varchar(45) NOT NULL,
-  `location_city` varchar(45) NOT NULL,
-  `location_state` int(2) NOT NULL,
-  PRIMARY KEY (`location_id`),
-  KEY `state_idx` (`location_state`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+CREATE TABLE `freequency_definition` (
+  `freequency_definition_id` int(11) NOT NULL AUTO_INCREMENT,
+  `freequency` varchar(3) NOT NULL,
+  `freequency_count` int(1) NOT NULL,
+  `freequency_description` varchar(45) NOT NULL,
+  PRIMARY KEY (`freequency_definition_id`,`freequency`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `location`
+-- Dumping data for table `freequency_definition`
 --
 
-LOCK TABLES `location` WRITE;
-/*!40000 ALTER TABLE `location` DISABLE KEYS */;
-INSERT INTO `location` VALUES (1,'NC WildLife Main','429 Aderholdt Road','Lincolnton',33),(2,'NC WildLife Remote','877 Ram Lane','Lincolnton',0);
-/*!40000 ALTER TABLE `location` ENABLE KEYS */;
+LOCK TABLES `freequency_definition` WRITE;
+/*!40000 ALTER TABLE `freequency_definition` DISABLE KEYS */;
+INSERT INTO `freequency_definition` VALUES (1,'BID',2,'Two times daily'),(2,'Q3H',5,'Five times daily'),(3,'QID',4,'Four times daily'),(4,'SID',1,'One time daily'),(5,'TID',3,'Three times daily');
+/*!40000 ALTER TABLE `freequency_definition` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -52,4 +50,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-09-01 18:36:22
+-- Dump completed on 2017-09-06  9:11:10
