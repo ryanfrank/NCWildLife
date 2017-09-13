@@ -16,7 +16,7 @@
                 if(data){
                     $('#modal_target').html(data);
                     //This shows the modal
-                    $('#' + type + 'Modal').modal();
+                    $('#' + type + 'Modal').modal('toggle');
                 }
             }
         });
@@ -26,7 +26,7 @@
     }
     setInterval(update,250);
 </script>
-<div class="row border ml-1 mt-1 w-100">
+<div class="row mr-3">
     <div class="col align-self-start text-left font-italic" id="clock">
     </div>
     <div class="col align-self-end text-right font-italic">
@@ -65,4 +65,3 @@
         ?>
     </div>
 </div>
-<div id="modal_target"></div>

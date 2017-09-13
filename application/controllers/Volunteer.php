@@ -31,6 +31,31 @@ class Volunteer extends CI_Controller
         $json = str_replace('"allDay":"1"', '"allDay":true', $json);
         echo $json;
     }
+    public function calendarEntry() {
+        $this->load->view('volunteer/volunteer_calendar_update');
+    }
+    public function addCalendarEvent(){
+        $data = array(
+            'title' => $this->input->post('eventTitle'),
+            'allDay' => $this->input->post('allDayEvent'),
+            'start'     =>  $this->input->post('startDate'),
+            'end'       =>  $this->input->post('endDate')
+        );
+        if ( $this->db->insert('volunteer_schedule',$data) ){
+            $result = "success";
+        }
+        else {
+            $result = "failure";
+        }
+        echo json_encode($result);
+    }
+    public function calendarRegistration(){
+        $curDate =  date("Y-m-d H:i");
+        $query = $this->db->get_where('volunteer_schedule', array('start >=' . $curDate));
+        $data['user'] = $this->ion_auth->user()->row();
+        $data['result'] = $query->result_array();
+        $this->load->view('volunteer/volunteer_calendar_registration', $data);
+    }
 
 
 }

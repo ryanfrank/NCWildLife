@@ -6,8 +6,8 @@
  * Time: 1:58 PM
  */
 ?>
-<div class="row ml-1">
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+<div class="row ml-0 mr-0">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light col-12">
         <a class="navbar-brand">NC Wild Life Rehab</a>
         <div class="collapse navbar-collapse" id="ncwlNavigation">
             <ul class="navbar-nav">
@@ -53,6 +53,11 @@
                             <a class="dropdown-item" href="javascript:void(0)" onclick="$(content).load('Admin/add_rehabber')">Add Rehabber</a>
                             <a class="dropdown-item" href="#">Add Locations</a>
                             <a class="dropdown-item" href="#">Add Cages</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#">Add User</a>
+                            <a class="dropdown-item" href="#">Delete User</a>
+                            <a class="dropdown-item" href="#">Change User Password</a>
+                            <div class="dropdown-divider"></div>
                         </div>
                     </li>
                 <?php } ?>
