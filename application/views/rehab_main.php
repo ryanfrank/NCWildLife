@@ -46,7 +46,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         </div>
         <div id="modal_target"></div>
         <div id="myStatus" class="container-fluid ml-2"></div>
-        <div class="container-fluid ml-1 mt-2" id="content" style="min-height: 500px; width: 98%">
+        <div class="container-fluid ml-0 mt-2" id="content" style="min-height: 500px; width: 98%">
             <div class="row">
                 <div id="carouselMain" class="carousel slide col-4" data-ride="carousel">
                     <ol class="carousel-indicators">

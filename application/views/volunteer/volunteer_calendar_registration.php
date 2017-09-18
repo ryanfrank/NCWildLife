@@ -8,88 +8,60 @@
 ?>
 
 <script>
-    $(".datepicker").datetimepicker({
-        format: "yyyy-mm-dd hh:ii",
-        autoclose: true
-    });
-    function handleClick(){
-        if (document.getElementById("allDay").checked ){ document.getElementById("endDate").disabled = true; document.getElementById("endDate").value = '0000-00-00 00:00:00'}
-        else { document.getElementById("endDate").disabled = false; }
-    }
     $(document).ready(function() {
-        $("#addCalendarEvent").submit(function(event) {
+        $("#updateCalendarEvent").submit(function(event) {
             event.preventDefault();
-            var allDayEvent;
-            if( $("#allDay").is(':checked') ) { allDayEvent = "1"; }
-            else { allDayEvent = "0"; }
+            var e = document.getElementById("eventID");
+            var eventValue = e.options[e.selectedIndex].value;
+            var f = document.getElementById("userID");
+            var userID = f.options[f.selectedIndex].value;
             jQuery.ajax({
                 type: "POST",
-                url: "<?php echo base_url(); ?>" + "Volunteer/addCalendarEvent",
+                url: "<?php echo base_url(); ?>" + "Volunteer/updateCalendarEvent",
                 dataType: 'json',
                 data: {
-                    "eventTitle":    $("input#eventTitle").val(),
-                    "startDate": $("input#startDate").val(),
-                    "endDate": $("input#endDate").val(),
-                    "allDayEvent": allDayEvent
+                    "event":    eventValue,
+                    "user":     userID
                 },
                 success: function(res) {
                     if (res === "success") {
-                        jQuery("div#myStatus").html('<div class="alert alert-success mt-lg-4 col-8 alert-dismissible fade show" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>Successfully added ' + $("input#eventTitle").val() + '</div>');
-                        document.getElementById("addCalendarEvent").reset();
+                        jQuery("div#myStatus").html('<div class="alert alert-success mt-lg-4 col-8 alert-dismissible fade show" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>Successfully registered for event</div>');
+                        document.getElementById("updateCalendarEvent").reset();
                         $('#calendar').fullCalendar( 'refetchEvents' );
                     }
                     else if (res === "duplicate") {
                         jQuery("div#myStatus").html('<div class="alert alert-warning mt-lg-4 col-8 alert-dismissible fade show" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>Duplicate entry for ' + $("input#eventTitle").val() + '</div>');
-                        document.getElementById("addCalendarEvent").reset();
+                        document.getElementById("updateCalendarEvent").reset();
                     }
                     else {
-                        jQuery("div#myStatus").html('<div class="alert alert-danger mt-lg-4 col-8 alert-dismissible fade show" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>Failed to add ' + $("input#eventTitle").val() + '</div>');
-                        document.getElementById("addCalendarEvent").reset();
+                        jQuery("div#myStatus").html('<div class="alert alert-danger mt-lg-4 col-8 alert-dismissible fade show" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>Failed to register for event</div>');
+                        document.getElementById("updateCalendarEvent").reset();
                     }
                 }
             });
         });
     });
 </script>
-<div class="ml-5 border">
-    <form class="mt-3" id="addCalendarEvent" name="addCalendarEvent" data-toggle="validator" role="form">
-        <div class="row mt-3">
-            <div class="col-3">
-                <div class="input-group">
-                    <input type="text" class="form-control" id="eventTitle" placeholder="Event Title" required>
-                    <div class="input-group-addon">
-                        <span class="fa fa-tasks"></span>
-                    </div>
-                </div>
+
+<div class="ml-1 mt-2">
+    <form id="updateCalendarEvent" name="updateCalendarEvent" data-toggle="validator" role="form">
+        <div class="row">
+            <div class="form-group col-6">
+                <select class="form-control" id="eventID">
+                    <?php foreach ($result as $row): ?>
+                        <option value="<? echo $row['id']; ?>"><? echo $row['title'] . " " . $row['start'] ?></option>
+                    <?php endforeach;?>
+                </select>
             </div>
-            <div class="col-2">
-                <div class="input-group date datepicker">
-                    <input type="text" class="form-control" id="startDate" placeholder="Start Date/Time" required>
-                    <div class="input-group-addon">
-                        <span class="fa fa-calendar"></span>
-                    </div>
-                </div>
-            </div>
-            <div class="col-2">
-                <div class="input-group date datepicker">
-                    <input type="text" class="form-control" id="endDate" placeholder="End Date/Time">
-                    <div class="input-group-addon">
-                        <span class="fa fa-calendar"></span>
-                    </div>
-                </div>
-            </div>
-            <div class="col-2">
-                <div class="input-group">
-                    <input type="text" class="form-control" placeholder="All Day Event?" readonly>
-                    <span class="input-group-addon">
-                        <input type="checkbox" id="allDay" onclick='handleClick();'>
-                    </span>
-                </div>
+            <div class="form-group col-4">
+                <select class="form-control" id="userID">
+                        <option value="<? echo $user->id; ?>"><? echo $user->first_name . " " . $user->last_name ?></option>
+                </select>
             </div>
             <div class="col-2">
                 <div class="input-group">
                     <button type = "submit" class = "btn btn-light">
-                        Add Event
+                        Join/Register for Event
                     </button>
                 </div>
             </div>
