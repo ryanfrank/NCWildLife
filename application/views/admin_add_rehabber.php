@@ -85,29 +85,29 @@
     <form class="mt-3" id="addRehabber" name="addRehabber">
         <div class="row">
             <div class="form-group col-6">
-                <label for="firstName" class="align-content-center">Rehabber First Name</label>
+                <label for="firstName" class="align-content-center">Rehabber / Volunteer First Name</label>
                 <input type="text" class="form-control" id="firstName" placeholder="First Name" onmouseover="this.focus();"  required>
                 <div class="invalid-feedback">Please provide a first name</div>
             </div>
             <div class="form-group col-6">
-                <label for="lastName" class="align-content-center">Rehabber Last Name</label>
+                <label for="lastName" class="align-content-center">Rehabber / Volunteer Last Name</label>
                 <input type="text" class="form-control" id="lastName" placeholder="Last Name" onmouseover="this.focus();"  required>
                 <div class="invalid-feedback">Please provide a last name</div>
             </div>
         </div>
         <div class="row">
             <div class="form-group col-6">
-                <label for="streetAddress" class="align-content-center">Rehabber Street Address</label>
+                <label for="streetAddress" class="align-content-center">Rehabber / Volunteer Street Address</label>
                 <input type="text" class="form-control" id="streetAddress" placeholder="Street Address" onmouseover="this.focus();"  required>
             </div>
             <div class="form-group col-6">
-                <label for="cityName" class="align-content-center">Rehabber City</label>
+                <label for="cityName" class="align-content-center">Rehabber / Volunteer City</label>
                 <input type="text" class="form-control" id="cityName" placeholder="City" onmouseover="this.focus();"  required>
             </div>
         </div>
         <div class="row">
             <div class="form-group col-3">
-                <label for="stateName" class="align-content-center">Rehabber State</label>
+                <label for="stateName" class="align-content-center">Rehabber / Volunteer State</label>
                 <select class="form-control" id="stateName" required>
                     <option></option>
                     <?php foreach ($states->result() as $row):?>
@@ -116,23 +116,23 @@
                 </select>
             </div>
             <div class="form-group col-3">
-                <label for="countyName" class="align-content-center">Rehabber County</label>
+                <label for="countyName" class="align-content-center">Rehabber / Volunteer County</label>
                 <select class="form-control" id="countyName" disabled>
                     <option>Select State First</option>
                 </select>
             </div>
             <div class="form-group col-3">
-                <label for="zipCode" class="align-content-center">Rehabber Zip</label>
+                <label for="zipCode" class="align-content-center">Rehabber / Volunteer Zip</label>
                 <input type="text" class="form-control" id="zipCode" placeholder="Zip Code" onmouseover="this.focus();"  required>
             </div>
             <div class="form-group col-3">
-                <label for="emailAddress" class="align-content-center">Rehabber Email</label>
+                <label for="emailAddress" class="align-content-center">Rehabber / Volunteer Email</label>
                 <input type="email" class="form-control" id="emailAddress" placeholder="email@domain.com" onmouseover="this.focus();"  required>
             </div>
         </div>
         <div class="row">
             <div class="form-group col-3">
-                <label for="phoneNumber" class="align-content-center">Rehabber Phone</label>
+                <label for="phoneNumber" class="align-content-center">Rehabber / Volunteer Phone</label>
                 <input type="text" class="form-control" id="phoneNumber" placeholder="XXX-XXX-XXXX" onmouseover="this.focus();" required>
             </div>
             <div class="form-check col-3">
@@ -144,7 +144,7 @@
             <div class="form-check col-3">
                 <label class="form-check-label">
                     <input class="form-check-input" id="volunteer" type="checkbox" value="No" onmouseover="this.focus();" >
-                    NCWL Volunteer?
+                    NC WildLife Rehab Volunteer?
                 </label>
             </div>
             <div class="form-check col-3">

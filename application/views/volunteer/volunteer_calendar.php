@@ -5,6 +5,7 @@
  * Date: 9/4/17
  * Time: 11:20 AM
  */
+
 ?>
 <script>
     $(function(){
@@ -20,7 +21,7 @@
             defaultView: 'agendaWeek',
             editable: false,
             eventLimit: true,
-            events: "<?php echo base_url(); ?>" + "Volunteer/calendar",
+            events: "<?php echo base_url(); ?>" + "Volunteer/calendar/Volunteer",
             eventRender: function(event, element) {
                 element.popover({
                     title: "Attendees",

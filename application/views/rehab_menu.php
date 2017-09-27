@@ -25,14 +25,14 @@
                     <a class="nav-link dropdown-toggle" id="navbarIntakeDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Information</a>
                     <div class="dropdown-menu" aria-labelledby="navbarIntakeDropdown">
                         <a class="dropdown-item" href="javascript:void(0);" onclick="">Activity Calendar</a>
-                        <a class="dropdown-item" href="javascript:void(0)" onclick="">Events / Appearances</a>
+                        <a class="dropdown-item" href="javascript:void(0)" onclick="$(content).load('Volunteer/schedule/event')">Events / Appearances</a>
                     </div>
                 </li>
                 <?php if ( $this->ion_auth->in_group('volunteer') ){ ?>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" id="navbarIntakeDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Volunteer</a>
                         <div class="dropdown-menu" aria-labelledby="navbarIntakeDropdown">
-                            <a class="dropdown-item" href="javascript:void(0)" onclick="$(content).load('Volunteer/schedule')">Volunteer Calendar</a>
+                            <a class="dropdown-item" href="javascript:void(0)" onclick="$(content).load('Volunteer/schedule/volunteer')">Volunteer Calendar</a>
                         </div>
                     </li>
                 <?php } ?>
@@ -40,9 +40,9 @@
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" id="navbarIntakeDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Charts</a>
                         <div class="dropdown-menu" aria-labelledby="navbarIntakeDropdown">
-                            <a class="dropdown-item" href="javascript:void(0)" onclick="$(content).load('Charts/squirrelChart')">Squirrel Feeding Chart</a>
-                            <a class="dropdown-item" href="javascript:void(0)" onclick="$(content).load('Charts/opossumChart')">Opossum Feeding Chart</a>
-                            <a class="dropdown-item" href="javascript:void(0)" onclick="$(content).load('Charts/bunnyChart')">Bunny Feeding Chart</a>
+                            <a class="dropdown-item" href="javascript:void(0)" onclick="$(content).load('Charts/chart/Squirrel')">Squirrel Feeding Chart</a>
+                            <a class="dropdown-item" href="javascript:void(0)" onclick="$(content).load('Charts/chart/Opossum')">Opossum Feeding Chart</a>
+                            <a class="dropdown-item" href="javascript:void(0)" onclick="$(content).load('Charts/chart/Bunny')">Bunny Feeding Chart</a>
                         </div>
                     </li>
                 <?php } ?>

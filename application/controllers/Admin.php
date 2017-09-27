@@ -28,48 +28,59 @@ class Admin extends CI_Controller
      */
     public function add_rehabber()
     {
-        $data['states']     =   $this->db->get('states');
-        $this->load->view('admin_add_rehabber', $data);
+        if ($this->input->is_ajax_request()) {
+            $data['states']     =   $this->db->get('states');
+            $this->load->view('admin_add_rehabber', $data);
+        }
+        else{ show_404(); }
     }
     public function addRehabber()
     {
-        $date = date("Y-m-d H:i:s");
-        $formData = array(
-            'rehabber_first_name'   => $this->input->post('first'),
-            'rehabber_last_name'    => $this->input->post('last'),
-            'rehabber_street'       => $this->input->post('street'),
-            'rehabber_city'         => $this->input->post('city'),
-            'rehabber_state'        => $this->input->post('state'),
-            'rehabber_zip'          => $this->input->post('zip'),
-            'rehabber_phone'        => preg_replace('/\D+/','',$this->input->post('phone')),
-            'rehabber_email'        => $this->input->post('email'),
-            'rehabber_license'      => $this->input->post('isLicensed'),
-            'rehabber_volunteer'    => $this->input->post('isVolunteer'),
-            'rehabber_active'       => $this->input->post('isActive'),
-            'rehabber_county'       => $this->input->post('county'),
-            'created_date'          => $date
-        );
-        $where = array('rehabber_first_name' => $formData['rehabber_first_name'], 'rehabber_last_name' => $formData['rehabber_last_name']);
-        $query = $this->db->get_where('rehabber', $where);
-        if ( $query->num_rows() == 0 ) {
-            $this->db->insert('rehabber', $formData);
-            $num_inserts = $this->db->affected_rows();
-            if ($num_inserts > 0 ) { $result = "success"; }
-            else { $result = "failure"; }
+        if ($this->input->is_ajax_request()) {
+            $date = date("Y-m-d H:i:s");
+            $formData = array(
+                'rehabber_first_name' => $this->input->post('first'),
+                'rehabber_last_name' => $this->input->post('last'),
+                'rehabber_street' => $this->input->post('street'),
+                'rehabber_city' => $this->input->post('city'),
+                'rehabber_state' => $this->input->post('state'),
+                'rehabber_zip' => $this->input->post('zip'),
+                'rehabber_phone' => preg_replace('/\D+/', '', $this->input->post('phone')),
+                'rehabber_email' => $this->input->post('email'),
+                'rehabber_license' => $this->input->post('isLicensed'),
+                'rehabber_volunteer' => $this->input->post('isVolunteer'),
+                'rehabber_active' => $this->input->post('isActive'),
+                'rehabber_county' => $this->input->post('county'),
+                'created_date' => $date
+            );
+            $where = array('rehabber_first_name' => $formData['rehabber_first_name'], 'rehabber_last_name' => $formData['rehabber_last_name']);
+            $query = $this->db->get_where('rehabber', $where);
+            if ($query->num_rows() == 0) {
+                $this->db->insert('rehabber', $formData);
+                $num_inserts = $this->db->affected_rows();
+                if ($num_inserts > 0) {
+                    $result = "success";
+                } else {
+                    $result = "failure";
+                }
+            } else {
+                $result = "duplicate";
+            }
+            echo json_encode($result);
         }
-        else {
-            $result = "duplicate";
-        }
-        echo json_encode($result);
+        else { show_404(); }
     }
     public function getCounty(){
-        $state = $this->input->post('stateID');
-        $stateQuery = $this->db->get_where('states', array('state_id' => $state));
-        $stateResult = $stateQuery->row();
+        if ($this->input->is_ajax_request()) {
+            $state = $this->input->post('stateID');
+            $stateQuery = $this->db->get_where('states', array('state_id' => $state));
+            $stateResult = $stateQuery->row();
 
-        $query = $this->db->get_where('county_view',array('state_name' => $stateResult->state_name));
-        $result = $query->result_array();
-        echo json_encode(array('result'=>$result));
+            $query = $this->db->get_where('county_view', array('state_name' => $stateResult->state_name));
+            $result = $query->result_array();
+            echo json_encode(array('result' => $result));
+        }
+        else {show_404();}
     }
 }
 ?>

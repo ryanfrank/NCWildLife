@@ -13,7 +13,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Welcome to NC WildLife Rehab</title>
+    <title>Welcome to NC Wild Life Rehab</title>
     <link rel="stylesheet" type="text/css" href="<?php echo site_url('application/bootstrap-4.0.0-beta-dist/css/bootstrap.min.css');?>">
     <link rel="stylesheet" type="text/css" href="<?php echo site_url('application/bootstrap-4.0.0-beta-dist/css/bootstrap-datetimepicker.css');?>">
     <link rel="stylesheet" type="text/css" href="<?php echo site_url('application/css/fullcalendar.css');?>">
@@ -32,15 +32,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <div class="container-fluid ml-3 mt-1 w-100 mr-2" id="header">
             <?php $this->load->view('rehab_header'); ?>
         </div>
-       <!-- <div class="container-fluid ml-1" id="logo">
-            <div class="row">
-                <div class="col-12 w-100">
-                    <div class="jumbotron jumbo-fluid ">
-                        <h1 class="display-5 align-center">NC WildLife</h1>
-                    </div>
-                </div>
-            </div>
-        </div> -->
         <div class="container-fluid ml-0 mr-2" id="menuBar">
             <?php $this->load->view('rehab_menu'); ?>
         </div>
@@ -88,12 +79,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 </div>
                 <div class="col-6">
                     <strong>Welcome to NC Wild Life Rehab</strong><br>
-                    Here at NCWR, we have two main focuses. First, is to save the animal/s. Secondly, is to educate. By
+                    Here at NC Wild Life Rehab, we have two main focuses. First, is to save the animal/s. Secondly, is to educate. By
                     educating, we can spread the word of what to do if an injured or orphaned animal is found. Our
                     educational goals and activities include inhouse classes on different topics (what to do if you
                     find a wild baby, squirrel pox, how to become a wildlife rehabilitator, etc,), through volunteering
-                    programs here at NCWR, teaching classes to boy and girl scouts and at animal shelters and at nature
-                    centers. NCWR also educates by posting in closed wildlife groups that contain only licensed wildlife
+                    programs here at NC Wild Life Rehab, teaching classes to boy and girl scouts and at animal shelters and at nature
+                    centers. NC Wild Life Rehab also educates by posting in closed wildlife groups that contain only licensed wildlife
                     rehabilitators and on NCWR’s personal Facebook page. We always encourage questions and appreciate
                     suggestions from outsiders on topics such as cage building ideas and other random topics. The more
                     we teach and the more we learn, the more we can assist wildlife here and in a broad spectrum.
