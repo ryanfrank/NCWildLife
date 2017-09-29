@@ -14,6 +14,7 @@
                 <li class="nav-item active">
                     <a class="nav-link" href="javascript:void(0)" onclick="window.location.reload(false);">Home <span class="sr-only">(Current)</span></a>
                 </li>
+                <?php if ( $this->ion_auth->in_group('volunteer') ){ ?>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" id="navbarIntakeDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Activity / Intake</a>
                     <div class="dropdown-menu" aria-labelledby="navbarIntakeDropdown">
@@ -21,10 +22,11 @@
                         <a class="dropdown-item" href="javascript:void(0)" onclick="$(content).load('Intake/intake_animal')">Intake Animal</a>
                     </div>
                 </li>
+                <?php } ?>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" id="navbarIntakeDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Information</a>
                     <div class="dropdown-menu" aria-labelledby="navbarIntakeDropdown">
-                        <a class="dropdown-item" href="javascript:void(0);" onclick="">Activity Calendar</a>
+                        <a class="dropdown-item" href="javascript:void(0);" onclick="$(content).load('Information/donations')">Donations</a>
                         <a class="dropdown-item" href="javascript:void(0)" onclick="$(content).load('Volunteer/schedule/event')">Events / Appearances</a>
                     </div>
                 </li>

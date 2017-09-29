@@ -15,6 +15,13 @@ class Charts extends CI_Controller
         parent::__construct();
     }
 
+    /**
+     * WHAT:    function to build feeding chart
+     * WHY:     Gather data from DB on feeding information for animals and display to users
+     * HOW:     Chart requires segment 3 to be populated... currently only options in species tables are accepted
+     *          Charts/chart/Bunny,Squirrel,etc... If no valid option is provided no data will be returned.
+     * INFO:    Will not display outside of AJAX call from main site!
+     */
     public function chart() {
         if ($this->input->is_ajax_request()) {
             $type = $this->uri->segment(3);

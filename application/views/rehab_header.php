@@ -27,8 +27,7 @@
     setInterval(update,250);
 </script>
 <div class="row mr-3">
-    <div class="col align-self-start text-left font-italic" id="clock">
-    </div>
+    <div class="col align-self-start text-left font-italic" id="clock"></div>
     <div class="col align-self-end text-right font-italic">
         <?php
             if (!$this->ion_auth->logged_in()){

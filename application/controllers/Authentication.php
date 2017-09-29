@@ -23,16 +23,16 @@ class Authentication extends CI_Controller {
     public function createUser(){
         if ( $this->input->post('email') ) {
             $formData = array(
-                'first_name' => $this->input->post('first'),
-                'last_name' => $this->input->post('last'),
-                'user_name' => $this->input->post('user'),
-                'email' => $this->input->post('email'),
-                'password' => $this->input->post('password')
+                'first_name'    => $this->input->post('first'),
+                'last_name'     => $this->input->post('last'),
+                'user_name'     => $this->input->post('user'),
+                'email'         => $this->input->post('email'),
+                'password'      => $this->input->post('password')
             );
             $additional_data = array(
-                'first_name' => $formData['first_name'],
-                'last_name' => $formData['last_name'],
-                'active' => 1
+                'first_name'    => $formData['first_name'],
+                'last_name'     => $formData['last_name'],
+                'active'        => 1
             );
             $group = array('2');
             if ($this->ion_auth->register($formData['user_name'], $formData['password'], $formData['email'], $additional_data, $group)) {
