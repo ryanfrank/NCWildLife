@@ -42,7 +42,6 @@
         });
     });
 </script>
-
 <div class="ml-1 mt-2">
     <form id="updateCalendarEvent" name="updateCalendarEvent" data-toggle="validator" role="form">
         <div class="row">
@@ -61,7 +60,7 @@
             <div class="col-2">
                 <div class="input-group">
                     <button type = "submit" class = "btn btn-light">
-                        Join/Register for Event
+                        Join/Register for Volunteer Schedule
                     </button>
                 </div>
             </div>

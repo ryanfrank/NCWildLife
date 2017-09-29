@@ -89,7 +89,7 @@
             <div class="col-1">
                 <div class="input-group">
                     <button type = "submit" class = "btn btn-light">
-                        Add Event
+                        Add Volunteer Schedule
                     </button>
                 </div>
             </div>

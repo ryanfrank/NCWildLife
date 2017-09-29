@@ -56,6 +56,7 @@ class Volunteer extends CI_Controller
             $this->load->model('Calendar');
             $curDate = date("Y-m-d H:i");
             $query = $this->Calendar->get_calendar_events('Volunteer', $curDate, $JSON = false);
+            $data['date'] = $curDate;
             $data['user'] = $this->ion_auth->user()->row();
             $data['result'] = $query;
             $this->load->view('volunteer/volunteer_calendar_registration', $data);

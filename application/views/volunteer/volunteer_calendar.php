@@ -35,8 +35,8 @@
 
 <div class="row">
     <div class="col-6 ml-0">
-        <button type="button" class="btn btn-outline-dark btn-sm ml-4" onclick="$(calendarUpdate).load('Volunteer/calendarEntry')" data-toggle="collapse" data-target="#calendarUpdate" aria-expanded="false" aria-controls="calendarUpdate">Add Event to Calendar</button>
-        <button type="button" class="btn btn-outline-dark btn-sm ml-4" onclick="$(calendarUpdate).load('Volunteer/calendarRegistration')" data-toggle="collapse" data-target="#calendarUpdate" aria-expanded="false" aria-controls="calendarUpdate">Register/De-register Calendar Event</button>
+        <button type="button" class="btn btn-outline-dark btn-sm ml-4" onclick="$(calendarUpdate).load('Volunteer/calendarEntry')" data-toggle="collapse" data-target="#calendarUpdate" aria-expanded="false" aria-controls="calendarUpdate">Add Volunteer Schedule</button>
+        <button type="button" class="btn btn-outline-dark btn-sm ml-4" onclick="$(calendarUpdate).load('Volunteer/calendarRegistration')" data-toggle="collapse" data-target="#calendarUpdate" aria-expanded="false" aria-controls="calendarUpdate">Register Volunteer Schedule</button>
     </div>
 </div>
 <div class="row col-12 mt-2">
