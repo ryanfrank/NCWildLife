@@ -82,5 +82,19 @@ class Admin extends CI_Controller
         }
         else {show_404();}
     }
+
+    public function updateUser(){
+        //if ($this->input->is_ajax_request()) {
+            $data['users'] = $this->ion_auth->users()->result();
+            $groups = $this->db->get('groups');
+            $data['groups'] = $groups->result_array();
+            $this->load->view('admin/admin_update_user', $data);
+       // }
+        //else {show_404();}
+    }
+    public function userData() {
+        $data = $this->input->post('userID');
+
+    }
 }
 ?>

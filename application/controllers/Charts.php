@@ -24,6 +24,7 @@ class Charts extends CI_Controller
      */
     public function chart() {
         if ($this->input->is_ajax_request()) {
+            // Grab the URI segment 3... /Controller/Function/Variable
             $type = $this->uri->segment(3);
             $data['result'] = $this->db->order_by('feeding_weight', 'ASC')->get_where('feeding_charts_view', array('species_name' => $type));
             $this->load->view('charts/feeding_chart_view', $data);

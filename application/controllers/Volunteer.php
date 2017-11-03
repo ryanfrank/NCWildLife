@@ -23,7 +23,6 @@ class Volunteer extends CI_Controller
     public function calendar() {
         if ($this->input->is_ajax_request()) {
             $myArray = array();
-            $this->load->model('Calendar');
             $type = $this->uri->segment(3);
             $result = $this->Calendar->get_calendar_events($type);
             echo $result;
@@ -38,7 +37,6 @@ class Volunteer extends CI_Controller
     }
     public function addCalendarEvent(){
         if ($this->input->is_ajax_request()) {
-            $this->load->model('Calendar');
             $data = array(
                 'title' => $this->input->post('eventTitle'),
                 'allDay' => $this->input->post('allDayEvent'),
@@ -53,7 +51,6 @@ class Volunteer extends CI_Controller
     }
     public function calendarRegistration(){
         if ($this->input->is_ajax_request()) {
-            $this->load->model('Calendar');
             $curDate = date("Y-m-d H:i");
             $query = $this->Calendar->get_calendar_events('Volunteer', $curDate, $JSON = false);
             $data['date'] = $curDate;
@@ -65,7 +62,6 @@ class Volunteer extends CI_Controller
     }
     public function updateCalendarEvent() {
         if ($this->input->is_ajax_request()) {
-            $this->load->model('Calendar');
             $userID = $this->input->post('userID');
             $user = $this->ion_auth->user($userID)->row();
             $rehabberInfo = $this->db->get_where('rehabber', array('rehabber_email' => $user->email))->row();

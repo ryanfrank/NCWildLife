@@ -42,7 +42,6 @@
     <div class="row col-10">
         <table class="table table-bordered table-striped" id="feedingData">
             <tr>
-                <!-- <th>Species Type</th> -->
                 <th>Weight</th>
                 <th>CC</th>
                 <th>Freequency</th>
@@ -52,7 +51,6 @@
             foreach ( $result->result() as $chart ) {
                 ?>
                 <tr>
-                    <!--<td><?php echo $chart->species_name; ?></td>-->
                     <td><?php echo $chart->feeding_weight; ?></td>
                     <td><?php echo $chart->feeding_cc; ?></td>
                     <td><?php echo $chart->freequency; ?></td>
