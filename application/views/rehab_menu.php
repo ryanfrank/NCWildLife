@@ -8,7 +8,7 @@
 ?>
 <div class="row ml-0 mr-0">
     <nav class="navbar navbar-expand-lg navbar-light bg-light col-12">
-        <a class="navbar-brand">NC Wild Life Rehab</a>
+        <a class="navbar-brand">NC Wildlife Rehab</a>
         <div class="collapse navbar-collapse" id="ncwlNavigation">
             <ul class="navbar-nav">
                 <li class="nav-item active">

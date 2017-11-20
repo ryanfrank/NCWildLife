@@ -64,3 +64,10 @@
         ?>
     </div>
 </div>
+<div class="row mb-0">
+    <div class="col-2"></div>
+    <div class="text-center col-8">
+        <img src="<?php echo base_url();?>/application/images/logo_3.jpg" class="img-fluid" alt="Responsive image">
+    </div>
+    <div class="col-2"></div>
+</div>

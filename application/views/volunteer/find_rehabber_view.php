@@ -66,6 +66,7 @@
             <th>Rehabber City</th>
             <th>Rehabber State</th>
             <th>Rehabber County</th>
+            <th>Notes</th>
         </tr>
         <?php
         foreach ( $rehabbers->result() as $rehabber ) {
@@ -77,6 +78,7 @@
                 <td><?php echo $rehabber->rehabber_city; ?></td>
                 <td><?php echo $rehabber->rehabber_state; ?></td>
                 <td><?php echo $rehabber->rehabber_county; ?></td>
+                <td><?php echo $rehabber->rehabber_notes; ?></td>
             </tr>
             <?php
         }
