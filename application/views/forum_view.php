@@ -12,7 +12,7 @@
     }
 </script>
 <div class="container-fluid">
-    <div class="row col-10">
+    <div class="row col-12">
         <iframe src='<?php echo $forum; ?>' style='width: 100%;height: 100%; padding: 0px; margin: 0;
         border: none; display: block; overflow: hidden; ' onload='resizeIframe(this)'></iframe>
     </div>
