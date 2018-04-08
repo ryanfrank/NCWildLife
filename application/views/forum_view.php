@@ -7,6 +7,5 @@
  */
 ?>
 <div class="row col-10">
-    <iframe src='<?php echo $forum; ?>' style='width: 100%;height: 100%; padding: 0px; margin: 0;
-    border: none; display: block; overflow: hidden;' onload='resizeIframe(this)'></iframe>
+    <iframe src='<?php echo $forum; ?>' style='overflow: hidden; height: 100%; width: 100%; position: absolute;'></iframe>
 </div>
