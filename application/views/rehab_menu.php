@@ -39,6 +39,7 @@
                     <div class="dropdown-menu" aria-labelledby="navbarIntakeDropdown">
                         <a class="dropdown-item" href="javascript:void(0)" onclick="$(content).load('Volunteer/schedule/volunteer')">Volunteer Calendar</a>
                         <a class="dropdown-item" href="javascript:void(0)" onclick="$(content).load('Rehab/locateRehabber')">Find Rehabber</a>
+                        <a class="dropdown-item" href="javascript:void(0)" onclick="$(content).load('Forum/index')">Forums</a>
                     </div>
                 </li>
             <?php } ?>
