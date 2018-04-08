@@ -25,7 +25,27 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <script type="text/javascript" src="<?php echo base_url('application/js/fullcalendar-3.9.0.js');?>"></script>
     <link rel="stylesheet" type="text/css" href="<?php echo site_url('application/css/css/font-awesome.css');?>">
     <link rel="stylesheet" type="text/css" href="<?php echo site_url('application/css/ncwl.css');?>">
+    <script>
+        window.fbAsyncInit = function() {
+            FB.init({
+                appId      : '617800265232790',
+                cookie     : true,
+                xfbml      : true,
+                version    : 'v2.12'
+            });
 
+            FB.AppEvents.logPageView();
+
+        };
+
+        (function(d, s, id){
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) {return;}
+            js = d.createElement(s); js.id = id;
+            js.src = "https://connect.facebook.net/en_US/sdk.js";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+    </script>
 </head>
     <body>
         <div class="container-fluid ml-3 mt-1 w-100 mr-2" id="header">
