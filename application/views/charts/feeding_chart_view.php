@@ -6,9 +6,9 @@
  * Time: 7:26 PM
  */
 
-    //$num_entries = $result->num_rows();
+    $num_entries = $result->num_rows();
 
-    //if ( $num_entries >= 1 ){
+    if ( $num_entries >= 1 ){
 ?>
     <script>
         function myFunction() {
@@ -62,4 +62,4 @@
         </table>
     </div>
 
-<?php //} ?>
+<?php } ?>
