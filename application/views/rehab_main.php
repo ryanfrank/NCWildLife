@@ -17,7 +17,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <link rel="stylesheet" type="text/css" href="<?php echo site_url('application/bootstrap-4.0.0-beta-dist/css/bootstrap.min.css');?>">
     <link rel="stylesheet" type="text/css" href="<?php echo site_url('application/bootstrap-4.0.0-beta-dist/css/bootstrap-datetimepicker.css');?>">
     <link rel="stylesheet" type="text/css" href="<?php echo site_url('application/css/fullcalendar.css');?>">
-    <script type="text/javascript" src="<?php echo base_url('application/js/jquery-3.2.1.min.js');?>"></script>
+    <script type="text/javascript" src="<?php echo base_url('application/js/jquery-3.3.1.min.js');?>"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
     <script type="text/javascript" src="<?php echo base_url('application/bootstrap-4.0.0-beta-dist/js/bootstrap.js');?>"></script>
     <script type="text/javascript" src="<?php echo base_url('application/bootstrap-4.0.0-beta-dist/js/bootstrap-datetimepicker.js');?>"></script>
