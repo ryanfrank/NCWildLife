@@ -33,12 +33,12 @@
             }
         }
     </script>
-    <div class="row col-3 mb-2 mt-2">
+    <!-- <div class="row col-3 mb-2 mt-2">
         <div class="input-group rounded">
             <span class="input-group-addon fa fa-search"></span>
             <input type="text" class="form-control" id="myInput" onkeyup="myFunction()" placeholder="Specify weight (g)" />
         </div>
-    </div>
+    </div> -->
     <div class="row col-10">
         <table class="table table-bordered table-striped" id="feedingData">
             <tr>
