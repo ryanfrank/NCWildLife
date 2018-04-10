@@ -58,7 +58,8 @@ class Authentication extends CI_Controller {
             {
                 $results = "success";
             }
-            else {
+            else
+            {
                 $results = "failure";
             }
             echo json_encode($results);
