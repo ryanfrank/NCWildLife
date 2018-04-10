@@ -35,7 +35,7 @@ class Authentication extends CI_Controller {
                 'active'        => 1
             );
             $group = array('2');
-            if ($this->ion_auth->register($formData['user_name'], $formData['password'], $formData['email'], $additional_data, $group)) {
+            if ($this->ion_auth->register($formData['user_name'], $formData['password'], $formData['email'], $additional_data, $group) != FALSE ) {
                 $results = "success";
             } else {
                 $results = "failure";
