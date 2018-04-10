@@ -25,11 +25,16 @@
         $('#clock').html(moment().format('dddd MMM. D, YYYY [at] h:mm A z'));
     }
     setInterval(update,250);
-</script>
-<script>
-    $( function() {
-        var dialog, form,
 
+    /****
+     * WHAT: Setup dialog for user login and registration
+     * WHY: Cleanly handle the login process
+     * INCLUDES: Sanity checking of input
+     * NOTES: Calls controller that is restricted to Ajax calls only
+     */
+
+    $( function() {
+        var dialog,
             // From http://www.whatwg.org/specs/web-apps/current-work/multipage/states-of-the-type-attribute.html#e-mail-state-%28type=email%29
             emailRegex = /^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/,
             name = $( "#name" ),
@@ -50,9 +55,21 @@
         function checkLength( o, n, min, max ) {
             if ( o.val().length > max || o.val().length < min ) {
                 o.addClass( "ui-state-error" );
-                updateTips( "Length of " + n + " must be between " +
-                    min + " and " + max + "." );
-                return false;
+                if ( o.val().length > 0 && o.val().length < min )
+                {
+                    updateTips( n + " must be at least " + min + " characters.");
+                    return false;
+                }
+                else if ( o.val().length > max )
+                {
+                    updateTips( n + " cannot be greater than " + max + " characters.");
+                    return false;
+                }
+                else if ( !o.val() )
+                {
+                    updateTips( n + " is required ");
+                    return false;
+                }
             } else {
                 return true;
             }
@@ -68,84 +85,90 @@
             }
         }
 
-        function addUser() {
-            var valid = true;
-            allFields.removeClass( "ui-state-error" );
-
-            valid = valid && checkLength( name, "username", 3, 16 );
-            valid = valid && checkLength( email, "email", 6, 80 );
-            valid = valid && checkLength( password, "password", 5, 16 );
-
-            valid = valid && checkRegexp( name, /^[a-z]([0-9a-z_\s])+$/i, "Username may consist of a-z, 0-9, underscores, spaces and must begin with a letter." );
-            valid = valid && checkRegexp( email, emailRegex, "eg. ui@jquery.com" );
-            valid = valid && checkRegexp( password, /^([0-9a-zA-Z])+$/, "Password field only allow : a-z 0-9" );
-
-            if ( valid ) {
-                $( "#users tbody" ).append( "<tr>" +
-                    "<td>" + name.val() + "</td>" +
-                    "<td>" + email.val() + "</td>" +
-                    "<td>" + password.val() + "</td>" +
-                    "</tr>" );
-                dialog.dialog( "close" );
-            }
-            return valid;
-        }
         function login() {
             event.preventDefault();
-            jQuery.ajax({
-                type: "POST",
-                url: "<?php echo base_url(); ?>" + "Authentication/loginUser",
-                dataType: 'json',
-                data: {
-                    "login":    $("input#login").val(),
-                    "password": $("input#password").val()
-                },
-                success: function(res) {
-                    if (res === "failure") {
-                        jQuery("div#loginStatus").html('<div class="alert alert-danger mt-lg-4 col-8 alert-dismissible fade show" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>Failed to login ' + $("input#login").val() + '</div>');
-                        document.getElementById("loginUser").reset();
+
+            var valid           = true;
+            var loginID         = $("input#login");
+            var password        = $("input#password");
+
+            allFields.removeClass( "ui-state-error" );
+            valid = valid && checkLength( loginID, "Login Name", 3, 80 );
+            valid = valid && checkLength( password, "Password", 3, 16 );
+
+            if ( valid ) {
+                jQuery.ajax({
+                    type: "POST",
+                    url: "<?php echo base_url(); ?>" + "Authentication/loginUser",
+                    dataType: 'json',
+                    data: {
+                        "login": loginID.val(),
+                        "password": password.val()
+                    },
+                    success: function (res) {
+                        if (res === "failure") {
+                            jQuery("div#loginStatus").html('<div class="alert alert-danger mt-lg-4 col-8 alert-dismissible fade show" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>Failed to login ' + $("input#login").val() + '</div>');
+                            document.getElementById("loginUser").reset();
+                        }
+                        else if (res === "success") {
+                            window.location.reload(false);
+                        }
                     }
-                    else if (res === "success") {
-                        window.location.reload(false);
-                    }
-                }
-            });
+                });
+            }
         }
 
         function register() {
             event.preventDefault();
-            jQuery.ajax({
-                type: "POST",
-                url: "<?php echo base_url(); ?>" + "Authentication/createUser",
-                dataType: 'json',
-                data: {
-                    "first":    $("input#firstName").val(),
-                    "last":     $("input#lastName").val(),
-                    "user":     $("input#userName").val(),
-                    "email":    $("input#emailAddress").val(),
-                    "password": $("input#inputPassword").val()
-                },
-                success: function(res) {
-                    if (res === "success") {
-                        jQuery("div#createUserStatus").html('<div class="alert alert-success mt-lg-2 col-10 alert-dismissible fade show" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>Successfully added ' + $("input#firstName").val() + ' ' + $("input#lastName").val() + '</div>');
-                        document.getElementById("registerNewUser").reset();
-                        dialog.dialog( "close" );
+            var valid           = true;
+            var emailAddress    = $("input#emailAddress");
+            var password        = $("input#inputPassword");
+            var userName        = $("input#userName");
+            var firstName       = $("input#firstName");
+            var lastName        = $("input#lastName");
+
+            allFields.removeClass( "ui-state-error" );
+            valid = valid && checkLength( userName, "User Name", 3, 16 );
+            valid = valid && checkLength( firstName, "First Name", 3, 16 );
+            valid = valid && checkLength( lastName, "Last Name", 3, 16 );
+            valid = valid && checkRegexp( emailAddress, emailRegex, "email: e.g. user@domain.com" );
+            valid = valid && checkLength( password, "Password", 6, 16 );
+
+            if ( valid ) {
+                jQuery.ajax({
+                    type: "POST",
+                    url: "<?php echo base_url(); ?>" + "Authentication/createUser",
+                    dataType: 'json',
+                    data: {
+                        "first": firstName.val(),
+                        "last": lastName.val(),
+                        "user": userName.val(),
+                        "email": emailAddress.val(),
+                        "password": password.val()
+                    },
+                    success: function (res) {
+                        if (res === "success") {
+                            jQuery("div#createUserStatus").html('<div class="alert alert-success mt-lg-2 col-10 alert-dismissible fade show" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>Successfully added ' + firstName.val() + ' ' + lastName.val() + '</div>');
+                            document.getElementById("registerNewUser").reset();
+                            registerDialog.dialog("close");
+                        }
+                        else {
+                            jQuery("div#createUserStatus").html('<div class="alert alert-danger mt-lg-2 col-10 alert-dismissible fade show" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>Failed to add ' + firstName.val()+ ' ' + lastName.val() + '</div>');
+                            document.getElementById("registerNewUser").reset();
+                            registerDialog.dialog("close");
+                        }
                     }
-                    else {
-                        jQuery("div#createUserStatus").html('<div class="alert alert-danger mt-lg-2 col-10 alert-dismissible fade show" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>Failed to add ' + $("input#firstName").val() + ' ' + $("input#lastName").val() + '</div>');
-                        document.getElementById("registerNewUser").reset();
-                        dialog.dialog( "close" );
-                    }
-                }
-            });
+                });
+            }
         }
+
         loginDialog = $( "#loginUser" ).dialog({
             autoOpen: false,
-            height: 325,
+            height: 375,
             width: 325,
             modal: true,
             closeOnEscape: true,
-            title: "Login User",
+            title: "User Login",
             buttons: {
                 "Login": login,
                 Cancel: function() {
@@ -157,6 +180,7 @@
                 allFields.removeClass( "ui-state-error" );
             }
         });
+
         registerDialog = $( "#registerNewUser" ).dialog({
             autoOpen: false,
             height: 650,
@@ -184,6 +208,7 @@
         });
     } );
 </script>
+
 <div class="row mr-3">
     <div class="col align-self-start text-left font-italic" id="clock"></div>
     <div class="col align-self-end text-right font-italic">
@@ -222,27 +247,29 @@
         ?>
     </div>
 </div>
-<div class="modal-body" id="loginModal" hidden>
+<div id="loginModal" hidden>
     <form class="mt-3" id="loginUser" name="loginUser">
+        <p class="validateTips"></p>
         <div class="row">
             <div class="form-group col-10">
-                <label for="login" class="align-content-center">Login ID</label>
-                <input type="text" class="form-control text ui-widget-content ui-corner-all" id="login" placeholder="registered email address" onmouseover="this.focus();"  required>
+                <label for="login" class="align-content-center">Email Address</label>
+                <input type="text" class="form-control text ui-widget-content ui-corner-all" id="login" placeholder="registered email address" onmouseover="this.focus();" >
                 <div class="invalid-feedback">Please provide a login ID</div>
             </div>
         </div>
         <div class="row">
             <div class="form-group col-10">
                 <label for="password" class="align-content-center">Password</label>
-                <input type="password" class="form-control text ui-widget-content ui-corner-all" id="password"  onmouseover="this.focus();"  required>
+                <input type="password" class="form-control text ui-widget-content ui-corner-all" id="password"  onmouseover="this.focus();">
                 <div class="invalid-feedback">Please provide a password</div>
             </div>
         </div>
     </form>
 </div>
 
-<div class="modal-body" id="registerModal" hidden>
-    <form class="mt-3" id="registerNewUser" name="registerNewUser" data-toggle="validator">
+<div  id="registerModal" hidden>
+    <form class="mt-3" id="registerNewUser" name="registerNewUser" >
+        <p class="validateTips"></p>
         <div class="row">
             <div class="form-group col-6">
                 <label for="userName" class="align-content-center">User Name</label>
