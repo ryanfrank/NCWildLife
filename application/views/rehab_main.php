@@ -22,7 +22,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <script type="text/javascript" src="<?php echo base_url('application/bootstrap-4.0.0-beta-dist/js/bootstrap.js');?>"></script>
     <script type="text/javascript" src="<?php echo base_url('application/bootstrap-4.0.0-beta-dist/js/bootstrap-datetimepicker.js');?>"></script>
     <script type="text/javascript" src="<?php echo base_url('application/js/moment.js');?>"></script>
-    <script type="text/javascript" src="<?php echo base_url('application/js/fullcalendar.js');?>"></script>
+    <script type="text/javascript" src="<?php echo base_url('application/js/fullcalendar.min-3.9.0.js');?>"></script>
     <script type="text/javascript" src="<?php echo base_url('application/js/jquery-ui.min.js');?>"></script>
     <link rel="stylesheet" type="text/css" href="<?php echo site_url('application/css/css/font-awesome.css');?>">
     <link rel="stylesheet" type="text/css" href="<?php echo site_url('application/css/ncwl.css');?>">
