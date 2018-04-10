@@ -144,10 +144,12 @@
             height: 325,
             width: 325,
             modal: true,
+            closeOnEscape: true,
+            title: "Login User",
             buttons: {
                 "Login": login,
                 Cancel: function() {
-                    dialog.dialog( "close" );
+                    loginDialog.dialog( "close" );
                 }
             },
             close: function() {
@@ -160,10 +162,12 @@
             height: 650,
             width: 425,
             modal: true,
+            closeOnEscape: true,
+            title: "Register New User",
             buttons: {
                 "Register": register,
                 Cancel: function() {
-                    dialog.dialog( "close" );
+                    registerDialog.dialog( "close" );
                 }
             },
             close: function() {
@@ -222,7 +226,7 @@
     <form class="mt-3" id="loginUser" name="loginUser">
         <div class="row">
             <div class="form-group col-10">
-                <label for="login" class="align-content-center">Login Account</label>
+                <label for="login" class="align-content-center">Login ID</label>
                 <input type="text" class="form-control text ui-widget-content ui-corner-all" id="login" placeholder="registered email address" onmouseover="this.focus();"  required>
                 <div class="invalid-feedback">Please provide a login ID</div>
             </div>

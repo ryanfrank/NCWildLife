@@ -50,7 +50,7 @@ class Authentication extends CI_Controller {
         if ( $this->input->post('login') ){
             $formData = array(
                 'login'    => $this->input->post('login'),
-                'password'     => $this->input->post('password')
+                'password' => $this->input->post('password')
             );
             $remember = TRUE; // remember the user
             if ( $this->ion_auth->login($formData['login'], $formData['password'], $remember) )
