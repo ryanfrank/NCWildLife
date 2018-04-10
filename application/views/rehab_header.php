@@ -139,7 +139,7 @@
                 }
             });
         }
-        dialog = $( "#loginUser" ).dialog({
+        loginDialog = $( "#loginUser" ).dialog({
             autoOpen: false,
             height: 325,
             width: 325,
@@ -155,7 +155,7 @@
                 allFields.removeClass( "ui-state-error" );
             }
         });
-        dialog = $( "#registerNewUser" ).dialog({
+        registerDialog = $( "#registerNewUser" ).dialog({
             autoOpen: false,
             height: 650,
             width: 425,
@@ -172,16 +172,11 @@
             }
         });
 
-        form = dialog.find( "form" ).on( "submit", function( event ) {
-            event.preventDefault();
-            addUser();
-        });
-
         $( "#login-user" ).on( "click", function() {
-            dialog.dialog( "open" );
+            loginDialog.dialog( "open" );
         });
         $( "#register-user" ).on( "click", function() {
-            dialog.dialog( "open" );
+            registerDialog.dialog( "open" );
         });
     } );
 </script>
