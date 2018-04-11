@@ -31,7 +31,7 @@ class Rehab extends CI_Controller {
     }
     public function locateRehabber() {
         $data['states'] = $this->db->order_by('state_abbr', 'ASC')->select('state_abbr,state_name')->get('states');
-        $data['rehabbers'] = $this->db->order_by('rehabber_state', 'ASC')->get('rehabber_view');
+        $data['rehabbers'] = $this->db->order_by('rehabber_county', 'ASC')->get('rehabber_view');
         //$data['rehabbers'] = $this->db->order_by('rehabber_state', 'ASC')->get_where('rehabber_view', array('rehabber_active' => '1'));
         $this->load->view('volunteer/find_rehabber_view', $data);
     }
