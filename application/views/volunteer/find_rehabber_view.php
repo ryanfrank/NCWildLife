@@ -57,7 +57,7 @@
         <input type="text" class="form-control" id="county-filter" placeholder="Search County (hit enter)" />
     </div>
 </div>
-<div class="row col-10">
+<div class="row col-12">
     <table class="table table-bordered table-striped" id="rehabberData">
         <tr>
             <th>Rehabber Name</th>
@@ -66,10 +66,13 @@
             <th>Rehabber City</th>
             <th>Rehabber State</th>
             <th>Rehabber County</th>
+            <th>Rehabber Active</th>
             <th>Notes</th>
         </tr>
         <?php
         foreach ( $rehabbers->result() as $rehabber ) {
+            if ($rehabber->rehabber_active == 0 ){ $status = "No"; }
+            else { $status = "Yes"; }
             ?>
             <tr class="rehabber-row" data-state="<?php echo $rehabber->rehabber_state; ?>" data-county="<?php echo $rehabber->rehabber_county; ?>">
                 <td><?php echo $rehabber->rehabber_name; ?></td>
@@ -78,6 +81,7 @@
                 <td><?php echo $rehabber->rehabber_city; ?></td>
                 <td><?php echo $rehabber->rehabber_state; ?></td>
                 <td><?php echo $rehabber->rehabber_county; ?></td>
+                <td><?php echo $status; ?></td>
                 <td><?php echo $rehabber->rehabber_notes; ?></td>
             </tr>
             <?php

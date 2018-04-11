@@ -40,7 +40,9 @@
                     "phone":        $("input#phoneNumber").val(),
                     "isLicensed":   licensed,
                     "isActive":     isActive,
-                    "isVolunteer":  isVolunteer
+                    "isVolunteer":  isVolunteer,
+                    "notes":        $("input#rehabberNotes").val(),
+                    "affiliation":  $("input#rehabberAffiliation").val()
                 },
                 success: function(res) {
                     if (res === "success") {
@@ -98,7 +100,7 @@
         <div class="row">
             <div class="form-group col-6">
                 <label for="streetAddress" class="align-content-center">Rehabber / Volunteer Street Address</label>
-                <input type="text" class="form-control" id="streetAddress" placeholder="Street Address" onmouseover="this.focus();"  required>
+                <input type="text" class="form-control" id="streetAddress" placeholder="Street Address" onmouseover="this.focus();">
             </div>
             <div class="form-group col-6">
                 <label for="cityName" class="align-content-center">Rehabber / Volunteer City</label>
@@ -123,11 +125,11 @@
             </div>
             <div class="form-group col-3">
                 <label for="zipCode" class="align-content-center">Rehabber / Volunteer Zip</label>
-                <input type="text" class="form-control" id="zipCode" placeholder="Zip Code" onmouseover="this.focus();"  required>
+                <input type="text" class="form-control" id="zipCode" placeholder="Zip Code" onmouseover="this.focus();">
             </div>
             <div class="form-group col-3">
                 <label for="emailAddress" class="align-content-center">Rehabber / Volunteer Email</label>
-                <input type="email" class="form-control" id="emailAddress" placeholder="email@domain.com" onmouseover="this.focus();"  required>
+                <input type="email" class="form-control" id="emailAddress" placeholder="email@domain.com" onmouseover="this.focus();" >
             </div>
         </div>
         <div class="row">
@@ -152,6 +154,16 @@
                     <input class="form-check-input" id="active" type="checkbox" value="No" onmouseover="this.focus();" >
                     Active?
                 </label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-check col-6">
+                <label for="rehabberNotes" class="align-content-center">Notes</label>
+                <input type="text" class="form-control" id="rehabberNotes" placeholder="Enter notes here" onmouseover="this.focus();">
+            </div>
+            <div class="form-check col-6">
+                <label for="rehabberAffiliation" class="align-content-center">Affiliations</label>
+                <input type="text" class="form-control" id="rehabberAffiliation" placeholder="Enter affiliations here" onmouseover="this.focus();">
             </div>
         </div>
         <div class="row ml-2 mt-4">

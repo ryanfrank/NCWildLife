@@ -38,20 +38,27 @@ class Admin extends CI_Controller
     {
         if ($this->input->is_ajax_request()) {
             $date = date("Y-m-d H:i:s");
+
+            //$firstName = $this->input->post('first');
+            //$lastName = $this->input->post('last');
+            //echo "NAME: " . $firstName . "Last " . $lastName;
+
             $formData = array(
-                'rehabber_first_name' => $this->input->post('first'),
-                'rehabber_last_name' => $this->input->post('last'),
-                'rehabber_street' => $this->input->post('street'),
-                'rehabber_city' => $this->input->post('city'),
-                'rehabber_state' => $this->input->post('state'),
-                'rehabber_zip' => $this->input->post('zip'),
-                'rehabber_phone' => preg_replace('/\D+/', '', $this->input->post('phone')),
-                'rehabber_email' => $this->input->post('email'),
-                'rehabber_license' => $this->input->post('isLicensed'),
-                'rehabber_volunteer' => $this->input->post('isVolunteer'),
-                'rehabber_active' => $this->input->post('isActive'),
-                'rehabber_county' => $this->input->post('county'),
-                'created_date' => $date
+                'rehabber_first_name'   => ucwords(strtolower($this->input->post('first'))),
+                'rehabber_last_name'    => ucwords(strtolower($this->input->post('last'))),
+                'rehabber_street'       => $this->input->post('street'),
+                'rehabber_city'         => ucwords(strtolower($this->input->post('city'))),
+                'rehabber_state'        => $this->input->post('state'),
+                'rehabber_zip'          => $this->input->post('zip'),
+                'rehabber_phone'        => preg_replace('/\D+/', '', $this->input->post('phone')),
+                'rehabber_email'        => strtolower($this->input->post('email')),
+                'rehabber_license'      => $this->input->post('isLicensed'),
+                'rehabber_volunteer'    => $this->input->post('isVolunteer'),
+                'rehabber_active'       => $this->input->post('isActive'),
+                'rehabber_county'       => $this->input->post('county'),
+                'rehabber_notes'        => $this->input->post('notes'),
+                'rehabber_affiliate'   => $this->input->post('affiliate'),
+                'created_date'          => $date
             );
             $where = array('rehabber_first_name' => $formData['rehabber_first_name'], 'rehabber_last_name' => $formData['rehabber_last_name']);
             $query = $this->db->get_where('rehabber', $where);
