@@ -6,86 +6,77 @@
  * Time: 5:50 PM
  */
 ?>
-
+<?php $data = json_encode($rehabbers->result()); ?>
 <script>
-    (function () {
-        var
-            filters = {
-                state: null,
-                county: null
-            };
 
-        function updateFilters() {
-            $('.rehabber-row').hide().filter(function () {
-                var
-                    self = $(this),
-                    result = true; // not guilty until proven guilty
-                Object.keys(filters).forEach(function (filter) {
-                    if (filters[filter] && (filters[filter] != 'All') && (filters[filter] != 'Search County')) {
-                        result = result && filters[filter] === self.data(filter);
-                    }
-                });
-                return result;
-            }).show();
-        }
-        function bindDropdownFilters() {
-            Object.keys(filters).forEach(function (filterName) {
-                $('#' + filterName + '-filter').on('change', function () {
-                    if (filterName == 'county-filter'){
-                        filters[filterName] = document.getElementById('county-filter');
-                    }
-                    else {
-                        filters[filterName] = this.value;
-                    }
-                    updateFilters();
-                });
-            });
-        }
-        bindDropdownFilters();
-    })();
+   $('#rehabberTable').bootstrapTable({
+       height: getHeight(),
+       data: <?php echo $data ?>,
+        columns: [
+           /* {
+                checkbox: true
+            },*/
+            {
+                /*sortable: true,*/
+                field: 'rehabber_name',
+                title: 'Rehabber Name'
+            },
+            {
+                field: 'rehabber_email',
+                title: 'Rehabber Email'
+            },
+            {
+                field: 'rehabber_phone',
+                title: 'Rehabber Phone'
+            },
+            {
+                field: 'rehabber_state',
+                title: 'Rehabber State'
+            },
+            {
+                field: 'rehabber_county',
+                title: 'Rehabber County'
+            },
+            {
+                field: 'rehabber_zip',
+                title: 'Rehabber Zip'
+            },
+            {
+                field: 'rehabber_active',
+                title: 'Rehabber Active'
+            },
+            {
+                field: 'rehabber_notes',
+                title: 'Rehabber Notes'
+            }
+        ]
+    });
+
+   function responseHandler(res) {
+       $.each(res.rows, function (i, row) {
+           row.state = $.inArray(row.id, selections) !== -1;
+       });
+       return res;
+   }
+
+   function getHeight() {
+       return $(window).height() - $('h1').outerHeight(true);
+   }
+
 </script>
-<div class="row col-6 mt-2">
-    <div class="form-group col-3">
-        <select id="state-filter" class="form-control">
-            <option>All</option>
-            <?php foreach ($states->result() as $state):?>
-                <option value="<?php echo $state->state_abbr; ?>"><?php echo $state->state_name; ?></option>
-            <?php endforeach; ?>
-        </select>
-    </div>
-    <div class="form-group col-3">
-        <input type="text" class="form-control" id="county-filter" placeholder="Search County (hit enter)" />
-    </div>
-</div>
-<div class="row col-12">
-    <table class="table table-bordered table-striped" id="rehabberData">
-        <tr>
-            <th>Rehabber Name</th>
-            <th>Rehabber Email</th>
-            <th>Rehabber Phone</th>
-            <th>Rehabber City</th>
-            <th>Rehabber State</th>
-            <th>Rehabber County</th>
-            <th>Rehabber Active</th>
-            <th>Notes</th>
-        </tr>
-        <?php
-        foreach ( $rehabbers->result() as $rehabber ) {
-            if ($rehabber->rehabber_active == 0 ){ $status = "No"; }
-            else { $status = "Yes"; }
-            ?>
-            <tr class="rehabber-row" data-state="<?php echo $rehabber->rehabber_state; ?>" data-county="<?php echo $rehabber->rehabber_county; ?>">
-                <td><?php echo $rehabber->rehabber_name; ?></td>
-                <td><a href="mailto: <?php echo $rehabber->rehabber_email; ?>"><?php echo $rehabber->rehabber_email; ?></a></td>
-                <td>(<?php echo substr($rehabber->rehabber_phone, 0, -7) . ') ' . substr($rehabber->rehabber_phone, 3, -4) . '-' . substr($rehabber->rehabber_phone, -4, 4); ?></td>
-                <td><?php echo $rehabber->rehabber_city; ?></td>
-                <td><?php echo $rehabber->rehabber_state; ?></td>
-                <td><?php echo $rehabber->rehabber_county; ?></td>
-                <td><?php echo $status; ?></td>
-                <td><?php echo $rehabber->rehabber_notes; ?></td>
-            </tr>
-            <?php
-        }
-        ?>
-    </table>
-</div>
+
+<table id="rehabberTable"
+       data-search="true"
+       data-show-refresh="true"
+       data-show-toggle="true"
+       data-show-columns="true"
+       data-show-export="false"
+       data-detail-view="false"
+       data-minimum-count-columns="2"
+       data-show-pagination-switch="true"
+       data-pagination="true"
+       data-id-field="rehabber_name"
+       data-page-list="[10, 25, 50, 100, ALL]"
+       data-show-footer="false"
+       data-response-handler="responseHandler">
+</table>

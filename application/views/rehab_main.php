@@ -21,33 +21,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
     <script type="text/javascript" src="<?php echo base_url('application/bootstrap-4.0.0-beta-dist/js/bootstrap.js');?>"></script>
     <script type="text/javascript" src="<?php echo base_url('application/bootstrap-4.0.0-beta-dist/js/bootstrap-datetimepicker.js');?>"></script>
+    <script type="text/javascript" src="<?php echo base_url('application/js/bootstrap-table/bootstrap-table.js');?>"></script>
     <script type="text/javascript" src="<?php echo base_url('application/js/moment.js');?>"></script>
     <script type="text/javascript" src="<?php echo base_url('application/js/fullcalendar.min-3.9.0.js');?>"></script>
     <script type="text/javascript" src="<?php echo base_url('application/js/jquery-ui.min.js');?>"></script>
+    <link rel="stylesheet" type="text/css" href="<?php echo site_url('application/css/bootstrap-table.css');?>">
     <link rel="stylesheet" type="text/css" href="<?php echo site_url('application/css/css/font-awesome.css');?>">
     <link rel="stylesheet" type="text/css" href="<?php echo site_url('application/css/ncwl.css');?>">
     <link rel="stylesheet" type="text/css" href="<?php echo site_url('application/css/jquery-ui.min.css');?>">
-    <script>
-        window.fbAsyncInit = function() {
-            FB.init({
-                appId      : '617800265232790',
-                cookie     : true,
-                xfbml      : true,
-                version    : 'v2.12'
-            });
-
-            FB.AppEvents.logPageView();
-
-        };
-
-        (function(d, s, id){
-            var js, fjs = d.getElementsByTagName(s)[0];
-            if (d.getElementById(id)) {return;}
-            js = d.createElement(s); js.id = id;
-            js.src = "https://connect.facebook.net/en_US/sdk.js";
-            fjs.parentNode.insertBefore(js, fjs);
-        }(document, 'script', 'facebook-jssdk'));
-    </script>
 </head>
     <body>
         <div class="container-fluid ml-3 mt-1 w-100 mr-2" id="header">
