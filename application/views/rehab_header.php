@@ -7,31 +7,10 @@
  */
 ?>
 <script type="text/javascript">
-    function get_modal(type){
-        $.ajax({
-            //type    : 'POST',
-            url     : '<?php base_url() ?>Authentication/' + type + '_user',
-            cache   : false,
-            success : function(data){
-                if(data){
-                    $('#modal_target').html(data);
-                    //This shows the modal
-                    $('#' + type + 'Modal').modal('toggle');
-                }
-            }
-        });
-    }
     function update() {
         $('#clock').html(moment().format('dddd MMM. D, YYYY [at] h:mm A z'));
     }
     setInterval(update,250);
-
-    /****
-     * WHAT: Setup dialog for user login and registration
-     * WHY: Cleanly handle the login process
-     * INCLUDES: Sanity checking of input
-     * NOTES: Calls controller that is restricted to Ajax calls only
-     */
 
     $( function() {
         var dialog,

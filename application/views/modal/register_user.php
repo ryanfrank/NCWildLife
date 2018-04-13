@@ -11,7 +11,7 @@
         $("#registerNewUser").submit(function(event) {
             event.preventDefault();
             jQuery.ajax({
-                type: "POST",
+                type: 'POST',
                 url: "<?php echo base_url(); ?>" + "Authentication/createUser",
                 dataType: 'json',
                 data: {
