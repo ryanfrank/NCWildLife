@@ -9,7 +9,7 @@
 <script type="text/javascript">
     function get_modal(type){
         $.ajax({
-            type    : 'POST',
+            //type    : 'POST',
             url     : '<?php base_url() ?>Authentication/' + type + '_user',
             cache   : false,
             success : function(data){
@@ -98,7 +98,7 @@
 
             if ( valid ) {
                 jQuery.ajax({
-                    type: "POST",
+                    type: 'POST',
                     url: "<?php echo base_url(); ?>" + "Authentication/loginUser",
                     dataType: 'json',
                     data: {
@@ -136,7 +136,7 @@
 
             if ( valid ) {
                 jQuery.ajax({
-                    type: "POST",
+                    type: 'POST',
                     url: "<?php echo base_url(); ?>" + "Authentication/createUser",
                     dataType: 'json',
                     data: {
