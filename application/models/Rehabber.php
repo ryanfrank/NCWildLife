@@ -41,7 +41,15 @@ class Rehabber extends CI_Model
         $this->db->from('rehabber');
         $this->db->join('states', 'rehabber.rehabber_state = states.state_id');
         $this->db->join('counties', 'rehabber.rehabber_county = counties.county_id');
-        if ( $dbOptions['orderBy'] ) { $this->db->order_by($dbOptions['orderBy'], 'ASC'); }
+        foreach ( $dbOptions as $element => $value )
+        {
+            if ( $element == "orderBy" ) { $this->db->order_by($value, 'ASC'); }
+            if ( $element == "where" )
+            {
+                $options = preg_split('/,/', $value , -1, PREG_SPLIT_NO_EMPTY);
+                $this->db->where( "$options[0]", $options[1] );
+            }
+        }
         $myArray = $this->db->get();
         if ( $JSON == true ){
             $result = json_encode($myArray);

@@ -28,7 +28,7 @@ class Intake extends CI_Controller {
     {
         if ($this->input->is_ajax_request()) {
             $data['states'] = $this->db->get('states');
-            $this->load->view('intake_add_good_samaritan', $data);
+            $this->load->view('Intake/intake_add_good_samaritan', $data);
         }
         else { show_404(); }
     }
@@ -78,7 +78,7 @@ class Intake extends CI_Controller {
             $this->db->order_by("species_order", "asc");
             $data['species'] = $this->db->get();
             $data['rehabber'] = $this->db->get_where('rehabber', array('rehabber_volunteer' => 1));
-            $this->load->view('intake_animal', $data);
+            $this->load->view('Intake/intake_animal', $data);
         }
         else { show_404(); }
     }

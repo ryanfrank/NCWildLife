@@ -45,5 +45,20 @@ class Rehab extends CI_Controller {
 
         $this->load->view('volunteer/find_rehabber_view', $data);
     }
+    public function generalRehabber() {
+        $dbOptions = array( "orderBy" => "rehabber_county", "where"=>"rehabber_active,1" );
+        $data['rehabbers'] = $this->Rehabber->get($dbOptions, $JSON=FALSE);
+
+        foreach ( $data['rehabbers']->result() as $rehabber )
+        {
+            $rehabber->rehabber_name = "$rehabber->rehabber_first_name $rehabber->rehabber_last_name";
+            if ( $rehabber->rehabber_active == '1') { $rehabber->rehabber_active = "Yes"; }  else { $rehabber->rehabber_active = "No"; }
+            if ($rehabber->rehabber_license == '0') { $rehabber->rehabber_license = "No"; } else { $rehabber->rehabber_license = "Yes"; }
+            if ( $rehabber->rehabber_zip == '0' ) { $rehabber->rehabber_zip = "Unknown"; }
+            if (strlen($rehabber->rehabber_phone) == '10' ) { $rehabber->rehabber_phone = '('.substr($rehabber->rehabber_phone,0,3).') ' . substr($rehabber->rehabber_phone,3,3) . '-' . substr($rehabber->rehabber_phone,6,4); }
+        }
+
+        $this->load->view('volunteer/find_rehabber_view', $data);
+    }
 }
 ?>

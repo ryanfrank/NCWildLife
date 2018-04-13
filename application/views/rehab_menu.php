@@ -68,6 +68,11 @@
                     </div>
                 </li>
             <?php } ?>
+            <?php if ( !$this->ion_auth->logged_in() ){ ?>
+            <li class="nav-item active">
+                <a class="nav-link" href="javascript:void(0)" onclick="$(content).load('Rehab/generalRehabber')">Rehabber List</a>
+            </li>
+            <?php } ?>
         </ul>
     </div>
 </nav>

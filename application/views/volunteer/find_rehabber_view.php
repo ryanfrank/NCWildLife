@@ -79,8 +79,8 @@
 
 <table id="rehabberTable"
        data-search="true"
-       data-detail-view="true"
-       data-detail-formatter="detailFormatter"
+       <?php if ( $this->ion_auth->logged_in() ) { echo "data-detail-view=\"true\""; } ?>
+       <?php if ( $this->ion_auth->logged_in() ) { echo "data-detail-formatter=\"detailFormatter\""; } ?>
        data-striped="true"
        data-show-refresh="true"
        data-show-toggle="true"
