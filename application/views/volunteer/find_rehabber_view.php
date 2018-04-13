@@ -19,32 +19,32 @@
             {
                 sortable: true,
                 field: 'rehabber_name',
-                title: 'Rehabber Name'
+                title: 'Name'
             },
-            {
+            /*{
                 field: 'rehabber_email',
                 title: 'Rehabber Email'
-            },
+            },*/
             {
                 field: 'rehabber_phone',
-                title: 'Rehabber Phone'
+                title: 'Phone'
             },
             {
                 field: 'rehabber_state',
-                title: 'Rehabber State'
+                title: 'State'
             },
             {
                 sortable: true,
                 field: 'rehabber_county',
-                title: 'Rehabber County'
+                title: 'County'
             },
-            {
+            /*{
                 field: 'rehabber_zip',
                 title: 'Rehabber Zip'
-            },
+            },*/
             {
                 field: 'rehabber_active',
-                title: 'Rehabber Active'
+                title: 'Active'
             }
         ]
     });
@@ -70,7 +70,7 @@
             html.push('<td colspan="2">Affiliations: ' + Object.values(row)[12] + '</td><td colspan="2">Other Contacts: ' + Object.values(row)[13] + '</td>');
         html.push('</tr>');
         html.push('<tr>');
-            html.push('<td colspan="4">Additional Notes: ' + Object.values(row)[11] + '</td>');
+            html.push('<td colspan="2">Additional Notes: ' + Object.values(row)[11] + '</td><td colspan="2">Rehabber Email: ' + Object.values(row)[3] + '</td>');
         html.push('</tr>');
         html.push('</tbody></table>');
         return html.join('');
