@@ -78,7 +78,7 @@ class Intake extends CI_Controller {
             $this->db->order_by("species_order", "asc");
             $data['species'] = $this->db->get();
             $data['rehabber'] = $this->db->get_where('rehabber', array('rehabber_volunteer' => 1));
-            $this->load->view('Intake/intake_animal', $data);
+            $this->load->view('intake/intake_animal', $data);
         }
         else { show_404(); }
     }
