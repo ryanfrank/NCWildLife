@@ -11,181 +11,183 @@
         $('#clock').html(moment().format('dddd MMM. D, YYYY [at] h:mm A z'));
     }
     setInterval(update,250);
+<?php
+    if ( !$this->ion_auth->logged_in() ) { ?>
+        $( function() {
+            var dialog,
+                // From http://www.whatwg.org/specs/web-apps/current-work/multipage/states-of-the-type-attribute.html#e-mail-state-%28type=email%29
+                emailRegex = /^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/,
+                name = $( "#name" ),
+                email = $( "#email" ),
+                password = $( "#password" ),
+                allFields = $( [] ).add( name ).add( email ).add( password ),
+                tips = $( ".validateTips" );
 
-    $( function() {
-        var dialog,
-            // From http://www.whatwg.org/specs/web-apps/current-work/multipage/states-of-the-type-attribute.html#e-mail-state-%28type=email%29
-            emailRegex = /^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/,
-            name = $( "#name" ),
-            email = $( "#email" ),
-            password = $( "#password" ),
-            allFields = $( [] ).add( name ).add( email ).add( password ),
-            tips = $( ".validateTips" );
-
-        function updateTips( t ) {
-            tips
-                .text( t )
-                .addClass( "ui-state-highlight" );
-            setTimeout(function() {
-                tips.removeClass( "ui-state-highlight", 1500 );
-            }, 500 );
-        }
-
-        function checkLength( o, n, min, max ) {
-            if ( o.val().length > max || o.val().length < min ) {
-                o.addClass( "ui-state-error" );
-                if ( o.val().length > 0 && o.val().length < min )
-                {
-                    updateTips( n + " must be at least " + min + " characters.");
-                    return false;
-                }
-                else if ( o.val().length > max )
-                {
-                    updateTips( n + " cannot be greater than " + max + " characters.");
-                    return false;
-                }
-                else if ( !o.val() )
-                {
-                    updateTips( n + " is required ");
-                    return false;
-                }
-            } else {
-                return true;
+            function updateTips( t ) {
+                tips
+                    .text( t )
+                    .addClass( "ui-state-highlight" );
+                setTimeout(function() {
+                    tips.removeClass( "ui-state-highlight", 1500 );
+                }, 500 );
             }
-        }
 
-        function checkRegexp( o, regexp, n ) {
-            if ( !( regexp.test( o.val() ) ) ) {
-                o.addClass( "ui-state-error" );
-                updateTips( n );
-                return false;
-            } else {
-                return true;
-            }
-        }
-
-        function login() {
-            event.preventDefault();
-
-            var valid           = true;
-            var loginID         = $("input#login");
-            var password        = $("input#password");
-
-            allFields.removeClass( "ui-state-error" );
-            valid = valid && checkLength( loginID, "Login Name", 3, 80 );
-            valid = valid && checkLength( password, "Password", 3, 16 );
-
-            if ( valid ) {
-                jQuery.ajax({
-                    type: 'POST',
-                    url: "<?php echo base_url(); ?>" + "Authentication/loginUser",
-                    dataType: 'json',
-                    data: {
-                        "login": loginID.val(),
-                        "password": password.val()
-                    },
-                    success: function (res) {
-                        if (res === "failure") {
-                            jQuery("div#loginStatus").html('<div class="alert alert-danger mt-lg-4 col-8 alert-dismissible fade show" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>Failed to login ' + $("input#login").val() + '</div>');
-                            document.getElementById("loginUser").reset();
-                        }
-                        else if (res === "success") {
-                            window.location.reload(false);
-                        }
+            function checkLength( o, n, min, max ) {
+                if ( o.val().length > max || o.val().length < min ) {
+                    o.addClass( "ui-state-error" );
+                    if ( o.val().length > 0 && o.val().length < min )
+                    {
+                        updateTips( n + " must be at least " + min + " characters.");
+                        return false;
                     }
-                });
-            }
-        }
-
-        function register() {
-            event.preventDefault();
-            var valid           = true;
-            var emailAddress    = $("input#emailAddress");
-            var password        = $("input#inputPassword");
-            var userName        = $("input#userName");
-            var firstName       = $("input#firstName");
-            var lastName        = $("input#lastName");
-
-            allFields.removeClass( "ui-state-error" );
-            valid = valid && checkLength( userName, "User Name", 3, 16 );
-            valid = valid && checkLength( firstName, "First Name", 3, 16 );
-            valid = valid && checkLength( lastName, "Last Name", 3, 16 );
-            valid = valid && checkRegexp( emailAddress, emailRegex, "email: e.g. user@domain.com" );
-            valid = valid && checkLength( password, "Password", 6, 16 );
-
-            if ( valid ) {
-                jQuery.ajax({
-                    type: 'POST',
-                    url: "<?php echo base_url(); ?>" + "Authentication/createUser",
-                    dataType: 'json',
-                    data: {
-                        "first": firstName.val(),
-                        "last": lastName.val(),
-                        "user": userName.val(),
-                        "email": emailAddress.val(),
-                        "password": password.val()
-                    },
-                    success: function (res) {
-                        if (res === "success") {
-                            jQuery("div#createUserStatus").html('<div class="alert alert-success mt-lg-2 col-10 alert-dismissible fade show" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>Successfully added ' + firstName.val() + ' ' + lastName.val() + '</div>');
-                            document.getElementById("registerNewUser").reset();
-                            registerDialog.dialog("close");
-                        }
-                        else {
-                            jQuery("div#createUserStatus").html('<div class="alert alert-danger mt-lg-2 col-10 alert-dismissible fade show" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>Failed to add ' + firstName.val()+ ' ' + lastName.val() + '</div>');
-                            document.getElementById("registerNewUser").reset();
-                            registerDialog.dialog("close");
-                        }
+                    else if ( o.val().length > max )
+                    {
+                        updateTips( n + " cannot be greater than " + max + " characters.");
+                        return false;
                     }
-                });
-            }
-        }
-
-        loginDialog = $( "#loginUser" ).dialog({
-            autoOpen: false,
-            height: 375,
-            width: 325,
-            modal: true,
-            closeOnEscape: true,
-            title: "User Login",
-            buttons: {
-                "Login": login,
-                Cancel: function() {
-                    loginDialog.dialog( "close" );
+                    else if ( !o.val() )
+                    {
+                        updateTips( n + " is required ");
+                        return false;
+                    }
+                } else {
+                    return true;
                 }
-            },
-            close: function() {
-                document.getElementById("loginUser").reset();
-                allFields.removeClass( "ui-state-error" );
             }
-        });
 
-        registerDialog = $( "#registerNewUser" ).dialog({
-            autoOpen: false,
-            height: 650,
-            width: 425,
-            modal: true,
-            closeOnEscape: true,
-            title: "Register New User",
-            buttons: {
-                "Register": register,
-                Cancel: function() {
-                    registerDialog.dialog( "close" );
+            function checkRegexp( o, regexp, n ) {
+                if ( !( regexp.test( o.val() ) ) ) {
+                    o.addClass( "ui-state-error" );
+                    updateTips( n );
+                    return false;
+                } else {
+                    return true;
                 }
-            },
-            close: function() {
-                document.getElementById("registerNewUser").reset();
-                allFields.removeClass( "ui-state-error" );
             }
-        });
 
-        $( "#login-user" ).on( "click", function() {
-            loginDialog.dialog( "open" );
+            function login() {
+                event.preventDefault();
+
+                var valid           = true;
+                var loginID         = $("input#login");
+                var password        = $("input#password");
+
+                allFields.removeClass( "ui-state-error" );
+                valid = valid && checkLength( loginID, "Login Name", 3, 80 );
+                valid = valid && checkLength( password, "Password", 3, 16 );
+
+                if ( valid ) {
+                    jQuery.ajax({
+                        type: 'POST',
+                        url: "<?php echo base_url(); ?>" + "Authentication/loginUser",
+                        dataType: 'json',
+                        data: {
+                            "login": loginID.val(),
+                            "password": password.val()
+                        },
+                        success: function (res) {
+                            if (res === "failure") {
+                                jQuery("div#loginStatus").html('<div class="alert alert-danger mt-lg-4 col-8 alert-dismissible fade show" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>Failed to login ' + $("input#login").val() + '</div>');
+                                document.getElementById("loginUser").reset();
+                            }
+                            else if (res === "success") {
+                                window.location.reload(false);
+                            }
+                        }
+                    });
+                }
+            }
+
+            function register() {
+                event.preventDefault();
+                var valid           = true;
+                var emailAddress    = $("input#emailAddress");
+                var password        = $("input#inputPassword");
+                var userName        = $("input#userName");
+                var firstName       = $("input#firstName");
+                var lastName        = $("input#lastName");
+
+                allFields.removeClass( "ui-state-error" );
+                valid = valid && checkLength( userName, "User Name", 3, 16 );
+                valid = valid && checkLength( firstName, "First Name", 3, 16 );
+                valid = valid && checkLength( lastName, "Last Name", 3, 16 );
+                valid = valid && checkRegexp( emailAddress, emailRegex, "email: e.g. user@domain.com" );
+                valid = valid && checkLength( password, "Password", 6, 16 );
+
+                if ( valid ) {
+                    jQuery.ajax({
+                        type: 'POST',
+                        url: "<?php echo base_url(); ?>" + "Authentication/createUser",
+                        dataType: 'json',
+                        data: {
+                            "first": firstName.val(),
+                            "last": lastName.val(),
+                            "user": userName.val(),
+                            "email": emailAddress.val(),
+                            "password": password.val()
+                        },
+                        success: function (res) {
+                            if (res === "success") {
+                                jQuery("div#createUserStatus").html('<div class="alert alert-success mt-lg-2 col-10 alert-dismissible fade show" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>Successfully added ' + firstName.val() + ' ' + lastName.val() + '</div>');
+                                document.getElementById("registerNewUser").reset();
+                                registerDialog.dialog("close");
+                            }
+                            else {
+                                jQuery("div#createUserStatus").html('<div class="alert alert-danger mt-lg-2 col-10 alert-dismissible fade show" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>Failed to add ' + firstName.val()+ ' ' + lastName.val() + '</div>');
+                                document.getElementById("registerNewUser").reset();
+                                registerDialog.dialog("close");
+                            }
+                        }
+                    });
+                }
+            }
+
+            loginDialog = $( "#loginUser" ).dialog({
+                autoOpen: false,
+                height: 375,
+                width: 325,
+                modal: true,
+                closeOnEscape: true,
+                title: "User Login",
+                buttons: {
+                    "Login": login,
+                    Cancel: function() {
+                        loginDialog.dialog( "close" );
+                    }
+                },
+                close: function() {
+                    document.getElementById("loginUser").reset();
+                    allFields.removeClass( "ui-state-error" );
+                }
+            });
+
+            registerDialog = $( "#registerNewUser" ).dialog({
+                autoOpen: false,
+                height: 650,
+                width: 425,
+                modal: true,
+                closeOnEscape: true,
+                title: "Register New User",
+                buttons: {
+                    "Register": register,
+                    Cancel: function() {
+                        registerDialog.dialog( "close" );
+                    }
+                },
+                close: function() {
+                    document.getElementById("registerNewUser").reset();
+                    allFields.removeClass( "ui-state-error" );
+                }
+            });
+
+            $( "#login-user" ).on( "click", function() {
+                loginDialog.dialog( "open" );
+            });
+            $( "#register-user" ).on( "click", function() {
+                registerDialog.dialog( "open" );
+            });
         });
-        $( "#register-user" ).on( "click", function() {
-            registerDialog.dialog( "open" );
-        });
-    } );
+    <?php } ?>
 </script>
 
 <div class="row mr-3">
