@@ -28,7 +28,7 @@ class Intake extends CI_Controller {
     {
         if ($this->input->is_ajax_request()) {
             $data['states'] = $this->db->get('states');
-            $this->load->view('Intake/intake_add_good_samaritan', $data);
+            $this->load->view('intake/intake_add_good_samaritan', $data);
         }
         else { show_404(); }
     }
