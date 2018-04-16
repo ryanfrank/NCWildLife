@@ -83,91 +83,95 @@
         });
     });
 </script>
-<div id="info">
-    <form class="mt-3" id="addRehabber" name="addRehabber">
-        <div class="row">
-            <div class="form-group col-6">
-                <label for="firstName" class="align-content-center">Rehabber / Volunteer First Name</label>
-                <input type="text" class="form-control" id="firstName" placeholder="First Name" onmouseover="this.focus();"  required>
-                <div class="invalid-feedback">Please provide a first name</div>
+<div class="container col-12">
+    <div id="info">
+        <form class="mt-3" id="addRehabber" name="addRehabber">
+            <div class="col-1"></div>
+            <div class="row col-10">
+                <div class="form-group col-5">
+                    <label for="firstName" class="align-content-center">Rehabber / Volunteer First Name</label>
+                    <input type="text" class="form-control" id="firstName" placeholder="First Name" onmouseover="this.focus();"  required>
+                    <div class="invalid-feedback">Please provide a first name</div>
+                </div>
+                <div class="form-group col-5">
+                    <label for="lastName" class="align-content-center">Rehabber / Volunteer Last Name</label>
+                    <input type="text" class="form-control" id="lastName" placeholder="Last Name" onmouseover="this.focus();"  required>
+                    <div class="invalid-feedback">Please provide a last name</div>
+                </div>
             </div>
-            <div class="form-group col-6">
-                <label for="lastName" class="align-content-center">Rehabber / Volunteer Last Name</label>
-                <input type="text" class="form-control" id="lastName" placeholder="Last Name" onmouseover="this.focus();"  required>
-                <div class="invalid-feedback">Please provide a last name</div>
+            <div class="row col-10">
+                <div class="form-group col-5">
+                    <label for="streetAddress" class="align-content-center">Rehabber / Volunteer Street Address</label>
+                    <input type="text" class="form-control" id="streetAddress" placeholder="Street Address" onmouseover="this.focus();">
+                </div>
+                <div class="form-group col-5">
+                    <label for="cityName" class="align-content-center">Rehabber / Volunteer City</label>
+                    <input type="text" class="form-control" id="cityName" placeholder="City" onmouseover="this.focus();"  required>
+                </div>
             </div>
-        </div>
-        <div class="row">
-            <div class="form-group col-6">
-                <label for="streetAddress" class="align-content-center">Rehabber / Volunteer Street Address</label>
-                <input type="text" class="form-control" id="streetAddress" placeholder="Street Address" onmouseover="this.focus();">
+            <div class="row col-10">
+                <div class="form-group col-3">
+                    <label for="stateName" class="align-content-center">Rehabber / Volunteer State</label>
+                    <select class="form-control" id="stateName" required>
+                        <option></option>
+                        <?php foreach ($states->result() as $row):?>
+                            <option value="<?php echo $row->state_id?>"><?php echo $row->state_name?></option>
+                        <?php endforeach;?>
+                    </select>
+                </div>
+                <div class="form-group col-2">
+                    <label for="countyName" class="align-content-center">Rehabber County</label>
+                    <select class="form-control" id="countyName" disabled>
+                        <option>Select State First</option>
+                    </select>
+                </div>
+                <div class="form-group col-2">
+                    <label for="zipCode" class="align-content-center">Rehabber / Volunteer Zip</label>
+                    <input type="text" class="form-control" id="zipCode" placeholder="Zip Code" onmouseover="this.focus();">
+                </div>
+                <div class="form-group col-3">
+                    <label for="emailAddress" class="align-content-center">Rehabber / Volunteer Email</label>
+                    <input type="email" class="form-control" id="emailAddress" placeholder="email@domain.com" onmouseover="this.focus();" >
+                </div>
             </div>
-            <div class="form-group col-6">
-                <label for="cityName" class="align-content-center">Rehabber / Volunteer City</label>
-                <input type="text" class="form-control" id="cityName" placeholder="City" onmouseover="this.focus();"  required>
+            <div class="row col-10">
+                <div class="form-group col-3">
+                    <label for="phoneNumber" class="align-content-center">Rehabber / Volunteer Phone</label>
+                    <input type="text" class="form-control" id="phoneNumber" placeholder="XXX-XXX-XXXX" onmouseover="this.focus();" required>
+                </div>
+                <div class="form-check col-2">
+                    <label class="form-check-label">
+                        <input class="form-check-input" id="rehabberLicensed" type="checkbox" value="No" onmouseover="this.focus();" >
+                        Licensed Rehabber?
+                    </label>
+                </div>
+                <div class="form-check col-2">
+                    <label class="form-check-label">
+                        <input class="form-check-input" id="volunteer" type="checkbox" value="No" onmouseover="this.focus();" >
+                        NC WildLife Rehab Volunteer?
+                    </label>
+                </div>
+                <div class="form-check col-3">
+                    <label class="form-check-label">
+                        <input class="form-check-input" id="active" type="checkbox" value="No" onmouseover="this.focus();" >
+                        Active?
+                    </label>
+                </div>
             </div>
-        </div>
-        <div class="row">
-            <div class="form-group col-3">
-                <label for="stateName" class="align-content-center">Rehabber / Volunteer State</label>
-                <select class="form-control" id="stateName" required>
-                    <option></option>
-                    <?php foreach ($states->result() as $row):?>
-                        <option value="<?php echo $row->state_id?>"><?php echo $row->state_name?></option>
-                    <?php endforeach;?>
-                </select>
+            <div class="row col-10">
+                <div class="form-check col-5">
+                    <label for="rehabberNotes" class="align-content-center">Notes</label>
+                    <input type="text" class="form-control" id="rehabberNotes" placeholder="Enter notes here" onmouseover="this.focus();">
+                </div>
+                <div class="form-check col-5">
+                    <label for="rehabberAffiliation" class="align-content-center">Affiliations</label>
+                    <input type="text" class="form-control" id="rehabberAffiliation" placeholder="Enter affiliations here" onmouseover="this.focus();">
+                </div>
             </div>
-            <div class="form-group col-3">
-                <label for="countyName" class="align-content-center">Rehabber / Volunteer County</label>
-                <select class="form-control" id="countyName" disabled>
-                    <option>Select State First</option>
-                </select>
+            <div class="row ml-2 mt-4">
+                <input type="submit" id="submitButton">
             </div>
-            <div class="form-group col-3">
-                <label for="zipCode" class="align-content-center">Rehabber / Volunteer Zip</label>
-                <input type="text" class="form-control" id="zipCode" placeholder="Zip Code" onmouseover="this.focus();">
-            </div>
-            <div class="form-group col-3">
-                <label for="emailAddress" class="align-content-center">Rehabber / Volunteer Email</label>
-                <input type="email" class="form-control" id="emailAddress" placeholder="email@domain.com" onmouseover="this.focus();" >
-            </div>
-        </div>
-        <div class="row">
-            <div class="form-group col-3">
-                <label for="phoneNumber" class="align-content-center">Rehabber / Volunteer Phone</label>
-                <input type="text" class="form-control" id="phoneNumber" placeholder="XXX-XXX-XXXX" onmouseover="this.focus();" required>
-            </div>
-            <div class="form-check col-3">
-                <label class="form-check-label">
-                    <input class="form-check-input" id="rehabberLicensed" type="checkbox" value="No" onmouseover="this.focus();" >
-                    Licensed Rehabber?
-                </label>
-            </div>
-            <div class="form-check col-3">
-                <label class="form-check-label">
-                    <input class="form-check-input" id="volunteer" type="checkbox" value="No" onmouseover="this.focus();" >
-                    NC WildLife Rehab Volunteer?
-                </label>
-            </div>
-            <div class="form-check col-3">
-                <label class="form-check-label">
-                    <input class="form-check-input" id="active" type="checkbox" value="No" onmouseover="this.focus();" >
-                    Active?
-                </label>
-            </div>
-        </div>
-        <div class="row">
-            <div class="form-check col-6">
-                <label for="rehabberNotes" class="align-content-center">Notes</label>
-                <input type="text" class="form-control" id="rehabberNotes" placeholder="Enter notes here" onmouseover="this.focus();">
-            </div>
-            <div class="form-check col-6">
-                <label for="rehabberAffiliation" class="align-content-center">Affiliations</label>
-                <input type="text" class="form-control" id="rehabberAffiliation" placeholder="Enter affiliations here" onmouseover="this.focus();">
-            </div>
-        </div>
-        <div class="row ml-2 mt-4">
-            <input type="submit" id="submitButton">
-        </div>
-    </form>
+            <div class="col-1"></div>
+        </form>
+    </div>
 </div>
