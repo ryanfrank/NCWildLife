@@ -83,7 +83,7 @@ class Admin extends CI_Controller
             $stateQuery = $this->db->get_where('states', array('state_id' => $state));
             $stateResult = $stateQuery->row();
 
-            $query = $this->db->get_where('county_view', array('state_name' => $stateResult->state_name));
+            $query = $this->db->get_where('counties', array('county_state' => $stateResult->state_id));
             $result = $query->result_array();
             echo json_encode(array('result' => $result));
         }
@@ -102,6 +102,40 @@ class Admin extends CI_Controller
     public function userData() {
         $data = $this->input->post('userID');
 
+    }
+    public function vendorView() {
+        if ($this->input->is_ajax_request()) {
+            $dbSelect = '*' ;
+            $dbTable = 'vendor_type' ;
+            $data['vendorType'] = $this->Vendor->get($dbSelect, $dbTable);
+
+            $this->load->view('admin/vendor_information', $data);
+        }
+    }
+    public function getVendor(){
+        if ($this->input->is_ajax_request()) {
+            $lookupType = $this->input->post('type');
+
+            if ( $lookupType == 'vendorType' ) {
+                $vendorType = $this->input->post('typeID');
+                $dbSelect = 'vendor_id,vendor_name';
+                $dbTable = 'vendor';
+                $dbWhere = array("vendor_type" => $vendorType);
+                $vendorQuery = $this->Vendor->get($dbSelect, $dbTable, $dbWhere);
+                $result = $vendorQuery->result_array();
+                echo json_encode(array('result' => $result));
+
+            }
+            elseif ( $lookupType == 'vendorLookup' ){
+                $vendorNameID = $this->input->post('nameID');
+                $dbSelect = 'street_address, vendor_zip, vendor_phone';
+                $dbTable = 'vendor_information';
+                $dbWhere = array("v_ID" => $vendorNameID);
+                $result = $this->Vendor->get($dbSelect, $dbTable, $dbWhere);
+                echo json_encode($result->result());
+            }
+        }
+        else {show_404();}
     }
 }
 ?>

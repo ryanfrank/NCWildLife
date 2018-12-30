@@ -61,6 +61,7 @@
                         <a class="dropdown-item" href="#">Add Locations</a>
                         <a class="dropdown-item" href="#">Add Cages</a>
                         <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="javascript:void(0)" onclick="$(content).load('Admin/vendorView')">Vendor Information</a>
                         <a class="dropdown-item" href="javascript:void(0)" onclick="$(content).load('Admin/updateUser')">Update User</a>
                         <a class="dropdown-item" href="#">Delete User</a>
                         <a class="dropdown-item" href="#">Change User Password</a>

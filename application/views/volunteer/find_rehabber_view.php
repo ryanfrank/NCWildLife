@@ -13,18 +13,14 @@
        height: getHeight(),
        data: <?php echo $data ?>,
         columns: [
-           /* {
-                checkbox: true
-            },*/
+            //{
+            //     radio: true
+            // },
             {
                 sortable: true,
                 field: 'rehabber_name',
                 title: 'Name'
             },
-            /*{
-                field: 'rehabber_email',
-                title: 'Rehabber Email'
-            },*/
             {
                 field: 'rehabber_phone',
                 title: 'Phone'
@@ -38,10 +34,6 @@
                 field: 'rehabber_county',
                 title: 'County'
             },
-            /*{
-                field: 'rehabber_zip',
-                title: 'Rehabber Zip'
-            },*/
             {
                 field: 'rehabber_active',
                 title: 'Active'
