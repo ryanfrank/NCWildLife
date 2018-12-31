@@ -17,12 +17,17 @@ class Vendor extends CI_Model
     {
 
     }
-    public function get( $dbSelect, $dbTable, $dbWhere = FALSE){
+    public function get( $dbSelect, $dbTable, $dbJoin = FALSE, $dbWhere = FALSE ){
         if ( $dbSelect != NULL ) {
             $this->db->select($dbSelect);
         }
         if ($dbTable != NULL ) {
             $this->db->from($dbTable);
+        }
+        if ( $dbJoin != FALSE ){
+            foreach ( $dbJoin as $column => $value ){
+                $this->db->join("$column", $value);
+            }
         }
         if ( $dbWhere != FALSE ) {
             foreach ( $dbWhere as $element => $value ){

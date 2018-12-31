@@ -106,8 +106,8 @@ class Admin extends CI_Controller
     public function vendorView() {
         if ($this->input->is_ajax_request()) {
             $dbSelect = '*' ;
-            $dbTable = 'vendor_type' ;
-            $data['vendorType'] = $this->Vendor->get($dbSelect, $dbTable);
+            $dbTable = 'product_types' ;
+            $data['productType'] = $this->Vendor->get($dbSelect, $dbTable, $dbJoin = FALSE, $dbWhere = FALSE);
 
             $this->load->view('admin/vendor_information', $data);
         }
@@ -116,24 +116,47 @@ class Admin extends CI_Controller
         if ($this->input->is_ajax_request()) {
             $lookupType = $this->input->post('type');
 
-            if ( $lookupType == 'vendorType' ) {
-                $vendorType = $this->input->post('typeID');
-                $dbSelect = 'vendor_id,vendor_name';
-                $dbTable = 'vendor';
-                $dbWhere = array("vendor_type" => $vendorType);
-                $vendorQuery = $this->Vendor->get($dbSelect, $dbTable, $dbWhere);
-                $result = $vendorQuery->result_array();
-                echo json_encode(array('result' => $result));
-
+            if ( $lookupType == 'productType' ) {
+                $productType = $this->input->post('typeID');
+                $dbSelect = 'vendor.vendor_id,vendor.vendor_name, product_ID';
+                $dbTable = 'product_association';
+                $dbJoin = array("vendor" => "product_association.vendor_ID = vendor.vendor_id");
+                $dbWhere = array("product_ID" => $productType);
+                $result = $this->Vendor->get($dbSelect, $dbTable, $dbJoin, $dbWhere);
             }
             elseif ( $lookupType == 'vendorLookup' ){
                 $vendorNameID = $this->input->post('nameID');
-                $dbSelect = 'street_address, vendor_zip, vendor_phone';
+                $dbSelect = '   vendor_information.street_address, 
+                                vendor_information.vendor_phone,
+                                vendor.vendor_name,
+                                city_zip.city_name,
+                                city_zip.zip_code,
+                                counties.county_name,
+                                vendor_information.updatedDate,
+                                vendor_information.vInfoID';
                 $dbTable = 'vendor_information';
+                $dbJoin = array("vendor" => "vendor_information.v_ID = vendor.vendor_id",
+                                "city_zip" => "vendor_information.vendor_zip = city_zip.city_zip_ID",
+                                "counties" => "city_zip.zip_county = counties.county_id");
                 $dbWhere = array("v_ID" => $vendorNameID);
-                $result = $this->Vendor->get($dbSelect, $dbTable, $dbWhere);
-                echo json_encode($result->result());
+                $result = $this->Vendor->get($dbSelect, $dbTable, $dbJoin, $dbWhere);
             }
+            elseif ( $lookupType == 'vendorInformation' ){
+                $vInfoID = $this->input->post('vInfoID');
+                $dbSelect = '   vendor_information.updatedDate,
+                                vendor_contacts.v_first_name,
+                                vendor_contacts.v_last_name,
+                                vendor_contacts.v_phone,
+                                vendor_contacts.v_contact_position,
+			                    vendor_contacts.v_contact_notes,
+                                contact_type.contact_type ';
+                $dbTable = 'vendor_contacts';
+                $dbJoin = array("vendor_information" => "vendor_contacts.vinfoID = vendor_information.vInfoID",
+                    "contact_type" => "contact_type.cT_ID = vendor_contacts.v_phone_type");
+                $dbWhere = array("vendor_information.vInfoID" => $vInfoID);
+                $result = $this->Vendor->get($dbSelect, $dbTable, $dbJoin, $dbWhere);
+            }
+            echo json_encode($result->result());
         }
         else {show_404();}
     }

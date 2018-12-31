@@ -9,8 +9,9 @@
 
 <script>
     $(".datepicker").datetimepicker({
-        format: "yyyy-mm-dd hh:ii",
-        autoclose: true
+        useCurrent: true,
+        format: 'MM/DD/YYYY HH:MM A'
+        //autoclose: true
     });
     function handleClick(){
         if (document.getElementById("allDay").checked ){ document.getElementById("endDate").disabled = true; document.getElementById("endDate").value = '0000-00-00 00:00:00'}
