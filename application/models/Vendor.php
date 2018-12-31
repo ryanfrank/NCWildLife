@@ -38,7 +38,19 @@ class Vendor extends CI_Model
 
         return $result;
     }
-    public function update() {
+    public function update($dbTable, $dbData, $dbWhere) {
+        if ( $dbWhere != FALSE ) {
+            foreach ( $dbWhere as $element => $value ){
+                $this->db->where("$element", $value);
+            }
+        }
+        $this->db->update($dbTable, $dbData);
+        if ( $this->db->affected_rows() > 0) {
+            return "success";
+        }
+        else {
+            return "error";
+        }
 
     }
     public function delete() {

@@ -10,6 +10,7 @@
     function getHeight() {
         return $(window).height() - $('h1').outerHeight(true);
     }
+    var contactElements = [];
     var table = $('#productTable');
     $('#productTypes').change(function(){
         table.bootstrapTable('destroy');
@@ -57,7 +58,18 @@
             }
         });
     });
+    function makeEditable(value, element, titleText, key){
+        var editableClass = "myEditTable_" + key;
+        if ( !contactElements.includes('.' + editableClass) ) { contactElements.push('.'+ editableClass); }
+        if ( titleText === "Comments") { dataType = "wysihtml5"}
+        else { dataType = "text"; }
+        if ( titleText === "Phone Number" ) {value = formatPhoneNumber(value);}
+        link = '<a href="#" data-type="'+dataType+'" data-title="'+titleText+'" data-name="'+element+'" data-pk="'+ key +'" class="'+editableClass+'" >' + value + '</a>';
+        return link;
+    }
     function getVendorContact (index, row, $detail){
+        contactElements = [];
+        count = 1;
         jQuery.ajax({
             type: "POST",
             url: "<?php echo base_url(); ?>" + "Admin/getVendor",
@@ -71,18 +83,48 @@
                     height: getHeight(),
                     striped: false,
                     cache: false,
-                    detailView: true,
+                    detailView: false,
                     data: result,
                     columns: [
-                        //{ radio: true //},
-                        { sortable: false, field: 'v_first_name', title: 'First Name' },
-                        { sortable: false, field: 'v_last_name', title: 'Last Name' },
-                        { sortable: false, field: 'v_phone', formatter: function (value) { return formatPhoneNumber(value); }, title: 'Phone Number' },
-                        { sortable: false, field: 'contact_type', title: 'Contact Type' },
-                        { sortable: false, field: 'v_contact_position', title: 'Position' }
+                        { sortable: false, editable: true, field: 'v_first_name', formatter: function (value,row) {return makeEditable(value, "v_first_name", "First Name", row.vConID)}, title: "First Name" },
+                        { sortable: false, editable: true, field: 'v_last_name', formatter: function (value,row) {return makeEditable(value, "v_last_name", "Last Name", row.vConID)}, title: "Last Name"},
+                        { sortable: false, editable: true, field: 'v_phone', formatter: function (value,row) {return makeEditable(value, "v_phone", "Phone Number", row.vConID)}, title: 'Phone Number' },
+                        { sortable: false, editable: true, field: 'contact_type', title: 'Contact Type' },
+                        { sortable: false, editable: true, field: 'v_contact_position', formatter: function (value,row) {return makeEditable(value, "v_contact_position", "Position", row.vConID)},title: 'Position' },
+                        { sortable: false, editable: true, field: 'v_contact_notes', formatter: function (value,row) {return makeEditable(value, "v_contact_notes", "Comments", row.vConID)}, title: 'Comments' },
+                        { sortable: false, field: 'operate', title: '', align: 'center', valign: 'middle', clickToSelect: false,
+                            formatter: function (value, row, index) {
+                                return  '<button userID=\"'+row.vConID+'" class="btn btn-sm btn-primary updateButton_'+row.vConID+'">Update</button> ' +
+                                        '<button class=\'btn btn-sm btn-danger\'>Delete</button>';
+                            }
+                        }
                     ]
                 });
-
+                if ( contactElements.length > 0 ){
+                    contactElements.forEach(function(element){
+                        $(document).ready(function() { $(element).editable({ mode: 'popup' }); });
+                        $('.updateButton_' + count).click(function() {
+                            var ID = $(this).attr('userID');
+                            $(element).editable('submit', {
+                                type: "POST",
+                                ajaxOptions: {
+                                    dataType: 'json'
+                                },
+                                url: "<?php echo base_url(); ?>" + "Admin/updateContact",
+                                data: {
+                                    "ID"    : ID,
+                                    "type"  : 'updateContact'
+                                },
+                                success: function(result){
+                                    if (result === "success") {
+                                        jQuery("div#updateStatus").html('<div class="alert alert-success mt-lg-4 col-10 alert-dismissible fade show" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>Successfully updated contact</div>');
+                                    }
+                                }
+                            });
+                        });
+                        count++;
+                    });
+                }
             }
         });
     }
@@ -109,8 +151,9 @@
             </div>
         </div>
     </div>
+    <div id="updateStatus"></div>
     <div class="row align-center">
-        <div id="myTable" class="col-10 align-center" >
+        <div id="myTable" class="col-10 align-center">
             <table id="productTable"
                    data-search="true"
                    data-striped="true"
@@ -122,19 +165,17 @@
                    data-pagination="true"
                    data-id-field="vendor_name"
                    data-page-list="[10, 25, 50, 100, ALL]"
-                   data-show-footer="false"
-            >
-            <thead>
-            <tr>
-                <th data-field="vendor_name" data-sortable="false">Store Name</th>
-                <th data-field="vendor_phone" data-sortable="true" data-formatter="formatPhoneNumber">Phone</th>
-                <th data-field="street_address" data-sortable="true">Street</th>
-                <th data-field="city_name" data-sortable="false">City</th>
-                <th data-field="zip_code" data-sortable="true">Zip</th>
-                <th data-field="county_name" data-sortable="true">County</th>
-            </tr>
-            </thead>
-
+                   data-show-footer="false">
+                <thead>
+                    <tr>
+                        <th hidden data-field="vendor_name" data-editable="true" data-sortable="false">Store Name</th>
+                        <th hidden data-field="vendor_phone" data-sortable="true" data-formatter="formatPhoneNumber">Phone</th>
+                        <th hidden data-field="street_address" data-sortable="true">Street</th>
+                        <th hidden data-field="city_name" data-sortable="false">City</th>
+                        <th hidden data-field="zip_code" data-sortable="true">Zip</th>
+                        <th hidden data-field="county_name" data-sortable="true">County</th>
+                    </tr>
+                </thead>
             </table>
         </div>
     </div>

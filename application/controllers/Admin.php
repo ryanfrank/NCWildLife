@@ -146,6 +146,7 @@ class Admin extends CI_Controller
                 $dbSelect = '   vendor_information.updatedDate,
                                 vendor_contacts.v_first_name,
                                 vendor_contacts.v_last_name,
+                                vendor_contacts.vConID,
                                 vendor_contacts.v_phone,
                                 vendor_contacts.v_contact_position,
 			                    vendor_contacts.v_contact_notes,
@@ -159,6 +160,23 @@ class Admin extends CI_Controller
             echo json_encode($result->result());
         }
         else {show_404();}
+    }
+    public function updateContact() {
+        if ($this->input->is_ajax_request()) {
+            $cID = $this->input->post('ID');
+            $phone = preg_replace('/[^0-9]/','', $this->input->post('v_phone'));
+            $dbTable = "vendor_contacts";
+            $dbData = array(
+                'v_first_name'          =>  $this->input->post('v_first_name'),
+                'v_last_name'           =>  $this->input->post('v_last_name'),
+                'v_phone'               =>  $phone,
+                'v_contact_position'    =>  $this->input->post('v_contact_position'),
+                'v_contact_notes'       =>  $this->input->post('v_contact_notes')
+            );
+            $dbWhere = array('vConID' => $cID);
+            $result = $this->Vendor->update($dbTable,$dbData,$dbWhere);
+        }
+        echo json_encode($result);
     }
 }
 ?>

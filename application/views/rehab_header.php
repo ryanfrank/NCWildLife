@@ -207,7 +207,7 @@
                 Welcome Guest!  Click here to
                     <a class="text-success" data-target="#registerModal" id="register-user">register</a>
                 or
-                    <a class="text-success"  data-target="#myStatus" id="login-user">login</a>.
+                    <a class="text-success"  data-target="#loginModal" id="login-user">login</a>.
         <?php
             }
             else {
