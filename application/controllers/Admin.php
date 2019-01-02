@@ -128,6 +128,7 @@ class Admin extends CI_Controller
                 $vendorNameID = $this->input->post('nameID');
                 $dbSelect = '   vendor_information.street_address, 
                                 vendor_information.vendor_phone,
+                                vendor_information.vInfoID,
                                 vendor.vendor_name,
                                 city_zip.city_name,
                                 city_zip.zip_code,
@@ -147,6 +148,7 @@ class Admin extends CI_Controller
                                 vendor_contacts.v_first_name,
                                 vendor_contacts.v_last_name,
                                 vendor_contacts.vConID,
+                                vendor_information.vInfoID,
                                 vendor_contacts.v_phone,
                                 vendor_contacts.v_contact_position,
 			                    vendor_contacts.v_contact_notes,
@@ -175,6 +177,31 @@ class Admin extends CI_Controller
             );
             $dbWhere = array('vConID' => $cID);
             $result = $this->Vendor->update($dbTable,$dbData,$dbWhere);
+        }
+        echo json_encode($result);
+    }
+    public function deleteContact() {
+        if ($this->input->is_ajax_request()) {
+            $dID = $this->input->post('ID');
+            $dbTable = 'vendor_contacts';
+            $dbWhere = array('vConID' => $dID);
+            $result = $this->Vendor->delete($dbTable,$dbWhere);
+        }
+        echo json_encode($result);
+    }
+    public function addContact() {
+        if ($this->input->is_ajax_request()) {
+            $dbData = array(
+                'v_first_name'          => $this->input->post('first_Name'),
+                'v_last_name'           => $this->input->post('last_Name'),
+                'v_phone'               => preg_replace('/[^0-9]/','', $this->input->post('phoneNumber')),
+                'v_phone_type'          => $this->input->post('phoneType'),
+                'v_contact_position'    => $this->input->post('position'),
+                'v_contact_notes'       => $this->input->post('notes'),
+                'vinfoID'               => $this->input->post('storeID')
+            );
+            $dbTable = 'vendor_contacts';
+            $result = $this->Vendor->insert($dbData, $dbTable);
         }
         echo json_encode($result);
     }

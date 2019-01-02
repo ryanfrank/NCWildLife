@@ -45,6 +45,7 @@ class Vendor extends CI_Model
             }
         }
         $this->db->update($dbTable, $dbData);
+        // echo $this->db->last_query(); // used for debug  - shows last query executed
         if ( $this->db->affected_rows() > 0) {
             return "success";
         }
@@ -53,9 +54,30 @@ class Vendor extends CI_Model
         }
 
     }
-    public function delete() {
-
+    public function delete($dbTable, $dbWhere) {
+        if ( $dbWhere != FALSE ) {
+            foreach ( $dbWhere as $element => $value ){
+                $this->db->where("$element", $value);
+            }
+        }
+        $this->db->delete($dbTable);
+        //echo $this->db->last_query(); // used for debug  - shows last query executed
+        if ( $this->db->affected_rows() > 0) {
+            return "success";
+        }
+        else {
+            return "error";
+        }
     }
-
+    public function insert($dbData, $dbTable) {
+        $this->db->insert($dbTable, $dbData);
+        //echo $this->db->last_query(); // used for debug  - shows last query executed
+        if ( $this->db->affected_rows() > 0) {
+            return "success";
+        }
+        else {
+            return "error";
+        }
+    }
 }
 ?>

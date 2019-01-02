@@ -256,8 +256,8 @@
     </form>
 </div>
 
-<div  id="registerModal" hidden>
-    <form class="mt-3" id="registerNewUser" name="registerNewUser" >
+<div class="modal"  style="width:800px;height:900px;" id="registerModal" hidden>
+    <form class="mt-3" id="registerNewUser" name="registerNewUser" style="width:800px;height:900px;" >
         <p class="validateTips"></p>
         <div class="row">
             <div class="form-group col-6">
