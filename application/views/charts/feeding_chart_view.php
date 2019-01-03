@@ -6,60 +6,45 @@
  * Time: 7:26 PM
  */
 
-    $num_entries = $result->num_rows();
+    $num_entries = sizeOf($results->result());
+    $data = json_encode($results->result());
 
     if ( $num_entries >= 1 ){
 ?>
-    <script>
-        function myFunction() {
-            // Declare variables
-            var input, filter, table, tr, td, i;
-            input = document.getElementById("myInput");
-            filter = input.value.toUpperCase();
-            table = document.getElementById("feedingData");
-            tr = table.getElementsByTagName("tr");
-            filterCol = 0; // Adjust the column to filter 0=A 1=B...etc
-
-            // Loop through all table rows, and hide those who don't match the search query
-            for (i = 0; i < tr.length; i++) {
-                td = tr[i].getElementsByTagName("td")[filterCol];
-                if (td) {
-                    if (td.innerHTML.toUpperCase().indexOf(filter) == 0) { // use == 0 to query items that START with filter else use > -1 to query items that CONTAIN filter
-                        tr[i].style.display = "";
-                    } else {
-                        tr[i].style.display = "none";
-                    }
-                }
+        <script type="application/javascript">
+            function getHeight() {
+                return $(window).height() - $('h1').outerHeight(true);
             }
-        }
-    </script>
-    <div class="row col-3 mb-2 mt-2">
-        <div class="input-group rounded">
-            <span class="input-group-addon fa fa-search"></span>
-            <input type="text" class="form-control" id="myInput" onkeyup="myFunction()" placeholder="Specify weight (g)" />
+            var table = $('#chartTable');
+            table.bootstrapTable({
+                height: getHeight(),
+                striped: false,
+                cache: false,
+                showToggle: true,
+                showPaginationSwitch: true,
+                smartDisplay: true,
+                iconsPrefix: 'fa',
+                search: true,
+                showColumns: true,
+                showRefresh: true,
+                pagination: true,
+                detailView: false,
+                data: <?php echo $data ?>,
+                columns: [
+                    {sortable: true, field: 'feeding_weight', title: 'Feeding Weight'},
+                    {field: 'feeding_cc', title: 'Feeding Qty (cc)'},
+                    {field: 'freequency', title: 'Feeding Freequency'},
+                    {sortable: true, field: 'freequency_description', title: 'Freequency Description'}
+                ]
+            });
+        </script>
+        <div class="row col-12">
+            <p class="h2"><?php echo $type . " "; ?> Feeding Chart</p>
         </div>
-    </div>
-    <div class="row col-10">
-        <table class="table table-bordered table-striped" id="feedingData">
-            <tr>
-                <th>Weight</th>
-                <th>CC</th>
-                <th>Freequency</th>
-                <th>Description</th>
-            </tr>
-            <?php
-            foreach ( $result->result() as $chart ) {
-                ?>
-                <tr>
-                    <td><?php echo $chart->feeding_weight; ?></td>
-                    <td><?php echo $chart->feeding_cc; ?></td>
-                    <td><?php echo $chart->freequency; ?></td>
-                    <td><?php echo $chart->freequency_description; ?></td>
-                </tr>
-                <?php
-            }
-            ?>
-        </table>
-    </div>
+        <div class="row align-center col-12">
+            <div id="divTable" class="col-10 align-center">
+                <table id="chartTable"></table>
+            </div>
+        </div>
 
 <?php } ?>

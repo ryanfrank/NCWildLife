@@ -26,7 +26,12 @@ class Charts extends CI_Controller
         if ($this->input->is_ajax_request()) {
             // Grab the URI segment 3... /Controller/Function/Variable
             $type = $this->uri->segment(3);
-            $data['result'] = $this->db->order_by('feeding_weight', 'ASC')->get_where('feeding_charts_view', array('species_name' => $type));
+            $dbSelect = "feeding_charts.feeding_weight, feeding_charts.feeding_cc, freequency_definition.freequency,freequency_definition.freequency_description";
+            $dbTable = "feeding_charts";
+            $dbJoin = array("freequency_definition" => "feeding_charts.feeding_freequency = freequency_definition.freequency_definition_id", "species" => "feeding_charts.feeding_species = species.species_id");
+            $dbWhere = array("species_name" => $type);
+            $data['results'] = $this->Vendor->get($dbSelect, $dbTable, $dbJoin, $dbWhere);
+            $data['type'] = $type;
             $this->load->view('charts/feeding_chart_view', $data);
         }
         else { show_404(); }

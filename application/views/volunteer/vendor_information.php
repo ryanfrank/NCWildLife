@@ -324,7 +324,6 @@
         </div>
     </div>
 </div>
-    </div>
     <div class="row align-center">
         <div class="col-2">
             <div class="form-group">
@@ -346,10 +345,8 @@
             </div>
         </div>
     </div>
-    <div id="updateStatus"></div>
-    <div class="row align-center">
-        <div id="myTable" class="col-10 align-center">
-            <table id="productTable"></table>
-        </div>
+<div class="row align-center">
+    <div id="myTable" class="col-10 align-center">
+        <table id="productTable"></table>
     </div>
 </div>
