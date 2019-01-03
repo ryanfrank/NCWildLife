@@ -51,7 +51,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 </head>
     <body>
         <div class="container-fluid ml-3 mt-1 w-100 mr-2" id="header"> <?php $this->load->view('rehab_header'); ?> </div>
-        <div class="container-fluid ml-0 mr-2" id="menuBar"> <?php $this->load->view('rehab_menu'); ?> </div>
+        <div class="container-fluid ml-0 mr-2" id="menuBar"><div class="row col-12"> <?php $this->load->view('rehab_menu'); ?> </div></div>
         <div id="modal_target"></div>
         <div id="createUserStatus" class="col-12 ml-5"></div>
         <div id="loginStatus" class="col-12 ml-5"></div>

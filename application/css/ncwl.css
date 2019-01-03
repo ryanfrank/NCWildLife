@@ -14,9 +14,3 @@ body {
 .has-success .form-control-feedback {
     color: #3c763d;
 }
-@media (max-width: 480px) {
-    .landing-page-header ul{
-        position: static;
-        width:100%;
-    }
-}
