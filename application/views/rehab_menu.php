@@ -27,16 +27,16 @@
                 </li>
             <?php } ?>
             <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" id="ncwlrMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">Information</a>
-                <div class="dropdown-menu" aria-labelledby="ncwlrMenu">
+                <a class="nav-link dropdown-toggle" id="informationDrop" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Information</a>
+                <div class="dropdown-menu" aria-labelledby="informationDrop">
                     <a class="dropdown-item" href="javascript:void(0);" onclick="$(content).load('Information/donations')">Donations</a>
                     <a class="dropdown-item" href="javascript:void(0)" onclick="$(content).load('Volunteer/schedule/event')">Events / Appearances</a>
                 </div>
             </li>
             <?php if ( $this->ion_auth->in_group('volunteer') ){ ?>
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" id="navbarIntakeDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Volunteer</a>
-                    <div class="dropdown-menu" aria-labelledby="navbarIntakeDropdown">
+                    <a class="nav-link dropdown-toggle" id="volunteerDrop" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Volunteer</a>
+                    <div class="dropdown-menu" aria-labelledby="volunteerDrop">
                         <a class="dropdown-item" href="javascript:void(0)" onclick="$(content).load('Volunteer/schedule/volunteer')">Volunteer Calendar</a>
                         <a class="dropdown-item" href="javascript:void(0)" onclick="$(content).load('Volunteer/vendorView')">Vendor Information</a>
                         <a class="dropdown-item" href="javascript:void(0)" onclick="$(content).load('Rehab/locateRehabber')">Find Rehabber</a>
@@ -46,8 +46,8 @@
             <?php } ?>
             <?php if ( $this->ion_auth->logged_in() ){ ?>
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" id="navbarIntakeDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Charts</a>
-                    <div class="dropdown-menu" aria-labelledby="navbarIntakeDropdown">
+                    <a class="nav-link dropdown-toggle" id="chartsDrop" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Charts</a>
+                    <div class="dropdown-menu" aria-labelledby="chartsDrop">
                         <a class="dropdown-item" href="javascript:void(0)" onclick="$(content).load('Charts/chart/Squirrel')">Squirrel Feeding Chart</a>
                         <a class="dropdown-item" href="javascript:void(0)" onclick="$(content).load('Charts/chart/Opossum')">Opossum Feeding Chart</a>
                         <a class="dropdown-item" href="javascript:void(0)" onclick="$(content).load('Charts/chart/Bunny')">Bunny Feeding Chart</a>
@@ -56,8 +56,8 @@
             <?php } ?>
             <?php if ($this->ion_auth->is_admin()){ ?>
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" id="navbarIntakeDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Administration</a>
-                    <div class="dropdown-menu" aria-labelledby="navbarIntakeDropdown">
+                    <a class="nav-link dropdown-toggle" id="adminDrop" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Administration</a>
+                    <div class="dropdown-menu" aria-labelledby="adminDrop">
                         <a class="dropdown-item" href="javascript:void(0)" onclick="$(content).load('Admin/add_rehabber')">Add Rehabber</a>
                         <a class="dropdown-item" href="#">Add Locations</a>
                         <a class="dropdown-item" href="#">Add Cages</a>
