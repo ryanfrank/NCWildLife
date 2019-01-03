@@ -39,15 +39,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <script type="text/javascript" src="<?php echo base_url('application/js/bootstrap-editable.js');?>"></script>
     <script type="text/javascript" src="<?php echo base_url('application/js/jquery-tableExport.min.js');?>"></script>
     <script type="text/javascript" src="<?php echo base_url('application/js/bootstrap-table-export.js');?>"></script>
+
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="<?php echo site_url('application/css/bootstrap-datetimepicker.css');?>">
     <link rel="stylesheet" type="text/css" href="<?php echo site_url('application/css/fullcalendar-3.9.0.css');?>">
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.13.1/bootstrap-table.min.css">
     <link rel="stylesheet" type="text/css" href="<?php echo site_url('application/css/bootstrap-editable.css');?>">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
-    <!-- <link rel="stylesheet" type="text/css" href="<?php //echo site_url('application/css/css/font-awesome.css');?>"> -->
-    <link rel="stylesheet" type="text/css" href="<?php echo site_url('application/css/ncwl.css');?>">
     <link rel="stylesheet" type="text/css" href="<?php echo site_url('application/css/jquery-ui.min.css');?>">
+    <link rel="stylesheet" type="text/css" href="<?php echo site_url('application/css/ncwl.css');?>">
 </head>
     <body>
         <div class="container-fluid ml-3 mt-1 w-100 mr-2" id="header"> <?php $this->load->view('rehab_header'); ?> </div>
@@ -55,7 +55,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <div id="modal_target"></div>
         <div id="createUserStatus" class="col-12 ml-5"></div>
         <div id="loginStatus" class="col-12 ml-5"></div>
-        <div id="myStatus" class="container-fluid ml-2"></div>
+        <div id="myStatus" class="container-fluid ml-2">
+            <div class="row">
+
+            </div>
+        </div>
         <div class="container-fluid ml-0 mt-2" id="content" style="min-height: 500px; width: 98%">
             <div class="row">
                 <div id="carouselMain" class="carousel slide col-4" data-ride="carousel">

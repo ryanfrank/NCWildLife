@@ -11,13 +11,14 @@
         return $(window).height() - $('h1').outerHeight(true);
     }
     var table = $('#productTable');
+    $('#productTypes').off('change');
     $('#productTypes').change(function(){
         table.bootstrapTable('destroy');
         var e = document.getElementById("productTypes");
         var productTypesID = e.options[e.selectedIndex].value;
         jQuery.ajax({
             type: "POST",
-            url: "<?php echo base_url(); ?>" + "Admin/getVendor",
+            url: "<?php echo base_url(); ?>" + "Volunteer/getVendor",
             dataType: 'json',
             data: {
                 "typeID": productTypesID,
@@ -33,13 +34,14 @@
             }
         });
     });
+    $('#vendorName').off('change');
     $('#vendorName').change(function(){
         table.bootstrapTable('destroy');
         var e = document.getElementById("vendorName");
         var vendorNameID = e.options[e.selectedIndex].value;
         jQuery.ajax({
             type: "POST",
-            url: "<?php echo base_url(); ?>" + "Admin/getVendor",
+            url: "<?php echo base_url(); ?>" + "Volunteer/getVendor",
             dataType: 'json',
             data: {
                 "type"  : 'vendorLookup',
@@ -69,53 +71,60 @@
                         { sortable: true, field: 'county_name',  title: 'County'},
                         { sortable: false, field: 'operate', title: '', align: 'center', valign: 'middle', clickToSelect: false,
                             formatter: function (value, row, index) {
-                                return  '<a id="'+ index +'_Table"  data-storeID="'+row.vInfoID+'" data-storeName="' + row.vendor_name +'" data-storeAddress="'+row.street_address+'" data-storeCity="'+row.city_name+'" title="Add Contact" data-placement="top" style="color: black" class="fas fa-plus"></a> '
+                                return  '<a id="'+ index +'_Table"  data-storeID="'+row.vInfoID+'" data-storeName="' + row.vendor_name +'" data-storeAddress="'+row.street_address+'" data-storeCity="'+row.city_name+'" title="Add Contact" data-placement="top" style="color: black" class="fas fa-plus-square fa-lg"></a> '
                             }
                         }
                     ],
                     onExpandRow: function(index, row, $detail) {
                         contactElements = [];
                         getVendorContact(index, row, $detail);
-                        document.getElementById(index + '_Table').style.color = "green";
-                        $('#' + index + '_Table').attr({ 'data-toggle': 'modal', 'href': '#addContactModal'});
-                        $('#addContactModal').on('show.bs.modal', function (event) {
-                            var button = $(event.relatedTarget);
-                            var storeName = button.data('storename');
-                            var streetAddress = button.data('storeaddress');
-                            var storeCity = button.data('storecity');
-                            var storeID = button.data('storeid');
-                            var modal = $(this);
-                            modal.find('.modal-title').text('New contact for ' + storeName + ' at ' + streetAddress + ' in ' + storeCity);
-                            $('#addContactForm').off('submit');
-                            $('#addContactForm').submit( function(event){
-                               event.preventDefault();
-                                $.ajax({
-                                    type: "POST",
-                                    url: "<?php echo base_url(); ?>" + "Admin/addContact",
-                                    dataType: 'json',
-                                    data: {
-                                        "first_Name"    : $('#c_FirstName').val(),
-                                        "last_Name"     : $('#c_LastName').val(),
-                                        "storeID"       : storeID,
-                                        "storeCity"     : storeCity,
-                                        "phoneNumber"   : formatPhoneNumber($('#phoneNumber').val()),
-                                        "phoneType"     : $('#phoneType').val(),
-                                        "position"      : $('#positionName').val(),
-                                        "notes"         : $('#contactNotes').val()
-                                    },
-                                    success : function(result) {
-                                        modal.modal('toggle');
-                                        document.getElementById("c_FirstName").value = null;
-                                        document.getElementById("c_LastName").value = null;
-                                        document.getElementById("phoneNumber").value = null;
-                                        document.getElementById("phoneType").value = null;
-                                        document.getElementById("contactNotes").value = null;
-                                        document.getElementById("positionName").value = null;
-                                    }
+                        <?php
+                        if ( $this->ion_auth->is_admin() ) { ?>
+                            document.getElementById(index + '_Table').style.color = "green";
+                            $('#' + index + '_Table').attr({ 'data-toggle': 'modal', 'href': '#addContactModal'});
+                            $('#addContactModal').on('show.bs.modal', function (event) {
+                                var button = $(event.relatedTarget);
+                                var storeName = button.data('storename');
+                                var streetAddress = button.data('storeaddress');
+                                var storeCity = button.data('storecity');
+                                var storeID = button.data('storeid');
+                                var modal = $(this);
+                                modal.find('.modal-title').text('New contact for ' + storeName + ' at ' + streetAddress + ' in ' + storeCity);
+                                $('#addContactForm').off('submit');
+                                $('#addContactForm').submit( function(event){
+                                   event.preventDefault();
+                                    $.ajax({
+                                        type: "POST",
+                                        url: "<?php echo base_url(); ?>" + "Volunteer/addContact",
+                                        dataType: 'json',
+                                        data: {
+                                            "first_Name"    : $('#c_FirstName').val(),
+                                            "last_Name"     : $('#c_LastName').val(),
+                                            "storeID"       : storeID,
+                                            "storeCity"     : storeCity,
+                                            "phoneNumber"   : formatPhoneNumber($('#phoneNumber').val()),
+                                            "phoneType"     : $('#phoneType').val(),
+                                            "position"      : $('#positionName').val(),
+                                            "notes"         : $('#contactNotes').val()
+                                        },
+                                        success : function(result) {
+                                            modal.modal('toggle');
+                                            document.getElementById("c_FirstName").value = null;
+                                            document.getElementById("c_LastName").value = null;
+                                            document.getElementById("phoneNumber").value = "(xxx) xxx-xxxx";
+                                            document.getElementById("phoneType").value = null;
+                                            document.getElementById("contactNotes").value = null;
+                                            document.getElementById("positionName").value = null;
+                                            if (result === "success") {
+                                                jQuery("div#updateStatus").html('<div id="success-alert" class="alert alert-success mt-lg-4 col-10 alert-dismissible fade show" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>Successfully added contact</div>');
+                                                $('#success-alert').fadeOut(2500);
+                                            }
+                                        }
+                                    });
                                 });
-                            });
 
-                        });
+                            });
+                        <?php } ?>
                     },
                     onCollapseRow: function(index) {
                         $('#store_' + index + '_table').bootstrapTable('destroy');
@@ -170,14 +179,13 @@
     function getVendorContact (index, row, $detail){
         jQuery.ajax({
             type: "POST",
-            url: "<?php echo base_url(); ?>" + "Admin/getVendor",
+            url: "<?php echo base_url(); ?>" + "Volunteer/getVendor",
             dataType: 'json',
             data: {
                 "vInfoID": row['vInfoID'],
                 "type"  : 'vendorInformation'
             },
             success: function(row){
-                count = 1;
                 storeIndex = index;
                 $detail.html('<table id="store_' + index + '_table"><tbody></tbody></table>').find('table').bootstrapTable({
                     height: getHeight(),
@@ -194,67 +202,72 @@
                         { sortable: false, editable: true, field: 'v_contact_notes', formatter: function (value,row) {return makeEditable(value, "v_contact_notes", "Comments", row.vConID)}, title: 'Comments' },
                         { sortable: false, field: 'operate', title: '', align: 'center', valign: 'middle', clickToSelect: false,
                             formatter: function (value, row, index) {
-                                return  '<i data-toggle="tooltip" id="updateEntry" title="Update Contact" data-placement="top" style="color: green"  data-userID=\"'+row.vConID+'" class="fas fa-check-circle fa-lg updateButton_'+row.vConID+'"></i> ' +
-                                        '<i data-toggle="tooltip" title="Delete Contact" data-placement="top" style="color: red" userID=\"'+row.vConID+'" class="ml-3 fas fa-minus-square fa-lg deleteButton_'+row.vConID+'"></i>';
+                            <?php if ( $this->ion_auth->is_admin() ) { ?>
+                                return  '<i data-toggle="tooltip" id="updateEntry'+row.vConID+'" title="Update Contact" data-placement="top" style="color: green"  data-userID="'+row.vConID+'" class="fas fa-check-circle fa-lg"></i> ' +
+                                        '<i data-toggle="tooltip" id="deleteEntry'+row.vConID+'" title="Delete Contact" data-placement="top" style="color: red" userID=\"'+row.vConID+'" class="ml-3 fas fa-minus-square fa-lg"></i>';
+                            <?php } ?>
                             }
                         }
                     ]
                 });
-                if ( contactElements.length > 0 ){
-                    contactElements.forEach(function(element){
-                        $(document).ready(function() { $(element).editable({ mode: 'popup' }); $('[data-toggle="tooltip"]').tooltip() });
-                        var stuff = document.getElementById('updateEntry');
-                        var contactID = stuff.dataset.userid;
-                        $('.updateButton_' + contactID).off('click');
-                        $('.updateButton_' + contactID).click(function() {
-                            $(element).editable('submit', {
-                                type: "POST",
-                                ajaxOptions: {
-                                    dataType: 'json'
-                                },
-                                url: "<?php echo base_url(); ?>" + "Admin/updateContact",
-                                data: {
-                                    "ID"    : contactID,
-                                    "type"  : 'updateContact'
-                                },
-                                success: function(result){
-                                    if (result === "success") {
-                                        jQuery("div#updateStatus").html('<div id="success-alert" class="alert alert-success mt-lg-4 col-10 alert-dismissible fade show" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>Successfully updated contact</div>');
-                                        $('#success-alert').fadeOut(3500);
+                <?php if ( $this->ion_auth->is_admin() ) { ?>
+                    if ( contactElements.length > 0 ){
+                        contactElements.forEach(function(element){
+                            $(document).ready(function() { $(element).editable({ mode: 'popup' }); $('[data-toggle="tooltip"]').tooltip() });
+                            var res = element.split("_");  // Updated to look at contactElements rather than the row elements as they are not present here.
+                            contactID = res[1];
+                            $('#updateEntry' + contactID).off('click'); // Added to prevent compounding Ajax submissions - releases the binding of the button to previous actions
+                            $('#updateEntry' + contactID).click(function() {
+                                contactID = res[1]; // setting again as the original set carries last element ID or something wrong :).
+                                $(element).editable('submit', {
+                                    type: "POST",
+                                    ajaxOptions: {
+                                        dataType: 'json'
+                                    },
+                                    url: "<?php echo base_url(); ?>" + "Volunteer/updateContact",
+                                    data: {
+                                        "ID"    : contactID,
+                                        "type"  : 'updateContact'
+                                    },
+                                    success: function(result){
+                                        if (result === "success") {
+                                            jQuery("div#updateStatus").html('<div id="success-alert" class="alert alert-success mt-lg-4 col-10 alert-dismissible fade show" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>Successfully updated contact</div>');
+                                            $('#success-alert').fadeOut(2500);
+                                        }
+                                        else if (result === "error") {
+                                            jQuery("div#updateStatus").html('<div id="error-alert" class="alert alert-danger mt-lg-4 col-10 alert-dismissible fade show" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>Unable to update contact, database returned error condition</div>');
+                                            $('#error-alert').fadeOut(2500);
+                                        }
                                     }
-                                    else if (result === "error") {
-                                        jQuery("div#updateStatus").html('<div id="error-alert" class="alert alert-danger mt-lg-4 col-10 alert-dismissible fade show" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>Unable to update contact, database returned error condition</div>');
-                                        $('#error-alert').fadeOut(3500);
+                                });
+                            });
+                            $('#deleteEntry' + contactID).off('click'); // Added to prevent compounding Ajax submissions - releases the binding of the button to previous actions
+                            $('#deleteEntry' + contactID).click(function() {
+                                contactID = res[1]; // setting again as the original set carries last element ID or something wrong :).
+                                $(element).editable('submit', {
+                                    type: "POST",
+                                    ajaxOptions: {
+                                        dataType: 'json'
+                                    },
+                                    url: "<?php echo base_url(); ?>" + "Volunteer/deleteContact",
+                                    data: {
+                                        "ID"    : contactID
+                                    },
+                                    success: function(result){
+                                        if (result === "success") {
+                                            jQuery("div#updateStatus").html('<div id="success-alert" class="alert alert-success mt-lg-4 col-10 alert-dismissible fade show" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>Successfully deleted contact</div>');
+                                            $('#success-alert').fadeOut(2500);
+                                        }
+                                        else if (result === "error") {
+                                            jQuery("div#updateStatus").html('<div id="error-alert" class="alert alert-danger mt-lg-4 col-10 alert-dismissible fade show" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>Unable to delete contact, database returned error condition</div>');
+                                            $('#error-alert').fadeOut(2500);
+                                        }
                                     }
-                                }
+                                });
                             });
                         });
-                        $('.deleteButton_' + contactID).off('click');
-                        $('.deleteButton_' + contactID).click(function() {
-                            $(element).editable('submit', {
-                                type: "POST",
-                                ajaxOptions: {
-                                    dataType: 'json'
-                                },
-                                url: "<?php echo base_url(); ?>" + "Admin/deleteContact",
-                                data: {
-                                    "ID"    : contactID
-                                },
-                                success: function(result){
-                                    if (result === "success") {
-                                        jQuery("div#updateStatus").html('<div class="alert alert-success mt-lg-4 col-10 alert-dismissible fade show" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>Successfully deleted contact</div>');
-                                        $('#success-alert').fadeOut(3500);
-                                    }
-                                    else if (result === "error") {
-                                        jQuery("div#updateStatus").html('<div class="alert alert-danger mt-lg-4 col-10 alert-dismissible fade show" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>Unable to delete contact, database returned error condition</div>');
-                                        $('#success-alert').fadeOut(3500);
-                                    }
-                                }
-                            });
-                        });
-                        count++;
-                    });
-                }
+                    }
+                <?php } ?>
             }
         });
     }
@@ -271,7 +284,7 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form role="form" id="addContactForm">
+                    <form role="form" id="addContactForm" data-toggle="validator">
                         <div class="form-group">
                             <label for="c_FirstName">First Name</label>
                             <input id="c_FirstName" type="text" class="form-control" placeholder="" required>
@@ -282,11 +295,11 @@
                         </div>
                         <div class="form-group">
                             <label for="phoneNumber">Phone Number</label>
-                            <input type="text" class="form-control" id="phoneNumber" placeholder="0000" required>
+                            <input type="text" class="form-control" id="phoneNumber" placeholder="(xxx) xxx-xxxx" required>
                         </div>
                         <div class="form-group">
                             <label for="phoneType">Phone Type</label>
-                            <select class="form-control" id="phoneType">
+                            <select class="form-control" id="phoneType" required>
                                 <option value="1">Mobile</option>
                                 <option value="2">Office</option>
                                 <option value="3">Home</option>

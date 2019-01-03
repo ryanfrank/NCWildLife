@@ -45,11 +45,12 @@ class Vendor extends CI_Model
             }
         }
         $this->db->update($dbTable, $dbData);
-        // echo $this->db->last_query(); // used for debug  - shows last query executed
+        //echo $this->db->last_query(); // used for debug  - shows last query executed
         if ( $this->db->affected_rows() > 0) {
             return "success";
         }
         else {
+            //echo $this->db->last_query(); // used for debug  - shows last query executed
             return "error";
         }
 
