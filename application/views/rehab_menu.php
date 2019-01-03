@@ -13,7 +13,7 @@
         <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="ncwlrMenu">
-        <ul class="nav navbar-nav mr-auto mt-2 mt-lg-0">
+        <ul class="nav navbar-nav mr-auto">
             <li class="nav-item active">
                 <a class="nav-link" href="javascript:void(0)" onclick="window.location.reload(false);">Home <span class="sr-only">(Current)</span></a>
             </li>
