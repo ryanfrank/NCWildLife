@@ -14,3 +14,6 @@ body {
 .has-success .form-control-feedback {
     color: #3c763d;
 }
+.dropdown-backdrop {
+    position: static;
+}
