@@ -27,7 +27,7 @@
                 </li>
             <?php } ?>
             <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" id="ncwlrMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Information</a>
+                <a class="nav-link dropdown-toggle" id="ncwlrMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">Information</a>
                 <div class="dropdown-menu" aria-labelledby="ncwlrMenu">
                     <a class="dropdown-item" href="javascript:void(0);" onclick="$(content).load('Information/donations')">Donations</a>
                     <a class="dropdown-item" href="javascript:void(0)" onclick="$(content).load('Volunteer/schedule/event')">Events / Appearances</a>
