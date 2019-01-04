@@ -60,6 +60,7 @@
                     showColumns: true,
                     showRefresh: true,
                     pagination: true,
+                    pageList: "[10, 25, 50, 100, ALL]",
                     data: row,
                     detailView: true,
                     columns: [
@@ -192,6 +193,7 @@
                     striped: false,
                     cache: false,
                     detailView: false,
+                    pageList: "[10, 25, 50, 100, ALL]",
                     data: row,
                     columns: [
                         { sortable: false, editable: true, field: 'v_first_name', formatter: function (value,row) { return makeEditable(value, "v_first_name", "First Name", row.vConID)}, title: "First Name" },

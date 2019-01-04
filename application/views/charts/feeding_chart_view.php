@@ -29,6 +29,7 @@
                 showRefresh: true,
                 pagination: true,
                 detailView: false,
+                pageList: "[10, 25, 50, 100, ALL]",
                 data: <?php echo $data ?>,
                 columns: [
                     {sortable: true, field: 'feeding_weight', title: 'Feeding Weight'},

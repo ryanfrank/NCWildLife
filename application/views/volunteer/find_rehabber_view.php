@@ -69,20 +69,26 @@
     }
 </script>
 
-<table id="rehabberTable"
-       data-search="true"
-       <?php if ( $this->ion_auth->logged_in() ) { echo "data-detail-view=\"true\""; } ?>
-       <?php if ( $this->ion_auth->logged_in() ) { echo "data-detail-formatter=\"detailFormatter\""; } ?>
-       data-striped="true"
-       data-show-refresh="true"
-       data-show-toggle="true"
-       data-show-columns="true"
-       data-show-export="false"
-       data-minimum-count-columns="2"
-       data-show-pagination-switch="true"
-       data-pagination="true"
-       data-id-field="rehabber_name"
-       data-page-list="[10, 25, 50, 100, ALL]"
-       data-show-footer="false"
-       >
-</table>
+<div class="row col-12">
+    <p class="h2">Search for Rehabber</p>
+</div>
+<div class="row align-center col-12">
+    <div id="divTable" class="col-11 align-center">
+        <table id="rehabberTable"
+               data-search="true"
+            <?php if ( $this->ion_auth->logged_in() ) { echo "data-detail-view=\"true\""; } ?>
+            <?php if ( $this->ion_auth->logged_in() ) { echo "data-detail-formatter=\"detailFormatter\""; } ?>
+               data-striped="true"
+               data-show-refresh="true"
+               data-show-toggle="true"
+               data-show-columns="true"
+               data-show-export="false"
+               data-minimum-count-columns="2"
+               data-show-pagination-switch="true"
+               data-pagination="true"
+               data-id-field="rehabber_name"
+               data-page-list="[10, 25, 50, 100, ALL]"
+               data-show-footer="false" >
+        </table>
+    </div>
+</div>

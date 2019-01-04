@@ -22,10 +22,10 @@ class Volunteer extends CI_Controller
     }
     public function calendar() {
         if ($this->input->is_ajax_request()) {
-            $myArray = array();
             $type = $this->uri->segment(3);
             $result = $this->Calendar->get_calendar_events($type);
-            echo $result;
+            //echo $result;
+            return $result;
         }
         else { show_404(); }
     }

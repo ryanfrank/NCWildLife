@@ -12,28 +12,18 @@ class Calendar extends CI_Model {
         parent::__construct();
         // Your own constructor code
     }
-    public function get_calendar_events($type, $start = '0000-00-00', $JSON = true){
+    public function get_calendar_events($type, $start = '0000-00-00'){
         $myArray = array();
+        $dbSelect = "title, allDay, start, end, backgroundColor";
+        $dbFrom = "calendar";
+        $dbJoin = array('calendar_event_type' => "calendar.eventType = calendar_event_type.id");
+        $dbWhere = array("calendar_event_type.event_type" => $type, "calendar.start >= " => $start );
+        $this->db->select($dbSelect);
+        $this->db->from($dbFrom);
+        $this->db->join("calendar_event_type", "calendar.eventType = calendar_event_type.id");
+        $this->db->where($dbWhere);
 
-        $query = $this->db->order_by('start', 'ASC')->get_where('calendar_view', array('event_type' => $type, 'start >=' => $start) )->result_array();
-        foreach ( $query as $row ){
-            if ( is_null($row['Description']) ){
-                $row['backgroundColor'] = "green";
-                $row['Description'] = "Available";
-            }
-            else{
-                $row['backgroundColor'] = "grey";
-            }
-            if ($row['allDay'] == "0" ) { $row['allDay'] = false;}
-            else { $row['allDay'] = true;}
-            array_push($myArray, $row);
-        }
-        if ( $JSON == true ){
-            $result = json_encode($myArray);
-        }
-        else {
-            $result = $myArray;
-        }
+        $result = $this->db->get();
 
         return $result;
     }
