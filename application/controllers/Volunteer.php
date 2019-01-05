@@ -21,13 +21,12 @@ class Volunteer extends CI_Controller
         else { show_404(); }
     }
     public function calendar() {
-        if ($this->input->is_ajax_request()) {
+        //if ($this->input->is_ajax_request()) {
             $type = $this->uri->segment(3);
             $result = $this->Calendar->get_calendar_events($type);
-            //echo $result;
-            return $result;
-        }
-        else { show_404(); }
+            echo $result;
+       // }
+       // else { show_404(); }
     }
     public function calendarEntry() {
         if ($this->input->is_ajax_request()) {
@@ -37,14 +36,17 @@ class Volunteer extends CI_Controller
     }
     public function addCalendarEvent(){
         if ($this->input->is_ajax_request()) {
+            $user = $this->ion_auth->user()->row();
+            $type = $this->uri->segment(3);
             $data = array(
-                'title' => $this->input->post('eventTitle'),
-                'allDay' => $this->input->post('allDayEvent'),
-                'start' => $this->input->post('startDate'),
-                'end' => $this->input->post('endDate')
+                'start' => $this->input->post('date') . " " . date('H:i', strtotime($this->input->post('sTime'))),
+                'end' => $this->input->post('date') . " " . date('H:i', strtotime($this->input->post('eTime'))),
+                'title' => $this->input->post('eTitle'),
+                'allDay' => $this->input->post('allDay'),
+                'createdBy' => $user->id
             );
-            $result = $this->Calendar->add_calendar_event('Volunteer', $data);
-
+            $result = $this->Calendar->add_calendar_event($type, $data);
+            //print_r($data);
             echo $result;
         }
         else { show_404(); }
