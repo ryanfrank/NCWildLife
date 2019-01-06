@@ -351,7 +351,7 @@
         </div>
     </div>
     <div class="row col-12 align-center">
-        <div id="myTable" class="col-10 align-center">
+        <div id="myTable" class="col-12 align-center">
             <table id="productTable"></table>
         </div>
     </div>
