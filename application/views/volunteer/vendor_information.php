@@ -275,7 +275,6 @@
     }
 </script>
 <div class="container-fluid col-12">
-    <div class="row col-10" id="contactStatus"></div>
     <div class="modal fade" id="addContactModal" tabindex="-1" role="dialog" aria-labelledby="addContactModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
@@ -326,29 +325,34 @@
         </div>
     </div>
 </div>
-    <div class="row align-center">
-        <div class="col-2">
-            <div class="form-group">
-                <label for="productTypes" class="align-content-center">Product Type</label>
-                <select class="form-control" id="productTypes">
-                    <option></option>
-                    <?php foreach ($productType->result() as $row):?>
-                        <option value="<?php echo $row->pT_ID ?>"><?php echo $row->pT_name ?></option>
-                    <?php endforeach;?>
-                </select>
-            </div>
+<div class="container col-12 ml-0">
+    <div class="row col-12">
+        <div class="col align-self-start col-2"></div>
+        <div class="col align-self-center text-center">
+            <h2 class="text-muted">Vendor Information</h2>
         </div>
-        <div class="col-4">
-            <div class="form-group col-5">
-                <label for="vendorName" class="align-content-center">Vendor Name</label>
-                <select class="form-control" id="vendorName" disabled>
-                    <option>Select Type First</option>
-                </select>
-            </div>
+        <div class="col align-self-end col-2"></div>
+    </div>
+    <div class="row col-12 align-center">
+        <div class="col-2 form-group">
+            <label for="productTypes" class="align-content-center">Product Type</label>
+            <select class="form-control" id="productTypes">
+                <option></option>
+                <?php foreach ($productType->result() as $row):?>
+                    <option value="<?php echo $row->pT_ID ?>"><?php echo $row->pT_name ?></option>
+                <?php endforeach;?>
+            </select>
+        </div>
+        <div class="form-group col-2">
+            <label for="vendorName" class="align-content-center">Vendor Name</label>
+            <select class="form-control" id="vendorName" disabled>
+                <option>Select Type First</option>
+            </select>
         </div>
     </div>
-<div class="row align-center">
-    <div id="myTable" class="col-10 align-center">
-        <table id="productTable"></table>
+    <div class="row col-12 align-center">
+        <div id="myTable" class="col-10 align-center">
+            <table id="productTable"></table>
+        </div>
     </div>
 </div>
