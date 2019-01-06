@@ -334,7 +334,7 @@
         <div class="col align-self-end col-2"></div>
     </div>
     <div class="row col-12 align-center">
-        <div class="col-2 form-group">
+        <div class="col-4 form-group">
             <label for="productTypes" class="align-content-center">Product Type</label>
             <select class="form-control" id="productTypes">
                 <option></option>
@@ -343,7 +343,7 @@
                 <?php endforeach;?>
             </select>
         </div>
-        <div class="form-group col-2">
+        <div class="form-group col-4">
             <label for="vendorName" class="align-content-center">Vendor Name</label>
             <select class="form-control" id="vendorName" disabled>
                 <option>Select Type First</option>
