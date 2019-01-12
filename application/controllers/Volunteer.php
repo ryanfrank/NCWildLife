@@ -21,12 +21,12 @@ class Volunteer extends CI_Controller
         else { show_404(); }
     }
     public function calendar() {
-        //if ($this->input->is_ajax_request()) {
+        if ($this->input->is_ajax_request()) {
             $type = $this->uri->segment(3);
             $result = $this->Calendar->get_calendar_events($type);
             echo $result;
-       // }
-       // else { show_404(); }
+       }
+       else { show_404(); }
     }
     public function calendarEntry() {
         if ($this->input->is_ajax_request()) {

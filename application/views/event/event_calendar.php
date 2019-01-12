@@ -10,8 +10,8 @@
     $(function(){
         $('#calendar').fullCalendar({
             theme: true,
-            themeSystem: 'standard',
-            themeName: 'Lumen',
+            themeSystem: 'bootstrap4',
+            themeName: 'Minty',
             header: {
                 left: 'prev,next today',
                 center: 'title',
@@ -32,6 +32,15 @@
     });
 </script>
 
-<div class="mt-4 row col-12 ml-1">
-    <div id="calendar"></div>
+<div class="container col-11 ml-0">
+    <div class="row col-11">
+        <div class="col align-self-start col-2"></div>
+        <div class="col align-self-center text-center">
+            <h2 class="text-muted">Event Calendar / Schedule</h2>
+        </div>
+        <div class="col align-self-end col-2"></div>
+    </div>
+    <div class="mt-4 row col-11">
+        <div id="calendar"></div>
+    </div>
 </div>
