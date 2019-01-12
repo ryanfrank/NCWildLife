@@ -40,7 +40,7 @@
             </ul>
         </div>
         <div class="col-4">
-            <img class="d-block rounded" style="height: 500px;" src="<?php echo base_url();?>/application/images/otter_5.jpg">
+            <img class="img-fluid img-thumbnail rounded" style="height: 500px;" src="<?php echo base_url();?>/application/images/otter_5.jpg">
         </div>
     </div>
     <div class="row ml-1">
