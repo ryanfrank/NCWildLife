@@ -55,80 +55,82 @@
     });
     //$('#goodSamaritanForm').validator();
 </script>
-<div id="info">
-    <form class="mt-3" id="goodSamaritanForm" name="goodSamaritanForm" data-toggle="validator" role="form">
-        <div class="row">
-            <div class="form-group col-6">
-                <label for="firstName" class="align-content-center control-label">Good Samaritan First Name</label>
-                <input type="text" class="form-control" id="firstName" placeholder="First Name"  required>
-                <div class="invalid-feedback">Please provide a first name</div>
+<div class="container-fluid col-11">
+    <div id="info">
+        <form class="mt-3" id="goodSamaritanForm" name="goodSamaritanForm" data-toggle="validator" role="form">
+            <div class="row">
+                <div class="form-group col-6">
+                    <label for="firstName" class="align-content-center control-label">Good Samaritan First Name</label>
+                    <input type="text" class="form-control" id="firstName" placeholder="First Name"  required>
+                    <div class="invalid-feedback">Please provide a first name</div>
+                </div>
+                <div class="form-group col-6">
+                    <label for="lastName" class="align-content-center">Good Samaritan Last Name</label>
+                    <input type="text" class="form-control" id="lastName" placeholder="Last Name" onmouseover="this.focus();" required>
+                    <div class="invalid-feedback">Please provide a last name</div>
+                </div>
             </div>
-            <div class="form-group col-6">
-                <label for="lastName" class="align-content-center">Good Samaritan Last Name</label>
-                <input type="text" class="form-control" id="lastName" placeholder="Last Name" onmouseover="this.focus();" required>
-                <div class="invalid-feedback">Please provide a last name</div>
+            <div class="row">
+                <div class="form-group col-6">
+                    <label for="streetAddress" class="align-content-center">Good Samaritan Street Address</label>
+                    <input type="text" class="form-control" id="streetAddress" placeholder="Street Address" onmouseover="this.focus();" required>
+                </div>
+                <div class="form-group col-6">
+                    <label for="cityName" class="align-content-center">Good Samaritan City</label>
+                    <input type="text" class="form-control" id="cityName" placeholder="City" onmouseover="this.focus();" required>
+                </div>
             </div>
-        </div>
-        <div class="row">
-            <div class="form-group col-6">
-                <label for="streetAddress" class="align-content-center">Good Samaritan Street Address</label>
-                <input type="text" class="form-control" id="streetAddress" placeholder="Street Address" onmouseover="this.focus();" required>
+            <div class="row">
+                <div class="form-group col-3">
+                    <label for="stateName" class="align-content-center">Good Samaritan State</label>
+                    <select class="form-control" id="stateName" onmouseover="this.focus();" required>
+                        <?php foreach ($states->result() as $row):?>
+                            <option value="<?php echo $row->state_id?>"><?php echo $row->state_name?></option>
+                        <?php endforeach;?>
+                    </select>
+                </div>
+                <div class="form-group col-3">
+                    <label for="zipCode" class="align-content-center">Good Samaritan Zip</label>
+                    <input type="text" class="form-control" id="zipCode" placeholder="Zip Code" onmouseover="this.focus();" required>
+                </div>
+                <div class="form-group col-3">
+                    <label for="emailAddress" class="align-content-center">Good Samaritan Email</label>
+                    <input type="email" class="form-control" id="emailAddress" placeholder="email@domain.com" data-error="Bruh, that email address is invalid" data-feedback="success: 'glyphicon-ok', error: 'glyphicon-remove'" onmouseover="this.focus();" required>
+                    <div class="help-block with-errors"></div>
+                </div>
+                <div class="form-group col-3">
+                    <label for="phoneNumber" class="align-content-center">Good Samaritan Phone</label>
+                    <input type="text" class="form-control" id="phoneNumber" placeholder="XXX-XXX-XXXX" onmouseover="this.focus();" required>
+                </div>
             </div>
-            <div class="form-group col-6">
-                <label for="cityName" class="align-content-center">Good Samaritan City</label>
-                <input type="text" class="form-control" id="cityName" placeholder="City" onmouseover="this.focus();" required>
+            <div class="row">
+                <div class="form-check col-3">
+                    <label class="form-check-label">
+                        <input class="form-check-input" id="donationReceived" type="checkbox" value="Yes" onmouseover="this.focus();">
+                        Donation received?
+                    </label>
+                </div>
+                <div class="input-group col-3">
+                    <span class="input-group-addon">$</span>
+                    <input type="text" class="form-control" id="donationAmount" placeholder="Amount Received" value="0" onmouseover="this.focus();">
+                    <span class="input-group-addon">.00</span>
+                </div>
+                <div class="form-group col-3">
+                    <label for="referral" class="align-content-center">Who referred you to us?</label>
+                    <input type="text" class="form-control" id="referral" placeholder="Google, FaceBook, etc..." onmouseover="this.focus();">
+                </div>
+                <div class="form-check col-3">
+                    <label class="form-check-label">
+                        <input class="form-check-input" id="emailList" type="checkbox" value="1" onmouseover="this.focus();">
+                        Would you like to be on our mailing list?
+                    </label>
+                </div>
             </div>
-        </div>
-        <div class="row">
-            <div class="form-group col-3">
-                <label for="stateName" class="align-content-center">Good Samaritan State</label>
-                <select class="form-control" id="stateName" onmouseover="this.focus();" required>
-                    <?php foreach ($states->result() as $row):?>
-                        <option value="<?php echo $row->state_id?>"><?php echo $row->state_name?></option>
-                    <?php endforeach;?>
-                </select>
+            <div class="row">
+                <div class="col-3">
+                    <input type="submit" id="submitButton">
+                </div>
             </div>
-            <div class="form-group col-3">
-                <label for="zipCode" class="align-content-center">Good Samaritan Zip</label>
-                <input type="text" class="form-control" id="zipCode" placeholder="Zip Code" onmouseover="this.focus();" required>
-            </div>
-            <div class="form-group col-3">
-                <label for="emailAddress" class="align-content-center">Good Samaritan Email</label>
-                <input type="email" class="form-control" id="emailAddress" placeholder="email@domain.com" data-error="Bruh, that email address is invalid" data-feedback="success: 'glyphicon-ok', error: 'glyphicon-remove'" onmouseover="this.focus();" required>
-                <div class="help-block with-errors"></div>
-            </div>
-            <div class="form-group col-3">
-                <label for="phoneNumber" class="align-content-center">Good Samaritan Phone</label>
-                <input type="text" class="form-control" id="phoneNumber" placeholder="XXX-XXX-XXXX" onmouseover="this.focus();" required>
-            </div>
-        </div>
-        <div class="row">
-            <div class="form-check col-3">
-                <label class="form-check-label">
-                    <input class="form-check-input" id="donationReceived" type="checkbox" value="Yes" onmouseover="this.focus();">
-                    Donation received?
-                </label>
-            </div>
-            <div class="input-group col-3">
-                <span class="input-group-addon">$</span>
-                <input type="text" class="form-control" id="donationAmount" placeholder="Amount Received" value="0" onmouseover="this.focus();">
-                <span class="input-group-addon">.00</span>
-            </div>
-            <div class="form-group col-3">
-                <label for="referral" class="align-content-center">Who referred you to us?</label>
-                <input type="text" class="form-control" id="referral" placeholder="Google, FaceBook, etc..." onmouseover="this.focus();">
-            </div>
-            <div class="form-check col-3">
-                <label class="form-check-label">
-                    <input class="form-check-input" id="emailList" type="checkbox" value="1" onmouseover="this.focus();">
-                    Would you like to be on our mailing list?
-                </label>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-3">
-                <input type="submit" id="submitButton">
-            </div>
-        </div>
-    </form>
+        </form>
+    </div>
 </div>

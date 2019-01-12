@@ -13,13 +13,6 @@ class Authentication extends CI_Controller {
     {
         parent::__construct();
     }
-    public function register_user(){
-        $this->load->view('modal/register_user');
-    }
-    public function login_user(){
-        $this->load->library('form_validation');
-        $this->load->view('modal/login_user');
-    }
     public function createUser(){
         if ($this->input->is_ajax_request()) {
             if ($this->input->post('email')) {

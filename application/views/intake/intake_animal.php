@@ -59,93 +59,95 @@
         });
     });
 </script>
-<div id="info">
-    <form class="mt-3" id="intakeAnimal" name="intakeAnimal" role="form">
-        <div class="row">
-            <div class="form-group col-4">
-                <label for="animalName" class="align-content-center">Animal Name</label>
-                <input type="text" class="form-control" id="animalName" placeholder="Some name or identifying descripton" onmouseover="this.focus();" required>
-                <div class="invalid-feedback">Please provide a valid name</div>
+<div class="container-fluid col-11">
+    <div id="info">
+        <form class="mt-3" id="intakeAnimal" name="intakeAnimal" role="form">
+            <div class="row">
+                <div class="form-group col-4">
+                    <label for="animalName" class="align-content-center">Animal Name</label>
+                    <input type="text" class="form-control" id="animalName" placeholder="Some name or identifying description" onmouseover="this.focus();" required>
+                    <div class="invalid-feedback">Please provide a valid name</div>
+                </div>
             </div>
-        </div>
-        <div class="row">
-            <div class="form-group col-3">
-                <label for="intakeDate" class="align-content-center">Intake Date</label>
-                <input type="text" class="form-control" id="intakeDate" placeholder="<?php echo $date;?>" value="<?php echo $date;?>" onmouseover="this.focus();" required>
-                <div class="invalid-feedback">Please provide a valid date</div>
+            <div class="row">
+                <div class="form-group col-3">
+                    <label for="intakeDate" class="align-content-center">Intake Date</label>
+                    <input type="text" class="form-control" id="intakeDate" placeholder="<?php echo $date;?>" value="<?php echo $date;?>" onmouseover="this.focus();" required>
+                    <div class="invalid-feedback">Please provide a valid date</div>
+                </div>
+                <div class="form-group col-2">
+                    <label for="intakeWeight" class="align-content-center">Intake Weight (g)</label>
+                    <input type="text" class="form-control" id="intakeWeight" placeholder="175" onmouseover="this.focus();" required>
+                    <div class="invalid-feedback">Please provide a valid weight</div>
+                </div>
+                <div class="form-group col-2">
+                    <label for="intakeSpecies" class="align-content-center">Intake Species</label>
+                    <select class="form-control" id="intakeSpecies" onmouseover="this.focus();" required>
+                        <?php foreach ($species->result() as $row):?>
+                            <option value="<?php echo $row->species_id?>"><?php echo $row->species_name?></option>
+                        <?php endforeach;?>
+                    </select>
+                </div>
+                <div class="form-group col-2">
+                    <label for="intakeAge" class="align-content-center">Intake Age</label>
+                    <select class="form-control" id="intakeAge" onmouseover="this.focus();" required>
+                        <?php foreach ($ages->result() as $row):?>
+                            <option value="<?php echo $row->ages_id?>"><?php echo $row->ages_description?></option>
+                        <?php endforeach;?>
+                    </select>
+                </div>
+                <div class="form-group col-3">
+                    <label for="intakePossetion" class="align-content-center">Intake Possetion Date</label>
+                    <input type="text" class="form-control" id="intakePossetion" placeholder="<?php echo $date;?>" value="<?php echo $date;?>" onmouseover="this.focus();" required>
+                    <div class="invalid-feedback">Please provide a valid date</div>
+                </div>
             </div>
-            <div class="form-group col-2">
-                <label for="intakeWeight" class="align-content-center">Intake Weight (g)</label>
-                <input type="text" class="form-control" id="intakeWeight" placeholder="175" onmouseover="this.focus();" required>
-                <div class="invalid-feedback">Please provide a valid weight</div>
+            <div class="row">
+                <div class="form-group col-3">
+                    <label for="intakeRehabber" class="align-content-center">Rehabber Intaking Animal</label>
+                    <select class="form-control" id="intakeRehabber" onmouseover="this.focus();" required>
+                        <?php foreach ($rehabber->result() as $row):?>
+                            <option value="<?php echo $row->rehabber_id?>"><?php echo $row->rehabber_first_name . ' ' .$row->rehabber_last_name?></option>
+                        <?php endforeach;?>
+                    </select>
+                </div>
+                <div class="form-check col-3">
+                    <label class="form-check-label">
+                        <input class="form-check-input" id="injured" type="checkbox" value="No" onmouseover="this.focus();">
+                        Intake Injury?
+                    </label>
+                </div>
+                <div class="form-group col-6">
+                    <label for="injuryInfo" class="align-content-center">Injury Information</label>
+                    <input type="text" class="form-control" id="injuryInfo" placeholder="Cat attack, dog attack, HBV, etc..." onmouseover="this.focus();">
+                </div>
             </div>
-            <div class="form-group col-2">
-                <label for="intakeSpecies" class="align-content-center">Intake Species</label>
-                <select class="form-control" id="intakeSpecies" onmouseover="this.focus();" required>
-                    <?php foreach ($species->result() as $row):?>
-                        <option value="<?php echo $row->species_id?>"><?php echo $row->species_name?></option>
-                    <?php endforeach;?>
-                </select>
+            <div class="row">
+                <div class="form-check col-3">
+                    <label class="form-check-label">
+                        <input class="form-check-input" id="fed" type="checkbox" value="No" onmouseover="this.focus();">
+                        Has animal been fed?
+                    </label>
+                </div>
+                <div class="form-group col-6">
+                    <label for="foodInfo" class="align-content-center">What has it been fed?</label>
+                    <input type="text" class="form-control" id="foodInfo" placeholder="Milk (specify type), Formula (specify type), etc..." onmouseover="this.focus();">
+                </div>
+                <div class="form-group col-3">
+                    <label for="foodDelivery" class="align-content-center">How was it fed?</label>
+                    <input type="text" class="form-control" id="foodDelivery" placeholder="Syringe, Bottle, Bowl, etc..." onmouseover="this.focus();">
+                </div>
             </div>
-            <div class="form-group col-2">
-                <label for="intakeAge" class="align-content-center">Intake Age</label>
-                <select class="form-control" id="intakeAge" onmouseover="this.focus();" required>
-                    <?php foreach ($ages->result() as $row):?>
-                        <option value="<?php echo $row->ages_id?>"><?php echo $row->ages_description?></option>
-                    <?php endforeach;?>
-                </select>
+            <div class="row">
+                <div class="form-group col-12">
+                    <label for="intakeCondition" class="align-content-center">Condition of intake?</label>
+                    <input type="text" class="form-control" id="intakeCondition" placeholder="specific information on intake condition (e.g. dehydration, etc)" onmouseover="this.focus();">
+                </div>
             </div>
-            <div class="form-group col-3">
-                <label for="intakePossetion" class="align-content-center">Intake Possetion Date</label>
-                <input type="text" class="form-control" id="intakePossetion" placeholder="<?php echo $date;?>" value="<?php echo $date;?>" onmouseover="this.focus();" required>
-                <div class="invalid-feedback">Please provide a valid date</div>
+            <br>
+            <div class="row ml-2 mt-4">
+                <input type="submit" id="submitButton">
             </div>
-        </div>
-        <div class="row">
-            <div class="form-group col-3">
-                <label for="intakeRehabber" class="align-content-center">Rehabber Intaking Animal</label>
-                <select class="form-control" id="intakeRehabber" onmouseover="this.focus();" required>
-                    <?php foreach ($rehabber->result() as $row):?>
-                        <option value="<?php echo $row->rehabber_id?>"><?php echo $row->rehabber_first_name . ' ' .$row->rehabber_last_name?></option>
-                    <?php endforeach;?>
-                </select>
-            </div>
-            <div class="form-check col-3">
-                <label class="form-check-label">
-                    <input class="form-check-input" id="injured" type="checkbox" value="No" onmouseover="this.focus();">
-                    Intake Injury?
-                </label>
-            </div>
-            <div class="form-group col-6">
-                <label for="injuryInfo" class="align-content-center">Injury Information</label>
-                <input type="text" class="form-control" id="injuryInfo" placeholder="Cat attack, dog attack, HBV, etc..." onmouseover="this.focus();">
-            </div>
-        </div>
-        <div class="row">
-            <div class="form-check col-3">
-                <label class="form-check-label">
-                    <input class="form-check-input" id="fed" type="checkbox" value="No" onmouseover="this.focus();">
-                    Has animal been fed?
-                </label>
-            </div>
-            <div class="form-group col-6">
-                <label for="foodInfo" class="align-content-center">What has it been fed?</label>
-                <input type="text" class="form-control" id="foodInfo" placeholder="Milk (specify type), Formula (specify type), etc..." onmouseover="this.focus();">
-            </div>
-            <div class="form-group col-3">
-                <label for="foodDelivery" class="align-content-center">How was it fed?</label>
-                <input type="text" class="form-control" id="foodDelivery" placeholder="Syringe, Bottle, Bowl, etc..." onmouseover="this.focus();">
-            </div>
-        </div>
-        <div class="row">
-            <div class="form-group col-12">
-                <label for="intakeCondition" class="align-content-center">Condition of intake?</label>
-                <input type="text" class="form-control" id="intakeCondition" placeholder="specific information on intake condition (e.g. dehydration, etc)" onmouseover="this.focus();">
-            </div>
-        </div>
-        <br>
-        <div class="row ml-2 mt-4">
-            <input type="submit" id="submitButton">
-        </div>
-    </form>
+        </form>
+    </div>
 </div>

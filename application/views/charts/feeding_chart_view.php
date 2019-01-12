@@ -39,13 +39,14 @@
                 ]
             });
         </script>
-        <div class="row col-12">
-            <p class="h2"><?php echo $type . " "; ?> Feeding Chart</p>
-        </div>
-        <div class="row align-center col-12">
-            <div id="divTable" class="col-10 align-center">
-                <table id="chartTable"></table>
+        <div class="container-fluid">
+            <div class="row col-11 justify-content-md-center">
+                <h2 class="text-muted"><?php echo $type . " "; ?> Feeding Chart</h2>
+            </div>
+            <div class="row align-center col-11">
+                <div id="divTable" class="col-12 align-center">
+                    <table id="chartTable"></table>
+                </div>
             </div>
         </div>
-
 <?php } ?>
