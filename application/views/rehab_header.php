@@ -11,180 +11,129 @@
         $('#clock').html(moment().format('dddd MMM. D, YYYY [at] h:mm A z'));
     }
     setInterval(update,250);
-<?php
-    if ( !$this->ion_auth->logged_in() ) { ?>
-        $( function() {
-            var dialog,
-                // From http://www.whatwg.org/specs/web-apps/current-work/multipage/states-of-the-type-attribute.html#e-mail-state-%28type=email%29
-                emailRegex = /^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/,
-                name = $( "#name" ),
-                email = $( "#email" ),
-                password = $( "#password" ),
-                allFields = $( [] ).add( name ).add( email ).add( password ),
-                tips = $( ".validateTips" );
-
-            function updateTips( t ) {
-                tips
-                    .text( t )
-                    .addClass( "ui-state-highlight" );
-                setTimeout(function() {
-                    tips.removeClass( "ui-state-highlight", 1500 );
-                }, 500 );
+    <?php
+    if (!$this->ion_auth->logged_in()){
+    ?>
+        function checkLength(val, id, length){
+            if ( val.length >= length ){
+                element = document.getElementById(id);
+                element.classList.remove('is-invalid');
+                element.classList += " is-valid";
             }
-
-            function checkLength( o, n, min, max ) {
-                if ( o.val().length > max || o.val().length < min ) {
-                    o.addClass( "ui-state-error" );
-                    if ( o.val().length > 0 && o.val().length < min )
-                    {
-                        updateTips( n + " must be at least " + min + " characters.");
-                        return false;
+            else {
+                element = document.getElementById(id);
+                element.classList.remove('is-valid');
+                element.classList += " is-invalid";
+            }
+        }
+        function checkEmail(email, id){
+            var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+            if ( re.test(email) ){
+                element = document.getElementById(id);
+                element.classList.remove('is-invalid');
+                element.classList += " is-valid";
+            }
+            else {
+                element = document.getElementById(id);
+                element.classList.remove('is-valid');
+                element.classList += " is-invalid";
+            }
+        }
+        function resetHandler() {
+            var elements = document.getElementById("registerNewUser").elements;
+            for ( var i = 0, element; element = elements[i++]; ){
+                myElement = document.getElementById(element.id);
+                if ( element.id !== 'registerUserButton' || element.id !== 'resetRegistration' ) {
+                    if (myElement.classList.contains('is-valid')) {
+                        myElement.classList.remove('is-valid');
                     }
-                    else if ( o.val().length > max )
-                    {
-                        updateTips( n + " cannot be greater than " + max + " characters.");
-                        return false;
+                    if (myElement.classList.contains('is-invalid')) {
+                        myElement.classList.remove('is-invalid');
                     }
-                    else if ( !o.val() )
-                    {
-                        updateTips( n + " is required ");
-                        return false;
-                    }
-                } else {
-                    return true;
                 }
             }
-
-            function checkRegexp( o, regexp, n ) {
-                if ( !( regexp.test( o.val() ) ) ) {
-                    o.addClass( "ui-state-error" );
-                    updateTips( n );
-                    return false;
-                } else {
-                    return true;
-                }
-            }
-
-            function login() {
-                event.preventDefault();
-
-                var valid           = true;
-                var loginID         = $("input#login");
-                var password        = $("input#password");
-
-                allFields.removeClass( "ui-state-error" );
-                valid = valid && checkLength( loginID, "Login Name", 3, 80 );
-                valid = valid && checkLength( password, "Password", 3, 16 );
-
-                if ( valid ) {
-                    jQuery.ajax({
-                        type: 'POST',
+        }
+        $(document).ready( function() {
+            $('#login-user').off('click');
+            $('#login-user').click(function(){
+                $('#loginUserModal').modal('show');
+                $('#loginUserModal').submit( function(event){
+                    event.preventDefault();
+                    $.ajax({
+                        type: "POST",
                         url: "<?php echo base_url(); ?>" + "Authentication/loginUser",
                         dataType: 'json',
                         data: {
-                            "login": loginID.val(),
-                            "password": password.val()
+                            "login": document.getElementById("login").value,
+                            "password": document.getElementById("password").value
                         },
-                        success: function (res) {
-                            if (res === "failure") {
-                                jQuery("div#loginStatus").html('<div class="alert alert-danger mt-lg-4 col-8 alert-dismissible fade show" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>Failed to login ' + $("input#login").val() + '</div>');
-                                document.getElementById("loginUser").reset();
-                            }
-                            else if (res === "success") {
+                        success: function (result) {
+                            $('#loginUserModal').modal('toggle');
+                            if (result === "success") {
                                 window.location.reload(false);
+                            } else if (result === "tooManyFailed") {
+                                document.getElementById("login").value = null;
+                                document.getElementById("password").value = null;
+                                jQuery("div#updateStatus").html('<div id="error-alert" class="alert alert-danger mt-lg-4 col-10 alert-dismissible fade show" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>Failed to login: too many failed attempts</div>');
+                                $('#error-alert').fadeOut(5000);
+                            } else {
+                                document.getElementById("login").value = null;
+                                document.getElementById("password").value = null;
+                                jQuery("div#updateStatus").html('<div id="error-alert" class="alert alert-danger mt-lg-4 col-10 alert-dismissible fade show" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>Failed to login: Incorrect username or password</div>');
+                                $('#error-alert').fadeOut(5000);
                             }
                         }
                     });
-                }
-            }
-
-            function register() {
-                event.preventDefault();
-                var valid           = true;
-                var emailAddress    = $("input#emailAddress");
-                var password        = $("input#inputPassword");
-                var userName        = $("input#userName");
-                var firstName       = $("input#firstName");
-                var lastName        = $("input#lastName");
-
-                allFields.removeClass( "ui-state-error" );
-                valid = valid && checkLength( userName, "User Name", 3, 16 );
-                valid = valid && checkLength( firstName, "First Name", 3, 16 );
-                valid = valid && checkLength( lastName, "Last Name", 3, 16 );
-                valid = valid && checkRegexp( emailAddress, emailRegex, "email: e.g. user@domain.com" );
-                valid = valid && checkLength( password, "Password", 6, 16 );
-
-                if ( valid ) {
-                    jQuery.ajax({
-                        type: 'POST',
-                        url: "<?php echo base_url(); ?>" + "Authentication/createUser",
-                        dataType: 'json',
-                        data: {
-                            "first": firstName.val(),
-                            "last": lastName.val(),
-                            "user": userName.val(),
-                            "email": emailAddress.val(),
-                            "password": password.val()
-                        },
-                        success: function (res) {
-                            if (res === "success") {
-                                jQuery("div#createUserStatus").html('<div class="alert alert-success mt-lg-2 col-10 alert-dismissible fade show" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>Successfully added ' + firstName.val() + ' ' + lastName.val() + '</div>');
-                                document.getElementById("registerNewUser").reset();
-                                registerDialog.dialog("close");
-                            }
-                            else {
-                                jQuery("div#createUserStatus").html('<div class="alert alert-danger mt-lg-2 col-10 alert-dismissible fade show" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>Failed to add ' + firstName.val()+ ' ' + lastName.val() + '</div>');
-                                document.getElementById("registerNewUser").reset();
-                                registerDialog.dialog("close");
+                });
+            });
+            $('#register-user').off('click');
+            $('#register-user').click(function(){
+                $('#registerUserModal').modal('show');
+                $('#registerUserModal').submit( function(event){
+                    event.preventDefault();
+                    var valid = false;
+                    var elements = document.getElementById("registerNewUser").elements;
+                    for ( var i = 0, element; element = elements[i++]; ){
+                        myElement = document.getElementById(element.id);
+                        if ( element.id !== 'registerUserButton' || element.id !== 'resetRegistration') {
+                            if (myElement.classList.contains('is-valid')) {
+                                valid = true;
+                            } else {
+                                myElement.classList += ' is-invalid';
+                                valid = false;
                             }
                         }
-                    });
-                }
-            }
-
-            loginDialog = $( "#loginUser" ).dialog({
-                autoOpen: false,
-                height: 375,
-                width: 325,
-                modal: true,
-                closeOnEscape: true,
-                title: "User Login",
-                buttons: {
-                    "Login": login,
-                    Cancel: function() {
-                        loginDialog.dialog( "close" );
                     }
-                },
-                close: function() {
-                    document.getElementById("loginUser").reset();
-                    allFields.removeClass( "ui-state-error" );
-                }
-            });
-
-            registerDialog = $( "#registerNewUser" ).dialog({
-                autoOpen: false,
-                height: 650,
-                width: 425,
-                modal: true,
-                closeOnEscape: true,
-                title: "Register New User",
-                buttons: {
-                    "Register": register,
-                    Cancel: function() {
-                        registerDialog.dialog( "close" );
+                    if ( valid ) {
+                        $.ajax({
+                            type: "POST",
+                            url: "<?php echo base_url(); ?>" + "Authentication/createUser",
+                            dataType: 'json',
+                            data: {
+                                "first": document.getElementById("firstName").value,
+                                "last": document.getElementById("lastName").value,
+                                "user": document.getElementById("userName").value,
+                                "email": document.getElementById("emailAddress").value,
+                                "password": document.getElementById("inputPassword").value
+                            },
+                            success: function (result) {
+                                $('#registerUserModal').modal('toggle');
+                                if (result === "success") {
+                                    window.location.reload(false);
+                                }
+                                else {
+                                    document.getElementById("firstName").value = null;
+                                    document.getElementById("lastName").value = null;
+                                    document.getElementById("userName").value = null;
+                                    document.getElementById("emailAddress").value = null;
+                                    document.getElementById("inputPassword").value = null;
+                                    jQuery("div#updateStatus").html('<div id="error-alert" class="alert alert-danger mt-lg-4 col-10 alert-dismissible fade show" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>Failed to register user</div>');
+                                    $('#error-alert').fadeOut(5000);
+                                }
+                            }
+                        });
                     }
-                },
-                close: function() {
-                    document.getElementById("registerNewUser").reset();
-                    allFields.removeClass( "ui-state-error" );
-                }
-            });
-
-            $( "#login-user" ).on( "click", function() {
-                loginDialog.dialog( "open" );
-            });
-            $( "#register-user" ).on( "click", function() {
-                registerDialog.dialog( "open" );
+                });
             });
         });
     <?php } ?>
@@ -205,9 +154,9 @@
             if (!$this->ion_auth->logged_in()){
         ?>
                 Welcome Guest!  Click here to
-                    <a class="text-success" data-target="#registerModal" id="register-user">register</a>
+                    <i class="text-success" data-target="#registerModal" id="register-user">register</i>
                 or
-                    <a class="text-success"  data-target="#loginModal" id="login-user">login</a>.
+                    <i data-toggle="modal"  class="text-success" id="login-user">login</i>.
         <?php
             }
             else {
@@ -236,68 +185,103 @@
         ?>
     </div>
 </div>
-<div id="loginModal" hidden>
-    <form class="mt-3" id="loginUser" name="loginUser">
-        <p class="validateTips"></p>
-        <div class="row">
-            <div class="form-group col-10">
-                <label for="login" class="align-content-center">Email Address</label>
-                <input type="text" class="form-control text ui-widget-content ui-corner-all" id="login" placeholder="registered email address" onmouseover="this.focus();" >
-                <div class="invalid-feedback">Please provide a login ID</div>
+<?php
+if (!$this->ion_auth->logged_in()){
+?>
+    <div class="container-fluid">
+        <div class="modal fade" id="loginUserModal" tabindex="-1" role="dialog" aria-labelledby="loginUserLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+                <div class="modal-content col-6">
+                    <div class="modal-header text-center align-content-center align-center">
+                        <h5 class="ml-3 col-6 modal-title text-muted text-center" id="loginUserLabel">Login User</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form role="form" id="loginUserForm" data-toggle="validator">
+                            <div class="form-group">
+                                <label for="login" class="align-content-center">Email Address</label>
+                                <input type="text" class="form-control text ui-widget-content ui-corner-all" id="login" placeholder="registered email address" onmouseover="this.focus();" >
+                                <div class="invalid-feedback">Please provide a login ID</div>
+                            </div>
+                            <div class="form-group">
+                                <label for="password" class="align-content-center">Password</label>
+                                <input type="password" class="form-control text ui-widget-content ui-corner-all" id="password"  onmouseover="this.focus();">
+                                <div class="invalid-feedback">Please provide a password</div>
+                            </div>
+                            <button type="submit" id="loginUserButton" class="btn btn-success pull-right">Login</button>
+                            <button type="button" class="btn btn-secondary btn-danger" data-dismiss="modal">Cancel</button>
+                        </form>
+                    </div>
+                </div>
             </div>
         </div>
-        <div class="row">
-            <div class="form-group col-10">
-                <label for="password" class="align-content-center">Password</label>
-                <input type="password" class="form-control text ui-widget-content ui-corner-all" id="password"  onmouseover="this.focus();">
-                <div class="invalid-feedback">Please provide a password</div>
+        <div class="modal fade" id="registerUserModal" tabindex="-1" role="dialog" aria-labelledby="registerUserLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+                <div class="modal-content col-10">
+                    <div class="modal-header text-center align-content-center align-center">
+                        <h5 class="ml-3 col-10 modal-title text-muted text-center" id="registerUserLabel">Register New User</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <form class="mt-3 col-12" id="registerNewUser" name="registerNewUser" onreset="resetHandler()">
+                        <div class="modal-body">
+                            <div class="row ml-1 col-12">
+                                <div class="form-group col-8">
+                                    <label for="userName" class="align-content-center">User Name</label>
+                                    <input type="text" class="form-control" id="userName" onchange="checkLength(this.value, 'userName', 5)" onmouseover="this.focus();"  >
+                                    <div class="invalid-feedback">Please provide a valid user name of 5 characters</div>
+                                    <div class="valid-feedback">UserName looks valid!</div>
+                                </div>
+                            </div>
+                            <div class="row ml-1 col-12">
+                                <div class="form-group col-8">
+                                    <label for="firstName" class="align-content-center">First Name</label>
+                                    <input type="text" class="form-control" id="firstName" onchange="checkLength(this.value, 'firstName', 3)" onmouseover="this.focus();"  >
+                                    <div class="invalid-feedback">Please provide a valid first name of 3 characters</div>
+                                    <div class="valid-feedback">First name looks valid!</div>
+                                </div>
+                            </div>
+                            <div class="row ml-1 col-12">
+                                <div class="form-group col-8">
+                                    <label for="lastName" class="align-content-center">Last Name</label>
+                                    <input type="text" class="form-control" id="lastName"  onchange="checkLength(this.value, 'lastName', 3)" onmouseover="this.focus();"  >
+                                    <div class="invalid-feedback">Please provide a valid last name of 3 characters</div>
+                                    <div class="valid-feedback">Last name looks valid!</div>
+                                </div>
+                            </div>
+                            <div class="row ml-1 col-12">
+                                <div class="form-group col-8">
+                                    <label for="emailAddress" class="align-content-center">Email</label>
+                                    <input type="email" class="form-control" id="emailAddress" placeholder="email@domain.com"  onchange="checkEmail(this.value, 'emailAddress')" onmouseover="this.focus();"  >
+                                    <div class="help-block with-errors"></div>
+                                </div>
+                            </div>
+                            <div class="row ml-1 col-12">
+                                <div class="form-group col-8">
+                                    <label for="inputPassword" class="align-content-center">Password</label>
+                                    <input type="password" class="form-control" id="inputPassword" data-minlength="8"  onchange="checkLength(this.value, 'inputPassword', 8)" onmouseover="this.focus();"  >
+                                    <div class="invalid-feedback">Please provide a password of at least 8 characters</div>
+                                    <div class="valid-feedback">Password is valid!</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <div class="row ml-1 col-12">
+                                <div class="col-md-12 text-center">
+                                    <button type="submit" id="registerUserButton" class="btn btn-success">Register</button>
+                                    <button type="reset" id="resetRegistration" class="btn btn-danger">Reset</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
-    </form>
-</div>
-
-<div class="modal"  style="width:800px;height:900px;" id="registerModal" hidden>
-    <form class="mt-3" id="registerNewUser" name="registerNewUser" style="width:800px;height:900px;" >
-        <p class="validateTips"></p>
-        <div class="row">
-            <div class="form-group col-6">
-                <label for="userName" class="align-content-center">User Name</label>
-                <input type="text" class="form-control" id="userName" placeholder="jdoe" onmouseover="this.focus();"  required>
-                <div class="invalid-feedback">Please provide a user name</div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="form-group col-6">
-                <label for="firstName" class="align-content-center">First Name</label>
-                <input type="text" class="form-control" id="firstName" placeholder="Jane/John" onmouseover="this.focus();"  required>
-                <div class="invalid-feedback">Please provide a first name</div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="form-group col-6">
-                <label for="lastName" class="align-content-center">Last Name</label>
-                <input type="text" class="form-control" id="lastName" placeholder="Doe" onmouseover="this.focus();"  required>
-                <div class="invalid-feedback">Please provide a last name</div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="form-group col-6">
-                <label for="emailAddress" class="align-content-center">Email</label>
-                <input type="email" class="form-control" id="emailAddress" placeholder="email@domain.com" data-error="Bruh, that email address is invalid" onmouseover="this.focus();"  required>
-                <div class="help-block with-errors"></div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="form-group col-6">
-                <label for="inputPassword" class="align-content-center">Password</label>
-                <input type="password" class="form-control" id="inputPassword" data-minlength="6"  placeholder="Password" onmouseover="this.focus();"  required>
-                <div class="help-block">Minimum of 6 characters</div>
-                <div class="invalid-feedback">Please provide a password</div>
-            </div>
-        </div>
-    </form>
-</div>
-
+    </div>
+<?php } ?>
 <div class="row mb-0">
     <div class="col-2"></div>
     <div class="text-center col-8">
