@@ -326,14 +326,10 @@
     </div>
 </div>
 <div class="container col-12 ml-0">
-    <div class="row col-12">
-        <div class="col align-self-start col-2"></div>
-        <div class="col align-self-center text-center">
-            <h2 class="text-muted">Vendor Information</h2>
-        </div>
-        <div class="col align-self-end col-2"></div>
+    <div class="row col-11 justify-content-md-center">
+        <h2 class="text-muted">Vendor Information</h2>
     </div>
-    <div class="row col-12 align-center">
+    <div class="row col-11 align-center">
         <div class="col-4 form-group">
             <label for="productTypes" class="align-content-center">Product Type</label>
             <select class="form-control" id="productTypes">
@@ -350,7 +346,7 @@
             </select>
         </div>
     </div>
-    <div class="row col-12 align-center">
+    <div class="row col-11 align-center">
         <div id="myTable" class="col-12 align-center">
             <table id="productTable"></table>
         </div>

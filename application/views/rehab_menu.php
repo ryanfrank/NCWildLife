@@ -45,7 +45,6 @@
                         <a class="dropdown-item" href="javascript:void(0)" onclick="$('#content').load('Volunteer/schedule/volunteer')">Volunteer Calendar</a>
                         <a class="dropdown-item" href="javascript:void(0)" onclick="$('#content').load('Volunteer/vendorView')">Vendor Information</a>
                         <a class="dropdown-item" href="javascript:void(0)" onclick="$('#content').load('Rehab/locateRehabber')">Find Rehabber</a>
-                        <a class="dropdown-item" href="javascript:void(0)" onclick="$('#content').load('Forum/index')">Forums</a>
                     </div>
                 </li>
             <?php } ?>
@@ -67,7 +66,7 @@
                         <a class="dropdown-item" href="#">Add Locations</a>
                         <a class="dropdown-item" href="#">Add Cages</a>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="javascript:void(0)" onclick="$('#content').load('Admin/updateUser')">Update User</a>
+                        <a class="dropdown-item" href="javascript:void(0)" onclick="$('#content').load('Admin/manageUsers')">User Manager</a>
                         <a class="dropdown-item" href="#">Delete User</a>
                         <a class="dropdown-item" href="#">Change User Password</a>
                         <div class="dropdown-divider"></div>

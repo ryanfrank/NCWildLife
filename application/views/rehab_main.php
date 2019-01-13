@@ -51,7 +51,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <div id="createUserStatus" class="col-12 ml-5"></div>
         <div id="loginStatus" class="col-12 ml-5"></div>
         <div id="updateStatus" class="container-fluid ml-5"></div>
-        <div class="container-fluid ml-5 mt-5" id="content" style="min-height: 500px; width: 100%">
+        <div class="container-fluid ml-3 mt-5" id="content" style="min-height: 500px; width: 90%">
             <div class="row">
                 <div id="carouselMain" class="carousel slide col-4" data-ride="carousel">
                     <ol class="carousel-indicators">

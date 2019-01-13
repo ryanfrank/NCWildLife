@@ -91,10 +91,29 @@ class Admin extends CI_Controller
             show_404();
         }
     }
-
-    public function userData()
+    public function manageUsers()
     {
-        $data = $this->input->post('userID');
+        if ($this->input->is_ajax_request()) {
+            //$data['users'] = $this->ion_auth->users()->result();
+            $select = "id,CONCAT(first_name,' ',last_name) as name";
+            $data['users'] = $this->Users->get($select);
+            $this->load->view('admin/user_manager', $data);
+        } else {
+            show_404();
+        }
+    }
+
+    public function userDetail()
+    {
+        if ($this->input->is_ajax_request()) {
+            $id = $this->input->post('id');
+            $select = "id,username,password,email,created_on,last_login,active,first_name,last_name,phone";
+            $result = $this->Users->get($select, array('id' => $id));
+        }
+        else {
+            show_404();
+        }
+        echo json_encode($result->result_array());
     }
 }
 ?>
