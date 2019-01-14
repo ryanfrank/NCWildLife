@@ -10,22 +10,46 @@
     function update() {
         $('#clock').html(moment().format('dddd MMM. D, YYYY [at] h:mm A z'));
     }
+    function checkLength(val, id, length){
+        element = document.getElementById(id);
+        if ( val.length >= length ){
+            element.classList.remove('is-invalid');
+            element.classList += " is-valid";
+        }
+        else {
+            element.classList.remove('is-valid');
+            element.classList += " is-invalid";
+        }
+    }
+    function checkMatch(val, newVal, id){
+        element = document.getElementById(id);
+        if ( val === newVal ){
+            element.classList.remove('is-invalid');
+            element.classList += " is-valid";
+        }
+        else {
+            element.classList.remove('is-valid');
+            element.classList += " is-invalid";
+        }
+    }
+    function resetHandler(id) {
+        var elements = document.getElementById(id).elements;
+        for ( var i = 0, element; element = elements[i++]; ){
+            myElement = document.getElementById(element.id);
+            if ( element.nodeName !== 'BUTTON' ) {
+                if (myElement.classList.contains('is-valid')) {
+                    myElement.classList.remove('is-valid');
+                }
+                if (myElement.classList.contains('is-invalid')) {
+                    myElement.classList.remove('is-invalid');
+                }
+            }
+        }
+    }
     setInterval(update,250);
     <?php
     if (!$this->ion_auth->logged_in()){
     ?>
-        function checkLength(val, id, length){
-            if ( val.length >= length ){
-                element = document.getElementById(id);
-                element.classList.remove('is-invalid');
-                element.classList += " is-valid";
-            }
-            else {
-                element = document.getElementById(id);
-                element.classList.remove('is-valid');
-                element.classList += " is-invalid";
-            }
-        }
         function checkEmail(email, id){
             var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
             if ( re.test(email) ){
@@ -37,20 +61,6 @@
                 element = document.getElementById(id);
                 element.classList.remove('is-valid');
                 element.classList += " is-invalid";
-            }
-        }
-        function resetHandler() {
-            var elements = document.getElementById("registerNewUser").elements;
-            for ( var i = 0, element; element = elements[i++]; ){
-                myElement = document.getElementById(element.id);
-                if ( element.id !== 'registerUserButton' || element.id !== 'resetRegistration' ) {
-                    if (myElement.classList.contains('is-valid')) {
-                        myElement.classList.remove('is-valid');
-                    }
-                    if (myElement.classList.contains('is-invalid')) {
-                        myElement.classList.remove('is-invalid');
-                    }
-                }
             }
         }
         $(document).ready( function() {
@@ -226,12 +236,12 @@ if (!$this->ion_auth->logged_in()){
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
-                    <form class="mt-3 col-12" id="registerNewUser" name="registerNewUser" onreset="resetHandler()">
+                    <form class="mt-3 col-12" id="registerNewUser" name="registerNewUser" onreset="resetHandler(this.id)">
                         <div class="modal-body">
                             <div class="row ml-1 col-12">
                                 <div class="form-group col-8">
                                     <label for="userName" class="align-content-center">User Name</label>
-                                    <input type="text" class="form-control" id="userName" onchange="checkLength(this.value, 'userName', 5)" onmouseover="this.focus();"  >
+                                    <input type="text" class="form-control" id="userName" onchange="checkLength(this.value, this.id, 5)" onmouseover="this.focus();"  >
                                     <div class="invalid-feedback">Please provide a valid user name of 5 characters</div>
                                     <div class="valid-feedback">UserName looks valid!</div>
                                 </div>
@@ -239,7 +249,7 @@ if (!$this->ion_auth->logged_in()){
                             <div class="row ml-1 col-12">
                                 <div class="form-group col-8">
                                     <label for="firstName" class="align-content-center">First Name</label>
-                                    <input type="text" class="form-control" id="firstName" onchange="checkLength(this.value, 'firstName', 3)" onmouseover="this.focus();"  >
+                                    <input type="text" class="form-control" id="firstName" onchange="checkLength(this.value, this.id, 3)" onmouseover="this.focus();"  >
                                     <div class="invalid-feedback">Please provide a valid first name of 3 characters</div>
                                     <div class="valid-feedback">First name looks valid!</div>
                                 </div>
@@ -247,7 +257,7 @@ if (!$this->ion_auth->logged_in()){
                             <div class="row ml-1 col-12">
                                 <div class="form-group col-8">
                                     <label for="lastName" class="align-content-center">Last Name</label>
-                                    <input type="text" class="form-control" id="lastName"  onchange="checkLength(this.value, 'lastName', 3)" onmouseover="this.focus();"  >
+                                    <input type="text" class="form-control" id="lastName"  onchange="checkLength(this.value, this.id, 3)" onmouseover="this.focus();"  >
                                     <div class="invalid-feedback">Please provide a valid last name of 3 characters</div>
                                     <div class="valid-feedback">Last name looks valid!</div>
                                 </div>
@@ -255,14 +265,14 @@ if (!$this->ion_auth->logged_in()){
                             <div class="row ml-1 col-12">
                                 <div class="form-group col-8">
                                     <label for="emailAddress" class="align-content-center">Email</label>
-                                    <input type="email" class="form-control" id="emailAddress" placeholder="email@domain.com"  onchange="checkEmail(this.value, 'emailAddress')" onmouseover="this.focus();"  >
+                                    <input type="email" class="form-control" id="emailAddress" placeholder="email@domain.com"  onchange="checkEmail(this.value, this.id)" onmouseover="this.focus();"  >
                                     <div class="help-block with-errors"></div>
                                 </div>
                             </div>
                             <div class="row ml-1 col-12">
                                 <div class="form-group col-8">
                                     <label for="inputPassword" class="align-content-center">Password</label>
-                                    <input type="password" class="form-control" id="inputPassword" data-minlength="8"  onchange="checkLength(this.value, 'inputPassword', 8)" onmouseover="this.focus();"  >
+                                    <input type="password" class="form-control" id="inputPassword" data-minlength="8"  onchange="checkLength(this.value, this.id, 8)" onmouseover="this.focus();"  >
                                     <div class="invalid-feedback">Please provide a password of at least 8 characters</div>
                                     <div class="valid-feedback">Password is valid!</div>
                                 </div>

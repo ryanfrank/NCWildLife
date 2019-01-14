@@ -14,3 +14,10 @@ body {
 .has-success .form-control-feedback {
     color: #3c763d;
 }
+
+.list-group{
+    max-height: 25px;
+    margin-bottom: 10px;
+    overflow:scroll;
+    -webkit-overflow-scrolling: touch;
+}

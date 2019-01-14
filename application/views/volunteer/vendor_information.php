@@ -7,12 +7,14 @@
  */
 ?>
 <script type="application/javascript">
+    $('#myTable').hide();
     function getHeight() {
         return $(window).height() - $('h1').outerHeight(true);
     }
     var table = $('#productTable');
     $('#productTypes').off('change');
     $('#productTypes').change(function(){
+        $('#myTable').hide();
         table.bootstrapTable('destroy');
         var e = document.getElementById("productTypes");
         var productTypesID = e.options[e.selectedIndex].value;
@@ -37,6 +39,7 @@
     $('#vendorName').off('change');
     $('#vendorName').change(function(){
         table.bootstrapTable('destroy');
+        $('#myTable').show();
         var e = document.getElementById("vendorName");
         var vendorNameID = e.options[e.selectedIndex].value;
         jQuery.ajax({
@@ -347,8 +350,8 @@
         </div>
     </div>
     <div class="row col-11 align-center">
-        <div id="myTable" class="col-12 align-center">
-            <table id="productTable"></table>
+        <div id="myTable" class="col-12 align-center" style="border: 1px solid darkgrey; border-radius: 7px; box-shadow: 0 0 40px lightgrey;">
+            <table id="productTable" ></table>
         </div>
     </div>
 </div>

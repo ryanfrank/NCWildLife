@@ -109,11 +109,28 @@ class Admin extends CI_Controller
             $id = $this->input->post('id');
             $select = "id,username,password,email,created_on,last_login,active,first_name,last_name,phone";
             $result = $this->Users->get($select, array('id' => $id));
+            $value = $result->result_array();
+            $failedLogin = $this->ion_auth->get_attempts_num($id);
+            $groups = $this->ion_auth->get_users_groups($id)->result();
+            $value[0]['FailedLogin'] = $failedLogin;
+            $value[0]['groups'] = $groups;
+            $results = $value[0];
         }
         else {
             show_404();
         }
-        echo json_encode($result->result_array());
+        echo json_encode($results);
+    }
+    public function changePassword() {
+        $id = $this->input->post('id');
+        $password = $this->input->post('password');
+        $data = array('password' => $password);
+        if ( $this->ion_auth->update($id, $data) ){
+            $result = "success";
+        }
+        else { $result = "failure"; }
+        echo json_encode($result);
+
     }
 }
 ?>

@@ -89,7 +89,7 @@
         $('#calendarModal').modal('dispose');
     });
 </script>
-<div class="container col-11 ml-0">
+<div class="container col-11 ml-0" style="border: 1px solid darkgrey; border-radius: 7px; box-shadow: 0 0 40px lightgrey;">
     <div class="row col-11">
         <div class="col align-self-start col-2"></div>
         <div class="col align-self-center text-center">

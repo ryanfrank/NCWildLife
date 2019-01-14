@@ -39,7 +39,7 @@
                 ]
             });
         </script>
-        <div class="container-fluid">
+        <div class="container-fluid" style="border: 1px solid darkgrey; border-radius: 7px; box-shadow: 0 0 40px lightgrey;">
             <div class="row col-11 justify-content-md-center">
                 <h2 class="text-muted"><?php echo $type . " "; ?> Feeding Chart</h2>
             </div>
