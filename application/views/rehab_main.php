@@ -45,8 +45,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <link rel="stylesheet" type="text/css" href="<?php echo site_url('application/css/ncwl.css');?>">
 </head>
     <body>
-        <div class="container-fluid ml-3 mt-1 w-100 mr-2" id="header"><?php $this->load->view('rehab_header'); ?> </div>
-        <div class="container-fluid col-12 ml-0 mr-2" id="menuBar"><div class="row col-12"><?php $this->load->view('rehab_menu'); ?> </div></div>
+        <div class="container-fluid mt-1 w-100 bg-light" id="header"><?php $this->load->view('rehab_header'); ?> </div>
+        <div class="container-fluid col-12 bg-light border-bottom-2" style="border-bottom: 1px solid darkgrey; box-shadow: 0 4px 7px -1px lightgrey;" id="menuBar"><div class="row col-12"><?php $this->load->view('rehab_menu'); ?> </div></div>
         <div id="modal_target"></div>
         <div id="createUserStatus" class="col-12 ml-5"></div>
         <div id="loginStatus" class="col-12 ml-5"></div>

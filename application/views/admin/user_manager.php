@@ -23,8 +23,8 @@
                 myTable += '<table class="table table-hover table-responsive-xl">';
                 myTable += '<thead><tr><th>'+ myUser.first_name + ' ' + myUser.last_name + ' (' + myUser.id + ')</th><th>Current Information</th></tr></thead><tbody>';
                 myTable += '<tr><td>User Name</td><td>' + myUser.username + '</td></tr>';
-                myTable += '<tr><td>Email Address</td><td>' + myUser.email + '</td></tr>';
-                myTable += '<tr><td>Phone Number</td><td>' + formatPhoneNumber(myUser.phone) + '</td></tr>';
+                myTable += '<tr><td>Email Address</td><td><a id="emailAddress" href="#" data-type="text" data-pk="'+ myUser.id +'" data-title="Enter Email Address">' + myUser.email + '</a></td></tr>';
+                myTable += '<tr><td>Phone Number</td><td><a id="phoneNumber" href="#" data-type="text" data-pk="'+ myUser.id +'" data-title="Enter Phone Number">' + formatPhoneNumber(myUser.phone) + '</a></td></tr>';
                 myTable += '<tr><td>Password</td><td><button type="button" id="resetPassword" class="btn btn-outline-primary btn-sm">Reset Password</button></td></tr>';
                 myTable += '<tr><td>Created Date</td><td>' + createdDate + '</td></tr>';
                 myTable += '<tr><td>Last Logged In</td><td>' + lastLogin + '</td></tr>';
@@ -34,10 +34,12 @@
                 myTable += '</tbody></table>';
                 myTable += '</div></div>';
                 $('.tab-content').html(myTable);
-                for ( var i = 0; i < myUser['groups'].length; i++){
-                    $('#' + myUser['groups'][i].name).attr('checked', true);
-                }
+                for ( var i = 0; i < myUser['groups'].length; i++) { $('#' + myUser['groups'][i].name).attr('checked', true); }
                 if ( myUser.active === '1' ) { $('#activeCheck').attr('checked', true); }
+                $(document).ready(function() {
+                    $('#phoneNumber').editable();
+                    $('#emailAddress').editable();
+                });
                 $(document).ready( function() {
                     $('#resetPassword').off('click');
                     $('#resetPassword').click(function () {
@@ -55,10 +57,10 @@
                                 success: function (result) {
                                     $('#resetPasswordModal').modal('toggle');
                                     if (result === "success") {
-                                        jQuery("div#updateStatus").html('<div id="success-alert" class="alert alert-success mt-lg-4 col-10 alert-dismissible fade show" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>Reset users password</div>');
+                                        jQuery("div#updateStatus").html('<div id="success-alert" class="alert alert-success mt-lg-4 col-10 fade show" role="alert">Reset users password</div>');
                                         $('#success-alert').fadeOut(3000);
                                     } else {
-                                        jQuery("div#updateStatus").html('<div id="error-alert" class="alert alert-danger mt-lg-4 col-10 alert-dismissible fade show" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>Unable to reset password</div>');
+                                        jQuery("div#updateStatus").html('<div id="error-alert" class="alert alert-danger mt-lg-4 col-10 fade show" role="alert">Unable to reset password</div>');
                                         $('#error-alert').fadeOut(5000);
                                     }
                                 }
@@ -79,7 +81,7 @@
 <div class="container-fluid col-12 mt-3">
     <div class="row col-12">
         <div class="col-2">
-            <div class="list-group " id="user-list" role="tablist" style="max-height: 525px; margin-bottom: 10px; overflow:scroll; border: 1px solid darkgrey; border-radius: 7px; box-shadow: 0 0 40px lightgrey;" >
+            <div class="list-group " id="user-list" role="tablist" style="max-height: 525px; margin-bottom: 10px; overflow:scroll; border: 1px solid darkgrey; box-shadow: 0 0 40px lightgrey;" >
                 <?php foreach ($users->result() as $row):?>
                     <a class="list-group-item list-group-item-action" id="<?php echo $row->id; ?>" data-toggle="list" href="#" role="tab" aria-controls="userName"><?php echo $row->name; ?></a>
                 <?php endforeach; ?>
