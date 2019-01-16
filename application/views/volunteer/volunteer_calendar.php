@@ -143,7 +143,6 @@
                                 },
                                 complete : function(event){
                                     resetHandler('updateCalendarEvent');
-                                    $('#updateEventModal').modal('dispose');
                                 }
                             });
                         });
@@ -151,6 +150,7 @@
                 });
             }
         });
+        $('#updateEventModal').modal('dispose');
         $('#addToCalendarModal').modal('dispose');
     });
 </script>
@@ -167,7 +167,7 @@
     </div>
 </div>
 <div class="modal fade" id="addToCalendarModal" tabindex="-1" role="dialog" aria-labelledby="addCalendarEventLabel" aria-hidden="false">
-    <div class="modal-dialog" role="document">
+    <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content container col-12" style="width: 425px; height: 650px;">
             <div class="row modal-header mt-3">
                 <div class="col align-self-start col-2"></div>
@@ -248,80 +248,83 @@
         </div>
     </div>
 </div>
-<div class="modal fade" id="updateEventModal" tabindex="-1" role="dialog" aria-labelledby="updateEventLabel" aria-hidden="false">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content container col-12" style="width: 600px;">
-            <div class="row modal-header mt-3">
-                <div class="col align-self-start col-2"></div>
-                <div class="col align-self-center col-8 text-center">
-                    <h5 class="modal-title text-muted text-center" id="updateEventLabel">Review Schedule</h5>
+<div class="container-fluid">
+    <div class="modal fade" id="updateEventModal" tabindex="-1" role="dialog" aria-labelledby="updateEventLabel" aria-hidden="false">
+        <div class="modal-dialog col-12 modal-dialog-centered" style="min-width: 650px;" role="document">
+            <div class="modal-content">
+                <div class="modal-header mt-3">
+                    <div class="col align-self-start col-2"></div>
+                    <div class="col align-self-center col-8 text-center">
+                        <h5 class="modal-title text-muted text-center" id="updateEventLabel">Review Schedule</h5>
+                    </div>
+                    <div class="col-2 align-self-end align-right">
+                        <button type="button" class="close align-self-end" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
                 </div>
-                <div class="col align-self-end col-2 align-self-end align-right">
-                    <button type="button" class="close align-self-end" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-            </div>
-            <div class="modal-body col-12">
-                <form role="form" id="updateCalendarEvent" data-toggle="validator" autocomplete="off">
-                    <div class="col-12 row form-group">
-                        <div class="col-6">
-                            <label for="curStartDate" >Schedule Start Date</label>
-                            <input id="curStartDate" type="text" class="form-control" value="" placeholder="Test" disabled>
+                <div class="modal-body">
+                    <form role="form" id="updateCalendarEvent" data-toggle="validator" autocomplete="off">
+                        <div class="col-12 row form-group">
+                            <div class="col-6">
+                                <label for="curStartDate" >Schedule Start Date</label>
+                                <input id="curStartDate" type="text" class="form-control" value="" placeholder="Test" disabled>
+                            </div>
+                            <div class="col-6">
+                                <label for="curEndDate" >Schedule End Date</label>
+                                <input id="curEndDate" type="text" class="form-control" value="" placeholder="" disabled>
+                            </div>
                         </div>
-                        <div class="col-6">
-                            <label for="curEndDate" >Schedule End Date</label>
-                            <input id="curEndDate" type="text" class="form-control" value="" placeholder="" disabled>
-                        </div>
-                    </div>
-                    <div class="row col-12 form-group">
-                        <div class="col-6 align-left ml-0">
-                            <label class="align-self-start align-left" for="curStartTime">Schedule Start Time</label>
-                            <input id="curStartTime" type="text" class="form-control timepicker" placeholder="" disabled>
-                        </div>
-                        <div class="col-6 align-right align-self-end">
-                            <label class="align-self-end align-right" for="curEndTime">Schedule End Time</label>
-                            <input id="curEndTime" type="text" class="form-control timepicker" placeholder="" disabled>
-                        </div>
-                    </div>
-                    <div class="col-12 row form-group">
-                        <div class="col-12">
-                            <label for="curTitle">Schedule Title</label>
-                            <input id="curTitle" type="text" class="form-control" placeholder="" disabled>
-                        </div>
-                    </div>
-                    <div class="col-12 row form-group">
-                        <div class="col-12">
-                            <label for="curUser">Schedule For</label>
-                            <input id="curUser" type="text" class="form-control" placeholder="" disabled>
-                        </div>
-                    </div>
-                    <div class="col-12 row form-group">
-                        <div class="col-12">
-                            <label for="currentDesc">Archived Notes</label>
-                            <textarea id="currentDesc" rows="3" class="form-control" style="resize: none;" disabled></textarea>
-                        </div>
-                    </div>
-                    <div class="col-12 row form-group">
-                        <div class="col-12">
-                            <label for="newDesc">Update Notes</label>
-                            <textarea id="newDesc" rows="3" class="form-control" style="resize: none;" required></textarea>
-                        </div>
-                    </div>
-                    <div class="row col-12 form-group">
-                        <div class="col-6">
-                            <input class="form-check-input ml-1" type="checkbox" value="" id="curAllDay" disabled>
-                            <label class="form-check-label ml-4" for="curAllDay">All Day Schedule?</label>
-                        </div>
-                    </div>
-                    <div class="modal-footer col-12 mt-2">
                         <div class="row col-12 form-group">
-                            <div class="col-4"><button id="update" type="submit" value="update" class="btn btn-success btn-xs">Add Note</button></div>
-                            <div class="col-4"><?php if ( $this->ion_auth->in_group('admin') ){ ?><button type="submit" id="noshow" value="noshow" class="btn btn-warning btn-xs">No Show</button><?php } ?></div>
-                            <div class="col-2"><button type="submit" id="delete" value="delete" class="btn btn-secondary btn-danger btn-xs">Delete</button></div>
+                            <div class="col-6 align-left ml-0">
+                                <label class="align-self-start align-left" for="curStartTime">Schedule Start Time</label>
+                                <input id="curStartTime" type="text" class="form-control timepicker" placeholder="" disabled>
+                            </div>
+                            <div class="col-6 align-right align-self-end">
+                                <label class="align-self-end align-right" for="curEndTime">Schedule End Time</label>
+                                <input id="curEndTime" type="text" class="form-control timepicker" placeholder="" disabled>
+                            </div>
                         </div>
-                    </div>
-                </form>
+                        <div class="col-12 row form-group">
+                            <div class="col-12">
+                                <label for="curTitle">Schedule Title</label>
+                                <input id="curTitle" type="text" class="form-control" placeholder="" disabled>
+                            </div>
+                        </div>
+                        <div class="col-12 row form-group">
+                            <div class="col-12">
+                                <label for="curUser">Schedule For</label>
+                                <input id="curUser" type="text" class="form-control" placeholder="" disabled>
+                            </div>
+                        </div>
+                        <div class="col-12 row form-group">
+                            <div class="col-12">
+                                <label for="currentDesc">Archived Notes</label>
+                                <textarea id="currentDesc" rows="3" class="form-control" style="resize: none;" disabled></textarea>
+                            </div>
+                        </div>
+                        <div class="col-12 row form-group">
+                            <div class="col-12">
+                                <label for="newDesc">Update Notes</label>
+                                <textarea id="newDesc" rows="3" class="form-control" style="resize: none;" required></textarea>
+                            </div>
+                        </div>
+                        <div class="row col-12 form-group">
+                            <div class="col-6">
+                                <input class="form-check-input ml-1" type="checkbox" value="" id="curAllDay" disabled>
+                                <label class="form-check-label ml-4" for="curAllDay">All Day Schedule?</label>
+                            </div>
+                        </div>
+                        <div class="modal-footer col-12 mt-2">
+                            <div class="row col-12 form-group">
+                                <div class="col-3"><button id="update" type="submit" value="update" class="btn btn-success btn-small">Add Note</button></div>
+                                <div class="col-3"><?php if ( $this->ion_auth->in_group('admin') ){ ?><button type="submit" id="noshow" value="noshow" class="btn btn-warning btn-small">No Show</button><?php } ?></div>
+                                <div class="col-3"><?php if ( $this->ion_auth->in_group('admin') ){ ?><button type="submit" id="delete" value="delete" class="btn btn-danger btn-small">Delete</button><?php } ?></div>
+                                <div class="col-3"><button type="button" class="btn btn-secondary btn-small" data-dismiss="modal">Cancel</button></div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
