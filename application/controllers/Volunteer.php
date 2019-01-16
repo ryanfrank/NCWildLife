@@ -13,70 +13,85 @@ class Volunteer extends CI_Controller
     {
         parent::__construct();
     }
+
+
+    /* CALENDAR SECTION */
+
+    /* WHAT: Schedule view section */
+    /* WHY: Take input from menuBar and load the view as necessary */
     public function schedule(){
         if ($this->input->is_ajax_request()) {
             $type = $this->uri->segment(3);
-            $this->load->view($type . '/' . $type . '_calendar');
+            $select = "id,CONCAT(first_name,' ',last_name) as name";
+            $data['users'] = $this->Users->get($select);
+            //$data['types'] =
+            $this->load->view($type . '/' . $type . '_calendar', $data);
         }
         else { show_404(); }
     }
     public function calendar() {
         if ($this->input->is_ajax_request()) {
-            $type = $this->uri->segment(3);
-            $result = $this->Calendar->get_calendar_events($type);
-            echo $result;
+            if ( $this->uri->segment(3) == 'Volunteer' ){
+                $type = array($this->uri->segment(3),'Feeding','On-Call','Event');
+            }
+            else { $type = $this->uri->segment(3); }
+            $start = $this->input->get('start');
+            $end = $this->input->get('end');
+            $result = $this->Calendar->get_calendar_events($type, $start, $end);
+            echo  $result;
        }
        else { show_404(); }
     }
-    public function calendarEntry() {
-        if ($this->input->is_ajax_request()) {
-            $this->load->view('volunteer/volunteer_calendar_update');
-        }
-        else { show_404(); }
-    }
     public function addCalendarEvent(){
         if ($this->input->is_ajax_request()) {
+            $desc = false;
             $user = $this->ion_auth->user()->row();
             $type = $this->uri->segment(3);
+            if ( $this->input->post('cFor') != "" ) { $cFor = $this->input->post('cFor'); }
+            else { $cFor = $user->id; }
             $data = array(
                 'start' => $this->input->post('date') . " " . date('H:i', strtotime($this->input->post('sTime'))),
                 'end' => $this->input->post('date') . " " . date('H:i', strtotime($this->input->post('eTime'))),
                 'title' => $this->input->post('eTitle'),
                 'allDay' => $this->input->post('allDay'),
-                'createdBy' => $user->id
+                'createdBy' => $user->id,
+                'createdFor' => $cFor
             );
-            $result = $this->Calendar->add_calendar_event($type, $data);
-            //print_r($data);
-            echo $result;
-        }
-        else { show_404(); }
-    }
-    public function calendarRegistration(){
-        if ($this->input->is_ajax_request()) {
-            $curDate = date("Y-m-d H:i");
-            $query = $this->Calendar->get_calendar_events('Volunteer', $curDate, $JSON = false);
-            $data['date'] = $curDate;
-            $data['user'] = $this->ion_auth->user()->row();
-            $data['result'] = $query;
-            $this->load->view('volunteer/volunteer_calendar_registration', $data);
-        }
-        else { show_404(); }
-    }
-    public function updateCalendarEvent() {
-        if ($this->input->is_ajax_request()) {
-            $userID = $this->input->post('userID');
-            $user = $this->ion_auth->user($userID)->row();
-            $rehabberInfo = $this->db->get_where('rehabber', array('rehabber_email' => $user->email))->row();
-            $data = array(
-                'calendar_event' => $this->input->post('event'),
-                'volunteer' => $rehabberInfo->rehabber_id
-            );
-            $result = $this->Calendar->update_calendar_registration($data);
+            if ( strlen($this->input->post('cDesc')) > 0 ){
+                $desc = array(
+                    'calendar_event_notes' => $this->input->post('cDesc'),
+                    'createdBy' => $user->id
+                );
+            }
+            $result = $this->Calendar->add_calendar_event($type, $data, $desc);
 
             echo $result;
         }
         else { show_404(); }
     }
+    public function getSchedule() {
+        if ($this->input->is_ajax_request()) {
+            $id = $this->input->post('id');
+            $result = $this->Calendar->getEventsById($id);
+            echo  $result;
+        }
+        else { show_404(); }
+    }
+    public function updateSchedule() {
+        if ($this->input->is_ajax_request()) {
+            $data = array();
+            $data['comment'] = $this->input->post('comment');
+            $data['user'] = $this->ion_auth->user()->row()->id;
+            $data['sUser'] = $this->input->post('createdFor');
+            $data['id']  = $this->input->post('id');
+
+            $result = $this->Calendar->updateSchedule($this->uri->segment(3), $data);
+            echo  $result;
+        }
+        else { show_404(); }
+    }
+
+    /* VENDOR SECTION */
     public function vendorView() {
         $this->load->library('form_validation');
         if ($this->input->is_ajax_request()) {

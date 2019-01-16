@@ -20,7 +20,7 @@
             <li class="nav-item dropdown active">
                 <a class="nav-link dropdown-toggle" href="#" id="informationDrop" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">Information</a>
                 <div class="dropdown-menu" aria-labelledby="informationDrop">
-                    <a class="dropdown-item" href="javascript:void(0);" onclick="$('#content').load('Information/donations')">Donations</a>
+                    <a class="dropdown-item" href="javascript:void(0)" onclick="$('#content').load('Information/donations')">Donations</a>
                     <a class="dropdown-item" href="javascript:void(0)" onclick="$('#content').load('Volunteer/schedule/event')">Events / Appearances</a>
                 </div>
             </li>
@@ -33,7 +33,7 @@
                 <li class="nav-item dropdown active">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarIntakeDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Activity / Intake</a>
                     <div class="dropdown-menu" aria-labelledby="navbarIntakeDropdown">
-                        <a class="dropdown-item" href="javascript:void(0);" onclick="$('#content').load('Intake/add_good_samaritan')">Add Good Samaritan</a>
+                        <a class="dropdown-item" href="javascript:void(0)" onclick="$('#content').load('Intake/add_good_samaritan')">Add Good Samaritan</a>
                         <a class="dropdown-item" href="javascript:void(0)" onclick="$('#content').load('Intake/intake_animal')">Intake Animal</a>
                     </div>
                 </li>
@@ -58,18 +58,13 @@
                     </div>
                 </li>
             <?php } ?>
-            <?php if ($this->ion_auth->is_admin()){ ?>
+            <?php if ( $this->ion_auth->is_admin() ){ ?>
                 <li class="nav-item dropdown active">
                     <a class="nav-link dropdown-toggle" href="#" id="adminDrop" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Administration</a>
                     <div class="dropdown-menu" aria-labelledby="adminDrop">
                         <a class="dropdown-item" href="javascript:void(0)" onclick="$('#content').load('Admin/add_rehabber')">Add Rehabber</a>
-                        <a class="dropdown-item" href="#">Add Locations</a>
-                        <a class="dropdown-item" href="#">Add Cages</a>
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="javascript:void(0)" onclick="$('#content').load('Admin/manageUsers')">User Manager</a>
-                        <a class="dropdown-item" href="#">Delete User</a>
-                        <a class="dropdown-item" href="#">Change User Password</a>
-                        <div class="dropdown-divider"></div>
                     </div>
                 </li>
             <?php } ?>

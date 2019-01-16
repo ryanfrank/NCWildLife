@@ -8,7 +8,7 @@
 ?>
 <script type="text/javascript">
     function update() {
-        $('#clock').html(moment().format('dddd MMM. D, YYYY [at] h:mm A z'));
+        $('#clock').html(moment().format('dddd MMM. D, YYYY [at] LTS'));
     }
     function checkLength(val, id, length){
         element = document.getElementById(id);
