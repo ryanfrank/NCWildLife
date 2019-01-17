@@ -154,7 +154,7 @@
 <div class="container-fluid col-12 mt-3">
     <div class="row col-12">
         <div class="col-2">
-            <div class="list-group " id="user-list" role="tablist" style="max-height: 525px; margin-bottom: 10px; overflow:scroll; border: 1px solid darkgrey; box-shadow: 0 0 40px lightgrey;" >
+            <div class="list-group " id="user-list" role="tablist" style="max-height: 550px; margin-bottom: 10px; overflow:scroll; border: 1px solid darkgrey; box-shadow: 0 0 40px lightgrey;" >
                 <?php foreach ($users->result() as $row):?>
                     <a class="list-group-item list-group-item-action" id="<?php echo $row->id; ?>" data-toggle="list" href="#" role="tab" aria-controls="userName"><?php echo $row->name; ?></a>
                 <?php endforeach; ?>
