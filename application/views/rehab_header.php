@@ -105,7 +105,7 @@
                     var elements = document.getElementById("registerNewUser").elements;
                     for ( var i = 0, element; element = elements[i++]; ){
                         myElement = document.getElementById(element.id);
-                        if ( element.id !== 'registerUserButton' || element.id !== 'resetRegistration') {
+                        if ( element.nodeName !== 'BUTTON' ) {
                             if (myElement.classList.contains('is-valid')) {
                                 valid = true;
                             } else {
@@ -143,6 +143,7 @@
                             }
                         });
                     }
+                    else { alert('Something is invalid'); }
                 });
             });
         });
