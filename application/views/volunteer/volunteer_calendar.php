@@ -318,8 +318,8 @@
                         <div class="modal-footer col-12 mt-2">
                             <div class="row col-12 form-group">
                                 <div class="col-3"><button id="update" type="submit" value="update" class="btn btn-success btn-small">Add Note</button></div>
-                                <div class="col-3"><?php if ( $this->ion_auth->in_group('admin') ){ ?><button type="submit" id="noshow" value="noshow" class="btn btn-warning btn-small">No Show</button><?php } ?></div>
-                                <div class="col-3"><?php if ( $this->ion_auth->in_group('admin') ){ ?><button type="submit" id="delete" value="delete" class="btn btn-danger btn-small">Delete</button><?php } ?></div>
+                                <div class="col-3"><?php if ( $this->ion_auth->in_group('scheduler') ){ ?><button type="submit" id="noshow" value="noshow" class="btn btn-warning btn-small">No Show</button><?php } ?></div>
+                                <div class="col-3"><?php if ( $this->ion_auth->in_group('scheduler') ){ ?><button type="submit" id="delete" value="delete" class="btn btn-danger btn-small">Delete</button><?php } ?></div>
                                 <div class="col-3"><button type="button" class="btn btn-secondary btn-small" data-dismiss="modal">Cancel</button></div>
                             </div>
                         </div>
