@@ -107,7 +107,7 @@ class Admin extends CI_Controller
     {
         if ($this->input->is_ajax_request()) {
             $id = $this->input->post('id');
-            $select = "id,username,password,email,created_on,last_login,active,first_name,last_name,phone";
+            $select = "id,username,password,email,created_on,last_login,active,first_name,last_name,phone,color,textColor,noShow";
             $result = $this->Users->get($select, array('id' => $id));
             $value = $result->result_array();
             $failedLogin = $this->ion_auth->get_attempts_num($id);
@@ -121,6 +121,41 @@ class Admin extends CI_Controller
         }
         echo json_encode($results);
     }
+
+    public function userUpdate()
+    {
+        if ($this->input->is_ajax_request()) {
+            $groups = $this->input->post('myGroups');
+            $id = $this->input->post('id');
+            if ( $groups['active'] == 'false' ) { $groups['active'] = 0; }
+            else { $groups['active'] = 1; }
+            $data = array(
+                'email'     => $this->input->post('email'),
+                'phone'     => preg_replace('/[^0-9]/','', $this->input->post('phone')),
+                'noShow'    => $this->input->post('noShow'),
+                'color'     => $this->input->post('color'),
+                'textColor' => $this->input->post('textColor'),
+                'active'    => $groups['active']
+            );
+            $result = $this->ion_auth->update($id, $data);
+            unset($groups['active']);
+            foreach ( $groups as $key => $value ){
+                $gID = $this->Users->getGroupId($key);
+                if ( $this->ion_auth->in_group($key, $id) && $value == 'false' ){
+                    $result = $this->ion_auth->remove_from_group(array($gID), $id);
+                }
+                elseif ( !$this->ion_auth->in_group($key, $id) && $value == 'true' ){
+                    $result = $this->ion_auth->add_to_group(array($gID), $id);
+                }
+            }
+            if ( $result ) { echo json_encode("success"); }
+            else { echo json_encode("failure"); }
+
+        } else {
+            show_404();
+        }
+    }
+
     public function changePassword() {
         $id = $this->input->post('id');
         $password = $this->input->post('password');

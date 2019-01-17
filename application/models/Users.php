@@ -37,5 +37,14 @@ class Users extends CI_Model
     public function get_user_groups($id) {
 
     }
+    public function getGroupId($name){
+        $this->db->select('id');
+        $this->db->from('groups');
+        $this->db->where('name', $name);
+        $row = $this->db->get()->row_array();
+        if ( isset($row) ){
+            return $row['id'];
+        }
+    }
 }
 ?>
