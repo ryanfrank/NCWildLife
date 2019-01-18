@@ -27,7 +27,8 @@ class Rehab extends CI_Controller {
      */
     public function index()
     {
-        $this->load->view('rehab_main');
+        $data['facebook'] = $this->Facebook->getFacebookId();
+        $this->load->view('rehab_main', $data);
     }
     public function locateRehabber() {
         $data['states'] = $this->db->order_by('state_abbr', 'ASC')->select('state_abbr,state_name')->get('states');

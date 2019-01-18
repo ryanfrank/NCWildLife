@@ -15,20 +15,12 @@ class Admin extends CI_Controller
         if ($this->input->is_ajax_request()) {
             $data['states'] = $this->db->get('states');
             $this->load->view('admin_add_rehabber', $data);
-        } else {
-            show_404();
-        }
+        } else { show_404(); }
     }
-
     public function addRehabber()
     {
         if ($this->input->is_ajax_request()) {
             $date = date("Y-m-d H:i:s");
-
-            //$firstName = $this->input->post('first');
-            //$lastName = $this->input->post('last');
-            //echo "NAME: " . $firstName . "Last " . $lastName;
-
             $formData = array(
                 'rehabber_first_name' => ucwords(strtolower($this->input->post('first'))),
                 'rehabber_last_name' => ucwords(strtolower($this->input->post('last'))),
@@ -51,35 +43,24 @@ class Admin extends CI_Controller
             if ($query->num_rows() == 0) {
                 $this->db->insert('rehabber', $formData);
                 $num_inserts = $this->db->affected_rows();
-                if ($num_inserts > 0) {
-                    $result = "success";
-                } else {
-                    $result = "failure";
-                }
-            } else {
-                $result = "duplicate";
+                if ($num_inserts > 0) { $result = "success";}
+                else { $result = "failure"; }
             }
+            else { $result = "duplicate"; }
             echo json_encode($result);
-        } else {
-            show_404();
-        }
+        } else { show_404(); }
     }
-
     public function getCounty()
     {
         if ($this->input->is_ajax_request()) {
             $state = $this->input->post('stateID');
             $stateQuery = $this->db->get_where('states', array('state_id' => $state));
             $stateResult = $stateQuery->row();
-
             $query = $this->db->get_where('counties', array('county_state' => $stateResult->state_id));
             $result = $query->result_array();
             echo json_encode(array('result' => $result));
-        } else {
-            show_404();
-        }
+        } else { show_404(); }
     }
-
     public function updateUser()
     {
         if ($this->input->is_ajax_request()) {
@@ -87,22 +68,16 @@ class Admin extends CI_Controller
             $groups = $this->db->get('groups');
             $data['groups'] = $groups->result_array();
             $this->load->view('admin/admin_update_user', $data);
-        } else {
-            show_404();
-        }
+        } else { show_404(); }
     }
     public function manageUsers()
     {
         if ($this->input->is_ajax_request()) {
-            //$data['users'] = $this->ion_auth->users()->result();
             $select = "id,CONCAT(first_name,' ',last_name) as name";
             $data['users'] = $this->Users->get($select);
             $this->load->view('admin/user_manager', $data);
-        } else {
-            show_404();
-        }
+        } else { show_404(); }
     }
-
     public function userDetail()
     {
         if ($this->input->is_ajax_request()) {
@@ -116,12 +91,9 @@ class Admin extends CI_Controller
             $value[0]['groups'] = $groups;
             $results = $value[0];
         }
-        else {
-            show_404();
-        }
+        else { show_404(); }
         echo json_encode($results);
     }
-
     public function userUpdate()
     {
         if ($this->input->is_ajax_request()) {
@@ -141,31 +113,22 @@ class Admin extends CI_Controller
             unset($groups['active']);
             foreach ( $groups as $key => $value ){
                 $gID = $this->Users->getGroupId($key);
-                if ( $this->ion_auth->in_group($key, $id) && $value == 'false' ){
-                    $result = $this->ion_auth->remove_from_group(array($gID), $id);
-                }
-                elseif ( !$this->ion_auth->in_group($key, $id) && $value == 'true' ){
-                    $result = $this->ion_auth->add_to_group(array($gID), $id);
-                }
+                if ( $this->ion_auth->in_group($key, $id) && $value == 'false' ){ $result = $this->ion_auth->remove_from_group(array($gID), $id); }
+                elseif ( !$this->ion_auth->in_group($key, $id) && $value == 'true' ){ $result = $this->ion_auth->add_to_group(array($gID), $id); }
             }
             if ( $result ) { echo json_encode("success"); }
             else { echo json_encode("failure"); }
-
-        } else {
-            show_404();
-        }
+        } else { show_404(); }
     }
-
     public function changePassword() {
-        $id = $this->input->post('id');
-        $password = $this->input->post('password');
-        $data = array('password' => $password);
-        if ( $this->ion_auth->update($id, $data) ){
-            $result = "success";
-        }
-        else { $result = "failure"; }
-        echo json_encode($result);
-
+        if ($this->input->is_ajax_request()) {
+            $id = $this->input->post('id');
+            $password = $this->input->post('password');
+            $data = array('password' => $password);
+            if ( $this->ion_auth->update($id, $data) ){ $result = "success"; }
+            else { $result = "failure"; }
+            echo json_encode($result);
+        } else { show_404(); }
     }
 }
 ?>

@@ -26,7 +26,7 @@
                 myTable += '<tr><td>Email Address</td><td><a id="emailAddress" href="#" data-type="text" data-pk="'+ myUser.id +'" data-title="Enter Email Address">' + myUser.email + '</a></td><td>Schedule Color</td><td><input type="color" id="schedColor" value="' + myUser.color + '" style="border: none; width: 60px; height: 40px;" ></td></tr>';
                 myTable += '<tr><td>Phone Number</td><td><a id="phoneNumber" href="#" data-type="text" data-pk="'+ myUser.id +'" data-title="Enter Phone Number">' + formatPhoneNumber(myUser.phone) + '</a></td><td>Schedule Text Color</td><td><input type="color" id="textColor" value="' + myUser.textColor + '" style="border: none; width: 60px; height: 40px;" ></td></tr>';
                 myTable += '<tr><td>Password</td><td><button type="button" id="resetPassword" class="btn btn-outline-primary btn-sm">Reset Password</button></td><td></td><td><input type="text" id="sampleTextBox" value="Here is some text" style="text-align: center; color: ' + myUser.textColor + '; background-color: ' + myUser.color + '; border: none; width: 130px; height: 40px;" ></td></tr>';
-                myTable += '<tr><td>Created Date</td><td>' + createdDate + '</td></tr>';
+                myTable += '<tr><td>Created Date</td><td>' + createdDate + '</td><td colspan="2" rowspan="3">some data</td> </tr>';
                 myTable += '<tr><td>Last Logged In</td><td>' + lastLogin + '</td></tr>';
                 myTable += '<tr><td>Failed Login Attempts</td><td>'+ myUser.FailedLogin + '</td></tr>';
                 myTable += '<tr><td>Group Membership</td><td><input id="admin" type="checkbox"><label class="ml-2" for="admin">Admin</label><input class="ml-3" id="volunteer" type="checkbox"><label class="ml-2" for="volunteer">Volunteer</label><input class="ml-3" id="members" type="checkbox"><label class="ml-2" for="member">Members</label><input class="ml-3" id="scheduler" type="checkbox"><label class="ml-2" for="scheduler">Scheduler</label></td></tr>';
@@ -128,7 +128,6 @@
                                 "myGroups": groups
                             },
                             success: function (result) {
-                                //$('#resetPasswordModal').modal('toggle');
                                 if (result === "success") {
                                     jQuery("div#updateStatus").html('<div id="success-alert" class="alert alert-success mt-lg-4 col-10 fade show" role="alert">Successfully updated user</div>');
                                     $('#success-alert').fadeOut(3000);

@@ -5,10 +5,8 @@
  * Date: 8/12/17
  * Time: 6:54 PM
  */
-
-defined('BASEPATH') OR exit('No direct script access allowed');
+    defined('BASEPATH') OR exit('No direct script access allowed');
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -26,7 +24,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     ?>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
+    <meta property="fb:app_id" content="274370306563906" />
     <title>NC Wild Life Rehab</title>
     <script type="text/javascript" src="<?php echo base_url('application/js/jquery-3.3.1.min.js');?>"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
@@ -47,53 +45,64 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <link rel="stylesheet" type="text/css" href="<?php echo site_url('application/css/ncwl.css');?>">
 </head>
     <body>
-        <div class="container-fluid mt-1 w-100 bg-light" id="header"><?php $this->load->view('rehab_header'); ?> </div>
-        <div class="container-fluid col-12 bg-light border-bottom-2" style="border-bottom: 1px solid darkgrey; box-shadow: 0 4px 7px -1px lightgrey;" id="menuBar"><div class="row col-12"><?php $this->load->view('rehab_menu'); ?> </div></div>
-        <div id="modal_target"></div>
+        <script>
+            window.fbAsyncInit = function() {
+                FB.init({
+                    appId      : '<?php echo $facebook->app_id; ?>',
+                    xfbml      : true,
+                    version    : 'v3.2'
+                });
+                facebookPageId = '<?php echo $facebook->page_id; ?>';
+                facebookAuthToken = '<?php echo $facebook->access_token; ?>';
+                FB.api('/' + facebookPageId + '',{fields:'posts.limit(2){id,message,full_picture,shares,actions,created_time,from,link,permalink_url,name}',access_token:''+ facebookAuthToken +''} , function(response){
+                    console.log(response);
+                    fbHTML = '<div class="row">';
+                    fbHTML += ' <div class="col-sm-6">';
+                    fbHTML += '     <div class="card">';
+                    fbHTML += '         <img src="'+ response.posts.data[0].full_picture +'" class="card-img-top" alt="..." style="height: 420px;"> ';
+                    fbHTML += '         <div class="card-body">';
+                    fbHTML += '             <h5 class="card-title">'+ response.posts.data[0].from.name + '</h5><h6> (' + moment(response.posts.data[0].created_time).format('ddd MMM DD, YYYY') + ') </h6>';
+                    fbHTML += '             <p class="card-text">'+ response.posts.data[0].message.split('.',2)[0] +'. ' + response.posts.data[0].message.split('.',2)[1] + '.</p>';
+                    fbHTML += '             <a href="#" class="btn btn-primary">Read the story</a>';
+                    fbHTML += '         </div>';
+                    fbHTML += '     </div>';
+                    fbHTML += ' </div>';
+                    fbHTML += ' <div class="col-sm-6" style="height: 250px;">';
+                    fbHTML += '     <div class="card style="height: 250px;"">';
+                    fbHTML += '         <img src="'+ response.posts.data[1].full_picture +'" class="card-img-top" alt="..." style="height: 420px;">';
+                    fbHTML += '         <div class="card-body">';
+                    fbHTML += '             <h5 class="card-title">'+ response.posts.data[1].from.name +'</h5><h6> (' + moment(response.posts.data[1].created_time).format('ddd MMM DD, YYYY') + ') </h6>';
+                    fbHTML += '             <p class="card-text">'+ response.posts.data[1].message.split('.',2)[0] +'. ' + response.posts.data[1].message.split('.',2)[1] + '.</p>';
+                    fbHTML += '             <a href="#" class="btn btn-primary">Read the story</a>';
+                    fbHTML += '         </div>';
+                    fbHTML += '     </div>';
+                    fbHTML += ' </div>';
+                    fbHTML += '</div>';
+                    $('#fbFeed').html(fbHTML);
+                });
+                FB.AppEvents.logPageView();
+
+            };
+            (function(d, s, id){
+                var js, fjs = d.getElementsByTagName(s)[0];
+                if (d.getElementById(id)) {return;}
+                js = d.createElement(s); js.id = id;
+                js.src = "https://connect.facebook.net/en_US/sdk.js";
+                fjs.parentNode.insertBefore(js, fjs);
+            }(document, 'script', 'facebook-jssdk'));
+        </script>
+        <div class="container-fluid mt-1 w-100 bg-light" id="header"><?php $this->load->view('rehab_header');?> </div>
+        <div class="container-fluid col-12 bg-light border-bottom-2" style="border-bottom: 1px solid darkgrey; box-shadow: 0px 5px 10px -1px lightgrey;" id="menuBar">
+            <div class="row col-12"><?php $this->load->view('rehab_menu');?></div>
+        </div>
+        <!-- <div id="modal_target"></div> -->
         <div id="createUserStatus" class="col-12 ml-5"></div>
-        <div id="loginStatus" class="col-12 ml-5"></div>
+        <!-- <div id="loginStatus" class="col-12 ml-5"></div> -->
         <div id="updateStatus" class="container-fluid ml-5"></div>
-        <div class="container-fluid ml-3 mt-5" id="content" style="min-height: 500px; width: 90%">
-            <div class="row">
-                <div id="carouselMain" class="carousel slide col-4" data-ride="carousel">
-                    <ol class="carousel-indicators">
-                        <li data-target="carouselMain" data-slide-to="0" class="active"></li>
-                        <li data-target="carouselMain" data-slide-to="1"></li>
-                        <li data-target="carouselMain" data-slide-to="2"></li>
-                    </ol>
-                    <div class="carousel-inner">
-                        <div class="carousel-item active">
-                            <img class="d-block w-100 rounded" style="height: 500px;" src="<?php echo base_url();?>/application/images/squirrel_1.jpg" alt="First Slide">
-                            <div class="carousel-caption d-none d-md-block">
-                                <h3>Rehabilitation</h3>
-                                <p>Taking every opportunity to return wild life to their natural habitats.</p>
-                            </div>
-                        </div>
-                        <div class="carousel-item">
-                            <img class="d-block w-100 rounded" style="height: 500px;" src="<?php echo base_url();?>/application/images/possum.jpg" alt="First Slide">
-                            <div class="carousel-caption d-none d-md-block">
-                                <h3>Education</h3>
-                                <p>Educating the public on the benefits of wild life and the role they play in our ecosystem.</p>
-                            </div>
-                        </div>
-                        <div class="carousel-item">
-                            <img class="d-block w-100 rounded" style="height: 500px;" src="<?php echo base_url();?>/application/images/goat.jpg" alt="First Slide">
-                            <div class="carousel-caption d-none d-md-block">
-                                <h3>Partnership</h3>
-                                <p>Working with our peer partners to facilitate support systems and enhance capabilities by sharing knowledge and experience.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <a class="carousel-control-prev" href="#carouselMain" role="button" data-slide="prev">
-                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                        <span class="sr-only">Previous</span>
-                    </a>
-                    <a class="carousel-control-next" href="#carouselMain" role="button" data-slide="next">
-                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                        <span class="sr-only">Next</span>
-                    </a>
-                </div>
-                <div class="col-6">
+        <div class="container-fluid ml-1 mt-3 mb-5" id="content" style="min-height: 600px; width: 98%;">
+            <div class="row col-12">
+                <div class="col-6" id="fbFeed"></div>
+                <div class="col-6" id="fbStory">
                     <strong>Welcome to NC Wild Life Rehab</strong><br>
                     Here at NC Wild Life Rehab, we have two main focuses. First, is to save the animal/s. Secondly, is to educate. By
                     educating, we can spread the word of what to do if an injured or orphaned animal is found. Our
@@ -105,7 +114,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     suggestions from outsiders on topics such as cage building ideas and other random topics. The more
                     we teach and the more we learn, the more we can assist wildlife here and in a broad spectrum.
                     <p><br>
-                    <strong>Current activities planned Second half of 2017:</strong>    <br>
+                    <strong>Current activities planned Second half of 2017:</strong><br>
                     Iredell Human Society hosted a Wildlife Education Day – July 2017<br>
                     What to do if you find a wildlife baby – inhouse class – August 2017<br>
                     Love your Possums – inhouse class- August 2017<br>
@@ -114,10 +123,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     Nature Day in Charlotte, NC - October 2017<br>
                     South Mountain’s Nature Day – October 2017<br>
                     </p>
-
-
                 </div>
             </div>
+        </div>
+        <div class="container-fluid col-12 bg-light" style="min-height: 250px; border-top: 1px solid darkgrey; box-shadow: 0 -5px 10px -1px lightgrey; flex:: 0 1 100%;" id="footer">
+            <div class="row col-12"><?php $this->load->view('rehab_footer');?></div>
         </div>
     </body>
 </html>

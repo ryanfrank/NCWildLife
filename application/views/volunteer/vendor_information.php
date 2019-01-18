@@ -332,7 +332,7 @@
     <div class="row col-11 justify-content-md-center">
         <h2 class="text-muted">Vendor Information</h2>
     </div>
-    <div class="row col-11 align-center">
+    <div class="row col-11 align-center mt-3">
         <div class="col-4 form-group">
             <label for="productTypes" class="align-content-center">Product Type</label>
             <select class="form-control" id="productTypes">
@@ -349,7 +349,7 @@
             </select>
         </div>
     </div>
-    <div class="row col-11 align-center">
+    <div class="row col-11 align-center mt-4">
         <div id="myTable" class="col-12 align-center" style="border: 1px solid darkgrey; border-radius: 7px; box-shadow: 0 0 40px lightgrey;">
             <table id="productTable" ></table>
         </div>

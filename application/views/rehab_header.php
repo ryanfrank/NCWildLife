@@ -293,10 +293,10 @@ if (!$this->ion_auth->logged_in()){
         </div>
     </div>
 <?php } ?>
-<div class="row mb-0">
+<div class="row mb-0" style="height: 60px;">
     <div class="col-2"></div>
     <div class="text-center col-8">
-        <img src="<?php echo base_url();?>/application/images/logo_3.jpg" class="img-fluid" alt="Responsive image">
+       <!-- <img src="<?php //echo base_url();?>/application/images/logo_3.jpg" class="img-fluid" alt="Responsive image"> -->
     </div>
     <div class="col-2"></div>
 </div>
