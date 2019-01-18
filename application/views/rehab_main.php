@@ -55,33 +55,24 @@
                 facebookPageId = '<?php echo $facebook->page_id; ?>';
                 facebookAuthToken = '<?php echo $facebook->access_token; ?>';
                 FB.api('/' + facebookPageId + '',{fields:'posts.limit(2){id,message,full_picture,shares,actions,created_time,from,link,permalink_url,name}',access_token:''+ facebookAuthToken +''} , function(response){
-                    console.log(response);
+                    //console.log(response);
                     fbHTML = '<div class="row">';
-                    fbHTML += ' <div class="col-sm-6">';
-                    fbHTML += '     <div class="card">';
-                    fbHTML += '         <img src="'+ response.posts.data[0].full_picture +'" class="card-img-top" alt="..." style="height: 420px;"> ';
-                    fbHTML += '         <div class="card-body">';
-                    fbHTML += '             <h5 class="card-title">'+ response.posts.data[0].from.name + '</h5><h6> (' + moment(response.posts.data[0].created_time).format('ddd MMM DD, YYYY') + ') </h6>';
-                    fbHTML += '             <p class="card-text">'+ response.posts.data[0].message.split('.',2)[0] +'. ' + response.posts.data[0].message.split('.',2)[1] + '.</p>';
-                    fbHTML += '             <a href="#" class="btn btn-primary">Read the story</a>';
-                    fbHTML += '         </div>';
-                    fbHTML += '     </div>';
-                    fbHTML += ' </div>';
-                    fbHTML += ' <div class="col-sm-6" style="height: 250px;">';
-                    fbHTML += '     <div class="card style="height: 250px;"">';
-                    fbHTML += '         <img src="'+ response.posts.data[1].full_picture +'" class="card-img-top" alt="..." style="height: 420px;">';
-                    fbHTML += '         <div class="card-body">';
-                    fbHTML += '             <h5 class="card-title">'+ response.posts.data[1].from.name +'</h5><h6> (' + moment(response.posts.data[1].created_time).format('ddd MMM DD, YYYY') + ') </h6>';
-                    fbHTML += '             <p class="card-text">'+ response.posts.data[1].message.split('.',2)[0] +'. ' + response.posts.data[1].message.split('.',2)[1] + '.</p>';
-                    fbHTML += '             <a href="#" class="btn btn-primary">Read the story</a>';
-                    fbHTML += '         </div>';
-                    fbHTML += '     </div>';
-                    fbHTML += ' </div>';
+                    for ( var i = 0; i < response.posts.data.length; i++ ){
+                        fbHTML += ' <div class="col-sm-6">';
+                        fbHTML += '     <div class="card">';
+                        fbHTML += '         <img src="'+ response.posts.data[i].full_picture +'" class="card-img-top" alt="..." style="height: 420px;"> ';
+                        fbHTML += '         <div class="card-body">';
+                        fbHTML += '             <h5 class="card-title">'+ response.posts.data[i].from.name + '</h5><h6> (' + moment(response.posts.data[i].created_time).format('ddd MMM DD, YYYY') + ') </h6>';
+                        fbHTML += '             <p class="card-text">'+ response.posts.data[i].message.split('.',2)[0] +'. ' + response.posts.data[i].message.split('.',2)[1] + '.</p>';
+                        fbHTML += '             <a href="#" class="btn btn-primary">Read the story</a>';
+                        fbHTML += '         </div>';
+                        fbHTML += '     </div>';
+                        fbHTML += ' </div>';
+                    }
                     fbHTML += '</div>';
                     $('#fbFeed').html(fbHTML);
                 });
                 FB.AppEvents.logPageView();
-
             };
             (function(d, s, id){
                 var js, fjs = d.getElementsByTagName(s)[0];
