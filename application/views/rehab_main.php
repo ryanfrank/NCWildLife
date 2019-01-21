@@ -34,6 +34,7 @@
     <script type="text/javascript" src="<?php echo base_url('application/js/fullcalendar.min-3.9.0.js');?>"></script>
     <script type="text/javascript" src="<?php echo base_url('application/js/bootstrap-editable.js');?>"></script>
     <script type="text/javascript" src="<?php echo base_url('application/js/colorpicker.js');?>"></script>
+    <script type="text/javascript" src="<?php echo base_url('application/js/fine-uploader.min.js');?>"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.js"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="<?php echo site_url('application/css/fullcalendar-3.9.0.css');?>">
@@ -42,6 +43,7 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.css">
     <link rel="stylesheet" type="text/css" href="<?php echo site_url('application/css/colorpicker.css');?>">
+    <link rel="stylesheet" type="text/css" href="<?php echo site_url('application/css/fine-uploader/fine-uploader.min.css');?>">
     <link rel="stylesheet" type="text/css" href="<?php echo site_url('application/css/ncwl.css');?>">
 </head>
     <body>
@@ -60,7 +62,7 @@
                     for ( var i = 0; i < response.posts.data.length; i++ ){
                         fbHTML += ' <div class="col-sm-6">';
                         fbHTML += '     <div class="card">';
-                        fbHTML += '         <img src="'+ response.posts.data[i].full_picture +'" class="card-img-top" alt="..." style="height: 420px;"> ';
+                        fbHTML += '         <img src="'+ response.posts.data[i].full_picture +'" class="card-img-top" alt="..." style="height: 400px;"> ';
                         fbHTML += '         <div class="card-body">';
                         fbHTML += '             <h5 class="card-title">'+ response.posts.data[i].from.name + '</h5><h6> (' + moment(response.posts.data[i].created_time).format('ddd MMM DD, YYYY') + ') </h6>';
                         fbHTML += '             <p class="card-text">'+ response.posts.data[i].message.split('.',2)[0] +'. ' + response.posts.data[i].message.split('.',2)[1] + '.</p>';
@@ -86,11 +88,9 @@
         <div class="container-fluid col-12 bg-light border-bottom-2" style="border-bottom: 1px solid darkgrey; box-shadow: 0px 5px 10px -1px lightgrey;" id="menuBar">
             <div class="row col-12"><?php $this->load->view('rehab_menu');?></div>
         </div>
-        <!-- <div id="modal_target"></div> -->
         <div id="createUserStatus" class="col-12 ml-5"></div>
-        <!-- <div id="loginStatus" class="col-12 ml-5"></div> -->
         <div id="updateStatus" class="container-fluid ml-5"></div>
-        <div class="container-fluid ml-1 mt-3 mb-5" id="content" style="min-height: 600px; width: 98%;">
+        <div class="container-fluid ml-1 mt-4 mb-5" id="content" style="min-height: 600px; width: 98%;">
             <div class="row col-12">
                 <div class="col-6" id="fbFeed"></div>
                 <div class="col-6" id="fbStory">

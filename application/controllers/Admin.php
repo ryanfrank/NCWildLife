@@ -82,7 +82,7 @@ class Admin extends CI_Controller
     {
         if ($this->input->is_ajax_request()) {
             $id = $this->input->post('id');
-            $select = "id,username,password,email,created_on,last_login,active,first_name,last_name,phone,color,textColor,noShow";
+            $select = "id,username,password,email,created_on,last_login,active,first_name,last_name,phone,color,textColor,noShow,userImage";
             $result = $this->Users->get($select, array('id' => $id));
             $value = $result->result_array();
             $failedLogin = $this->ion_auth->get_attempts_num($id);
@@ -129,6 +129,18 @@ class Admin extends CI_Controller
             else { $result = "failure"; }
             echo json_encode($result);
         } else { show_404(); }
+    }
+    public function uploadImage() {
+        $targetDir = "application/images/Users/";
+        $targetFile = $targetDir . $this->input->post('qqfilename');
+        if (move_uploaded_file($_FILES['qqfile']['tmp_name'], $targetFile) ){
+            $data['userImage'] = "images/Users/" . $this->input->post('qqfilename');
+            if ( $this->ion_auth->update($this->input->post('userId'), $data) ){
+                $result = array("success" => true);
+            }
+        }
+        else { $result = array("success" => false); }
+        echo json_encode($result);
     }
 }
 ?>
