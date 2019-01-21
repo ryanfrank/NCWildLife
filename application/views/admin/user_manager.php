@@ -6,7 +6,25 @@
  * Time: 19:14
  */
 ?>
+<script type="text/template" id="ncwr-template">
+    <div class="qq-uploader-selector qq-uploader" qq-drop-area-text="Drop files here">
+        <ul class="qq-upload-list-selector qq-upload-list" aria-live="polite" aria-relevant="additions removals">
+            <li>
+                <div class="qq-progress-bar-container-selector">
+                    <div role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" class="qq-progress-bar-selector qq-progress-bar"></div>
+                </div>
+                <span class="qq-upload-spinner-selector qq-upload-spinner"></span>
+                <span class="qq-upload-file-selector qq-upload-file"></span>
+                <span class="qq-edit-filename-icon-selector qq-edit-filename-icon" aria-label="Edit filename"></span>
+                <input class="qq-edit-filename-selector qq-edit-filename" tabindex="0" type="text">
+                <span class="qq-upload-size-selector qq-upload-size"></span>
+
+            </li>
+        </ul>
+    </div>
+</script>
 <script type="application/javascript">
+
     $('#user-list a').off('click');
     $('#user-list a').on('click', function (e) {
         e.preventDefault();
@@ -17,16 +35,17 @@
             data: { "id": this.id },
             success: function (result) {
                 var myUser = result;
+                var userImage = "<?php echo base_url(); ?>" + "application/" + myUser.userImage;
                 createdDate = moment.unix(myUser.created_on).format('MM/DD/YYYY');
                 lastLogin = moment.unix(myUser.last_login).format('MM/DD/YYYY');
                 myTable = '<div class="container col-12"><div class="row col-12">';
-                myTable += '<table class="table table-hover table-responsive-xl">';
+                myTable += '<table class="table table-responsive-xl">';
                 myTable += '<thead><tr><th>'+ myUser.first_name + ' ' + myUser.last_name + ' (' + myUser.id + ')</th><th>Current Information</th><th></th><th></th></tr></thead><tbody>';
                 myTable += '<tr><td>User Name</td><td>' + myUser.username + '</td><td>No-Show Count</td><td><input type="text" id="noShowCount" size="1" style="border: none;" value='+ myUser.noShow +' /><button type="button" id="resetNoShow" class="btn btn-outline-primary btn-sm ml-5">Reset Count</button></td></tr>';
                 myTable += '<tr><td>Email Address</td><td><a id="emailAddress" href="#" data-type="text" data-pk="'+ myUser.id +'" data-title="Enter Email Address">' + myUser.email + '</a></td><td>Schedule Color</td><td><input type="color" id="schedColor" value="' + myUser.color + '" style="border: none; width: 60px; height: 40px;" ></td></tr>';
                 myTable += '<tr><td>Phone Number</td><td><a id="phoneNumber" href="#" data-type="text" data-pk="'+ myUser.id +'" data-title="Enter Phone Number">' + formatPhoneNumber(myUser.phone) + '</a></td><td>Schedule Text Color</td><td><input type="color" id="textColor" value="' + myUser.textColor + '" style="border: none; width: 60px; height: 40px;" ></td></tr>';
                 myTable += '<tr><td>Password</td><td><button type="button" id="resetPassword" class="btn btn-outline-primary btn-sm">Reset Password</button></td><td></td><td><input type="text" id="sampleTextBox" value="Here is some text" style="text-align: center; color: ' + myUser.textColor + '; background-color: ' + myUser.color + '; border: none; width: 130px; height: 40px;" ></td></tr>';
-                myTable += '<tr><td>Created Date</td><td>' + createdDate + '</td><td colspan="2" rowspan="3">some data</td> </tr>';
+                myTable += '<tr><td>Created Date</td><td>' + createdDate + '</td><td colspan="2" rowspan="4" align="center" ><div id="userImage" class="btn btn-outline-primary btn-sm qq-upload-button" style="background-color: #ffffff; color: #000000; width: 200px; height: 200px;border: none;"><img id="myImageFile" src="'+ userImage + '" alt="..." class="rounded" style="width: inherit; height: inherit;"></div><div class="mt-2" id="uploader" style="width: 200px;"></div></td></tr>';
                 myTable += '<tr><td>Last Logged In</td><td>' + lastLogin + '</td></tr>';
                 myTable += '<tr><td>Failed Login Attempts</td><td>'+ myUser.FailedLogin + '</td></tr>';
                 myTable += '<tr><td>Group Membership</td><td><input id="admin" type="checkbox"><label class="ml-2" for="admin">Admin</label><input class="ml-3" id="volunteer" type="checkbox"><label class="ml-2" for="volunteer">Volunteer</label><input class="ml-3" id="members" type="checkbox"><label class="ml-2" for="member">Members</label><input class="ml-3" id="scheduler" type="checkbox"><label class="ml-2" for="scheduler">Scheduler</label></td></tr>';
@@ -36,7 +55,7 @@
                 $('.tab-content').html(myTable);
                 for ( var i = 0; i < myUser['groups'].length; i++) { $('#' + myUser['groups'][i].name).attr('checked', true); }
                 if ( myUser.active === '1' ) { $('#active').attr('checked', true); }
-                $(document).ready(function() {
+                $(document).ready( function() {
                     $('#phoneNumber').editable({
                         type: 'text',
                         success : function (response, newValue){
@@ -70,8 +89,38 @@
                             $(el).ColorPickerHide();
                         }
                     });
-                });
-                $(document).ready( function() {
+                    var uploader = new qq.FineUploader({
+                        button: document.getElementById("userImage"),
+                        debug: false,
+                        element: document.getElementById("uploader"),
+                        template: 'ncwr-template',
+                        request: {
+                            params: {
+                                userId: myUser.id
+                            },
+                            endpoint: "<?php echo base_url(); ?>" + "Admin/uploadImage"
+                        },
+                        thumbnails: {
+                            placeholders: {
+                                waitingPath: 'application/css/fine-uploader/placeholders/waiting-generic.png',
+                                notAvailablePath: 'application/css/fine-uploader/placeholders/not_available-generic.png'
+                            }
+                        },
+                        validation: {
+                            allowedExtensions: ['jpeg','jpg','png']
+                        },
+                        callbacks: {
+                            onUpload: function (id, name){
+                                var myExtension = name.split('.')[1];
+                                var newFileName = moment().unix() + '.' + myExtension;
+                                uploader.setName(id, newFileName);
+                            },
+                            onComplete: function (id, name, responseJSON){
+                                var myFile = "application/images/Users/" + name;
+                                document.getElementById("myImageFile").src=myFile;
+                            }
+                        }
+                    });
                     $('#resetPassword').off('click');
                     $('#resetPassword').click(function () {
                         $('#resetPasswordModal').modal('show');
@@ -145,6 +194,7 @@
         $('.tab-content').html("");
     });
 </script>
+
 <div class="container-fluid col-12">
     <div class="row col-11 justify-content-md-center">
         <h2 class="text-muted">NC WildLife User Management</h2>
@@ -161,9 +211,9 @@
         </div>
         <div class="col-10">
             <div class="container rounded col-12" style="min-height: 525px;  border: 1px solid darkgrey; border-radius: 7px; box-shadow: 0 0 40px lightgrey;">
-                <div class="row col-12" style="">
+                <div class="row col-12">
                     <div class="tab-content col-12" id="tabContent">
-                        Here is some text...
+                        Some more text
                     </div>
                 </div>
             </div>
