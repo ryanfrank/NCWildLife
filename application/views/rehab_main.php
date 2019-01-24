@@ -61,7 +61,7 @@
                     fbHTML = '<div class="row">';
                     for ( var i = 0; i < response.posts.data.length; i++ ){
                         fbHTML += ' <div class="col-sm-6">';
-                        fbHTML += '     <div class="card">';
+                        fbHTML += '     <div class="card h-100" >';
                         fbHTML += '         <img src="'+ response.posts.data[i].full_picture +'" class="card-img-top" alt="..." style="height: 400px;"> ';
                         fbHTML += '         <div class="card-body">';
                         fbHTML += '             <h5 class="card-title">'+ response.posts.data[i].from.name + '</h5><h6> (' + moment(response.posts.data[i].created_time).format('ddd MMM DD, YYYY') + ') </h6>';
@@ -93,7 +93,7 @@
         <div class="container-fluid ml-1 mt-4 mb-5" id="content" style="min-height: 600px; width: 98%;">
             <div class="row col-12">
                 <div class="col-6" id="fbFeed"></div>
-                <div class="col-6" id="fbStory">
+                <div class="col-6 text-justify" id="fbStory">
                     <strong>Welcome to NC Wild Life Rehab</strong><br>
                     Here at NC Wild Life Rehab, we have two main focuses. First, is to save the animal/s. Secondly, is to educate. By
                     educating, we can spread the word of what to do if an injured or orphaned animal is found. Our
@@ -117,7 +117,7 @@
                 </div>
             </div>
         </div>
-        <div class="container-fluid col-12 bg-light" style="min-height: 250px; border-top: 1px solid darkgrey; box-shadow: 0 -5px 10px -1px lightgrey; flex:: 0 1 100%;" id="footer">
+        <div class="container-fluid col-12 bg-light" style="min-height: 30vh; border-top: 1px solid darkgrey; box-shadow: 0 -5px 10px -1px lightgrey;" id="footer">
             <div class="row col-12"><?php $this->load->view('rehab_footer');?></div>
         </div>
     </body>
