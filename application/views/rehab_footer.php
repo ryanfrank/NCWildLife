@@ -11,21 +11,21 @@
     <div class="row col-12">
         <div class="col-3 pull-left">
             <table class="table table-borderless">
-                <tr>
-                    <td><a target="_blank" href="https://www.facebook.com/NCWildLifeRehab" class="fab fa-facebook-square fa-lg"></a></td>
-                    <td>Facebook</td>
+                <tr style="height: 25px; line-height: 5px;">
+                    <td style="padding: 1px;"><a target="_blank" href="https://www.facebook.com/NCWildLifeRehab" class="fab fa-facebook-square fa-lg"></a></td>
+                    <td style="padding: 1px;">Facebook</td>
                 </tr>
-                <tr>
-                    <td><i class="fab fa-instagram fa-lg"></i></td>
-                    <td>Instagram</td>
+                <tr style="height: 25px; line-height: 5px;">
+                    <td style="padding: 1px;"><i class="fab fa-instagram fa-lg"></i></td>
+                    <td style="padding: 1px;">Instagram</td>
                 </tr>
-                <tr>
-                    <td><i class="fab fa-twitter-square fa-lg"></i></td>
-                    <td>Twitter</td>
+                <tr style="height: 25px; line-height: 5px;">
+                    <td style="padding: 1px;"><i class="fab fa-twitter-square fa-lg"></i></td>
+                    <td style="padding: 1px;">Twitter</td>
                 </tr>
-                <tr>
-                    <td><i class="fab fa-youtube fa-lg"></i></td>
-                    <td>YouTube!</td>
+                <tr style="height: 25px; line-height: 5px;">
+                    <td style="padding: 1px;"><i class="fab fa-youtube fa-lg"></i></td>
+                    <td style="padding: 1px;">YouTube!</td>
                 </tr>
             </table>
         </div>
