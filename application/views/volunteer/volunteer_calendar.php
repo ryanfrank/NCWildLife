@@ -154,16 +154,16 @@
         $('#addToCalendarModal').modal('dispose');
     });
 </script>
-<div class="container-fluid col-11 ml-0">
+<div class="container-fluid col-11 ml-0" style="border: 1px solid darkgrey; border-radius: 7px; box-shadow: 0 0 40px lightgrey;">
     <div class="row col-12 mb-5">
         <div class="col align-self-start col-2"></div>
-        <div class="col align-self-center text-center">
+        <div class="col align-self-center text-center mt-4">
             <h2 class="text-muted">Volunteer Schedule</h2>
         </div>
         <div class="col align-self-end col-2"></div>
     </div>
-    <div class="row col-12 ml-4" style="border: 1px solid darkgrey; border-radius: 7px; box-shadow: 0 0 40px lightgrey;">
-        <div class="mt-5 col-12" id="calendar"></div>
+    <div class="row col-12 ml-1">
+        <div class="mt-2 col-12" id="calendar"></div>
     </div>
 </div>
 <div class="modal fade" id="addToCalendarModal" tabindex="-1" role="dialog" aria-labelledby="addCalendarEventLabel" aria-hidden="false">

@@ -32,15 +32,15 @@
     });
 </script>
 
-<div class="container col-11 ml-0">
-    <div class="row col-11">
+<div class="container-fluid col-11 ml-0" style="border: 1px solid darkgrey; border-radius: 7px; box-shadow: 0 0 40px lightgrey;">
+    <div class="row col-12 mb-5 mt-3">
         <div class="col align-self-start col-2"></div>
         <div class="col align-self-center text-center">
-            <h2 class="text-muted">Event Calendar / Schedule</h2>
+            <h2 class="text-muted">Event Schedule</h2>
         </div>
         <div class="col align-self-end col-2"></div>
     </div>
-    <div class="mt-4 row col-11">
-        <div id="calendar"></div>
+    <div class="row col-12 ml-1">
+        <div class="mt-2 col-12" id="calendar"></div>
     </div>
 </div>
