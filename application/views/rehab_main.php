@@ -36,6 +36,8 @@
     <script type="text/javascript" src="<?php echo base_url('application/js/colorpicker.js');?>"></script>
     <script type="text/javascript" src="<?php echo base_url('application/js/fine-uploader.min.js');?>"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:100,200,300,400,500,600,700,800&amp;subset=cyrillic,cyrillic-ext" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="<?php echo site_url('application/css/ncwl.css');?>">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="<?php echo site_url('application/css/fullcalendar-3.9.0.css');?>">
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.13.1/bootstrap-table.min.css">
@@ -44,7 +46,7 @@
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.css">
     <link rel="stylesheet" type="text/css" href="<?php echo site_url('application/css/colorpicker.css');?>">
     <link rel="stylesheet" type="text/css" href="<?php echo site_url('application/css/fine-uploader/fine-uploader.min.css');?>">
-    <link rel="stylesheet" type="text/css" href="<?php echo site_url('application/css/ncwl.css');?>">
+
 </head>
     <body>
         <script>
@@ -92,9 +94,9 @@
         <div id="updateStatus" class="container-fluid ml-5"></div>
         <div class="container-fluid ml-1 mt-4 mb-5" id="content" style="min-height: 600px; width: 98%;">
             <div class="row col-12">
-                <div class="col-6" id="fbFeed"></div>
-                <div class="col-6 text-justify" id="fbStory">
-                    <strong>Welcome to NC Wild Life Rehab</strong><br>
+                <div class="col-6" id="fbFeed" style="font-family: 'Montserrat', sans-serif; font-style: normal; font-weight: 300; font-size: 15px;"></div>
+                <div class="col-6 text-justify" id="fbStory" style="font-family: 'Montserrat', sans-serif; font-style: normal; font-weight: 300; font-size: 15px;">
+                    <strong style="font-weight: 500;">Welcome to NC Wild Life Rehab</strong><br>
                     Here at NC Wild Life Rehab, we have two main focuses. First, is to save the animal/s. Secondly, is to educate. By
                     educating, we can spread the word of what to do if an injured or orphaned animal is found. Our
                     educational goals and activities include inhouse classes on different topics (what to do if you
@@ -105,7 +107,7 @@
                     suggestions from outsiders on topics such as cage building ideas and other random topics. The more
                     we teach and the more we learn, the more we can assist wildlife here and in a broad spectrum.
                     <p><br>
-                    <strong>Current activities planned Second half of 2017:</strong><br>
+                    <strong style="font-weight: 500;">Current activities planned Second half of 2017:</strong><br>
                     Iredell Human Society hosted a Wildlife Education Day – July 2017<br>
                     What to do if you find a wildlife baby – inhouse class – August 2017<br>
                     Love your Possums – inhouse class- August 2017<br>

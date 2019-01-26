@@ -28,6 +28,16 @@ class Rehab extends CI_Controller {
     public function index()
     {
         $data['facebook'] = $this->Facebook->getFacebookId();
+        if ( !$this->ion_auth->logged_in() ) {
+            $data['image'] = base_url('application/images/Users/blank-avatar.png');
+        }
+        else {
+            $user = $this->ion_auth->user()->row();
+            $user->userImage = "application/" . $user->userImage;
+            $user_groups = $this->ion_auth->get_users_groups($user->id)->result();
+            $data['user'] = $user;
+            $data['groups'] = $user_groups;
+        }
         $this->load->view('rehab_main', $data);
     }
     public function locateRehabber() {

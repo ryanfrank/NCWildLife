@@ -157,45 +157,43 @@
         return null;
     }
 </script>
+<nav class="navbar navbar-light navbar-expand-lg"  id="header" style="font-family: 'Montserrat', sans-serif; font-style: normal; font-weight: 300; font-size: 15px;"> 
+    <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+            <i class="h6" id="clock" style="font-style: normal; font-weight: 300;"></i>
+        </li>
+    </ul>
+    <?php if (!$this->ion_auth->logged_in()){?>
+        <ul class="navbar-nav mr-4">
+            <li class="nav-item">
+                <img class="img-thumbnail mr-2" style="width: 40px; height: 40px;"src="<?php echo $image;?>" />
+            </li>
+            <li class="nav-item mt-3">
+                <i class="mr-2" style="font-style: normal; font-weight: 400;" data-target="#loginUserModal" id="login-user">Login</i>
+            </li>
+            <li class="nav-item mt-3">
+                <i class="mr-2" style="font-style: normal; font-weight: 300;" >/</i>
+            </li>
+            <li class="nav-item mt-3">
+                <i class="mr-2" style="font-style: normal; font-weight: 400;" data-target="#registerUserModal" id="register-user">Register</i>
+            </li>
+        </ul>
+    <?php } else { ?>
+        <ul class="navbar-nav mr-4">
+            <li class="nav-item">
+                <img class="mr-2 rounded" style="width: 35px; height: 35px;" src="<?php echo $user->userImage;?>" />
+            </li>
+            <li class="nav-item dropdown mt-2">
+                <a class="nav-link dropdown-toggle" style="font-style: normal; font-weight: 600;" href="#" id="userProfile" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><?php echo $user->first_name; ?> <?php echo $user->last_name; ?></a>
+                <div class="dropdown-menu dropdown-menu-lg-right" aria-labelledby="userProfile" style="width: 1px !important;">
+                    <a class="dropdown-item" style="font-style: normal; font-weight: 300; font-size: 15px;" href="Authentication/logoutUser">Logout</a>
+                    <a class="dropdown-item" style="font-style: normal; font-weight: 300; font-size: 15px;" href="javascript:void(0)" onclick="$('#content').load('Admin/manageUsers/Profile')">Profile</a>
+                </div>
+            </li>
+        </ul>
+    <?php } ?>
+</nav>
 
-<div class="row mr-3">
-    <div class="col align-self-start text-left font-italic" id="clock"></div>
-    <div class="col align-self-end text-right font-italic">
-        <?php
-            if (!$this->ion_auth->logged_in()){
-        ?>
-                Welcome Guest!  Click here to
-                    <i class="text-success" data-target="#registerModal" id="register-user">register</i>
-                or
-                    <i data-toggle="modal"  class="text-success" id="login-user">login</i>.
-        <?php
-            }
-            else {
-                $user = $this->ion_auth->user()->row();
-                $user_groups = $this->ion_auth->get_users_groups($user->id)->result();
-            ?>
-                Hello! <?php echo $user->first_name; ?> <?php echo $user->last_name; ?> (
-                <?php
-                    $num_groups = count($user_groups);
-                    if ( $num_groups >= 1 ) {
-                        $itteration = 1;
-                        foreach ($user_groups as $group) {
-                            echo $group->name;
-                            if ( $itteration != $num_groups )
-                            {
-                                echo ",";
-                            }
-                            $itteration++;
-                        }
-                    }
-                ?>
-                )
-                <a href="Authentication/logoutUser">Logout</a>
-            <?php
-            }
-        ?>
-    </div>
-</div>
 <?php
 if (!$this->ion_auth->logged_in()){
 ?>

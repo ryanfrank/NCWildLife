@@ -73,9 +73,22 @@ class Admin extends CI_Controller
     public function manageUsers()
     {
         if ($this->input->is_ajax_request()) {
-            $select = "id,CONCAT(first_name,' ',last_name) as name";
-            $data['users'] = $this->Users->get($select);
-            $this->load->view('admin/user_manager', $data);
+            $userType = $this->uri->segment(3);
+            if ( $this->uri->segment(3) == 'Users' ){
+                $select = "id,CONCAT(first_name,' ',last_name) as name";
+                $data['users'] = $this->Users->get($select);
+                $this->load->view('admin/user_manager', $data);
+            }
+            elseif ( $this->uri->segment(3) == 'Profile'){
+                $data['user'] = $this->ion_auth->user()->row();
+                $data['failedLogin'] = $this->ion_auth->get_attempts_num($data['user']->id);
+                $data['user']->userImage  = base_url() . "application/" . $data['user']->userImage;
+                $data['user']->phone = "(" . substr($data['user']->phone, 0, -7) . ") " . substr($data['user']->phone, 3, -4) . "-" . substr($data['user']->phone, 6);
+                $data['user']->created_on = gmdate("m/d/Y", $data['user']->created_on);
+                $data['user']->last_login = gmdate("m/d/Y", $data['user']->last_login);
+                $data['groups'] = $this->ion_auth->get_users_groups($data['user']->id)->result();
+                $this->load->view('users/profile_manager', $data);
+            }
         } else { show_404(); }
     }
     public function userDetail()
