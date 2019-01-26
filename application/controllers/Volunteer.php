@@ -50,8 +50,8 @@ class Volunteer extends CI_Controller
             if ( $this->input->post('cFor') != "" ) { $cFor = $this->input->post('cFor'); }
             else { $cFor = $user->id; }
             $data = array(
-                'start' => $this->input->post('date') . " " . date('H:i', strtotime($this->input->post('sTime'))),
-                'end' => $this->input->post('date') . " " . date('H:i', strtotime($this->input->post('eTime'))),
+                'start' => $this->input->post('sDate') . " " . date('H:i', strtotime($this->input->post('sTime'))),
+                'end' => $this->input->post('eDate') . " " . date('H:i', strtotime($this->input->post('eTime'))),
                 'title' => $this->input->post('eTitle'),
                 'allDay' => $this->input->post('allDay'),
                 'createdBy' => $user->id,

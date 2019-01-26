@@ -24,7 +24,7 @@
     $(function(){
         $('#calendar').fullCalendar({
             header: {
-                left: 'prev,next today myCustomButton',
+                left: 'prev,next today',
                 center: 'title',
                 right: 'month,agendaWeek,agendaDay'
             },
@@ -45,6 +45,8 @@
                 $('#addToCalendarModal').off('submit');
                 $('#addToCalendarModal').submit( function(event){
                     event.preventDefault();
+                    if ( allDaySet === true ){ sTime = '00:00:00'; eTime = '23:59:59'; }
+                    else { sTime = document.getElementById("e_startTime").value; eTime = document.getElementById("e_endTime").value;}
                     sTime = document.getElementById("e_startTime").value;
                     eTime = document.getElementById("e_endTime").value;
                     eTitle = document.getElementById("e_title").value;
@@ -70,13 +72,65 @@
                             document.getElementById("e_endTime").value = null;
                             document.getElementById("e_title").value = null;
                             document.getElementById("createdFor").value = null;
+                            document.getElementById("e_description").value = null;
+                            document.getElementById("allDay").value = null;
                             if (result === "success") {
                                 jQuery("div#updateStatus").html('<div id="success-alert" class="alert alert-success mt-lg-4 col-10 alert-dismissible fade show" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>Successfully added calendar event</div>');
                                 $('#success-alert').fadeOut(3000);
                             }
+                        }
+                    });
+                });
+            },
+            select: function(start, end) {
+                sDate = moment(start).format('YYYY-MM-DD');
+                eDate = moment(moment(end).subtract(1,'days')).format('YYYY-MM-DD');
+                document.getElementById("e_startDate").value = sDate;
+                document.getElementById("e_endDate").value = eDate;
+                $('.timepicker').timepicker({
+                    zindex: 20000,
+                    timeFormat: 'h:mm p',
+                    interval: 30,
+                    dynamic: true,
+                    dropdown: true,
+                    scrollbar: true
+                });
+                $('#addToCalendarModal').modal('show');
+                $('#addToCalendarModal').off('submit');
+                $('#addToCalendarModal').submit( function(event){
+                    event.preventDefault();
+                    if ( allDaySet === true ){ sTime = '00:00:00'; eTime = '23:59:59'; }
+                    else { sTime = document.getElementById("e_startTime").value; eTime = document.getElementById("e_endTime").value;}
+                    eTitle = document.getElementById("e_title").value;
+                    sFor = document.getElementById("createdFor").value;
+                    sDesc = document.getElementById("e_description").value;
+                    $.ajax({
+                        type: "POST",
+                        url: "<?php echo base_url(); ?>" + "Volunteer/addCalendarEvent/Volunteer",
+                        dataType: 'json',
+                        data: {
+                            "sDate": sDate,
+                            "eDate": eDate,
+                            "sTime": sTime,
+                            "eTime": eTime,
+                            "allDay": allDaySet,
+                            "cFor": sFor,
+                            "cDesc": sDesc,
+                            "eTitle": eTitle
                         },
-                        complete : function (event){
-
+                        success : function(result) {
+                            $('#addToCalendarModal').modal('toggle');
+                            $('#calendar').fullCalendar('refetchEvents');
+                            document.getElementById("e_startTime").value = null;
+                            document.getElementById("e_endTime").value = null;
+                            document.getElementById("e_title").value = null;
+                            document.getElementById("createdFor").value = null;
+                            document.getElementById("e_description").value = null;
+                            document.getElementById("allDay").value = null;
+                            if (result === "success") {
+                                jQuery("div#updateStatus").html('<div id="success-alert" class="alert alert-success mt-lg-4 col-10 alert-dismissible fade show" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>Successfully added calendar event</div>');
+                                $('#success-alert').fadeOut(3000);
+                            }
                         }
                     });
                 });
