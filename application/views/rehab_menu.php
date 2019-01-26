@@ -6,7 +6,7 @@
  * Time: 1:58 PM
  */
 ?>
-<nav class="col-12 navbar navbar-expand-lg navbar-light bg-light" style="font-family: 'Montserrat', sans-serif; font-style: normal; font-weight: 300; font-size: 17px;">
+<nav class="col-12 navbar navbar-expand-lg navbar-light bg-light" style="font-size: 17px;">
     <a class="navbar-brand" href="#">NC WildLife Rehab</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ncwlrMenu" aria-controls="ncwlrMenu" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>

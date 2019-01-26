@@ -86,16 +86,16 @@
                 fjs.parentNode.insertBefore(js, fjs);
             }(document, 'script', 'facebook-jssdk'));
         </script>
-        <div class="container-fluid mt-1 w-100 bg-light" id="header"><?php $this->load->view('rehab_header');?> </div>
-        <div class="container-fluid col-12 bg-light border-bottom-2" style="border-bottom: 1px solid darkgrey; box-shadow: 0px 5px 10px -1px lightgrey;" id="menuBar">
+        <div class="container-fluid mt-1 w-100 bg-light" id="header" style="font-family: 'Montserrat', sans-serif; font-style: normal; font-weight: 300; font-size: 15px;"><?php $this->load->view('rehab_header');?> </div>
+        <div class="container-fluid col-12 bg-light border-bottom-2" style="border-bottom: 1px solid darkgrey; box-shadow: 0px 5px 10px -1px lightgrey;font-family: 'Montserrat', sans-serif; font-style: normal; font-weight: 300; font-size: 15px;" id="menuBar">
             <div class="row col-12"><?php $this->load->view('rehab_menu');?></div>
         </div>
-        <div id="createUserStatus" class="col-12 ml-5"></div>
-        <div id="updateStatus" class="container-fluid ml-5"></div>
-        <div class="container-fluid ml-1 mt-4 mb-5" id="content" style="min-height: 600px; width: 98%;">
+        <div id="createUserStatus" class="col-12 ml-5" style="font-family: 'Montserrat', sans-serif; font-style: normal; font-weight: 300; font-size: 15px;"></div>
+        <div id="updateStatus" class="container-fluid ml-5" style="font-family: 'Montserrat', sans-serif; font-style: normal; font-weight: 300; font-size: 15px;"></div>
+        <div class="container-fluid ml-1 mt-4 mb-5" id="content" style="min-height: 600px; width: 98%;font-family: 'Montserrat', sans-serif; font-style: normal; font-weight: 300; font-size: 15px;">
             <div class="row col-12">
                 <div class="col-6" id="fbFeed" style="font-family: 'Montserrat', sans-serif; font-style: normal; font-weight: 300; font-size: 15px;"></div>
-                <div class="col-6 text-justify" id="fbStory" style="font-family: 'Montserrat', sans-serif; font-style: normal; font-weight: 300; font-size: 15px;">
+                <div class="col-6 text-justify" id="fbStory">
                     <strong style="font-weight: 500;">Welcome to NC Wild Life Rehab</strong><br>
                     Here at NC Wild Life Rehab, we have two main focuses. First, is to save the animal/s. Secondly, is to educate. By
                     educating, we can spread the word of what to do if an injured or orphaned animal is found. Our
@@ -119,7 +119,7 @@
                 </div>
             </div>
         </div>
-        <div class="container-fluid col-12 bg-light" style="min-height: 30vh; border-top: 1px solid darkgrey; box-shadow: 0 -5px 10px -1px lightgrey;" id="footer">
+        <div class="container-fluid col-12 bg-light" style="min-height: 30vh; border-top: 1px solid darkgrey; box-shadow: 0 -5px 10px -1px lightgrey;font-family: 'Montserrat', sans-serif; font-style: normal; font-weight: 300; font-size: 15px;" id="footer">
             <div class="row col-12"><?php $this->load->view('rehab_footer');?></div>
         </div>
     </body>

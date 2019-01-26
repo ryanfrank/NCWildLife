@@ -157,7 +157,7 @@
         return null;
     }
 </script>
-<nav class="navbar navbar-light navbar-expand-lg"  id="header" style="font-family: 'Montserrat', sans-serif; font-style: normal; font-weight: 300; font-size: 15px;"> 
+<nav class="navbar navbar-light navbar-expand-lg"  id="header" style="font-size: 15px;"> 
     <ul class="navbar-nav mr-auto">
         <li class="nav-item">
             <i class="h6" id="clock" style="font-style: normal; font-weight: 300;"></i>

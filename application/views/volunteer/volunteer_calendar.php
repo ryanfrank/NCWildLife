@@ -303,7 +303,7 @@
     </div>
 </div>
 <div class="container-fluid">
-    <div class="modal fade" id="updateEventModal" tabindex="-1" role="dialog" aria-labelledby="updateEventLabel" aria-hidden="false">
+    <div class="modal fade" id="updateEventModal" tabindex="-1" role="dialog" aria-labelledby="updateEventLabel" aria-hidden="false" style="font-size: 15px;">
         <div class="modal-dialog col-12 modal-dialog-centered" style="min-width: 650px;" role="document">
             <div class="modal-content">
                 <div class="modal-header mt-3">
@@ -370,8 +370,8 @@
                             </div>
                         </div>
                         <div class="modal-footer col-12 mt-2">
-                            <div class="row col-12 form-group">
-                                <div class="col-3"><button id="update" type="submit" value="update" class="btn btn-success btn-small">Add Note</button></div>
+                            <div class="row col-12 form-group" style="font-size: 13px;">
+                                <div class="col-3"><button id="update" type="submit" value="update" class="btn btn-success btn-small">Update</button></div>
                                 <div class="col-3"><?php if ( $this->ion_auth->in_group('scheduler') ){ ?><button type="submit" id="noshow" value="noshow" class="btn btn-warning btn-small">No Show</button><?php } ?></div>
                                 <div class="col-3"><?php if ( $this->ion_auth->in_group('scheduler') ){ ?><button type="submit" id="delete" value="delete" class="btn btn-danger btn-small">Delete</button><?php } ?></div>
                                 <div class="col-3"><button type="button" class="btn btn-secondary btn-small" data-dismiss="modal">Cancel</button></div>

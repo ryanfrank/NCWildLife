@@ -151,7 +151,7 @@
         });
     });
 </script>
-<div class="container-fluid col-12 ml-5" style="font-family: 'Montserrat', sans-serif; font-style: normal; font-weight: 400; font-size: 15px;">
+<div class="container-fluid col-12 ml-5" style="font-weight: 400; font-size: 15px;">
     <div class="row col-10">
         <div class="container rounded col-12" style="min-height: 525px;  border: 1px solid darkgrey; border-radius: 7px; box-shadow: 0 0 40px lightgrey;">
             <div class="row col-12 justify-content-md-center mt-4">
@@ -216,7 +216,7 @@
     <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
         <div class="modal-content col-6">
             <div class="modal-header text-center align-content-center align-center">
-                <h5 class="ml-3 col-6 modal-title text-muted text-center" id="resetPasswordLabel">Reset Password</h5>
+                <h6 class="ml-3 col-6 modal-title text-muted text-center" id="resetPasswordLabel">Reset Password</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>

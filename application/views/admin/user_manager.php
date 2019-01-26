@@ -224,7 +224,7 @@
     <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
         <div class="modal-content col-6">
             <div class="modal-header text-center align-content-center align-center">
-                <h5 class="ml-3 col-6 modal-title text-muted text-center" id="resetPasswordLabel">Reset Password</h5>
+                <h6 class="ml-3 col-6 modal-title text-muted text-center" id="resetPasswordLabel">Reset Password</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>

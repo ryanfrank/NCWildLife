@@ -7,9 +7,9 @@
  */
 ?>
 
-<div class="container-fluid w-100 mt-3" style="font-family: 'Montserrat', sans-serif; font-style: normal; font-weight: 300; font-size: 17px;">
+<div class="container-fluid w-100 mt-3" style="font-size: 17px;">
     <div class="row col-12">
-        <div class="col-3 pull-left" style="font-weight: 300; font-size: 14px;">
+        <div class="col-3 pull-left" style="font-size: 14px;">
             <table class="table table-borderless">
                 <tr style="height: 25px; line-height: 5px;">
                     <td style="padding: 1px;"><a target="_blank" href="https://www.facebook.com/NCWildLifeRehab" class="fab fa-facebook-square fa-lg"></a></td>
