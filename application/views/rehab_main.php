@@ -59,7 +59,7 @@
                 facebookPageId = '<?php echo $facebook->page_id; ?>';
                 facebookAuthToken = '<?php echo $facebook->access_token; ?>';
                 FB.api('/' + facebookPageId + '',{fields:'posts.limit(2){id,message,full_picture,shares,actions,created_time,from,link,permalink_url,name}',access_token:''+ facebookAuthToken +''} , function(response){
-                    //console.log(response);
+                    console.log(response);
                     fbHTML = '<div class="row">';
                     for ( var i = 0; i < response.posts.data.length; i++ ){
                         fbHTML += ' <div class="col-sm-6">';

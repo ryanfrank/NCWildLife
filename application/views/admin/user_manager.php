@@ -27,6 +27,7 @@
 
     $('#user-list a').off('click');
     $('#user-list a').on('click', function (e) {
+        console.log(e);
         e.preventDefault();
         $.ajax({
             type: "POST",
@@ -195,12 +196,8 @@
     });
 </script>
 
-<div class="container-fluid col-12">
-    <div class="row col-11 justify-content-md-center">
-        <h2 class="text-muted">NC WildLife User Management</h2>
-    </div>
-</div>
-<div class="container-fluid col-12 mt-3">
+
+<div class="container-fluid col-12 mt-5">
     <div class="row col-12">
         <div class="col-2">
             <div class="list-group " id="user-list" role="tablist" style="max-height: 550px; margin-bottom: 10px; overflow:scroll; border: 1px solid darkgrey; box-shadow: 0 0 40px lightgrey;" >
@@ -210,10 +207,20 @@
             </div>
         </div>
         <div class="col-10">
-            <div class="container rounded col-12" style="min-height: 525px;  border: 1px solid darkgrey; border-radius: 7px; box-shadow: 0 0 40px lightgrey;">
+            <div class="container rounded col-12" style="min-height: 525px;  border: 1px solid darkgrey; border-radius: 7px; box-shadow: 0 0 20px lightgrey;">
                 <div class="row col-12">
                     <div class="tab-content col-12" id="tabContent">
-                        Some more text
+                        <div class="jumbotron mt-4" style="border: 1px solid darkgrey; box-shadow: 0 0 40px lightgrey;">
+                            <h1 class="display-4">NC Wildlife - User Management</h1>
+                            <p class="lead">Use this section to manage users currently registered on the web page.  Modification of user data takes effect immediately.</p>
+                            <hr class="my-4">
+                            <h5>Steps:</h5>
+                            <ul class="mt-3">
+                                <li><p>Select user from left column.  Users are listed by First and Last Name.</p></li>
+                                <li><p>Review data to update from table, make necessary changes</p></li>
+                                <li><p>Click update user to process changes</p></li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>

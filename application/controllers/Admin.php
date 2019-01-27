@@ -103,9 +103,9 @@ class Admin extends CI_Controller
             $value[0]['FailedLogin'] = $failedLogin;
             $value[0]['groups'] = $groups;
             $results = $value[0];
+            echo json_encode($results);
         }
         else { show_404(); }
-        echo json_encode($results);
     }
     public function userUpdate()
     {
@@ -151,9 +151,18 @@ class Admin extends CI_Controller
             if ( $this->ion_auth->update($this->input->post('userId'), $data) ){
                 $result = array("success" => true);
             }
+            echo json_encode($result);
         }
         else { $result = array("success" => false); }
-        echo json_encode($result);
+    }
+
+    /*
+    *   Section: Site Management
+    */
+    public function siteManager() {
+        $data = [];
+
+        $this->load->view('admin/site_update', $data);
     }
 }
 ?>
