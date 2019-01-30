@@ -35,7 +35,7 @@
     <script type="text/javascript" src="<?php echo base_url('application/js/bootstrap-editable.js');?>"></script>
     <script type="text/javascript" src="<?php echo base_url('application/js/colorpicker.js');?>"></script>
     <script type="text/javascript" src="<?php echo base_url('application/js/fine-uploader.min.js');?>"></script>
-    <script type="text/javascript" src="<?php echo base_url('application/js/modernizr.custom.js');?>"></script>
+    <script type="text/javascript" src="<?php echo base_url('application/js/modernizr-custom.js');?>"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Montserrat:100,200,300,400,500,600,700,800&amp;subset=cyrillic,cyrillic-ext" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="<?php echo site_url('application/css/ncwl.css');?>">
@@ -96,7 +96,7 @@
                 <div class="col-6 text-justify" id="fbFeed" style="font-family: 'Montserrat', sans-serif; font-style: normal; font-weight: 300; font-size: 15px;"></div>
                 <div class="col-6 text-justify" id="fbStory">
                     <strong style="font-weight: 500;">Welcome to NC Wild Life Rehab</strong><br>
-                    Here at NC Wild Life Rehab, we have two main focuses. First, is to save the animal/s. Secondly, is to educate. By
+                    Here at NC Wild Life Rehab, we have two main focuses. First, is to save the animals. Secondly, is to educate. By
                     educating, we can spread the word of what to do if an injured or orphaned animal is found. Our
                     educational goals and activities include inhouse classes on different topics (what to do if you
                     find a wild baby, squirrel pox, how to become a wildlife rehabilitator, etc,), through volunteering
