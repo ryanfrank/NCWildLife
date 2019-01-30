@@ -35,6 +35,7 @@
     <script type="text/javascript" src="<?php echo base_url('application/js/bootstrap-editable.js');?>"></script>
     <script type="text/javascript" src="<?php echo base_url('application/js/colorpicker.js');?>"></script>
     <script type="text/javascript" src="<?php echo base_url('application/js/fine-uploader.min.js');?>"></script>
+    <script type="text/javascript" src="<?php echo base_url('application/js/modernizr.custom.js');?>"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Montserrat:100,200,300,400,500,600,700,800&amp;subset=cyrillic,cyrillic-ext" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="<?php echo site_url('application/css/ncwl.css');?>">
@@ -58,21 +59,19 @@
                 });
                 facebookPageId = '<?php echo $facebook->page_id; ?>';
                 facebookAuthToken = '<?php echo $facebook->access_token; ?>';
-                FB.api('/' + facebookPageId + '',{fields:'posts.limit(2){id,message,full_picture,shares,actions,created_time,from,link,permalink_url,name}',access_token:''+ facebookAuthToken +''} , function(response){
-                    fbHTML = '<div class="row">';
+                FB.api('/' + facebookPageId + '',{fields:'posts.limit(4){id,message,full_picture,picture,shares,actions,created_time,from,link,permalink_url,name}',access_token:''+ facebookAuthToken +''} , function(response){
+                    fbHTML = '<div class="stage"><ul class="stage">';
                     for ( var i = 0; i < response.posts.data.length; i++ ){
-                        fbHTML += ' <div class="col-sm-6">';
-                        fbHTML += '     <div class="card h-100" >';
-                        fbHTML += '         <img src="'+ response.posts.data[i].full_picture +'" class="card-img-top" alt="..." style="height: 400px;"> ';
-                        fbHTML += '         <div class="card-body">';
-                        fbHTML += '             <h5 class="card-title">'+ response.posts.data[i].from.name + '</h5><h6> (' + moment(response.posts.data[i].created_time).format('ddd MMM DD, YYYY') + ') </h6>';
-                        fbHTML += '             <p class="card-text">'+ response.posts.data[i].message.split('.',2)[0] +'. ' + response.posts.data[i].message.split('.',2)[1] + '.</p>';
-                        fbHTML += '             <a href="#" class="btn btn-primary">Read the story</a>';
+                        fbHTML += '<li class="post">';
+                        fbHTML += '     <div class="item">';
+                        fbHTML += '         <div class="picture" style="background-image: url('+ response.posts.data[i].full_picture +');"></div>';
+                        fbHTML += '         <div class="container info text-justify" >';
+                        fbHTML += '             <p class="ml-1 mr-1 text-justify"><br />'+ response.posts.data[i].message + '</p>';
                         fbHTML += '         </div>';
                         fbHTML += '     </div>';
-                        fbHTML += ' </div>';
+                        fbHTML += '</li>';
                     }
-                    fbHTML += '</div>';
+                    fbHTML += '</ul></div>';
                     $('#fbFeed').html(fbHTML);
                 });
                 FB.AppEvents.logPageView();
@@ -92,8 +91,9 @@
         <div id="createUserStatus" class="col-12 ml-5" style="font-family: 'Montserrat', sans-serif; font-style: normal; font-weight: 300; font-size: 15px;"></div>
         <div id="updateStatus" class="container-fluid ml-5" style="font-family: 'Montserrat', sans-serif; font-style: normal; font-weight: 300; font-size: 15px;"></div>
         <div class="container-fluid ml-1 mt-4 mb-5" id="content" style="min-height: 600px; width: 98%;font-family: 'Montserrat', sans-serif; font-style: normal; font-weight: 300; font-size: 15px;">
+            <div class="alert col-6 alert-light text-center" role="alert"><h6>Hover over each image to view story</h6></div>
             <div class="row col-12">
-                <div class="col-6" id="fbFeed" style="font-family: 'Montserrat', sans-serif; font-style: normal; font-weight: 300; font-size: 15px;"></div>
+                <div class="col-6 text-justify" id="fbFeed" style="font-family: 'Montserrat', sans-serif; font-style: normal; font-weight: 300; font-size: 15px;"></div>
                 <div class="col-6 text-justify" id="fbStory">
                     <strong style="font-weight: 500;">Welcome to NC Wild Life Rehab</strong><br>
                     Here at NC Wild Life Rehab, we have two main focuses. First, is to save the animal/s. Secondly, is to educate. By
