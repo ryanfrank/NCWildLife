@@ -59,7 +59,7 @@
                 });
                 facebookPageId = '<?php echo $facebook->page_id; ?>';
                 facebookAuthToken = '<?php echo $facebook->access_token; ?>';
-                FB.api('/' + facebookPageId + '',{fields:'posts.limit(4){id,message,full_picture,picture,shares,actions,created_time,from,link,permalink_url,name}',access_token:''+ facebookAuthToken +''} , function(response){
+                FB.api('/' + facebookPageId + '',{fields:'posts.limit(4){id,message,full_picture,picture,shares,created_time,from,link,permalink_url,name}',access_token:''+ facebookAuthToken +''} , function(response){
                     fbHTML = '<div class="stage"><ul class="stage">';
                     for ( var i = 0; i < response.posts.data.length; i++ ){
                         fbHTML += '<li class="post">';
@@ -95,8 +95,8 @@
             <div class="row col-12">
                 <div class="col-6 text-justify" id="fbFeed" style="font-family: 'Montserrat', sans-serif; font-style: normal; font-weight: 300; font-size: 15px;"></div>
                 <div class="col-6 text-justify" id="fbStory">
-                    <strong style="font-weight: 500;">Welcome to NC Wild Life Rehab</strong><br>
-                    Here at NC Wild Life Rehab, we have two main focuses. First, is to save the animals. Secondly, is to educate. By
+                    <strong style="font-weight: 500;font-size: 24px;">Welcome to NC Wild Life Rehab</strong><br>
+                    <div style="font-size: 16px;">Here at NC Wild Life Rehab, we have two main focuses. First, is to save the animals. Secondly, is to educate. By
                     educating, we can spread the word of what to do if an injured or orphaned animal is found. Our
                     educational goals and activities include inhouse classes on different topics (what to do if you
                     find a wild baby, squirrel pox, how to become a wildlife rehabilitator, etc,), through volunteering
@@ -104,9 +104,10 @@
                     centers. NC Wild Life Rehab also educates by posting in closed wildlife groups that contain only licensed wildlife
                     rehabilitators and on NCWR’s personal Facebook page. We always encourage questions and appreciate
                     suggestions from outsiders on topics such as cage building ideas and other random topics. The more
-                    we teach and the more we learn, the more we can assist wildlife here and in a broad spectrum.
+                    we teach and the more we learn, the more we can assist wildlife here and in a broad spectrum.</div>
                     <p><br>
-                    <strong style="font-weight: 500;">Current activities planned Second half of 2017:</strong><br>
+                    <strong style="font-weight: 500;font-size: 24px;">Current activities planned Second half of 2017:</strong><br>
+                    <div style="font-size: 16px;">
                     Iredell Human Society hosted a Wildlife Education Day – July 2017<br>
                     What to do if you find a wildlife baby – inhouse class – August 2017<br>
                     Love your Possums – inhouse class- August 2017<br>
@@ -115,6 +116,7 @@
                     Nature Day in Charlotte, NC - October 2017<br>
                     South Mountain’s Nature Day – October 2017<br>
                     </p>
+                    </div>
                 </div>
             </div>
         </div>

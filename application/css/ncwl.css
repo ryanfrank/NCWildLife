@@ -24,7 +24,7 @@ Build the scene and rotate on hover
 **************************************/
 .post {
 	width: 260px;
-	height: 350px;
+	height: 275px;
 	margin: 30px;
 	float: left;
 	-webkit-perspective: 1000px;
@@ -33,7 +33,7 @@ Build the scene and rotate on hover
 }
 .item {
 	width: 260px;
-	height: 350px;
+    height: 275px;
 	-webkit-transform-style: preserve-3d;
 	-moz-transform-style: preserve-3d;
 	transform-style: preserve-3d;
@@ -58,7 +58,8 @@ Transform and style the two planes
 .item .info {
 	position: absolute;
 	width: 260px;
-    height: 350px;
+    height: 275px;
+    border-radius: 8px;
     overflow: scroll;
     background-color: #fff;
 	-webkit-backface-visibility: hidden;
@@ -88,8 +89,8 @@ Shadow beneath the 3D object
 
 .csstransforms3d .item::after {
 	content: '';
-	width: 260px;
-	height: 260px;
+	width: 240px;
+	height: 275px;
 	position: absolute;
 	bottom: 0;
 	box-shadow: 0 30px 50px rgba(0,0,0,0.3);
