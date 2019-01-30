@@ -35,7 +35,7 @@
     <script type="text/javascript" src="<?php echo base_url('application/js/bootstrap-editable.js');?>"></script>
     <script type="text/javascript" src="<?php echo base_url('application/js/colorpicker.js');?>"></script>
     <script type="text/javascript" src="<?php echo base_url('application/js/fine-uploader.min.js');?>"></script>
-    <script type="text/javascript" src="<?php echo base_url('application/js/modernizr-custom.js');?>"></script>
+    <script type="text/javascript" src="<?php echo base_url('application/js/modernizr.custom-orig.js');?>"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Montserrat:100,200,300,400,500,600,700,800&amp;subset=cyrillic,cyrillic-ext" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="<?php echo site_url('application/css/ncwl.css');?>">
