@@ -3,6 +3,35 @@
 	list-style: none;
 	padding: 0;
 }
+.notify-badge{
+    position: absolute;
+    right: 5px;
+    background:rgba(102, 179, 241, 0.945);
+    text-align: center;
+    border-radius: 5px 5px 5px 5px;
+    color:rgb(255, 255, 255);
+    padding: 0px 10px;
+    font-size:12px;
+    font-weight: 500;
+}
+div.picture .notify-badge{
+	top: 20px;
+    opacity: .8;
+}
+div.info .notify-badge{
+	top: 77px;
+    opacity: 1;
+}
+div.info a:link {
+    color:rgb(255, 255, 255);
+}
+div.info a:visited {
+    color:rgb(193, 221, 248);
+}
+div.info a:hover {
+    color:rgb(255, 255, 255);
+    text-decoration: none;
+}
 /*************************************
 Scroll bar Configuration
 **************************************/
@@ -138,7 +167,7 @@ Item information
 	margin: 2px 0 0;
 	font-weight: 600;
     color: #666;
-    margin-top: 15px;
+    margin-top: 5px;
 	line-height: 1.4em;
     border-top: 10px solid #555;
     word-wrap: break-word;
@@ -178,14 +207,4 @@ Fallback
 .no-csstransforms3d .item .picture, 
 .no-csstransforms3d .item .info {
 	position: relative;
-}
-
-/*************************************
-Media Queries
-**************************************/
-@media screen and (max-width: 60.75em){
-	.post {
-		float: none;
-		margin: 30px auto 60px;
-	}
 }

@@ -59,19 +59,21 @@
                 });
                 facebookPageId = '<?php echo $facebook->page_id; ?>';
                 facebookAuthToken = '<?php echo $facebook->access_token; ?>';
-                FB.api('/' + facebookPageId + '',{fields:'posts.limit(4){id,message,full_picture,picture,shares,created_time,from,link,permalink_url,name}',access_token:''+ facebookAuthToken +''} , function(response){
-                    fbHTML = '<div class="stage"><ul class="stage">';
+                FB.api('/' + facebookPageId + '',{fields:'posts.limit(4){message,actions,full_picture,picture,attachments{subattachments},shares,created_time,from,permalink_url,name,likes.limit(0).summary(true)}',access_token:''+ facebookAuthToken +''} , function(response){
+                    console.log(response);
+                    fbHTML = '<div class="container ml-4"><div class="stage"><ul class="stage">';
                     for ( var i = 0; i < response.posts.data.length; i++ ){
                         fbHTML += '<li class="post">';
                         fbHTML += '     <div class="item">';
-                        fbHTML += '         <div class="picture" style="background-image: url('+ response.posts.data[i].full_picture +');"></div>';
-                        fbHTML += '         <div class="container info text-justify" >';
+                        fbHTML += '         <div class="picture" style="background-image: url('+ response.posts.data[i].full_picture +');"><span class="notify-badge"><a class="fas fa-thumbs-up mr-1"></a>'+response.posts.data[i].likes.summary.total_count+'<i class="fas fa-share ml-2 mr-1"></i>'+response.posts.data[i].shares.count+'</span></div>';
+                        fbHTML += '         <div class="container info text-justify" ><span class="notify-badge"><a href="' + response.posts.data[i].actions[0].link + '" target="_blank" class="fas fa-thumbs-up mr-1"></a>'+response.posts.data[i].likes.summary.total_count+'<a href="' + response.posts.data[i].actions[2].link + '" target="_blank" class="fas fa-share ml-2 mr-1"></a>'+response.posts.data[i].shares.count+'</span>';
+                        fbHTML += '             <p class="text-center">'+ moment(response.posts.data[i].created_time).format('dddd MMM. D, YYYY') +'</p> ';
                         fbHTML += '             <p class="ml-1 mr-1 text-justify"><br />'+ response.posts.data[i].message + '</p>';
                         fbHTML += '         </div>';
                         fbHTML += '     </div>';
                         fbHTML += '</li>';
                     }
-                    fbHTML += '</ul></div>';
+                    fbHTML += '</ul></div></div>';
                     $('#fbFeed').html(fbHTML);
                 });
                 FB.AppEvents.logPageView();
