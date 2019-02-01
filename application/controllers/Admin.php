@@ -160,7 +160,7 @@ class Admin extends CI_Controller
     *   Section: Site Management
     */
     public function siteManager() {
-        $data['siteInfo'] = $this->siteInfo->getSiteMessage();
+        $data['siteInfo'] = $this->Siteinfo->getSiteMessage();
 
         $this->load->view('admin/site_update', $data);
     }
