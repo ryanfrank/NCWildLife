@@ -7,7 +7,7 @@
  */
 
 
-class siteInfo extends CI_Model
+class SiteInfo extends CI_Model
 {
     public function __construct()
     {
