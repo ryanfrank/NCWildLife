@@ -97,16 +97,8 @@
             <div class="row col-12">
                 <div class="col-6 text-justify" id="fbFeed" style="font-family: 'Montserrat', sans-serif; font-style: normal; font-weight: 300; font-size: 15px;"></div>
                 <div class="col-6 text-justify" id="fbStory">
-                    <strong style="font-weight: 500;font-size: 24px;">Welcome to NC Wild Life Rehab</strong><br>
-                    <div style="font-size: 16px;">Here at NC Wild Life Rehab, we have two main focuses. First, is to save the animals. Secondly, is to educate. By
-                    educating, we can spread the word of what to do if an injured or orphaned animal is found. Our
-                    educational goals and activities include inhouse classes on different topics (what to do if you
-                    find a wild baby, squirrel pox, how to become a wildlife rehabilitator, etc,), through volunteering
-                    programs here at NC Wild Life Rehab, teaching classes to boy and girl scouts and at animal shelters and at nature
-                    centers. NC Wild Life Rehab also educates by posting in closed wildlife groups that contain only licensed wildlife
-                    rehabilitators and on NCWR’s personal Facebook page. We always encourage questions and appreciate
-                    suggestions from outsiders on topics such as cage building ideas and other random topics. The more
-                    we teach and the more we learn, the more we can assist wildlife here and in a broad spectrum.</div>
+                    <strong style="font-weight: 500;font-size: 24px;"><?php echo $siteInfo->main_page_title; ?></strong><br>
+                    <div style="font-size: 16px;"><?php echo $siteInfo->main_page_message; ?></div>
                     <p><br>
                     <strong style="font-weight: 500;font-size: 24px;">Current activities planned Second half of 2017:</strong><br>
                     <div style="font-size: 16px;">

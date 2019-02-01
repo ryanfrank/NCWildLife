@@ -3,6 +3,33 @@
 	list-style: none;
 	padding: 0;
 }
+.container-style {
+	border: 1px solid darkgrey; 
+	border-radius: 2px; 
+	box-shadow: 0px 0px 40px 0px lightgrey;
+}
+.menu-style {
+	border: 1px solid darkgrey; 
+	border-radius: 2px; 
+	box-shadow: 2px 2px 10px 2px lightgrey;
+}
+.menu-pill {
+	border-left: none; 
+	border-top: none; 
+	border-radius: 0px 0px 2px 2px;
+	border-bottom: 1px; 
+	border-radius: none; 
+	box-shadow: 1px 1px 3px 0px lightgrey;
+}
+.menu-pill:hover {
+	transform: scale(1.1, 1.1);
+	background: #007bff;
+	color: #fff;
+	font-weight: 400;
+}
+.menu-pill:active {
+	border: none;
+}
 .notify-badge{
     position: absolute;
     right: 5px;

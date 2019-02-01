@@ -27,7 +27,7 @@
 
     $('#user-list a').off('click');
     $('#user-list a').on('click', function (e) {
-        console.log(e);
+        //console.log(e);
         e.preventDefault();
         $.ajax({
             type: "POST",

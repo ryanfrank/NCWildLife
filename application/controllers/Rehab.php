@@ -25,6 +25,7 @@ class Rehab extends CI_Controller {
      * map to /index.php/welcome/<method_name>
      * @see https://codeigniter.com/user_guide/general/urls.html
      */
+
     public function index()
     {
         $data['facebook'] = $this->Facebook->getFacebookId();
@@ -38,6 +39,7 @@ class Rehab extends CI_Controller {
             $data['user'] = $user;
             $data['groups'] = $user_groups;
         }
+        $data['siteInfo'] = $this->siteInfo->getSiteMessage();
         $this->load->view('rehab_main', $data);
     }
     public function locateRehabber() {
@@ -70,6 +72,17 @@ class Rehab extends CI_Controller {
         }
 
         $this->load->view('volunteer/find_rehabber_view', $data);
+    }
+    public function updateSiteMessage() {
+        if ($this->input->is_ajax_request()) {
+            $data = array(
+                'main_page_title' => $this->input->post('messageTitle'),
+                'main_page_message' => $this->input->post('messageText')
+            );
+            $result = $this->siteInfo->updateSiteMessage($data);
+            echo json_encode($result);
+        }
+        else { show_404(); }
     }
 }
 ?>
