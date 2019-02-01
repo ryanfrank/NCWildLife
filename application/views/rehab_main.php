@@ -93,9 +93,9 @@
         <div id="createUserStatus" class="col-12 ml-5" style="font-family: 'Montserrat', sans-serif; font-style: normal; font-weight: 300; font-size: 15px;"></div>
         <div id="updateStatus" class="container-fluid ml-5" style="font-family: 'Montserrat', sans-serif; font-style: normal; font-weight: 300; font-size: 15px;"></div>
         <div class="container-fluid ml-1 mt-4 mb-5" id="content" style="min-height: 600px; width: 98%;font-family: 'Montserrat', sans-serif; font-style: normal; font-weight: 300; font-size: 15px;">
-            <div class="alert col-6 alert-light text-center" role="alert"><h6>Hover over each image to view story</h6></div>
+            <div class="alert col-6 alert-light text-center" role="alert"><i>Hover over each image to view story</i></div>
             <div class="row col-12">
-                <div class="col-6 text-justify" id="fbFeed" style="font-family: 'Montserrat', sans-serif; font-style: normal; font-weight: 300; font-size: 15px;"></div>
+                <div class="col-6 text-justify" id="fbFeed"></div>
                 <div class="col-6 text-justify" id="fbStory">
                     <strong style="font-weight: 500;font-size: 24px;"><?php echo $siteInfo->main_page_title; ?></strong><br>
                     <div style="font-size: 16px;"><?php echo $siteInfo->main_page_message; ?></div>
