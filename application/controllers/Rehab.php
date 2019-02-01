@@ -39,7 +39,7 @@ class Rehab extends CI_Controller {
             $data['user'] = $user;
             $data['groups'] = $user_groups;
         }
-        $data['siteInfo'] = $this->siteInfo->getSiteMessage();
+        $data['siteInfo'] = $this->Siteinfo->getSiteMessage();
         $this->load->view('rehab_main', $data);
     }
     public function locateRehabber() {
@@ -79,7 +79,7 @@ class Rehab extends CI_Controller {
                 'main_page_title' => $this->input->post('messageTitle'),
                 'main_page_message' => $this->input->post('messageText')
             );
-            $result = $this->siteInfo->updateSiteMessage($data);
+            $result = $this->Siteinfo->updateSiteMessage($data);
             echo json_encode($result);
         }
         else { show_404(); }
