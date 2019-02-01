@@ -379,10 +379,10 @@ $config['encryption_key'] = '';
 */
 $config['sess_driver'] = 'database';
 $config['sess_cookie_name'] = 'ncwl_session';
-$config['sess_expiration'] = 900;
+$config['sess_expiration'] = 3600;
 $config['sess_save_path'] = 'ncwl_sessions';
 $config['sess_match_ip'] = FALSE;
-$config['sess_time_to_update'] = 300;
+$config['sess_time_to_update'] = 3600;
 $config['sess_regenerate_destroy'] = TRUE;
 
 /*

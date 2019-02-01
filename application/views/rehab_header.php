@@ -67,7 +67,8 @@
             $('#login-user').off('click');
             $('#login-user').click(function(){
                 $('#loginUserModal').modal('show');
-                $('#loginUserModal').submit( function(event){
+                $('loginUserForm').off('submit');
+                $('#loginUserForm').submit( function(event){
                     event.preventDefault();
                     $.ajax({
                         type: "POST",
@@ -129,7 +130,7 @@
                             success: function (result) {
                                 $('#registerUserModal').modal('toggle');
                                 if (result === "success") {
-                                    window.location.reload(false);
+                                    //window.location.reload(false);
                                 }
                                 else {
                                     document.getElementById("firstName").value = null;

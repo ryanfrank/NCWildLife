@@ -53,7 +53,7 @@
                 myTable += '<tr><td>Active User</td><td><input id="active" type="checkbox"></td><td></td><td><button type="button" id="updateUser" class="btn btn-outline-primary btn-sm">Update User</button></td></tr>';
                 myTable += '</tbody></table>';
                 myTable += '</div></div>';
-                $('.tab-content').html(myTable);
+                $('.tab-content').hide().html(myTable).fadeIn('slow');
                 for ( var i = 0; i < myUser['groups'].length; i++) { $('#' + myUser['groups'][i].name).attr('checked', true); }
                 if ( myUser.active === '1' ) { $('#active').attr('checked', true); }
                 $(document).ready( function() {

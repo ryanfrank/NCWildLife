@@ -151,9 +151,9 @@ class Admin extends CI_Controller
             if ( $this->ion_auth->update($this->input->post('userId'), $data) ){
                 $result = array("success" => true);
             }
-            echo json_encode($result);
         }
         else { $result = array("success" => false); }
+        echo json_encode($result);
     }
 
     /*
