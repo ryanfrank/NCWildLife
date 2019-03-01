@@ -21,7 +21,7 @@ class Calendar extends CI_Model {
         $this->db->join("users", "calendar.createdFor = users.id");
         if ( is_array($type) ) {
             $this->db->group_start();
-            for ( $i = 0; $i < sizeof($type); $i++ ){
+            for ( $i = 0; $i < count($type); $i++ ){
                 if( $i == 0 ) { $this->db->where("calendar_event_type.event_type = ", $type[$i]);  }
                 else { $this->db->or_where("calendar_event_type.event_type = ", $type[$i]); }
             }

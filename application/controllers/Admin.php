@@ -73,7 +73,6 @@ class Admin extends CI_Controller
     public function manageUsers()
     {
         if ($this->input->is_ajax_request()) {
-            $userType = $this->uri->segment(3);
             if ( $this->uri->segment(3) == 'Users' ){
                 $select = "id,CONCAT(first_name,' ',last_name) as name";
                 $data['users'] = $this->Users->get($select);

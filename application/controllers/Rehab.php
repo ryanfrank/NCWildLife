@@ -29,6 +29,7 @@ class Rehab extends CI_Controller {
     public function index()
     {
         $data['facebook'] = $this->Facebook->getFacebookId();
+        $data['year'] = date("Y");
         if ( !$this->ion_auth->logged_in() ) {
             $data['image'] = base_url('application/images/Users/blank-avatar.png');
         }
@@ -71,7 +72,8 @@ class Rehab extends CI_Controller {
             if (strlen($rehabber->rehabber_phone) == '10' ) { $rehabber->rehabber_phone = '('.substr($rehabber->rehabber_phone,0,3).') ' . substr($rehabber->rehabber_phone,3,3) . '-' . substr($rehabber->rehabber_phone,6,4); }
         }
 
-        $this->load->view('volunteer/find_rehabber_view', $data);
+        //$this->load->view('volunteer/find_rehabber_view', $data);
+        $this->load->view('information/locate_rehabber', $data);
     }
     public function updateSiteMessage() {
         if ($this->input->is_ajax_request()) {

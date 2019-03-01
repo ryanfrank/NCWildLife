@@ -80,5 +80,25 @@ class Vendor extends CI_Model
             return "error";
         }
     }
+    public function addVendor($data) {
+        $dbTable = 'vendor';
+        $vData = array('vendor_name' => $data['vendorName']);
+        $this->db->insert($dbTable, $vData);
+        if ( $this->db->affected_rows() > 0) {
+            $vendor_id = $this->db->insert_id();
+            $dbTable = 'product_association';
+            $pData = array('vendor_ID' => $vendor_id, 'product_ID' => $data['productID']);
+            $this->db->insert($dbTable, $pData);
+            if ( $this->db->affected_rows() > 0) {
+                return "success";
+            }
+            else {
+                return "failAssoc"; 
+            }
+        }
+        else {
+            return "failAdd";
+        }
+    }
 }
 ?>

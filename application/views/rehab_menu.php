@@ -65,6 +65,8 @@
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="javascript:void(0)" onclick="$('#content').load('Admin/manageUsers/Users')">User Manager</a>
                         <a class="dropdown-item" href="javascript:void(0)" onclick="$('#content').load('Admin/siteManager')">Site Manager</a>
+                        <a class="dropdown-item" href="javascript:void(0)" onclick="$('#content').load('Product/vendorManager')">Vendor Manager</a>
+                        <a class="dropdown-item" href="javascript:void(0)" onclick="$('#content').load('Product/inventoryManager')">Inventory Manager</a>
                     </div>
                 </li>
             <?php } ?>
