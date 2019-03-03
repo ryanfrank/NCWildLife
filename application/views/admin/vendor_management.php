@@ -27,7 +27,7 @@
                 e.setAttribute("onclick", 'addVendorLocation(this,"'+product+'",myType);');
             }
             else {
-                alert('Please supply all information to submit');
+                alert('Please supply all information to submit!');
             }
         }
     }
