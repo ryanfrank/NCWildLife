@@ -61,12 +61,41 @@ class Product extends CI_Controller {
         }
         else {show_404();}
     }
+    public function vendorLocations() {
+        if ($this->input->is_ajax_request()) {
+            $vendorID = $this->input->post('ID');
+            $dbJoin = array("city_zip" => "vendor_information.vendor_zip = city_zip.city_zip_ID",
+                            "counties" => "city_zip.zip_county = counties.county_id",
+                            "states" => "city_zip.zip_state = states.state_id"
+                        );
+            $dbWhere = array("vendor_information.v_ID" => $vendorID);
+            $result = $this->Vendor->get('vendor_information.street_address, vendor_information.vendor_phone,city_zip.city_name,city_zip.zip_code,counties.county_name,states.state_abbr', 'vendor_information', $dbJoin, $dbWhere);
+            echo json_encode($result->result());
+        }
+        else {show_404();}
+    }
     public function add() {
         if ($this->input->is_ajax_request()) {
             if ( $this->uri->segment(3) == 'vendor' ){
                 $data['productID'] = $this->input->post('product');
                 $data['vendorName'] = $this->input->post('vendorName');
                 $result = $this->Vendor->addVendor($data);
+            }
+            elseif ( $this->uri->segment(3) == 'addLocation' ){
+                $data['street_address'] = $this->input->post('street');
+                $data['vendor_phone'] = preg_replace('~\D~','',$this->input->post('phone'));
+                $data['vendor_zip'] = $this->input->post('zip');
+                $data['v_ID'] = $this->input->post('vendor');
+                $result = $this->Vendor->addVendorLocation($data);
+            }
+            echo json_encode($result);
+        }
+    }
+    public function get() {
+        if ($this->input->is_ajax_request()) {
+            if ( $this->uri->segment(3) == 'cityZip' ){
+                $data['zipCode'] = $this->input->post('zip');
+                $result = $this->Location->cityZip($data);
             }
             echo json_encode($result);
         }

@@ -100,5 +100,16 @@ class Vendor extends CI_Model
             return "failAdd";
         }
     }
+    public function addVendorLocation($data) {
+        $dbTable = 'vendor_information';
+        $vData = array('v_ID' => $data['v_ID'],"street_address" => $data['street_address'],"vendor_zip" => $data['vendor_zip'], "vendor_phone" => $data['vendor_phone']);
+        $this->db->insert($dbTable, $vData);
+        if ( $this->db->affected_rows() > 0) {
+            return "success";
+        }
+        else {
+            return "failAdd";
+        }
+    }
 }
 ?>
