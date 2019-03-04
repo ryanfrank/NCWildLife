@@ -20,14 +20,11 @@
             }
         }
         else if ( type === 'locationAdd' ){
-            if ( product + '_street' !== null && product + '_zip' !== null && product + '_phone' !== null && product + '_city' !== null ){
+            if ( (document.getElementById(product + '_street').value !== null && document.getElementById(product + '_city').value !== null && document.getElementById(product + '_phone').value !== null) && (document.getElementById(product + '_phone').value.length == 10) ) {
                 e = document.getElementById(product + '_add');
                 e.style.color = "green";
                 myType = 'addLocation';
                 e.setAttribute("onclick", 'addVendorLocation(this,"'+product+'",myType);');
-            }
-            else {
-                alert('Please supply all information to submit!');
             }
         }
     }
@@ -84,7 +81,7 @@
             $('#store_' +index+'_table').bootstrapTable('insertRow', {
                 index: 0,
                 row: {  street_address: '<input type="text" id="'+ myElement+'_street" onchange="checkInput(this.value,this.id,myElement,myType)" placeholder="street address" />',
-                        vendor_phone: '<input type="text" id="'+ myElement+'_phone" placeholder="phone number" />',
+                        vendor_phone: '<input type="text" id="'+ myElement+'_phone" onchange="checkInput(this.value,this.id,myElement,myType)" placeholder="phone number" />',
                         city_name: '<input type="text" size="10" id="'+ myElement +'_city" disabled />',
                         zip_code: '<input type="text" id="'+ myElement+'_zip" placeholder="code" onchange="getLocation(this,'+locCounter+');" />',
                         county_name: '<input type="text" size="10" id="'+ myElement+'_county" disabled />',
@@ -177,7 +174,7 @@
                                         data: result,
                                         columns: [
                                             { sortable: false, field: 'street_address', title: "Street Address" },
-                                            { sortable: false, field: 'vendor_phone', formatter: function(value) {return formatPhoneNumber(value); },title: "Phone Number"},
+                                            { sortable: false, field: 'vendor_phone', title: "Phone Number"},
                                             { sortable: false, field: 'city_name', title: 'City' },
                                             { sortable: false, field: 'zip_code', title: 'Zip' },
                                             { sortable: false, field: 'county_name', title: 'County' },

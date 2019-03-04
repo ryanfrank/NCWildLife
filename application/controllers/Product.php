@@ -62,6 +62,12 @@ class Product extends CI_Controller {
         else {show_404();}
     }
     public function vendorLocations() {
+        function formatPhoneNumber($phone) {
+            if ( strlen($phone) === 10 ) {
+                $result = "(".substr($phone, 0, 3).") ".substr($phone, 3,3)."-".substr($phone,6);
+            }
+            return $result;
+        }
         if ($this->input->is_ajax_request()) {
             $vendorID = $this->input->post('ID');
             $dbJoin = array("city_zip" => "vendor_information.vendor_zip = city_zip.city_zip_ID",
@@ -70,6 +76,9 @@ class Product extends CI_Controller {
                         );
             $dbWhere = array("vendor_information.v_ID" => $vendorID);
             $result = $this->Vendor->get('vendor_information.street_address, vendor_information.vendor_phone,city_zip.city_name,city_zip.zip_code,counties.county_name,states.state_abbr', 'vendor_information', $dbJoin, $dbWhere);
+            foreach ( $result->result() as $row ){
+                $row->vendor_phone = formatPhoneNumber($row->vendor_phone);
+            }
             echo json_encode($result->result());
         }
         else {show_404();}

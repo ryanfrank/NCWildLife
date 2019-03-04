@@ -71,8 +71,6 @@ class Rehab extends CI_Controller {
             if ( $rehabber->rehabber_zip == '0' ) { $rehabber->rehabber_zip = "Unknown"; }
             if (strlen($rehabber->rehabber_phone) == '10' ) { $rehabber->rehabber_phone = '('.substr($rehabber->rehabber_phone,0,3).') ' . substr($rehabber->rehabber_phone,3,3) . '-' . substr($rehabber->rehabber_phone,6,4); }
         }
-
-        //$this->load->view('volunteer/find_rehabber_view', $data);
         $this->load->view('information/locate_rehabber', $data);
     }
     public function updateSiteMessage() {
