@@ -177,7 +177,7 @@
                                         data: result,
                                         columns: [
                                             { sortable: false, field: 'street_address', title: "Street Address" },
-                                            { sortable: false, field: 'vendor_phone', title: "Phone Number"},
+                                            { sortable: false, field: 'vendor_phone', formatter: function(value) {return formatPhoneNumber(value); },title: "Phone Number"},
                                             { sortable: false, field: 'city_name', title: 'City' },
                                             { sortable: false, field: 'zip_code', title: 'Zip' },
                                             { sortable: false, field: 'county_name', title: 'County' },
