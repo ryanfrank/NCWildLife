@@ -11,6 +11,16 @@
     function getHeight() {
         return $(window).height() - $('h1').outerHeight(true);
     }
+    function rowFormatter(value,row,index,field){
+        if ( field === 'vendor_website' ){
+            if ( value ){
+                return '<a href="'+value+'" target="_blank">'+value+'</a>';
+            }
+            else {
+                return 'Website not supplied';
+            }
+        }
+    }
     var table = $('#productTable');
     $('#productTypes').off('change');
     $('#productTypes').change(function(){
@@ -69,6 +79,7 @@
                     columns: [
                         { sortable: false, field: 'vendor_name', title: 'Name' },
                         { sortable: true, field: 'vendor_phone',  formatter: function (value) { return formatPhoneNumber(value); }, title: 'Phone' },
+                        { sortable: true, field: 'vendor_website', title: 'Website', formatter: function (value,row,index,field) { return rowFormatter(value,row,index,field); } },
                         { sortable: true, field: 'street_address',  title: 'Street' },
                         { sortable: true, field: 'city_name',  title: 'City' },
                         { sortable: true, field: 'zip_code',  title: 'Zip' },
@@ -332,7 +343,7 @@
     <div class="row col-11 justify-content-md-center">
         <h2 class="text-muted">Vendor Information</h2>
     </div>
-    <div class="row col-11 align-center mt-3">
+    <div class="row col-12 align-center mt-3">
         <div class="col-4 form-group">
             <label for="productTypes" class="align-content-center">Product Type</label>
             <select class="form-control" id="productTypes">
@@ -349,7 +360,7 @@
             </select>
         </div>
     </div>
-    <div class="row col-11 align-center mt-4">
+    <div class="row col-12 align-center mt-4">
         <div id="myTable" class="col-12 align-center" style="border: 1px solid darkgrey; border-radius: 7px; box-shadow: 0 0 40px lightgrey;">
             <table id="productTable" ></table>
         </div>

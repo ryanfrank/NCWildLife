@@ -108,10 +108,10 @@ class Volunteer extends CI_Controller
 
             if ( $lookupType == 'productType' ) {
                 $productType = $this->input->post('typeID');
-                $dbSelect = 'vendor.vendor_id,vendor.vendor_name, product_ID';
+                $dbSelect = 'vendor.vendor_id,vendor.vendor_name,vendor.vendor_website,product_association.product_ID';
                 $dbTable = 'product_association';
                 $dbJoin = array("vendor" => "product_association.vendor_ID = vendor.vendor_id");
-                $dbWhere = array("product_ID" => $productType);
+                $dbWhere = array("product_association.product_ID" => $productType);
                 $result = $this->Vendor->get($dbSelect, $dbTable, $dbJoin, $dbWhere);
             }
             elseif ( $lookupType == 'vendorLookup' ){
@@ -120,6 +120,7 @@ class Volunteer extends CI_Controller
                                 vendor_information.vendor_phone,
                                 vendor_information.vInfoID,
                                 vendor.vendor_name,
+                                vendor.vendor_website,
                                 city_zip.city_name,
                                 city_zip.zip_code,
                                 counties.county_name,
