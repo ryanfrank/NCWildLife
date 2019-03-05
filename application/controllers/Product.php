@@ -56,7 +56,7 @@ class Product extends CI_Controller {
             $productID = $this->input->post('ID');
             $dbJoin = array("product_association" => "product_association.vendor_ID = vendor.vendor_id");
             $dbWhere = array("product_association.product_ID" => $productID);
-            $result = $this->Vendor->get('vendor.vendor_id,vendor.vendor_name', 'vendor', $dbJoin, $dbWhere);
+            $result = $this->Vendor->get('vendor.vendor_id,vendor.vendor_name,vendor.vendor_website', 'vendor', $dbJoin, $dbWhere);
             echo json_encode($result->result());
         }
         else {show_404();}
@@ -87,7 +87,8 @@ class Product extends CI_Controller {
         if ($this->input->is_ajax_request()) {
             if ( $this->uri->segment(3) == 'vendor' ){
                 $data['productID'] = $this->input->post('product');
-                $data['vendorName'] = $this->input->post('vendorName');
+                $data['vendor_name'] = $this->input->post('vendorName');
+                $data['vendor_website'] = $this->input->post('vendorWeb');
                 $result = $this->Vendor->addVendor($data);
             }
             elseif ( $this->uri->segment(3) == 'addLocation' ){

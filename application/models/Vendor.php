@@ -82,7 +82,7 @@ class Vendor extends CI_Model
     }
     public function addVendor($data) {
         $dbTable = 'vendor';
-        $vData = array('vendor_name' => $data['vendorName']);
+        $vData = array('vendor_name' => $data['vendor_name'],'vendor_website' => $data['vendor_website'] );
         $this->db->insert($dbTable, $vData);
         if ( $this->db->affected_rows() > 0) {
             $vendor_id = $this->db->insert_id();

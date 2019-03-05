@@ -1,18 +1,35 @@
 <script>
-    function rowFormatter(row, index) {
-        if ( ! row.operate ){
-            return  '<a data-placement="top" style="color: black" class="fas fa-plus-square fa-lg" id="'+row.vendor_id + '_' +index+'"  data-storeID="'+row.vendor_id+'"></a>'
-        }
-        else {
-            return row.operate;
+    function rowFormatter(value,row,index,field) {
+        if ( field === 'operate' ){
+            if ( ! row.operate ){
+                return  '<a data-placement="top" style="color: black" class="fas fa-plus-square fa-lg" id="'+row.vendor_id + '_' +index+'"  data-storeID="'+row.vendor_id+'"></a>'
+            }
+            else {
+                return row.operate;
+            }
+        } 
+        else if ( field === 'vendor_website' ){
+            if ( row.vendor_id ){
+                if ( value !== null ){
+                    return '<a href="'+value+'" target="_blank">'+value+'</a>'
+                }
+                else {
+                    return 'Website not supplied';
+                }
+            }
+            else {
+                return row.vendor_website;
+            }
         }
     }
-    function checkInput(input,element,product,type){
+    function checkInput(element,product,type){
         if ( type === 'vendorAdd'){
             e = document.getElementById(element + "_add");
-            if ( input.length >= 3 ){
+            n = document.getElementById(element + "_name");
+            w = document.getElementById(element + "_url");
+            if ( n.value.length >= 3 && w.value !== '' ){
                 e.style.color = "green";
-                e.onclick = function() { addVendor(input, product) };
+                e.onclick = function() { addVendor(product,w,n) };
             }
             else {
                 e.style.color = "black";
@@ -20,11 +37,19 @@
             }
         }
         else if ( type === 'locationAdd' ){
-            if ( (document.getElementById(product + '_street').value !== null && document.getElementById(product + '_city').value !== null && document.getElementById(product + '_phone').value !== null) && (document.getElementById(product + '_phone').value.length == 10) ) {
-                e = document.getElementById(product + '_add');
+            s = document.getElementById(element + '_street');
+            p = document.getElementById(element + '_phone');
+            c = document.getElementById(element + '_city');
+            z = document.getElementById(element + '_zip');
+            e = document.getElementById(element + '_add');
+            if ( s.value !== '' && c.value !== '' && p.value !== '' && p.value.length === 10 ) {
                 e.style.color = "green";
                 myType = 'addLocation';
-                e.setAttribute("onclick", 'addVendorLocation(this,"'+product+'",myType);');
+                e.onclick = function() { addVendorLocation(this,productID,myType) };
+            }
+            else {
+                e.style.color = "black";
+                e.onclick = function() { return false; };
             }
         }
     }
@@ -48,13 +73,14 @@
             }
         });
     }
-    function addVendor(input, product){
+    function addVendor(product,w,n){
         $.ajax({
             type: "POST",
             url: "<?php echo base_url(); ?>" + "Product/add/vendor",
             dataType: "json",
             data: { "product": product,
-                    "vendorName": input },
+                    "vendorName": n.value,
+                    "vendorWeb": w.value },
             success: function (result) {
                 if ( result === "success" ){
                     table.bootstrapTable('refresh');
@@ -80,8 +106,8 @@
             myElement = vendorId + '_' + locCounter;
             $('#store_' +index+'_table').bootstrapTable('insertRow', {
                 index: 0,
-                row: {  street_address: '<input type="text" id="'+ myElement+'_street" onchange="checkInput(this.value,this.id,myElement,myType)" placeholder="street address" />',
-                        vendor_phone: '<input type="text" id="'+ myElement+'_phone" onchange="checkInput(this.value,this.id,myElement,myType)" placeholder="phone number" />',
+                row: {  street_address: '<input type="text" id="'+ myElement+'_street" onchange="checkInput(myElement,productID,myType)" placeholder="street address" />',
+                        vendor_phone: '<input type="text" id="'+ myElement+'_phone" onchange="checkInput(myElement,productID,myType)" placeholder="phone number" />',
                         city_name: '<input type="text" size="10" id="'+ myElement +'_city" disabled />',
                         zip_code: '<input type="text" id="'+ myElement+'_zip" placeholder="code" onchange="getLocation(this,'+locCounter+');" />',
                         county_name: '<input type="text" size="10" id="'+ myElement+'_county" disabled />',
@@ -146,9 +172,10 @@
                     columns: [
                         { sortable: false, field: 'vendor_id', title: 'Vendor ID', visible: false },
                         { sortable: true, field: 'vendor_name',  title: 'Vendor Name' },
+                        { sortable: true, field: 'vendor_website',  formatter: function (value,row,index,field){ return rowFormatter(value,row,index,field);},title: 'Vendor Website' },
                         { sortable: false, field: 'operate', title: '<a id="vendorAdd" data-placement="top" style="color: green" class="fas fa-plus-square fa-lg"></a>', align: 'center', valign: 'middle', clickToSelect: false,
                             formatter: function (value, row, index, field) {
-                                return rowFormatter(row,index);
+                                return rowFormatter(value,row,index,field);
                             }
                         }
                     ],
@@ -179,9 +206,9 @@
                                             { sortable: false, field: 'zip_code', title: 'Zip' },
                                             { sortable: false, field: 'county_name', title: 'County' },
                                             { sortable: false, field: 'state_abbr', title: 'State' },
-                                            { sortable: false, filed: 'operate', align: 'center', valign: 'middle', title: 'Add/Delete', 
+                                            { sortable: false, field: 'operate', align: 'center', valign: 'middle', title: 'Add/Delete', 
                                                 formatter: function (value, row, index, field) {
-                                                    return rowFormatter(row,index);
+                                                    return rowFormatter(value,row,index,field);
                                                 }
                                             }
                                         ]
@@ -202,12 +229,14 @@
                 table.show();
                 var counter = 0;
                 myType = 'vendorAdd';
+                myTag = productID +'_'+counter;
                 $('#vendorAdd').off('click');
                 $('#vendorAdd').on('click', function (e) {
                     table.bootstrapTable('insertRow', {
                         index: counter,
-                        row: {  vendor_name: '<input type="text" id="'+ productID +'_'+counter+'" placeholder="New Vendor Name '+counter+'" oninput="checkInput(this.value, this.id, productID,myType)" />',
-                                operate: '<a data-placement="top" style="color: black" class="fas fa-check-square fa-lg" id="'+productID + '_'+counter+'_add"></a>'
+                        row: {  vendor_name: '<input type="text" id="'+ myTag +'_name" placeholder="New Vendor Name" oninput="checkInput(myTag,productID,myType)" />',
+                                vendor_website: '<input type="text" id="'+ myTag +'_url" placeholder="Website URL" onchange="checkInput(myTag,productID,myType)" />',
+                                operate: '<a data-placement="top" style="color: black" class="fas fa-check-square fa-lg" id="'+ myTag +'_add"></a>'
                         }
                     });
                     counter++;
